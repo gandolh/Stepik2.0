@@ -1,5 +1,57 @@
 version: '3'
 services:
+
+
+  dbeaver:
+    # username: cbadmin
+    # password: cbadmin20
+    image: dbeaver/cloudbeaver:latest
+    container_name: dbeaver
+    networks:
+      - licenta
+    ports:
+      - "8978:8978"
+    volumes:
+      - ./dbeaver-data:/home/dbeaver
+
+
+  keycloak:
+    image: quay.io/keycloak/keycloak:21.0.2
+    container_name: keycloak
+    environment:
+      KEYCLOAK_ADMIN: admin
+      KEYCLOAK_ADMIN_PASSWORD: admin
+    command: start-dev
+    networks:
+      - licenta
+    ports:
+      - "8888:8080"
+
+
+  postgres:
+    image: postgres:latest
+    container_name: postgres
+    environment:
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: admin
+      POSTGRES_DB: my_postgres_database
+    ports:
+      - "5432:5432"
+    networks:
+      - licenta
+    # volumes:
+    #   - ./postgres-data:/var/lib/postgresql/data # Persist PostgreSQL data to a local directory
+  
+    
+  redis:
+    container_name: redis
+    image: redis:6.0.10-alpine
+    networks:
+      - licenta
+    ports:
+      - "6379:6379"
+
+
   zookeeper:
     image: confluentinc/cp-zookeeper:latest
     container_name: zookeeper
@@ -32,54 +84,9 @@ services:
     volumes:
       - /var/lib/kafka/data
 
-  keycloak:
-    image: quay.io/keycloak/keycloak:21.0.2
-    container_name: keycloak
-    environment:
-      KEYCLOAK_ADMIN: admin
-      KEYCLOAK_ADMIN_PASSWORD: admin
-    command: start-dev
-    networks:
-      - licenta
-    ports:
-      - "8888:8080"
 
-  redis:
-    container_name: redis
-    image: redis:6.0.10-alpine
-    networks:
-      - licenta
-    ports:
-      - "6379:6379"
-
-  postgres:
-    image: postgres:latest
-    container_name: postgres
-    environment:
-      POSTGRES_USER: admin
-      POSTGRES_PASSWORD: admin
-      POSTGRES_DB: my_postgres_database
-    ports:
-      - "5432:5432"
-    networks:
-      - licenta
-    # volumes:
-    #   - ./postgres-data:/var/lib/postgresql/data # Persist PostgreSQL data to a local directory
-
-  dbeaver:
-    # username: cbadmin
-    # password: cbadmin20
-    image: dbeaver/cloudbeaver:latest
-    container_name: dbeaver
-    networks:
-      - licenta
-    ports:
-      - "8978:8978"
-    volumes:
-      - dbeaver-data:/home/dbeaver
 networks:
   licenta:
     driver: bridge
 
-volumes:
-  dbeaver-data:
+
