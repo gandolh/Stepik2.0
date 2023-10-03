@@ -2,7 +2,7 @@
 
 namespace Licenta.Components.UI.Others
 {
-    public partial class PdfNavigation : BaseCetComponent<ComponentsResource>
+    public partial class PdfNavigation : BaseLicentaComponent<ComponentsResource>
     {
     }
 }

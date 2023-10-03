@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Components;
 
 namespace Licenta.Components.UI.Layout.Navbar
 {
-    public partial class EmptyDropdown : BaseCetComponent<ComponentsResource>
+    public partial class EmptyDropdown : BaseLicentaComponent<ComponentsResource>
     {
         [Parameter][EditorRequired] public PageState ParentPageState { get; set; }
         [Parameter] public Enums.IconName IconNameParam { get; set; }
