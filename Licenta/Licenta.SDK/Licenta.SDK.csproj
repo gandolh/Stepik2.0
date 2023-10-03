@@ -9,6 +9,7 @@
   <ItemGroup>
     <Folder Include="Enums\" />
     <Folder Include="Authorization\" />
+    <Folder Include="Docker\" />
   </ItemGroup>
 
   <ItemGroup>
