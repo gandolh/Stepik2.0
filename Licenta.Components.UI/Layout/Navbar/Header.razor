@@ -1,0 +1,20 @@
+﻿@using Microsoft.AspNetCore.Components.Authorization
+
+
+<!-- ======= Header ======= -->
+<header id="header" class="header fixed-top d-flex align-items-center">
+    <Logo />
+
+    <nav class="header-nav ms-auto">
+        <ul class="d-flex align-items-center">
+            <AuthorizeView>
+                <Authorized>
+                    <NotificationNav />
+                </Authorized>
+            </AuthorizeView>
+            <LanguagePicker />
+            <ProfileNav />
+        </ul>
+    </nav><!-- End Icons Navigation -->
+
+</header><!-- End Header -->

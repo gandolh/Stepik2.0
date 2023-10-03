@@ -1,0 +1,25 @@
+﻿@using Licenta.Components.UI.Layout.Menu
+@using Licenta.Components.UI.Layout.Navbar
+@using Microsoft.AspNetCore.Authorization;
+
+@inherits LayoutComponentBase
+@attribute [Authorize]
+<PageTitle>CertEntTrust.Portal</PageTitle>
+
+<Header />
+<Sidebar />
+<main id="main" class="main">
+
+    <PageTitleComp/>
+    <section class="section">
+        @if (Body != null)
+        {
+            @Body
+        }
+        else
+        {
+            <p> No body </p>
+        }
+    </section>
+</main>
+<Footer />

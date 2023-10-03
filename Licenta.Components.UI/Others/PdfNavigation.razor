@@ -1,0 +1,18 @@
+@using Licenta.Components.UI.Enums;
+@using Licenta.Components.UI.Form.Button
+@using Licenta.SDK.Localization;
+@inherits BaseCetComponent<ComponentsResource>
+
+<div class="pdfNavigation">
+    <Button ButtonStyle="ButtonStyle.Secondary" Size="ButtonSize.Small" id="pdfPrev">
+        @Localizer["Previous"]
+    </Button>
+    <div class="d-flex">
+        <div id="pdfPageNum" class="pdfPageNumber">-</div>
+        <div class="pdfPageNumber">/</div>
+        <div id="pdfPageCount" class="pdfPageNumber">-</div>
+    </div>
+    <Button ButtonStyle="ButtonStyle.Primary" Size="ButtonSize.Small" id="pdfNext">
+        @Localizer["Next"]
+    </Button>
+</div>

@@ -1,0 +1,54 @@
+﻿@using Licenta.Components.UI.Dropdown
+@using Licenta.Components.UI.Enums;
+@using Licenta.Components.UI.Others
+@using Licenta.SDK.Localization;
+@using Licenta.SDK;
+
+
+@inherits BaseCetComponent<ComponentsResource>
+
+<li class="nav-item dropdown">
+    @if (pageState != PageState.Error)
+    {
+        if (pageState == PageState.Loading)
+        {
+            <EmptyDropdown ParentPageState="@pageState"
+                           IconNameParam=@Enums.IconName.Bell
+                           ErrorLabel="Se încarcă notificările"
+                           EmptyLabel="Nu aveți nici-o notificare" />
+        }
+        else
+        {
+            <Dropdown>
+                <DropdownToggle Class="nav-icon">
+                    <Icon Name="@Enums.IconName.Bell"/>
+                    <span class="badge bg-primary badge-number">@Notifications.Count</span>
+                </DropdownToggle>
+                <DropdownMenu Class="notifications">
+                    <HeaderContent>
+                        Aveți @(Notifications.Count == 1 ? "notificare noua" : "notificări noi")
+                        <a href="#"><span class="badge rounded-pill bg-primary p-2 ms-2">Vezi toate</span></a>
+                    </HeaderContent>
+                    <Items>
+                        @foreach (var notification in Notifications)
+                        {
+                            <DropdownItem Class="notification-item">
+                                <div class="d-flex align-items-center">
+                                    <i class="bi bi-check-circle text-success"></i>
+                                    <h4>@notification.Title</h4>
+                                </div>
+                                <div>
+                                    <p>@notification.Message</p>
+                                    <p>@Formaters.GetDatePassedReadable(notification.Emitted)</p>
+                                </div>
+                            </DropdownItem>
+                        }
+                    </Items>
+                    <DropdownFooter>
+                        <a href="#">Vezi toate notificarile</a>
+                    </DropdownFooter>
+                </DropdownMenu>
+            </Dropdown>
+        }
+    }
+</li><!-- End Notification Nav -->

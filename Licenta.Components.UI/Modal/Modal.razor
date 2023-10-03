@@ -1,0 +1,14 @@
+﻿@using Licenta.Components.UI.Utils;
+@inherits NewComponent
+
+
+<!-- Main modal -->
+<CascadingValue Value="this" IsFixed>
+    <div class="modal fade" id="@GetId()" tabindex="-1" data-bs-backdrop="@(EnabledBackdrop ? "true" : "false")">
+        <div class="modal-dialog modal-dialog-scrollable 
+                @GetModalSize() 
+                @(VerticalCenter ? "modal-dialog-centered": "")">
+            @ChildContent
+        </div>
+    </div>
+</CascadingValue>

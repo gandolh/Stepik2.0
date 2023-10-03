@@ -1,0 +1,20 @@
+@typeparam TLocalizer
+
+@inherits BaseCetComponent<TLocalizer>
+<div class="ContainerMenuCards">
+
+    @foreach (var menuItem in Menu.Items)
+    {
+        <Card>
+            <CardBody>
+                <CardTitle>@Localizer[menuItem.DisplayName]</CardTitle>
+                <p style="color:#899bbd; font-weight:400">@menuItem.Description</p>
+            </CardBody>
+            <CardFooter>
+                <RedirectOption RedirectText=@($"Catre {Localizer[menuItem.DisplayName]}")
+                                Url=@menuItem.Url
+                                Class="mb-0 text-end" />
+            </CardFooter>
+        </Card>
+    }
+</div>

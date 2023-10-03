@@ -1,0 +1,6 @@
+﻿.OrderedList {
+    margin-top: 0.25rem;
+    list-style-type: decimal;
+    list-style-position: inside;
+    color: #6B7280;
+}

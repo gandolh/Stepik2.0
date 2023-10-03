@@ -1,0 +1,16 @@
+﻿.RedirectAnchor {
+    display: inline-flex;
+    align-items: center;
+    font-weight: 500;
+    color: #2563EB;
+}
+
+.RedirectAnchor:hover{
+    text-decoration: underline; 
+}
+
+.RedirectIcon {
+    margin-left: 0.5rem;
+    width: 1rem;
+    height: 1rem;
+}

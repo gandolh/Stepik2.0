@@ -1,0 +1,17 @@
+﻿@using System.Globalization;
+
+
+
+
+<div class="me-3" style="font-size:15px">
+    <Select TValue="string"
+            SelectedValue=@_cultureName
+            SelectedValueChanged="@SetCultureInfo">
+        <Content>
+            @foreach (var culture in suportedCultures)
+            {
+                <SelectItem TValue="string" Value="culture.Name"> @culture.TwoLetterISOLanguageName</SelectItem>
+            }
+        </Content>
+    </Select>
+</div>

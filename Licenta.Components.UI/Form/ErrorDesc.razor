@@ -1,0 +1,9 @@
+@using Licenta.Components.UI.Enums;
+@using Licenta.Components.UI.Others
+
+@if (IsVisible)
+{
+    <Tooltip Text="@ErrorDescription" Placement="TooltipPlacement.Right">
+        <span class="text-danger"> @Message &nbsp;<Icon Name="IconName.QuestionCircle" /> </span>
+    </Tooltip>
+}
