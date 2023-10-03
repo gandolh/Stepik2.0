@@ -14,6 +14,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Licenta\Licenta.DataAccessService\Licenta.DataAccessService.csproj" />
     <ProjectReference Include="..\Licenta\Licenta.SDK\Licenta.SDK.csproj" />
   </ItemGroup>
 

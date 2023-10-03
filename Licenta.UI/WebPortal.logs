@@ -1,0 +1,60 @@
+[50: Warning     ]
+     Microsoft.AspNetCore.DataProtection.Repositories.EphemeralXmlRepository - 
+Using an in-memory repository. Keys will not be persisted to storage.
+
+[59: Warning     ]
+     Microsoft.AspNetCore.DataProtection.KeyManagement.XmlKeyManager - 
+Neither user profile nor HKLM registry available. Using an ephemeral key repository. Protected data will be unavailable when application exits.
+
+[35: Warning     ]
+     Microsoft.AspNetCore.DataProtection.KeyManagement.XmlKeyManager - 
+No XML encryptor configured. Key {a8c6b2b5-96b6-466a-a873-73fcc6fb8c33} may be persisted to storage in unencrypted form.
+
+[ 6: Critical    ]
+     Microsoft.AspNetCore.Hosting.Diagnostics - 
+Application startup exception
+
+[11: Error       ]
+     Microsoft.Extensions.Hosting.Internal.Host - 
+Hosting failed to start
+
+[50: Warning     ]
+     Microsoft.AspNetCore.DataProtection.Repositories.EphemeralXmlRepository - 
+Using an in-memory repository. Keys will not be persisted to storage.
+
+[59: Warning     ]
+     Microsoft.AspNetCore.DataProtection.KeyManagement.XmlKeyManager - 
+Neither user profile nor HKLM registry available. Using an ephemeral key repository. Protected data will be unavailable when application exits.
+
+[35: Warning     ]
+     Microsoft.AspNetCore.DataProtection.KeyManagement.XmlKeyManager - 
+No XML encryptor configured. Key {692def09-1dd1-4256-92f9-9a62e8ce32f0} may be persisted to storage in unencrypted form.
+
+[14: Information ]
+     Microsoft.Hosting.Lifetime - 
+Now listening on: http://[::]:8080
+
+[14: Information ]
+     Microsoft.Hosting.Lifetime - 
+Now listening on: https://[::]:8081
+
+[ 0: Information ]
+     Microsoft.Hosting.Lifetime - 
+Application started. Press Ctrl+C to shut down.
+
+[ 0: Information ]
+     Microsoft.Hosting.Lifetime - 
+Hosting environment: Development
+
+[ 0: Information ]
+     Microsoft.Hosting.Lifetime - 
+Content root path: /app
+
+[ 1: Error       ]
+     Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware - 
+An unhandled exception has occurred while executing the request.
+
+[ 1: Error       ]
+     Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware - 
+An unhandled exception has occurred while executing the request.
+

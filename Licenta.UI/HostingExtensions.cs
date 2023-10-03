@@ -1,8 +1,14 @@
-﻿using Licenta.SDK.Authentication;
+﻿using Licenta.DataAccessService;
+using Licenta.DataAccessService.Interfaces;
+using Licenta.SDK.Authentication;
 using Licenta.SDK.Authentication.AccessTokenManagement;
 using Licenta.SDK.Authentication.AccessTokenManagement.Interfaces;
 using Licenta.SDK.Authentication.Keycloak;
+using Licenta.SDK.Interfaces;
 using Licenta.SDK.Localization;
+using Licenta.SDK.Logging.Console;
+using Licenta.SDK.Logging.File;
+using Licenta.SDK.Menu;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.Extensions.Localization;
 using Microsoft.IdentityModel.Logging;
@@ -146,5 +152,133 @@ namespace Licenta.UI
              */
         }
         #endregion
+
+
+        #region Logging
+        private static void ConfigureLogger(this WebApplicationBuilder builder)
+        {
+            builder.Logging.ClearProviders();
+            builder.Logging.AddFileLogger();
+            builder.Logging.AddConsoleLogger();
+        }
+
+        #endregion
+
+        #region Custom Platform services
+        public static WebApplicationBuilder AddCbsServices(this WebApplicationBuilder builder)
+        {
+            #region HttpClients
+            builder.Services.AddHttpContextAccessor();
+
+            // TODO: Specific kafka clients
+
+
+            // TODO: Specific httpClients
+
+            #endregion
+
+            return builder;
+        }
+
+
+        #endregion
+
+
+
+        #region Configure Services
+        /// <summary>
+        /// Add services to the container.
+        /// </summary>
+        /// <param name="builder"></param>
+        /// <returns></returns>
+        public static WebApplication ConfigureServices(this WebApplicationBuilder builder)
+        {
+
+            builder.ConfigureLogger();
+            builder.AddLocalization();
+
+            builder.Services.AddScoped<IMenuContributor, MenuContributor>();
+
+            // KAFKA
+            builder.Services.AddSingleton<IEbusListener, EbusListener>();
+            builder.Services.AddScoped<IMyKafkaClient, MyKafkaClient>();
+
+
+            // Add services to the container.
+            builder.Services.AddRazorPages();
+            builder.Services.AddServerSideBlazor();
+
+            builder.AddMyAuthentication();
+
+
+
+            //TODO: Add Httpclients and services dynamic for every solution
+            // Use environment, namespace, special folder or config
+            // copy all config.json and edit it specially
+
+
+            return builder.Build();
+        }
+
+
+        private static void UseLocalization(this WebApplication app)
+        {
+            var supportedCultures = new[] { "ro-RO", "en-US" };
+            var localizationOptions = new RequestLocalizationOptions()
+                .SetDefaultCulture(supportedCultures[0])
+                .AddSupportedCultures(supportedCultures)
+                .AddSupportedUICultures(supportedCultures);
+
+            app.UseRequestLocalization(localizationOptions);
+        }
+
+
+        /// <summary>
+        /// Sa se foloseasca inainte de ConfigureBlazor 
+        /// </summary>
+        /// <param name="app"></param>
+        /// <param name="basePath"></param>
+        /// <returns></returns>
+        public static WebApplication UseBasePath(this WebApplication app, string basePath)
+        {
+            app.UsePathBase(basePath);
+            return app;
+        }
+
+
+        #endregion
+        /// <summary>
+        ///  Configure the Blazor pipeline.
+        /// </summary>
+        /// <param name="app"></param>
+        /// <returns></returns>
+        public static WebApplication ConfigureBlazor(this WebApplication app)
+        {
+            app.UseLocalization();
+
+            // Configure the HTTP request pipeline.
+            if (!app.Environment.IsDevelopment())
+            {
+                app.UseExceptionHandler("/Error");
+                // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
+                app.UseHsts();
+            }
+
+            app.UseHttpsRedirection();
+
+            app.UseStaticFiles();
+
+            app.UseRouting();
+            //app.UseCors();
+            app.UseAuthentication();
+            app.UseAuthorization();
+
+            app.MapBlazorHub();
+            app.MapFallbackToPage("/_Host");
+            app.MapControllers();
+
+            return app;
+        }
+
     }
 }
