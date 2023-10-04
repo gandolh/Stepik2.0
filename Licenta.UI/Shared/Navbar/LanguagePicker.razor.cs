@@ -2,7 +2,7 @@
 using Microsoft.JSInterop;
 using System.Globalization;
 
-namespace Licenta.Components.UI.Layout.Navbar
+namespace Licenta.UI.Shared.Navbar
 {
     public partial class LanguagePicker
     {

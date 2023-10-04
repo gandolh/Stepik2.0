@@ -1,4 +1,7 @@
-﻿<Router AppAssembly="@typeof(App).Assembly">
+﻿@using Licenta.Components.UI;
+@using System.Reflection;
+
+<Router AppAssembly="@typeof(App).Assembly">
     <Found Context="routeData">
         <RouteView RouteData="@routeData" DefaultLayout="@typeof(MainLayout)" />
         <FocusOnNavigate RouteData="@routeData" Selector="h1" />
@@ -10,3 +13,9 @@
         </LayoutView>
     </NotFound>
 </Router>
+
+
+@code{
+    private Assembly[] AppCompAssembly { get; set; } = new[] { typeof(ComponentsSdkAssembly).Assembly };
+
+}

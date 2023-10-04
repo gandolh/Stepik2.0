@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Routing;
 
-namespace Licenta.Components.UI.Layout
+namespace Licenta.UI.Shared
 {
     public partial class PageTitleComp : IDisposable
     {

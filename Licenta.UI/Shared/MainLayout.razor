@@ -1,15 +1,25 @@
-﻿@inherits LayoutComponentBase
+﻿@using Licenta.UI.Shared.Menu
+@using Licenta.UI.Shared.Navbar
+@using Microsoft.AspNetCore.Authorization;
+@using Microsoft.AspNetCore.Components.Web
 
-<PageTitle>Licenta.UI</PageTitle>
+@inherits LayoutComponentBase
+<PageTitle> Licenta </PageTitle>
 
-<div class="page">
-    <div class="sidebar">
-        <NavMenu />
-    </div>
+<Header />
+<Sidebar />
+<main id="main" class="main">
 
-    <main>
-        <article class="content px-4">
+    <PageTitleComp/>
+    <section class="section">
+        @if (Body != null)
+        {
             @Body
-        </article>
-    </main>
-</div>
+        }
+        else
+        {
+            <p> No body </p>
+        }
+    </section>
+</main>
+<Footer />

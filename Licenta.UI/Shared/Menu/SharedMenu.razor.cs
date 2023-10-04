@@ -3,7 +3,7 @@ using Licenta.SDK.Menu;
 using Microsoft.AspNetCore.Components;
 using Microsoft.Extensions.Localization;
 
-namespace Licenta.Components.UI.Layout.Menu
+namespace Licenta.UI.Shared.Menu
 {
     public partial class SharedMenu
     {

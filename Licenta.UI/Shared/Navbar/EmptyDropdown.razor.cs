@@ -1,13 +1,14 @@
-﻿using Licenta.Components.UI.Enums;
+﻿using Licenta.Components.UI;
+using Licenta.Components.UI.Enums;
 using Licenta.SDK.Localization;
 using Microsoft.AspNetCore.Components;
 
-namespace Licenta.Components.UI.Layout.Navbar
+namespace Licenta.UI.Shared.Navbar
 {
     public partial class EmptyDropdown : BaseLicentaComponent<ComponentsResource>
     {
         [Parameter][EditorRequired] public PageState ParentPageState { get; set; }
-        [Parameter] public Enums.IconName IconNameParam { get; set; }
+        [Parameter] public IconName IconNameParam { get; set; }
         [Parameter] public string ErrorLabel { get; set; } = "";
         [Parameter] public string EmptyLabel { get; set; } = "";
 

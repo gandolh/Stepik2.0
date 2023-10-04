@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Components;
 
-namespace Licenta.Components.UI.Layout.Navbar
+namespace Licenta.UI.Shared.Navbar
 {
     public partial class ProfileNav
     {

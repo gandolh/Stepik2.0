@@ -1,7 +1,7 @@
 ﻿using Licenta.SDK.Menu;
 using Microsoft.AspNetCore.Components;
 
-namespace Licenta.Components.UI.Layout.Menu
+namespace Licenta.UI.Shared.Menu
 {
     public partial class GridMenuCards<TLocalizer>
     {

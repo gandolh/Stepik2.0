@@ -1,7 +1,7 @@
 ﻿using Licenta.Components.UI.Enums;
 using Licenta.SDK.Data;
 
-namespace Licenta.Components.UI.Layout.Navbar
+namespace Licenta.UI.Shared.Navbar
 {
     public partial class NotificationNav
     {

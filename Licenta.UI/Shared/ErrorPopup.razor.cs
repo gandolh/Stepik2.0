@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Components;
 
-namespace Licenta.Components.UI.Layout
+namespace Licenta.UI.Shared
 {
     public partial class ErrorPopup
     {

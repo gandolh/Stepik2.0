@@ -1,6 +1,7 @@
 ﻿@using Licenta.Components.UI.Dropdown
 @using Licenta.Components.UI.Enums;
 @using Licenta.Components.UI.Others
+@using Licenta.Components.UI;
 @using Licenta.SDK.Localization;
 @using Licenta.SDK;
 
@@ -13,7 +14,7 @@
         if (pageState == PageState.Loading)
         {
             <EmptyDropdown ParentPageState="@pageState"
-                           IconNameParam=@Enums.IconName.Bell
+                           IconNameParam=@IconName.Bell
                            ErrorLabel="Se încarcă notificările"
                            EmptyLabel="Nu aveți nici-o notificare" />
         }
@@ -21,7 +22,7 @@
         {
             <Dropdown>
                 <DropdownToggle Class="nav-icon">
-                    <Icon Name="@Enums.IconName.Bell"/>
+                    <Icon Name="@IconName.Bell"/>
                     <span class="badge bg-primary badge-number">@Notifications.Count</span>
                 </DropdownToggle>
                 <DropdownMenu Class="notifications">
