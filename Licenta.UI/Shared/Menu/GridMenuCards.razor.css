@@ -1,8 +1,0 @@
-﻿.ContainerMenuCards {
-    width: 100%;
-    display: grid;
-    gap: 1rem;
-    grid-template-columns: repeat( auto-fit, minmax(450px, 1fr) );
-    padding-left: 5vw;
-    padding-right: 5vw;
-}
