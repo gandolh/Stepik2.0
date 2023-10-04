@@ -1,0 +1,14 @@
+{
+  "AppConfig": {
+    "SQL": {
+      "ConnectionString": ""
+    },
+    "Redis": {
+      "RedisEndpoint": ""
+    },
+    "Kafka": {
+      "KafkaServer": "",
+      "NotifyTopic": ""
+    }
+  }
+}

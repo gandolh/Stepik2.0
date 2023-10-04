@@ -4,6 +4,7 @@ namespace Licenta.SDK.Config
 {
     public class KafkaConfig
     {
+        public KafkaConfig() { }
         public KafkaConfig(IConfiguration iConfig)
         {
             iConfig.Bind(this);
