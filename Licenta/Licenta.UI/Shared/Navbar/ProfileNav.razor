@@ -1,0 +1,16 @@
+﻿@using Components.UI.Enums;
+@using Components.UI.Form.Button
+@using Microsoft.AspNetCore.Components.Authorization
+
+
+<li class="nav-item dropdown pe-3">
+    <AuthorizeView>
+        <Authorized>
+            <AvatarProfile/>
+        </Authorized>
+        <NotAuthorized>
+            <Button id="ProfileNavLoginBtn" ButtonStyle="ButtonStyle.Primary" Click="Login"> Login </Button>
+        </NotAuthorized>
+    </AuthorizeView>
+</li><!-- End Profile Nav -->
+

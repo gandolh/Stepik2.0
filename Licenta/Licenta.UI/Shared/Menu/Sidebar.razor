@@ -1,0 +1,45 @@
+﻿@using Licenta.SDK.Interfaces;
+@using Licenta.SDK.Menu;
+
+<!-- ======= Sidebar ======= -->
+<aside id="sidebar" class="sidebar">
+    <ul class="sidebar-nav" id="sidebar-nav">
+        <li class="nav-item">
+            <a class="nav-link collapsed" href="/">
+                <i class="bi bi-grid"></i>
+                <span>Acasa</span>
+            </a>
+        </li><!-- End Dashboard Nav -->
+        @if (_cbsMenu?.Items.Count > 0)
+        {
+            <CbsMenu MenuItem=@_cbsMenu />
+        }
+      
+        @if (_sharedMenu?.Items.Count > 0 )
+        {
+        <SharedMenu MenuItem=@_sharedMenu />
+        }
+    </ul>
+
+</aside><!-- End Sidebar-->
+@code {
+    private IMenuContributor _menuContributor { get; set; } = new MenuContributor();
+    [Inject] private NavigationManager _navManager { get; set; } = default!;
+    private ApplicationMenu? _sharedMenu;
+    private ApplicationMenu? _cbsMenu;
+    private ApplicationMenu? _occMenu;
+
+
+    protected override async Task OnInitializedAsync()
+    {
+        _sharedMenu = await _menuContributor.GetSharedMenuAsync(_navManager.Uri);
+        _cbsMenu = await _menuContributor.GetCbsMenuAsync();
+        await base.OnInitializedAsync();
+    }
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        
+        await base.OnAfterRenderAsync(firstRender);
+    }
+}

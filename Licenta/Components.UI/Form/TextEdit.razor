@@ -1,0 +1,14 @@
+@using Components.UI.Utils;
+@inherits NewComponent
+
+<Input 
+    id=@GetId()
+    Type="Enums.InputType.Text"
+    Class="@Class"
+    Placeholder=@Placeholder
+    ChangeOnInput=@ChangeOnInput 
+    Value="@Text"
+    ValueChanged="@TextChanged"
+    Maxlength ="@Maxlength"
+    Disabled ="@Disabled"
+    Style="@Style" />

@@ -15,4 +15,12 @@
     <PackageReference Include="Microsoft.AspNetCore.Components.Web" Version="8.0.0-preview.5.23302.2" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="wwwroot\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Licenta.SDK\Licenta.SDK.csproj" />
+  </ItemGroup>
+
 </Project>

@@ -1,0 +1,12 @@
+@using Components.UI.Utils;
+@inherits NewComponent;
+
+<div class="form-check">
+    <input name="@Name" id="@GetId()" class="form-check-input @Class" type="checkbox" value="@Checked" checked="@Checked" @onchange="ChangeCheck" disabled=@Disabled>
+    @if (ChildContent != null)
+    {
+        <label class="form-check-label" for="@GetId()">
+            @ChildContent
+        </label>
+    }
+</div>

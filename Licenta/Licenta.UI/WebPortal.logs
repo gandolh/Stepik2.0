@@ -1,0 +1,344 @@
+[50: Warning     ]
+     Microsoft.AspNetCore.DataProtection.Repositories.EphemeralXmlRepository - 
+Using an in-memory repository. Keys will not be persisted to storage.
+
+[59: Warning     ]
+     Microsoft.AspNetCore.DataProtection.KeyManagement.XmlKeyManager - 
+Neither user profile nor HKLM registry available. Using an ephemeral key repository. Protected data will be unavailable when application exits.
+
+[35: Warning     ]
+     Microsoft.AspNetCore.DataProtection.KeyManagement.XmlKeyManager - 
+No XML encryptor configured. Key {f12065ad-0c94-4aea-b4ea-1807789aa537} may be persisted to storage in unencrypted form.
+
+[14: Information ]
+     Microsoft.Hosting.Lifetime - 
+Now listening on: http://[::]:8080
+
+[14: Information ]
+     Microsoft.Hosting.Lifetime - 
+Now listening on: https://[::]:8081
+
+[ 0: Information ]
+     Microsoft.Hosting.Lifetime - 
+Application started. Press Ctrl+C to shut down.
+
+[ 0: Information ]
+     Microsoft.Hosting.Lifetime - 
+Hosting environment: Development
+
+[ 0: Information ]
+     Microsoft.Hosting.Lifetime - 
+Content root path: /app
+
+[50: Warning     ]
+     Microsoft.AspNetCore.DataProtection.Repositories.EphemeralXmlRepository - 
+Using an in-memory repository. Keys will not be persisted to storage.
+
+[59: Warning     ]
+     Microsoft.AspNetCore.DataProtection.KeyManagement.XmlKeyManager - 
+Neither user profile nor HKLM registry available. Using an ephemeral key repository. Protected data will be unavailable when application exits.
+
+[35: Warning     ]
+     Microsoft.AspNetCore.DataProtection.KeyManagement.XmlKeyManager - 
+No XML encryptor configured. Key {e9e81724-3606-43d0-8e4f-b683137fd8ac} may be persisted to storage in unencrypted form.
+
+[14: Information ]
+     Microsoft.Hosting.Lifetime - 
+Now listening on: http://[::]:8080
+
+[14: Information ]
+     Microsoft.Hosting.Lifetime - 
+Now listening on: https://[::]:8081
+
+[ 0: Information ]
+     Microsoft.Hosting.Lifetime - 
+Application started. Press Ctrl+C to shut down.
+
+[ 0: Information ]
+     Microsoft.Hosting.Lifetime - 
+Hosting environment: Development
+
+[ 0: Information ]
+     Microsoft.Hosting.Lifetime - 
+Content root path: /app
+
+[ 1: Error       ]
+     Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware - 
+An unhandled exception has occurred while executing the request.
+
+[50: Warning     ]
+     Microsoft.AspNetCore.DataProtection.Repositories.EphemeralXmlRepository - 
+Using an in-memory repository. Keys will not be persisted to storage.
+
+[59: Warning     ]
+     Microsoft.AspNetCore.DataProtection.KeyManagement.XmlKeyManager - 
+Neither user profile nor HKLM registry available. Using an ephemeral key repository. Protected data will be unavailable when application exits.
+
+[35: Warning     ]
+     Microsoft.AspNetCore.DataProtection.KeyManagement.XmlKeyManager - 
+No XML encryptor configured. Key {d7c1855a-7b5c-4c7d-8269-c83e5821749d} may be persisted to storage in unencrypted form.
+
+[14: Information ]
+     Microsoft.Hosting.Lifetime - 
+Now listening on: http://[::]:8080
+
+[14: Information ]
+     Microsoft.Hosting.Lifetime - 
+Now listening on: https://[::]:8081
+
+[ 0: Information ]
+     Microsoft.Hosting.Lifetime - 
+Application started. Press Ctrl+C to shut down.
+
+[ 0: Information ]
+     Microsoft.Hosting.Lifetime - 
+Hosting environment: Development
+
+[ 0: Information ]
+     Microsoft.Hosting.Lifetime - 
+Content root path: /app
+
+[ 1: Error       ]
+     Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware - 
+An unhandled exception has occurred while executing the request.
+
+[50: Warning     ]
+     Microsoft.AspNetCore.DataProtection.Repositories.EphemeralXmlRepository - 
+Using an in-memory repository. Keys will not be persisted to storage.
+
+[59: Warning     ]
+     Microsoft.AspNetCore.DataProtection.KeyManagement.XmlKeyManager - 
+Neither user profile nor HKLM registry available. Using an ephemeral key repository. Protected data will be unavailable when application exits.
+
+[35: Warning     ]
+     Microsoft.AspNetCore.DataProtection.KeyManagement.XmlKeyManager - 
+No XML encryptor configured. Key {f9f5592e-4ad1-4a3d-a377-81de8ee13b87} may be persisted to storage in unencrypted form.
+
+[14: Information ]
+     Microsoft.Hosting.Lifetime - 
+Now listening on: http://[::]:8080
+
+[14: Information ]
+     Microsoft.Hosting.Lifetime - 
+Now listening on: https://[::]:8081
+
+[ 0: Information ]
+     Microsoft.Hosting.Lifetime - 
+Application started. Press Ctrl+C to shut down.
+
+[ 0: Information ]
+     Microsoft.Hosting.Lifetime - 
+Hosting environment: Development
+
+[ 0: Information ]
+     Microsoft.Hosting.Lifetime - 
+Content root path: /app
+
+[ 1: Error       ]
+     Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware - 
+An unhandled exception has occurred while executing the request.
+
+[50: Warning     ]
+     Microsoft.AspNetCore.DataProtection.Repositories.EphemeralXmlRepository - 
+Using an in-memory repository. Keys will not be persisted to storage.
+
+[59: Warning     ]
+     Microsoft.AspNetCore.DataProtection.KeyManagement.XmlKeyManager - 
+Neither user profile nor HKLM registry available. Using an ephemeral key repository. Protected data will be unavailable when application exits.
+
+[35: Warning     ]
+     Microsoft.AspNetCore.DataProtection.KeyManagement.XmlKeyManager - 
+No XML encryptor configured. Key {b3ffd688-6246-4e63-994c-53bf10a4c0bd} may be persisted to storage in unencrypted form.
+
+[14: Information ]
+     Microsoft.Hosting.Lifetime - 
+Now listening on: http://[::]:8080
+
+[14: Information ]
+     Microsoft.Hosting.Lifetime - 
+Now listening on: https://[::]:8081
+
+[ 0: Information ]
+     Microsoft.Hosting.Lifetime - 
+Application started. Press Ctrl+C to shut down.
+
+[ 0: Information ]
+     Microsoft.Hosting.Lifetime - 
+Hosting environment: Development
+
+[ 0: Information ]
+     Microsoft.Hosting.Lifetime - 
+Content root path: /app
+
+[ 1: Error       ]
+     Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware - 
+An unhandled exception has occurred while executing the request.
+
+[50: Warning     ]
+     Microsoft.AspNetCore.DataProtection.Repositories.EphemeralXmlRepository - 
+Using an in-memory repository. Keys will not be persisted to storage.
+
+[59: Warning     ]
+     Microsoft.AspNetCore.DataProtection.KeyManagement.XmlKeyManager - 
+Neither user profile nor HKLM registry available. Using an ephemeral key repository. Protected data will be unavailable when application exits.
+
+[35: Warning     ]
+     Microsoft.AspNetCore.DataProtection.KeyManagement.XmlKeyManager - 
+No XML encryptor configured. Key {6ec9ce51-a10f-4d0f-aba0-0fff0f92ebad} may be persisted to storage in unencrypted form.
+
+[14: Information ]
+     Microsoft.Hosting.Lifetime - 
+Now listening on: http://[::]:8080
+
+[14: Information ]
+     Microsoft.Hosting.Lifetime - 
+Now listening on: https://[::]:8081
+
+[ 0: Information ]
+     Microsoft.Hosting.Lifetime - 
+Application started. Press Ctrl+C to shut down.
+
+[ 0: Information ]
+     Microsoft.Hosting.Lifetime - 
+Hosting environment: Development
+
+[ 0: Information ]
+     Microsoft.Hosting.Lifetime - 
+Content root path: /app
+
+[ 1: Error       ]
+     Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware - 
+An unhandled exception has occurred while executing the request.
+
+[50: Warning     ]
+     Microsoft.AspNetCore.DataProtection.Repositories.EphemeralXmlRepository - 
+Using an in-memory repository. Keys will not be persisted to storage.
+
+[59: Warning     ]
+     Microsoft.AspNetCore.DataProtection.KeyManagement.XmlKeyManager - 
+Neither user profile nor HKLM registry available. Using an ephemeral key repository. Protected data will be unavailable when application exits.
+
+[35: Warning     ]
+     Microsoft.AspNetCore.DataProtection.KeyManagement.XmlKeyManager - 
+No XML encryptor configured. Key {d9269763-b4f3-4e0e-8bc5-1a34d9ea33a2} may be persisted to storage in unencrypted form.
+
+[14: Information ]
+     Microsoft.Hosting.Lifetime - 
+Now listening on: http://[::]:8080
+
+[14: Information ]
+     Microsoft.Hosting.Lifetime - 
+Now listening on: https://[::]:8081
+
+[ 0: Information ]
+     Microsoft.Hosting.Lifetime - 
+Application started. Press Ctrl+C to shut down.
+
+[ 0: Information ]
+     Microsoft.Hosting.Lifetime - 
+Hosting environment: Development
+
+[ 0: Information ]
+     Microsoft.Hosting.Lifetime - 
+Content root path: /app
+
+[ 1: Error       ]
+     Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware - 
+An unhandled exception has occurred while executing the request.
+
+[50: Warning     ]
+     Microsoft.AspNetCore.DataProtection.Repositories.EphemeralXmlRepository - 
+Using an in-memory repository. Keys will not be persisted to storage.
+
+[59: Warning     ]
+     Microsoft.AspNetCore.DataProtection.KeyManagement.XmlKeyManager - 
+Neither user profile nor HKLM registry available. Using an ephemeral key repository. Protected data will be unavailable when application exits.
+
+[35: Warning     ]
+     Microsoft.AspNetCore.DataProtection.KeyManagement.XmlKeyManager - 
+No XML encryptor configured. Key {f7a518d1-d39a-461c-bba0-63a121c1974d} may be persisted to storage in unencrypted form.
+
+[14: Information ]
+     Microsoft.Hosting.Lifetime - 
+Now listening on: http://[::]:8080
+
+[14: Information ]
+     Microsoft.Hosting.Lifetime - 
+Now listening on: https://[::]:8081
+
+[ 0: Information ]
+     Microsoft.Hosting.Lifetime - 
+Application started. Press Ctrl+C to shut down.
+
+[ 0: Information ]
+     Microsoft.Hosting.Lifetime - 
+Hosting environment: Development
+
+[ 0: Information ]
+     Microsoft.Hosting.Lifetime - 
+Content root path: /app
+
+[50: Warning     ]
+     Microsoft.AspNetCore.DataProtection.Repositories.EphemeralXmlRepository - 
+Using an in-memory repository. Keys will not be persisted to storage.
+
+[59: Warning     ]
+     Microsoft.AspNetCore.DataProtection.KeyManagement.XmlKeyManager - 
+Neither user profile nor HKLM registry available. Using an ephemeral key repository. Protected data will be unavailable when application exits.
+
+[35: Warning     ]
+     Microsoft.AspNetCore.DataProtection.KeyManagement.XmlKeyManager - 
+No XML encryptor configured. Key {f24bd88e-6b6a-495b-a187-153f881ef384} may be persisted to storage in unencrypted form.
+
+[14: Information ]
+     Microsoft.Hosting.Lifetime - 
+Now listening on: http://[::]:8080
+
+[14: Information ]
+     Microsoft.Hosting.Lifetime - 
+Now listening on: https://[::]:8081
+
+[ 0: Information ]
+     Microsoft.Hosting.Lifetime - 
+Application started. Press Ctrl+C to shut down.
+
+[ 0: Information ]
+     Microsoft.Hosting.Lifetime - 
+Hosting environment: Development
+
+[ 0: Information ]
+     Microsoft.Hosting.Lifetime - 
+Content root path: /app
+
+[50: Warning     ]
+     Microsoft.AspNetCore.DataProtection.Repositories.EphemeralXmlRepository - 
+Using an in-memory repository. Keys will not be persisted to storage.
+
+[59: Warning     ]
+     Microsoft.AspNetCore.DataProtection.KeyManagement.XmlKeyManager - 
+Neither user profile nor HKLM registry available. Using an ephemeral key repository. Protected data will be unavailable when application exits.
+
+[35: Warning     ]
+     Microsoft.AspNetCore.DataProtection.KeyManagement.XmlKeyManager - 
+No XML encryptor configured. Key {79c8e1a3-864b-40b9-9ae2-860f05a633f9} may be persisted to storage in unencrypted form.
+
+[14: Information ]
+     Microsoft.Hosting.Lifetime - 
+Now listening on: http://[::]:8080
+
+[14: Information ]
+     Microsoft.Hosting.Lifetime - 
+Now listening on: https://[::]:8081
+
+[ 0: Information ]
+     Microsoft.Hosting.Lifetime - 
+Application started. Press Ctrl+C to shut down.
+
+[ 0: Information ]
+     Microsoft.Hosting.Lifetime - 
+Hosting environment: Development
+
+[ 0: Information ]
+     Microsoft.Hosting.Lifetime - 
+Content root path: /app
+

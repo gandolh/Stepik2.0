@@ -1,0 +1,40 @@
+﻿@using Components.UI.Utils;
+@inherits NewComponent
+
+@if (Visible)
+{
+    @if (OnJsClick == null)
+    {
+        <button style="@Style"
+                disabled="@IsDisabled"
+                type="@ButtonType"
+                @attributes="@Attributes"
+                class="@GetCssClass()"
+                id="@GetId()"
+                @onclick="@OnClick">
+            <ButtonContent IsBusy="@IsBusy"
+                           BusyText="@BusyText"
+                           Icon="@Icon"
+                           Text="@Text">
+                @ChildContent
+            </ButtonContent>
+        </button>
+    }
+    else
+    {
+        <button style="@Style"
+                disabled="@IsDisabled"
+                type="@ButtonType"
+        @attributes="Attributes"
+                class="@GetCssClass()"
+                id="@GetId()"
+                onclick="@OnJsClick">
+            <ButtonContent IsBusy="@IsBusy"
+                           BusyText="@BusyText"
+                           Icon="@Icon"
+                           Text="@Text">
+                @ChildContent
+            </ButtonContent>
+        </button>
+    }
+}
