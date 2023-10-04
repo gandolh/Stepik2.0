@@ -12,7 +12,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Licenta\Licenta.SDK\Licenta.SDK.csproj" />
+    <ProjectReference Include="..\Licenta.SDK\Licenta.SDK.csproj" />
   </ItemGroup>
 
 

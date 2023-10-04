@@ -10,13 +10,12 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.19.4" />
+    <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.19.5" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\Licenta.Components.UI\Licenta.Components.UI.csproj" />
-    <ProjectReference Include="..\Licenta\Licenta.DataAccessService\Licenta.DataAccessService.csproj" />
-    <ProjectReference Include="..\Licenta\Licenta.SDK\Licenta.SDK.csproj" />
+    <ProjectReference Include="..\Licenta.DataAccessService\Licenta.DataAccessService.csproj" />
   </ItemGroup>
 
 </Project>
