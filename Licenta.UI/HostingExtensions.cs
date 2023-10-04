@@ -4,12 +4,14 @@ using Licenta.SDK.Authentication;
 using Licenta.SDK.Authentication.AccessTokenManagement;
 using Licenta.SDK.Authentication.AccessTokenManagement.Interfaces;
 using Licenta.SDK.Authentication.Keycloak;
+using Licenta.SDK.Config;
 using Licenta.SDK.Interfaces;
 using Licenta.SDK.Localization;
 using Licenta.SDK.Logging.Console;
 using Licenta.SDK.Logging.File;
 using Licenta.SDK.Menu;
 using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Localization;
 using Microsoft.IdentityModel.Logging;
 using Microsoft.IdentityModel.Protocols.OpenIdConnect;
@@ -72,10 +74,9 @@ namespace Licenta.UI
                            * Use LB services whenever possible, to reduce the config hazzle :)
                           */
 
-                          KeycloakConfig keycloakConfig = new();
-                          builder.Configuration.GetSection("Keycloak").Bind(keycloakConfig);
-
-
+                          //KeycloakConfig keycloakConfig = new();
+                          var keycloakConfig = new KeycloakConfig();
+                          builder.Configuration.GetSection("AppConfig:Keycloak").Bind(keycloakConfig);
                           //Use default signin scheme
                           options.SignInScheme = CookieAuthenticationDefaults.AuthenticationScheme;
                           //Keycloak server
@@ -193,7 +194,6 @@ namespace Licenta.UI
         /// <returns></returns>
         public static WebApplication ConfigureServices(this WebApplicationBuilder builder)
         {
-
             builder.ConfigureLogger();
             builder.AddLocalization();
 

@@ -1,4 +1,4 @@
-﻿namespace Licenta.SDK.Authentication.Keycloak
+﻿namespace Licenta.SDK.Config
 {
     public class KeycloakConfig
     {
