@@ -1,6 +1,6 @@
-﻿using CertEntTrust.MW.SDK.Models.Communication;
-using Licenta.DataAccessService.Config;
-using Licenta.DataAccessService.Interfaces;
+﻿using Licenta.DataAccessService.Interfaces;
+using Licenta.SDK.Config;
+using Licenta.SDK.Dtos;
 using Licenta.SDK.Interfaces;
 using Microsoft.Extensions.Configuration;
 

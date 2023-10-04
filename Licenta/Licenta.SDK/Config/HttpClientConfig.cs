@@ -1,4 +1,4 @@
-﻿namespace Licenta.DataAccessService.Config
+﻿namespace Licenta.SDK.Config
 {
     internal class HttpClientConfig
     {

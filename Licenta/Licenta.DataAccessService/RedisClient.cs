@@ -1,4 +1,4 @@
-﻿using Licenta.DataAccessService.Config;
+﻿using Licenta.SDK.Config;
 using StackExchange.Redis;
 using System.Text.Json;
 

@@ -1,4 +1,4 @@
-﻿using CertEntTrust.MW.SDK.Models.Communication;
+﻿using Licenta.SDK.Dtos;
 
 namespace Licenta.DataAccessService.Interfaces
 {

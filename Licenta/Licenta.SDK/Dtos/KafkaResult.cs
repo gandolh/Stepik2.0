@@ -1,10 +1,8 @@
-﻿using Licenta.SDK.Dtos;
-
-namespace CertEntTrust.MW.SDK.Models.Communication
+﻿namespace Licenta.SDK.Dtos
 {
     public class KafkaResult : WithTrackDataDto
     {
-        public KafkaResult(){}
+        public KafkaResult() { }
         public KafkaResult(string sessionId, string opId, string jsonData = "", string redisKey = "")
         {
             SessionId = sessionId;

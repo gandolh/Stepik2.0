@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Localization;
 using Microsoft.AspNetCore.Mvc;
 
-namespace CertEntTrust.CBS.Portal.Controllers
+namespace Licenta.UI.Controllers
 {
     [Route("[controller]/[action]")]
     public class CultureController : Controller

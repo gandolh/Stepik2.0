@@ -1,7 +1,7 @@
-﻿using CertEntTrust.MW.SDK.Models.Communication;
-using Confluent.Kafka;
-using Licenta.DataAccessService.Config;
+﻿using Confluent.Kafka;
 using Licenta.DataAccessService.Interfaces;
+using Licenta.SDK.Config;
+using Licenta.SDK.Dtos;
 using Microsoft.Extensions.Configuration;
 using System.Collections.Concurrent;
 using System.Text.Json;

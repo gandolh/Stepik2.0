@@ -1,6 +1,6 @@
 ﻿using Microsoft.Extensions.Configuration;
 
-namespace Licenta.DataAccessService.Config
+namespace Licenta.SDK.Config
 {
     public class KafkaConfig
     {
