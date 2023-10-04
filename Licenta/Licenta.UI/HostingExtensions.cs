@@ -197,6 +197,7 @@ namespace Licenta.UI
             builder.ConfigureLogger();
             builder.AddLocalization();
 
+
             builder.Services.AddScoped<IMenuContributor, MenuContributor>();
 
             // KAFKA
@@ -272,7 +273,7 @@ namespace Licenta.UI
             app.UseStaticFiles();
 
             app.UseRouting();
-            //app.UseCors();
+            app.UseCors();
             app.UseAuthentication();
             app.UseAuthorization();
 

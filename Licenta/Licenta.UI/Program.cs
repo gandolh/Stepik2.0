@@ -8,7 +8,7 @@ namespace Licenta.UI
 
             builder
             .ConfigureServices()
-            .UseBasePath("/licenta")
+            //.UseBasePath("/licenta")
             .ConfigureBlazor()
             .Run();
         }
