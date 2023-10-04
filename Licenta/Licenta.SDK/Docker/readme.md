@@ -11,3 +11,6 @@ Home url: Your app url from visual studio
 Save
 
 Add keycloak name resolution to point to 127.0.0.1 in hosts in windows.
+
+
+TODO: mount messages and login.css in keycloak container

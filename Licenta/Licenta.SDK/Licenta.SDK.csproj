@@ -31,4 +31,8 @@
     <PackageReference Include="Microsoft.Extensions.Localization" Version="8.0.0-rc.1.23421.29" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Docker\Keycloak\" />
+  </ItemGroup>
+
 </Project>

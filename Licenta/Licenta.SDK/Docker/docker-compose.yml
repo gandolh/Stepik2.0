@@ -26,7 +26,8 @@ services:
       - licenta
     ports:
       - "8080:8080"
-
+    volumes:
+      - ./Keycloak/custom-theme:/opt/keycloak/themes/custom-theme
 
   postgres:
     image: postgres:latest
