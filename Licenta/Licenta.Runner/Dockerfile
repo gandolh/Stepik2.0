@@ -7,7 +7,6 @@ WORKDIR /app
 FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
 WORKDIR /src
 COPY ["Licenta.Runner/Licenta.Runner.csproj", "Licenta.Runner/"]
-COPY ["Licenta.SDK/Licenta.SDK.csproj", "Licenta.SDK/"]
 RUN dotnet restore "Licenta.Runner/Licenta.Runner.csproj"
 COPY . .
 WORKDIR "/src/Licenta.Runner"

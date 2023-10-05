@@ -11,8 +11,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Components.UI", "Components
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Licenta.DataAccessService", "Licenta.DataAccessService\Licenta.DataAccessService.csproj", "{A18EA2B1-1BA6-45D5-A7CF-5D4EAB25B3C1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Licenta.Runner", "Licenta.Runner\Licenta.Runner.csproj", "{6F8D6C37-6963-4C93-AB9A-61642235C437}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Licenta.Sdk.Config", "Licenta.SDK\Licenta.Sdk.Config\Licenta.Sdk.Config.csproj", "{803D277A-E12C-4A80-BC60-A0E6752C4205}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Licenta.Sdk.Docker", "Licenta.SDK\Licenta.Sdk.Docker\Licenta.Sdk.Docker.csproj", "{B58DF2E3-EC9A-43A8-B81F-22D4651AC57C}"
@@ -26,6 +24,8 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Licenta.Sdk.Models", "Licenta.SDK\Licenta.Sdk.Models\Licenta.Sdk.Models.csproj", "{95559E9D-73C9-4836-8965-E3EB08FB55BB}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Licenta.Sdk.Utils", "Licenta.SDK\Licenta.Sdk.Utils\Licenta.Sdk.Utils.csproj", "{D3B89341-DC7A-46E0-A79F-6CF7499A0A56}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Licenta.Runner", "Licenta.Runner\Licenta.Runner.csproj", "{53FE0BAC-2108-44C4-89CF-AC152D59FF68}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -49,10 +49,6 @@ Global
 		{A18EA2B1-1BA6-45D5-A7CF-5D4EAB25B3C1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A18EA2B1-1BA6-45D5-A7CF-5D4EAB25B3C1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A18EA2B1-1BA6-45D5-A7CF-5D4EAB25B3C1}.Release|Any CPU.Build.0 = Release|Any CPU
-		{6F8D6C37-6963-4C93-AB9A-61642235C437}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{6F8D6C37-6963-4C93-AB9A-61642235C437}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{6F8D6C37-6963-4C93-AB9A-61642235C437}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{6F8D6C37-6963-4C93-AB9A-61642235C437}.Release|Any CPU.Build.0 = Release|Any CPU
 		{803D277A-E12C-4A80-BC60-A0E6752C4205}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{803D277A-E12C-4A80-BC60-A0E6752C4205}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{803D277A-E12C-4A80-BC60-A0E6752C4205}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -81,6 +77,10 @@ Global
 		{D3B89341-DC7A-46E0-A79F-6CF7499A0A56}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D3B89341-DC7A-46E0-A79F-6CF7499A0A56}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D3B89341-DC7A-46E0-A79F-6CF7499A0A56}.Release|Any CPU.Build.0 = Release|Any CPU
+		{53FE0BAC-2108-44C4-89CF-AC152D59FF68}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{53FE0BAC-2108-44C4-89CF-AC152D59FF68}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{53FE0BAC-2108-44C4-89CF-AC152D59FF68}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{53FE0BAC-2108-44C4-89CF-AC152D59FF68}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -12,5 +12,6 @@ namespace Licenta.Sdk.Config
 
         public string KafkaServer { get; set; } = "";
         public string NotifyTopic { get; set; } = "";
+        public string RunCodeTopic { get; set; } = "";
     }
 }
