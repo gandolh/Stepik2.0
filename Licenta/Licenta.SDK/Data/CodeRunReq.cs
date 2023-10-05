@@ -10,6 +10,7 @@
     public enum CodeLanguage
     {
         Python,
-        Cpp
+        Cpp,
+        Undefined
     }
 }

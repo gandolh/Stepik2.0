@@ -1,24 +1,32 @@
 ﻿using Confluent.Kafka;
 using Licenta.Runner.CodeRunners;
 using Licenta.SDK.Config;
+using Licenta.SDK.Data;
 using Licenta.SDK.Dtos;
+using Licenta.SDK.Mappers;
 using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.Hosting;
 using System.Text.Json;
 
 namespace Licenta.Runner
 {
-    internal class KafkaListener
+    internal class KafkaListener : BackgroundService
     {
         private readonly KafkaConfig _kafkaConfig;
 
         public KafkaListener(IConfiguration iConfig)
         {
-            _kafkaConfig = new KafkaConfig();
-            iConfig.GetSection("AppConfig:Kafka").Bind(_kafkaConfig);   
+            _kafkaConfig = new KafkaConfig();  
+            iConfig.GetSection("AppConfig:Kafka").Bind(_kafkaConfig);
         }
 
+        protected override Task ExecuteAsync(CancellationToken stoppingToken)
+        {
+            Consume(stoppingToken);
+            return Task.CompletedTask;
+        }
 
-        private void Consume()
+        private void Consume(CancellationToken stoppingToken)
         {
             var config = new ConsumerConfig
             {
@@ -33,9 +41,11 @@ namespace Licenta.Runner
 
                 while (true)
                 {
-                    var message = consumer.Consume();
+                    var message = consumer.Consume(stoppingToken);
+                    if (stoppingToken.IsCancellationRequested) return;
+
                     _ = Task.Run(
-                        () =>  RunCode(message.Message.Value))
+                        () => RunCode(message.Message.Value))
                         .ConfigureAwait(false);
                 }
             }
@@ -47,10 +57,18 @@ namespace Licenta.Runner
 
         private void RunCode(string reqJson)
         {
-            CodeRunReqDto req = JsonSerializer.Deserialize<CodeRunReqDto>(reqJson) ?? throw new ArgumentException("invalid format for code runner request");
-            ICodeRunner? codeRunner = null;
-            if(req.Language == "")
-            
+            CodeRunReqDto dto = JsonSerializer.Deserialize<CodeRunReqDto>(reqJson) ?? new();
+            MapperBase<CodeRunReq, CodeRunReqDto> mapper = new CodeRunReqMapper();
+            var codeRunReq = mapper.Map(dto);
+
+            ICodeRunner codeRunner = codeRunReq.Language switch
+            {
+                CodeLanguage.Python => new PythonCodeRunner(),
+                CodeLanguage.Cpp => new CppCodeRunner(),
+                _ => new NullCodeRunner()
+            };
+
+            var result = codeRunner.Run(codeRunReq);
         }
 
     }

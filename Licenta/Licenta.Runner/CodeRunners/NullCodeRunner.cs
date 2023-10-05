@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Licenta.Runner.CodeRunners
 {
-    internal class CppCodeRunner : ICodeRunner
+    internal class NullCodeRunner : ICodeRunner
     {
         public CodeRunResult Run(CodeRunReq req)
         {

@@ -1,16 +1,18 @@
-﻿using Confluent.Kafka;
+﻿using Licenta.Runner;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
 
-namespace Licenta.Runner
-{
-    internal class Program
-    {
-        static void Main(string[] args)
-        {
-            
-        }
+var config = new ConfigurationBuilder()
+       .SetBasePath(Directory.GetCurrentDirectory())
+       .AddJsonFile("config.json", optional: true)
+       .Build();
+
+var builder = new HostBuilder()
+          .ConfigureServices(services =>
+             services.AddHostedService<KafkaListener>());
 
 
-     
+var host = builder.Build();
 
-    }
-}
+host.Run();
