@@ -1,4 +1,4 @@
-﻿using Licenta.SDK.Localization;
+﻿using Licenta.Sdk.Localization;
 using Licenta.SDK.Menu;
 using Microsoft.AspNetCore.Components;
 using Microsoft.Extensions.Localization;

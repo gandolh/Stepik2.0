@@ -1,7 +1,7 @@
 ﻿using Licenta.DataAccessService.Interfaces;
-using Licenta.SDK.Config;
-using Licenta.SDK.Dtos;
-using Licenta.SDK.Interfaces;
+using Licenta.Sdk.Config;
+using Licenta.Sdk.Models.Dtos;
+using Licenta.Sdk.Models.Interfaces;
 using Microsoft.Extensions.Configuration;
 
 namespace Licenta.DataAccessService

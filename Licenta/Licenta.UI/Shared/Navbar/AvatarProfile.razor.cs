@@ -1,6 +1,6 @@
-﻿using Licenta.SDK.Authentication;
-using Microsoft.AspNetCore.Components.Authorization;
+﻿using Licenta.Sdk.Identity;
 using Microsoft.AspNetCore.Components;
+using Microsoft.AspNetCore.Components.Authorization;
 using System.Security.Claims;
 
 namespace Licenta.UI.Shared.Navbar

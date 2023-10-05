@@ -1,5 +1,5 @@
 ﻿using Components.UI.Enums;
-using Licenta.SDK.Data;
+using Licenta.Sdk.Models.Data;
 
 namespace Licenta.UI.Shared.Navbar
 {

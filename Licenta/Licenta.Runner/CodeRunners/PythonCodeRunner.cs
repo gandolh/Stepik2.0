@@ -1,4 +1,4 @@
-﻿using Licenta.SDK.Data;
+﻿using Licenta.Sdk.Models.Data;
 
 namespace Licenta.Runner.CodeRunners
 {

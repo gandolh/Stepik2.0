@@ -1,4 +1,4 @@
-﻿using Licenta.SDK.Localization;
+﻿using Licenta.Sdk.Localization;
 
 namespace Components.UI.Others
 {

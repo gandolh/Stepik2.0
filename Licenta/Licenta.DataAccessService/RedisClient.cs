@@ -1,4 +1,4 @@
-﻿using Licenta.SDK.Config;
+﻿using Licenta.Sdk.Config;
 using StackExchange.Redis;
 using System.Text.Json;
 

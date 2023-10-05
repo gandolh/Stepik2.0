@@ -1,9 +1,9 @@
 ﻿using Confluent.Kafka;
 using Licenta.Runner.CodeRunners;
-using Licenta.SDK.Config;
-using Licenta.SDK.Data;
-using Licenta.SDK.Dtos;
-using Licenta.SDK.Mappers;
+using Licenta.Sdk.Config;
+using Licenta.Sdk.Models.Data;
+using Licenta.Sdk.Models.Dtos;
+using Licenta.Sdk.Models.Mappers;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Hosting;
 using System.Text.Json;

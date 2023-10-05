@@ -1,21 +1,20 @@
 ﻿using Licenta.DataAccessService;
 using Licenta.DataAccessService.Interfaces;
-using Licenta.SDK.Authentication;
-using Licenta.SDK.Authentication.AccessTokenManagement;
-using Licenta.SDK.Authentication.AccessTokenManagement.Interfaces;
-using Licenta.SDK.Authentication.Keycloak;
-using Licenta.SDK.Config;
-using Licenta.SDK.Interfaces;
-using Licenta.SDK.Localization;
-using Licenta.SDK.Logging.Console;
-using Licenta.SDK.Logging.File;
+using Licenta.Sdk.Config;
+using Licenta.Sdk.Identity;
+using Licenta.Sdk.Identity.AccessTokenManagement.Interfaces;
+using Licenta.Sdk.Identity.Keycloak;
+using Licenta.Sdk.Localization;
+using Licenta.Sdk.Logging.File;
 using Licenta.SDK.Menu;
+using Licenta.SDK.Menu.Interfaces;
 using Microsoft.AspNetCore.Authentication.Cookies;
-using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Localization;
 using Microsoft.IdentityModel.Logging;
 using Microsoft.IdentityModel.Protocols.OpenIdConnect;
 using Microsoft.IdentityModel.Tokens;
+using Licenta.Sdk.Logging.Console;
+using Licenta.Sdk.Identity.AccessTokenManagement;
 
 namespace Licenta.UI
 {
@@ -32,7 +31,7 @@ namespace Licenta.UI
             // Register localization as usual
             builder.Services.AddLocalization(options =>
             {
-                options.ResourcesPath = Path.Join("Localization", "Resources");
+                options.ResourcesPath = "Resources";
             });
             // And add out custom factory
             builder.Services.AddSingleton

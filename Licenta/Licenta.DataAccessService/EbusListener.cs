@@ -1,7 +1,7 @@
 ﻿using Confluent.Kafka;
 using Licenta.DataAccessService.Interfaces;
-using Licenta.SDK.Config;
-using Licenta.SDK.Dtos;
+using Licenta.Sdk.Config;
+using Licenta.Sdk.Models.Dtos;
 using Microsoft.Extensions.Configuration;
 using System.Collections.Concurrent;
 using System.Text.Json;

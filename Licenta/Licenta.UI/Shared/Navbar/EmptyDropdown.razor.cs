@@ -1,6 +1,6 @@
 ﻿using Components.UI;
 using Components.UI.Enums;
-using Licenta.SDK.Localization;
+using Licenta.Sdk.Localization;
 using Microsoft.AspNetCore.Components;
 
 namespace Licenta.UI.Shared.Navbar

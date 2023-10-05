@@ -1,4 +1,4 @@
-﻿using Licenta.SDK.Dtos;
+﻿using Licenta.Sdk.Models.Dtos;
 
 namespace Licenta.DataAccessService.Interfaces
 {

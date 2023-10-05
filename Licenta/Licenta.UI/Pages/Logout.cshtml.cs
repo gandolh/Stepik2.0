@@ -1,5 +1,5 @@
-﻿using Licenta.SDK.Authentication.AccessTokenManagement.Interfaces;
-using Licenta.SDK.Config;
+﻿using Licenta.Sdk.Config;
+using Licenta.Sdk.Identity.AccessTokenManagement.Interfaces;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Mvc;
