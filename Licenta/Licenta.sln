@@ -25,7 +25,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Licenta.Sdk.Models", "Licen
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Licenta.Sdk.Utils", "Licenta.SDK\Licenta.Sdk.Utils\Licenta.Sdk.Utils.csproj", "{D3B89341-DC7A-46E0-A79F-6CF7499A0A56}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Licenta.Runner", "Licenta.Runner\Licenta.Runner.csproj", "{53FE0BAC-2108-44C4-89CF-AC152D59FF68}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Licenta.Runner", "Licenta.Runner\Licenta.Runner.csproj", "{53FE0BAC-2108-44C4-89CF-AC152D59FF68}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

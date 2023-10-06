@@ -12,7 +12,12 @@
         <Authorized>
             <div class="indexContainer">
                 <h1 class="welcomeText">Bine ai revenit, @ClaimHelper.GetGivenName(context.User)!</h1>
-                <GridMenuCards  TLocalizer="@ComponentsResource"/>
+                
+                <div class="IndexGridMenu">
+                <CourseList />
+                <UpcomingDeadlines/>
+                <LastAccesed/>
+                </div>
             </div>
         </Authorized>
     </AuthorizeView>

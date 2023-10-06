@@ -8,7 +8,7 @@ services:
     image: dbeaver/cloudbeaver:latest
     container_name: dbeaver
     networks:
-      - licenta
+      - docker_licenta
     ports:
       - "8978:8978"
     volumes:
@@ -23,7 +23,7 @@ services:
       KEYCLOAK_ADMIN_PASSWORD: admin
     command: start-dev
     networks:
-      - licenta
+      - docker_licenta
     ports:
       - "8080:8080"
     volumes:
@@ -39,7 +39,7 @@ services:
     ports:
       - "5432:5432"
     networks:
-      - licenta
+      - docker_licenta
     # volumes:
     #   - ./postgres-data:/var/lib/postgresql/data # Persist PostgreSQL data to a local directory
   
@@ -48,7 +48,7 @@ services:
     container_name: redis
     image: redis:6.0.10-alpine
     networks:
-      - licenta
+      - docker_licenta
     ports:
       - "6379:6379"
 
@@ -57,7 +57,7 @@ services:
     image: confluentinc/cp-zookeeper:latest
     container_name: zookeeper
     networks:
-      - licenta
+      - docker_licenta
     ports:
       - "2181:2181"
     environment:
@@ -70,7 +70,7 @@ services:
     depends_on:
       - zookeeper
     networks:
-      - licenta
+      - docker_licenta
     ports:
       - "9092:9092"
     environment:
@@ -87,7 +87,7 @@ services:
 
 
 networks:
-  licenta:
-    driver: bridge
+  docker_licenta:
+    external: true
 
 
