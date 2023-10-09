@@ -1,6 +1,13 @@
 ﻿using Microsoft.AspNetCore.Components;
 using Microsoft.JSInterop;
 
+
+/// TODO: implement disposable flow
+/// TODO: add button for code compillation
+/// TODO: add section for problem to be solved
+/// TODO: implement check mechanism
+
+
 namespace Licenta.UI.Comp.Courses
 {
     public partial class CodeRunnerPanel
