@@ -7,19 +7,19 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="Resources\ComponentsResource-en.json" />
-    <None Remove="Resources\ComponentsResource-ro.json" />
-    <None Remove="Resources\ComponentsResource.json" />
+    <None Remove="Resources\ComponentResource-en.json" />
+    <None Remove="Resources\ComponentResource-ro.json" />
+    <None Remove="Resources\ComponentResource.json" />
   </ItemGroup>
 
   <ItemGroup>
-    <EmbeddedResource Include="Resources\ComponentsResource-en.json">
+    <EmbeddedResource Include="Resources\ComponentResource-en.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
-    <EmbeddedResource Include="Resources\ComponentsResource-ro.json">
+    <EmbeddedResource Include="Resources\ComponentResource-ro.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
-    <EmbeddedResource Include="Resources\ComponentsResource.json">
+    <EmbeddedResource Include="Resources\ComponentResource.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
   </ItemGroup>

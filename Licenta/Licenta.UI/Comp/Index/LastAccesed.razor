@@ -1,1 +1,19 @@
-﻿@inherits BaseLicentaComponent<ComponentsResource>
+﻿@inherits BaseLicentaComp<ComponentResource>
+
+
+<Card Class="h-100">
+    <CardBody>
+        <h3>Upcoming deadlines</h3>
+        <ul class="list-unstyled">
+
+            @foreach (var accesedLesson in _lastAccesedItems)
+            {
+                <LastAccesedItem AccesedLesson=@accesedLesson />
+            }
+
+        </ul>
+
+
+    </CardBody>
+
+</Card>

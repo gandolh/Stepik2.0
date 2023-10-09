@@ -1,6 +1,7 @@
-﻿@using Licenta.SDK.Menu.Interfaces;
+﻿@using Components.UI;
 @using Licenta.SDK.Menu;
-
+@using Licenta.Sdk.Localization;
+@inherits BaseLicentaComp<ComponentResource>
 
 <!-- ======= Sidebar ======= -->
 <aside id="sidebar" class="sidebar">
@@ -11,9 +12,14 @@
                 <span>Acasa</span>
             </a>
         </li><!-- End Dashboard Nav -->
-        @if (_cbsMenu?.Items.Count > 0)
+        @foreach (var item in _mainMenu.Items)
         {
-            <CbsMenu MenuItem=@_cbsMenu />
+            <li class="nav-item">
+                <a id="@item.ElementId" class="nav-link collapsed" href="@item.Url">
+                    <i class="@item.Icon"></i>
+                    <span>@Localizer[item.DisplayName]</span>
+                </a>
+            </li>
         }
       
         @if (_sharedMenu?.Items.Count > 0 )
@@ -24,23 +30,17 @@
 
 </aside><!-- End Sidebar-->
 @code {
-    private IMenuContributor _menuContributor { get; set; } = new MenuContributor();
+    private MenuContributor _menuContributor { get; set; } = new MenuContributor();
     [Inject] private NavigationManager _navManager { get; set; } = default!;
-    private ApplicationMenu? _sharedMenu;
-    private ApplicationMenu? _cbsMenu;
-    private ApplicationMenu? _occMenu;
+    private ApplicationMenu _sharedMenu = new();
+    private ApplicationMenu _mainMenu = new();
 
 
     protected override async Task OnInitializedAsync()
     {
-        _sharedMenu = await _menuContributor.GetSharedMenuAsync(_navManager.Uri);
-        _cbsMenu = await _menuContributor.GetCbsMenuAsync();
+        _sharedMenu =  _menuContributor.GetSharedMenu(_navManager.Uri);
+        _mainMenu = _menuContributor.GetMainMenu();
         await base.OnInitializedAsync();
     }
 
-    protected override async Task OnAfterRenderAsync(bool firstRender)
-    {
-        
-        await base.OnAfterRenderAsync(firstRender);
-    }
 }

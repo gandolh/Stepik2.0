@@ -1,27 +1,33 @@
-﻿using Licenta.SDK.Menu.Interfaces;
-
-namespace Licenta.SDK.Menu
+﻿namespace Licenta.SDK.Menu
 {
-    public class MenuContributor : IMenuContributor
+    public class MenuContributor
     {
-        private ApplicationMenu? _cbsMenu;
-        private ApplicationMenu? _occMenu;
-        private ApplicationMenu? _portalMenu;
-
-
-
-        public async Task<ApplicationMenu> GetCbsMenuAsync()
+        public ApplicationMenu GetMainMenu()
         {
-            var sharedMenuItem = new ApplicationMenu();
+            var mainMenuItem = new ApplicationMenu();
 
             // TODO: add pages in menu
 
-            return sharedMenuItem;
+            mainMenuItem.AddItem(new ApplicationMenuItem(
+                PortalMenus.Events,
+                "Menu:Courses",
+                url: "courses",
+                icon: "bi bi-book",
+                elementId: "course"
+            ));
+            mainMenuItem.AddItem(new ApplicationMenuItem(
+             PortalMenus.Events,
+             "Menu:Events",
+             url: "events",
+             icon: "bi bi-calendar",
+             elementId: "events"
+         ));
+            return mainMenuItem;
         }
 
 
 
-        public async Task<ApplicationMenu> GetSharedMenuAsync(string redirectUri)
+        public ApplicationMenu GetSharedMenu(string redirectUri)
         {
             var sharedMenuItem = new ApplicationMenu();
 
@@ -30,21 +36,21 @@ namespace Licenta.SDK.Menu
                  "Menu:Faq",
                  url: "faq",
                  icon: "bi bi-question-circle",
-                 elementId: "Home"
+                 elementId: "faq"
              ));
             sharedMenuItem.AddItem(new ApplicationMenuItem(
                  PortalMenus.Contact,
                  "Menu:Contact",
                  url: "contact",
                  icon: "bi bi-envelope",
-                 elementId: "Home"
+                 elementId: "contact"
              ));
             sharedMenuItem.AddItem(new ApplicationMenuItem(
                  PortalMenus.Settings,
                  "Menu:Settings",
                  url: "profile",
                  icon: "bi bi-gear-wide",
-                 elementId: "Home",
+                 elementId: "settings",
                  needAuth: true
              ));
             sharedMenuItem.AddItem(new ApplicationMenuItem(
@@ -52,18 +58,16 @@ namespace Licenta.SDK.Menu
                  "Menu:Register",
                  url: "#",
                  icon: "bi bi-card-list",
-                 elementId: "Home",
+                 elementId: "register",
                  needAuth: true
              ));
             return sharedMenuItem;
         }
 
         // TODO: get menu from occ, cbs, de
-        public async Task<(ApplicationMenu?, ApplicationMenu?, ApplicationMenu?)> GetMainMenusync(string redirectUri)
+        public (ApplicationMenu, ApplicationMenu) GetMainMenu(string redirectUri)
         {
-            await GetSharedMenuAsync(redirectUri);
-            await GetCbsMenuAsync();
-            return (_portalMenu, _occMenu, _cbsMenu);
+            return (GetSharedMenu(redirectUri), GetMainMenu());
         }
 
 

@@ -7,7 +7,7 @@ namespace Licenta.UI.Shared.Menu
 {
     public partial class SharedMenu
     {
-        [Inject] private IStringLocalizer<ComponentsResource> Localizer { get; set; } = default!;
+        [Inject] private IStringLocalizer<ComponentResource> Localizer { get; set; } = default!;
         [Parameter][EditorRequired] public ApplicationMenu MenuItem { get; set; } = new ApplicationMenu();
     }
 }

@@ -21,7 +21,7 @@ namespace Licenta.Sdk.Localization
 
 
             // pentru a lua doar din assembly-ul de shared traducerile si a le separa doar dupa nume
-            var resources = new EmbeddedFileProvider(typeof(ComponentsResource).Assembly);
+            var resources = new EmbeddedFileProvider(typeof(ComponentResource).Assembly);
             return new JsonStringLocalizer(resources, ResourcesPath, resourceSource.Name);
         }
 

@@ -2,19 +2,17 @@
 using Licenta.DataAccessService.Interfaces;
 using Licenta.Sdk.Config;
 using Licenta.Sdk.Identity;
+using Licenta.Sdk.Identity.AccessTokenManagement;
 using Licenta.Sdk.Identity.AccessTokenManagement.Interfaces;
 using Licenta.Sdk.Identity.Keycloak;
 using Licenta.Sdk.Localization;
+using Licenta.Sdk.Logging.Console;
 using Licenta.Sdk.Logging.File;
-using Licenta.SDK.Menu;
-using Licenta.SDK.Menu.Interfaces;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.Extensions.Localization;
 using Microsoft.IdentityModel.Logging;
 using Microsoft.IdentityModel.Protocols.OpenIdConnect;
 using Microsoft.IdentityModel.Tokens;
-using Licenta.Sdk.Logging.Console;
-using Licenta.Sdk.Identity.AccessTokenManagement;
 
 namespace Licenta.UI
 {
@@ -196,8 +194,6 @@ namespace Licenta.UI
             builder.ConfigureLogger();
             builder.AddLocalization();
 
-
-            builder.Services.AddScoped<IMenuContributor, MenuContributor>();
 
             // KAFKA
             builder.Services.AddSingleton<IEbusListener, EbusListener>();

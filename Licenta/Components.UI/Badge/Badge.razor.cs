@@ -33,7 +33,7 @@ namespace Components.UI.Badge
             string styleName = GetBadgeStyleName();
             string variantClassName = !Outlined ?
                 $"bg-{styleName}" :
-                $"border-{styleName} border-1 ";
+                $"border-{styleName} text-{styleName} border-1 border";
             return $"badge solid  {variantClassName} {(Rounded ? "rounded-pill" : "")} " +
                 $"{(styleName != "light" ? "" : "text-dark")}";
         }

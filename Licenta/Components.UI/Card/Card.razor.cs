@@ -8,5 +8,6 @@ namespace Components.UI.Card
         [Parameter] public RenderFragment CardBody { get; set; } = default!;
         [Parameter] public RenderFragment CardFooter { get; set; } = default!;
         [Parameter] public string Class { get; set; } = "";
+        [Parameter] public EventCallback Clicked { get; set; } = default!;
     }
 }

@@ -1,0 +1,13 @@
+﻿.CourseComp {
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+    min-height: calc(100vh - 162px);
+    gap: 0.5rem;
+}
+
+.TopBar {
+    display: flex;
+    align-items: center;
+}
+
+

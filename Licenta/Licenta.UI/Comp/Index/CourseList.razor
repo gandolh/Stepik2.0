@@ -1,17 +1,14 @@
-﻿@inherits BaseLicentaComponent<ComponentsResource>
+﻿@inherits BaseLicentaComp<ComponentResource>
 
-<Card>
+<Card Class="h-100">
     <CardBody>
-        <CardTitle>Cursuri</CardTitle>
-        
+        <h3>Cursuri</h3>
         <ListGroup>
-            <ListGroupItem>Programare 2</ListGroupItem>
-            <ListGroupItem>Structuri de date Avansate </ListGroupItem>
-            <ListGroupItem>Proiect individual </ListGroupItem>
+            @foreach (var course in Courses)
+            {
+                <ListGroupItem>@course</ListGroupItem>
+            }
         </ListGroup>
-
-
-
     </CardBody>
 
 </Card>

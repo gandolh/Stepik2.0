@@ -23,4 +23,8 @@
     <ProjectReference Include="..\Licenta.SDK\Licenta.Sdk.Utils\Licenta.Sdk.Utils.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Menu\Interfaces\" />
+  </ItemGroup>
+
 </Project>

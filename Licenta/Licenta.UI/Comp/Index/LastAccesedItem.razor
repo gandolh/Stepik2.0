@@ -1,0 +1,11 @@
+﻿@inherits BaseLicentaComp<ComponentResource>
+
+<li class="LastAccesedItem bi">
+    <div class="flex-grow">
+        <h5 class="mb-0"> @AccesedLesson.LastAccesedLesson?.Name</h5>
+        <p class="mb-0">
+            module @AccesedLesson.LastAccesedLesson?.Module 
+            - step @AccesedLesson.LastAccesedLesson?.Step</p>
+        <small class="text-muted">@AccesedLesson.Name</small>
+    </div>
+</li>
