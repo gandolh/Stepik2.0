@@ -4874,3 +4874,35 @@ Hosting environment: Development
      Microsoft.Hosting.Lifetime - 
 Content root path: /app
 
+[50: Warning     ]
+     Microsoft.AspNetCore.DataProtection.Repositories.EphemeralXmlRepository - 
+Using an in-memory repository. Keys will not be persisted to storage.
+
+[59: Warning     ]
+     Microsoft.AspNetCore.DataProtection.KeyManagement.XmlKeyManager - 
+Neither user profile nor HKLM registry available. Using an ephemeral key repository. Protected data will be unavailable when application exits.
+
+[35: Warning     ]
+     Microsoft.AspNetCore.DataProtection.KeyManagement.XmlKeyManager - 
+No XML encryptor configured. Key {b40ccc32-4d0c-407a-9c01-010c8ae10b6a} may be persisted to storage in unencrypted form.
+
+[14: Information ]
+     Microsoft.Hosting.Lifetime - 
+Now listening on: http://[::]:8080
+
+[14: Information ]
+     Microsoft.Hosting.Lifetime - 
+Now listening on: https://[::]:8081
+
+[ 0: Information ]
+     Microsoft.Hosting.Lifetime - 
+Application started. Press Ctrl+C to shut down.
+
+[ 0: Information ]
+     Microsoft.Hosting.Lifetime - 
+Hosting environment: Development
+
+[ 0: Information ]
+     Microsoft.Hosting.Lifetime - 
+Content root path: /app
+

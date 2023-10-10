@@ -1,13 +1,13 @@
-    <Project Sdk="Microsoft.NET.Sdk.Worker">
+<Project Sdk="Microsoft.NET.Sdk.Worker">
 
   <PropertyGroup>
     <TargetFramework>net8.0</TargetFramework>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
     <InvariantGlobalization>true</InvariantGlobalization>
-    <UserSecretsId>dotnet-Licenta.Runner-0c038f31-da3a-4d3c-84c4-05dd8887200b</UserSecretsId>
     <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
-	  <DockerfileRunArguments>--network docker_licenta</DockerfileRunArguments>
+	<DockerfileRunArguments>--network docker_licenta</DockerfileRunArguments>
+    <UserSecretsId>dotnet-Licenta.Runner-0c038f31-da3a-4d3c-84c4-05dd8887200b</UserSecretsId>
   </PropertyGroup>
 
   <ItemGroup>
