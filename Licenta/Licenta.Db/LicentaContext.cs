@@ -1,4 +1,7 @@
-﻿using Npgsql;
+﻿using Licenta.Db.Data;
+using Licenta.Db.Repository;
+using Npgsql;
+using System.Runtime.InteropServices;
 
 namespace Licenta.Db
 {
@@ -11,13 +14,20 @@ namespace Licenta.Db
         private readonly string _username;
         private readonly string _password;
         private NpgsqlConnection? _connection;
+        private readonly Type[] _tableRepositories = new Type[]
+            {
+                typeof(CourseRepository),
+                typeof(EventRepository),
+                typeof(LastAccesedRepository),
+                typeof(LessonRepository),
+                typeof(QuizDataRepository) };
+
+
         private string GetConnectionString(bool useInitialDb)
         {
             return $"Host={_server};Port={_port};Username={_username};Password={_password};"
                  + (useInitialDb ? $"Database={_initialDatabase};" : $"Database={_database};");
         }
-
-
         public LicentaContext()
         {
 
@@ -33,12 +43,25 @@ namespace Licenta.Db
 
         public async Task InitDb()
         {
+            //await DropDb();
             await CreateDbIfNotExists();
-            await ConnectToDb();
-            //CreateDbSchemaIfNotExists();
+
+            string connStr = GetConnectionString(useInitialDb: false);
+            _connection = new NpgsqlConnection(connStr);
+            await _connection.OpenAsync();
+
+            CreateDbSchemaIfNotExists();
+            SeedDbIfEmpty();
         }
 
-
+        private async Task DropDb()
+        {
+            string connStr = GetConnectionString(useInitialDb: true);
+            _connection = new NpgsqlConnection(connStr);
+            await _connection.OpenAsync();
+            DbUtils.DropDb(_connection, _database); 
+            await _connection.CloseAsync();
+        }
 
         private async Task CreateDbIfNotExists()
         {
@@ -54,28 +77,36 @@ namespace Licenta.Db
             
             await _connection.CloseAsync();
         }
-
-        private async Task ConnectToDb()
-        {
-            string connStr = GetConnectionString(useInitialDb: false);
-            _connection = new NpgsqlConnection(connStr);
-            await _connection.OpenAsync();
-        }
-
         public void CreateDbSchemaIfNotExists()
         {
-            //NpgsqlConnection connection = new NpgsqlConnection(_connectionString);
-            //connection.Open();
+
+            foreach (Type tableType in _tableRepositories)
+            {
+                if (tableType.GetInterface(nameof(IRepository)) != null)
+                {
+                    string tableName = tableType.Name.Replace("Repository", "");
+                    IRepository? repo = (Activator.CreateInstance(tableType, new object?[] { _connection, tableName }) as IRepository);
+                    repo?.CreateTableIfNotExists();
+                }
+            }
         }
 
-        public void CreateDbSchema()
+        public void SeedDbIfEmpty()
         {
-
+            foreach (Type tableType in _tableRepositories)
+            {
+                if (tableType.GetInterface(nameof(IRepository)) != null)
+                {
+                    string tableName = tableType.Name.Replace("Repository", "");
+                    IRepository? repo = (Activator.CreateInstance(tableType, new object?[] { _connection, tableName }) as IRepository);
+                    repo?.SeedIfEmpty();
+                }
+            }
         }
 
         public void Dispose()
         {
-            _connection.Close();
+            _connection?.Close();
         }
     }
 
