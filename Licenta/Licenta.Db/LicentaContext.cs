@@ -43,7 +43,7 @@ namespace Licenta.Db
 
         public async Task InitDb()
         {
-            //await DropDb();
+            await DropDb();
             await CreateDbIfNotExists();
 
             string connStr = GetConnectionString(useInitialDb: false);
