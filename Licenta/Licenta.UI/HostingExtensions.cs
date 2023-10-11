@@ -8,6 +8,8 @@ using Licenta.Sdk.Identity.Keycloak;
 using Licenta.Sdk.Localization;
 using Licenta.Sdk.Logging.Console;
 using Licenta.Sdk.Logging.File;
+using Licenta.Sdk.Models.Interfaces;
+using Licenta.UI.Services;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.Extensions.Localization;
 using Microsoft.IdentityModel.Logging;
@@ -198,6 +200,7 @@ namespace Licenta.UI
             // KAFKA
             builder.Services.AddSingleton<IEbusListener, EbusListener>();
             builder.Services.AddScoped<IMyKafkaClient, MyKafkaClient>();
+            builder.Services.AddScoped<IApiService, ApiService>();
 
 
             // Add services to the container.

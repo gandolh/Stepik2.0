@@ -1,12 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Licenta.Sdk.Models.Dtos;
 
 namespace Licenta.Sdk.Models.Data
 {
-    public class TheoryLesson : Lesson
+    public class TheoryLesson : LessonDto
     {
         public string Theory { get; set; } = "";
     }

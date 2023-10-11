@@ -1,13 +1,25 @@
 ﻿using Components.UI;
+using Components.UI.Enums;
 using Licenta.Sdk.Localization;
-using Licenta.Sdk.Models.Data;
+using Licenta.Sdk.Models.Dtos;
+using Licenta.Sdk.Models.Interfaces;
+using Microsoft.AspNetCore.Components;
 
 namespace Licenta.UI.Comp.Index
 {
     public partial class UpcomingDeadlines : BaseLicentaComp<ComponentResource>
     {
-        private ToDoItem[] _toDoItems = new ToDoItem[]{
-            new ToDoItem("Stepik 2.0", new DateTime(2024,08,28),"Proiect licenta")
-        };
+
+        [Inject] IApiService apiService { get; set; } = default!;
+        private IEnumerable<EventDto> _events = new EventDto[0];
+
+        protected override Task OnAfterRenderAsync(bool firstRender)
+        {
+            pageState = PageState.Loading;
+            _events = apiService.GetEvents(after: DateTime.Now);
+            pageState = PageState.Success;
+            return base.OnAfterRenderAsync(firstRender);
+        }
+
     }
 }

@@ -6,7 +6,7 @@
         <h3>Upcoming deadlines</h3>
         <ul class="list-unstyled">
 
-            @foreach (var todoItem in _toDoItems)
+            @foreach (var todoItem in _events)
             {
                 <DeadlineItem ToDoItem=@todoItem />
             }

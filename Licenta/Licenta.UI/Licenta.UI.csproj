@@ -20,6 +20,7 @@
     <ProjectReference Include="..\Licenta.DataAccessService\Licenta.DataAccessService.csproj" />
     <ProjectReference Include="..\Licenta.SDK\Licenta.Sdk.Identity\Licenta.Sdk.Identity.csproj" />
     <ProjectReference Include="..\Licenta.SDK\Licenta.Sdk.Logging\Licenta.Sdk.Logging.csproj" />
+    <ProjectReference Include="..\Licenta.SDK\Licenta.Sdk.Models\Licenta.Sdk.Models.csproj" />
     <ProjectReference Include="..\Licenta.SDK\Licenta.Sdk.Utils\Licenta.Sdk.Utils.csproj" />
   </ItemGroup>
 

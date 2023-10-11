@@ -1,8 +1,9 @@
-﻿namespace Licenta.Sdk.Models.Data
+﻿using Licenta.Sdk.Models.Dtos;
+
+namespace Licenta.Sdk.Models.Data
 {
-    public class QuizLesson : Lesson
+    public class QuizLesson : LessonDto
     {
-        // table binded with lessonId
-        public QuizData[] quizDatas { get; set; } = new QuizData[0];
+        public QuizDataDto[] quizDatas { get; set; } = new QuizDataDto[0];
     }
 }
