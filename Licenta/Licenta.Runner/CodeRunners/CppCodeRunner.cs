@@ -2,7 +2,7 @@
 
 namespace Licenta.Runner.CodeRunners
 {
-    internal class CppCodeRunner : ICodeRunner
+    public class CppCodeRunner : ICodeRunner
     {
         public CodeRunResult Run(CodeRunReq req)
         {

@@ -2,7 +2,7 @@
 
 namespace Licenta.Runner.CodeRunners
 {
-    internal interface ICodeRunner
+    public interface ICodeRunner
     {
         public CodeRunResult Run(CodeRunReq req);
     }

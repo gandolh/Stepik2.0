@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Licenta.Runner.CodeRunners
 {
-    internal class CodeRunResult
+    public class CodeRunResult
     {
         public string Result { get; set; } = "";
         public string Error { get; set; } = "";
