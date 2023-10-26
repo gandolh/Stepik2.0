@@ -17,6 +17,11 @@ RUN pip install --upgrade pip && \
 
 COPY . .
 # end install python
+# install cpp
+
+RUN apt-get install build-essential manpages-dev -y
+
+# end install cpp
 
 
 FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
