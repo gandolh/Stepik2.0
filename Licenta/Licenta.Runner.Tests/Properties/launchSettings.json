@@ -1,0 +1,10 @@
+{
+  "profiles": {
+    "Licenta.Runner.Tests": {
+      "commandName": "Project"
+    },
+    "Docker": {
+      "commandName": "Docker"
+    }
+  }
+}
