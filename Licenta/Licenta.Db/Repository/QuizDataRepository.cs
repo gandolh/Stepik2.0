@@ -4,7 +4,7 @@ namespace Licenta.Db.Repository
 {
     public class QuizDataRepository : BaseRepository, IRepository
     {
-        public QuizDataRepository(NpgsqlConnection connection, string tableName) : base(connection, tableName) { }
+        public QuizDataRepository(NpgsqlConnection connection, string? tableName = null) : base(connection, tableName) { }
 
         public void CreateTableIfNotExists()
         {

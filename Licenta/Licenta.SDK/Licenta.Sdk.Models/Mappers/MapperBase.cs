@@ -8,7 +8,7 @@
 
         #region map single
 
-        public TFirst Map(TSecond element, Action<TFirst> callback = null)
+        public TFirst Map(TSecond element, Action<TFirst>? callback = null)
         {
             TFirst newObject = Map(element);
             if (newObject != null && callback != null)
@@ -18,7 +18,7 @@
             return newObject;
         }
 
-        public TSecond Map(TFirst element, Action<TSecond> callback = null)
+        public TSecond Map(TFirst element, Action<TSecond>? callback = null)
         {
             TSecond newObject = Map(element);
             if (newObject != null && callback != null)
@@ -33,7 +33,7 @@
 
 
         #region map multiple
-        public List<TFirst> Map(List<TSecond> elements, Action<TFirst> callback = null)
+        public List<TFirst> Map(IEnumerable<TSecond> elements, Action<TFirst> callback = null)
         {
             var objectCollection = new List<TFirst>();
             if (elements != null)
@@ -52,7 +52,7 @@
             return objectCollection;
         }
 
-        public List<TSecond> Map(List<TFirst> elements, Action<TSecond> callback = null)
+        public List<TSecond> Map(IEnumerable<TFirst> elements, Action<TSecond> callback = null)
         {
             var objectCollection = new List<TSecond>();
 

@@ -4,10 +4,10 @@ namespace Licenta.Db.Repository
 {
     public class BaseRepository
     {
-        protected readonly string _tableName;
+        protected readonly string? _tableName;
         protected readonly NpgsqlConnection _connection;
 
-        public BaseRepository(NpgsqlConnection connection, string tableName)
+        public BaseRepository(NpgsqlConnection connection, string? tableName)
         {
             _tableName = tableName;
             _connection = connection;

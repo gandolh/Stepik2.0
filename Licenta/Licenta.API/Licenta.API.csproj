@@ -15,4 +15,9 @@
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.4.0" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Licenta.Db\Licenta.Db.csproj" />
+    <ProjectReference Include="..\Licenta.SDK\Licenta.Sdk.Models\Licenta.Sdk.Models.csproj" />
+  </ItemGroup>
+
 </Project>

@@ -10,8 +10,8 @@ namespace Licenta.UI.Comp.Index
     public partial class LastAccesed : BaseLicentaComp<ComponentResource>
     {
         [Inject] public IApiService apiService { get; set; } = default!;
-        private IEnumerable<AccesedLessonDto> _lastAccesedItems { get; set; } 
-            = new AccesedLessonDto[0];
+        private IEnumerable<LastAccesedDto> _lastAccesedItems { get; set; } 
+            = new LastAccesedDto[0];
 
 
         protected override Task OnInitializedAsync()

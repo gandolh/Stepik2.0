@@ -7,6 +7,6 @@ namespace Licenta.Sdk.Models.Interfaces
         public IEnumerable<CourseDto> GetCourses();
         public CourseDto? GetCourse(string courseId);
         IEnumerable<EventDto> GetEvents(DateTime? after = null);
-        IEnumerable<AccesedLessonDto> GetAccesedLessons();
+        IEnumerable<LastAccesedDto> GetAccesedLessons();
     }
 }

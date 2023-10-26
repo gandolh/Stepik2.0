@@ -12,7 +12,7 @@ namespace Licenta.UI.Services
             _httpClient = httpClientFactory.CreateClient();
         }
 
-        public IEnumerable<AccesedLessonDto> GetAccesedLessons()
+        public IEnumerable<LastAccesedDto> GetAccesedLessons()
         {
             throw new NotImplementedException();
         }

@@ -4,7 +4,7 @@ namespace Licenta.Db.Repository
 {
     public class LessonRepository : BaseRepository, IRepository
     {
-        public LessonRepository(NpgsqlConnection connection, string tableName) : base(connection, tableName) { }
+        public LessonRepository(NpgsqlConnection connection, string? tableName = null) : base(connection, tableName) { }
 
         public void CreateTableIfNotExists()
         {

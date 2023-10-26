@@ -6,4 +6,8 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\..\Licenta.Db\Licenta.Db.csproj" />
+  </ItemGroup>
+
 </Project>
