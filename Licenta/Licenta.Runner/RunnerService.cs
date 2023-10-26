@@ -23,37 +23,10 @@ namespace Licenta.Runner
         protected override Task ExecuteAsync(CancellationToken stoppingToken)
         {
             _ = Task.Run(() => _kafkaConnector.Consume(stoppingToken, new string[] { _kafkaConfig.RunCodeTopic }, RunCode));
-#if DEBUG
-            _ = Task.Run(() => ListenForSignal());
-#endif
             return Task.CompletedTask;
         }
 
-        private async Task ListenForSignal()
-        {
-            File.WriteAllText("commands.txt", "");
-            while (true)
-            {
-
-                try
-                {
-                    string content = File.ReadAllText("commands.txt").Trim();
-                    if (content.EndsWith('!'))
-                    {
-                        File.WriteAllText("commands.txt", "");
-                        _kafkaConnector.Produce(Guid.NewGuid().ToString(), content.Substring(0, content.Length - 1));
-                    }
-                }
-                catch (Exception ex)
-                {
-
-                }
-                await Task.Delay(1000);
-            }
-
-        }
-
-        private void RunCode(string reqJson)
+        internal void RunCode(string reqJson)
         {
             CodeRunReqDto dto = JsonSerializer.Deserialize<CodeRunReqDto>(reqJson) ?? new();
             MapperBase<CodeRunReq, CodeRunReqDto> mapper = new CodeRunReqMapper();

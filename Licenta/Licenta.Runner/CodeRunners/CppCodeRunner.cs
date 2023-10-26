@@ -4,7 +4,7 @@ namespace Licenta.Runner.CodeRunners
 {
     public class CppCodeRunner : ICodeRunner
     {
-        public CodeRunResult Run(CodeRunReq req)
+        public Task<CodeRunResult> Run(CodeRunReq req)
         {
             throw new NotImplementedException();
         }

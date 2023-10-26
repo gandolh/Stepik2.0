@@ -4,6 +4,6 @@ namespace Licenta.Runner.CodeRunners
 {
     public interface ICodeRunner
     {
-        public CodeRunResult Run(CodeRunReq req);
+        public Task<CodeRunResult> Run(CodeRunReq req);
     }
 }
