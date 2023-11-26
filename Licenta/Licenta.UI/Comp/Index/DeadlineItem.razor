@@ -3,11 +3,8 @@
 <li class="DeadlineItem bi">
     <div class="flex-grow">
         <h5 class="mb-0"> @ToDoItem.Title</h5>
-        @if (ToDoItem.DueTime.HasValue)
-        {
-            <p class="mb-0">due @ToDoItem.DueTime.Value.ToLongDateString()</p>
+            <p class="mb-0">due @ToDoItem.DueTime.ToLongDateString()</p>
             <small class="text-muted">@ToDoItem.Description</small>
-        }
     </div>
 </li>
 

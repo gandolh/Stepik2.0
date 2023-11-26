@@ -4,9 +4,9 @@ namespace Licenta.Sdk.Models.Interfaces
 {
     public interface IApiService
     {
-        public IEnumerable<CourseDto> GetCourses();
-        public CourseDto? GetCourse(string courseId);
-        IEnumerable<EventDto> GetEvents(DateTime? after = null);
-        IEnumerable<LastAccesedDto> GetAccesedLessons();
+        public Task<IEnumerable<CourseDto>> GetCourses();
+        public Task<CourseDto?> GetCourse(string courseId);
+        public Task<IEnumerable<EventDto>> GetEvents(DateTime? after = null);
+        public Task<IEnumerable<LastAccesedDto>> GetAccesedLessons(string userId);
     }
 }

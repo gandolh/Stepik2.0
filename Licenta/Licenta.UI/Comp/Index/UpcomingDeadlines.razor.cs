@@ -13,12 +13,12 @@ namespace Licenta.UI.Comp.Index
         [Inject] IApiService apiService { get; set; } = default!;
         private IEnumerable<EventDto> _events = new EventDto[0];
 
-        protected override Task OnAfterRenderAsync(bool firstRender)
+        protected override async Task OnAfterRenderAsync(bool firstRender)
         {
             pageState = PageState.Loading;
-            _events = apiService.GetEvents(after: DateTime.Now);
+            _events = await apiService.GetEvents(after: DateTime.Now);
             pageState = PageState.Success;
-            return base.OnAfterRenderAsync(firstRender);
+            await base.OnAfterRenderAsync(firstRender);
         }
 
     }

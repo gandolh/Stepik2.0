@@ -7,6 +7,7 @@
     <InvariantGlobalization>true</InvariantGlobalization>
     <UserSecretsId>d15b2ec4-9759-46aa-b24c-6ee2a4186229</UserSecretsId>
     <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
+	<DockerfileRunArguments>--network docker_licenta</DockerfileRunArguments>
   </PropertyGroup>
 
   <ItemGroup>

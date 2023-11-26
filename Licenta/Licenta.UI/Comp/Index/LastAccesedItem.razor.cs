@@ -7,6 +7,7 @@ namespace Licenta.UI.Comp.Index
 {
     public partial class LastAccesedItem : BaseLicentaComp<ComponentResource>
     {
-        [Parameter][EditorRequired] public CourseDto AccesedLesson { get; set; } = default!;
+        [Parameter][EditorRequired] public LastAccesedDto AccesedLesson { get; set; } = default!;
+        [Parameter] public string courseName { get; set; } = "";
     }
 }

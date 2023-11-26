@@ -24,7 +24,7 @@ namespace Licenta.API.Controllers
         
 
         [HttpGet(nameof(GetAccesedLessons))]
-        public IEnumerable<LastAccesedDto> GetAccesedLessons(string userId)
+        public async Task<IEnumerable<LastAccesedDto>> GetAccesedLessons(string userId)
         {
             conn.Open();
             LastAccesedRepository lar = new LastAccesedRepository(conn);
@@ -36,7 +36,7 @@ namespace Licenta.API.Controllers
         }
 
         [HttpGet(nameof(GetCourse))]
-        public CourseDto? GetCourse(string courseId)
+        public async Task<CourseDto?> GetCourse(string courseId)
         {
             CourseRepository cr = new CourseRepository(conn);
             Course course = cr.GetOne(courseId);
@@ -49,7 +49,7 @@ namespace Licenta.API.Controllers
         }
 
         [HttpGet(nameof(GetCourses))]
-        public IEnumerable<CourseDto> GetCourses()
+        public async Task<IEnumerable<CourseDto>> GetCourses()
         {
             CourseRepository cr = new CourseRepository(conn);
             IEnumerable<Course> courses = cr.GetAll();
@@ -59,7 +59,7 @@ namespace Licenta.API.Controllers
         }
 
         [HttpGet(nameof(GetEvents))]
-        public IEnumerable<EventDto> GetEvents(DateTime? after = null)
+        public async Task<IEnumerable<EventDto>> GetEvents(DateTime? after = null)
         {
             EventRepository er = new EventRepository(conn);
             IEnumerable<Event> events = er.GetAll();

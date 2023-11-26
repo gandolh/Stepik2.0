@@ -10,12 +10,12 @@ namespace Licenta.UI.Comp.Courses
     {
         [Inject] public NavigationManager navManager { get; set; } = default!;
         [Inject] public IApiService apiService { get; set; } = default!;
-        private CourseDto[] courses;
+        private List<CourseDto> courses = new();
 
-        protected override Task OnInitializedAsync()
+        protected override async Task OnInitializedAsync()
         {
-            courses = apiService.GetCourses();
-            return base.OnInitializedAsync();
+            courses = (await apiService.GetCourses()).ToList();
+            await base.OnInitializedAsync();
         }
 
         private void RedirectToCourse(CourseDto course)

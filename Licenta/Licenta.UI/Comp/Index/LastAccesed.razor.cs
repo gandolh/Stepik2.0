@@ -10,17 +10,17 @@ namespace Licenta.UI.Comp.Index
     public partial class LastAccesed : BaseLicentaComp<ComponentResource>
     {
         [Inject] public IApiService apiService { get; set; } = default!;
-        private IEnumerable<LastAccesedDto> _lastAccesedItems { get; set; } 
-            = new LastAccesedDto[0];
+        private List<LastAccesedDto> _lastAccesedItems { get; set; } 
+            = new List<LastAccesedDto>();
 
 
-        protected override Task OnInitializedAsync()
+        protected override async Task OnInitializedAsync()
         {
             pageState = PageState.Loading;
-            _lastAccesedItems = apiService.GetAccesedLessons();
+            _lastAccesedItems = (await apiService.GetAccesedLessons("")).ToList();
             pageState = PageState.Success;
 
-            return base.OnInitializedAsync();
+            await base.OnInitializedAsync();
         }
     }
 }

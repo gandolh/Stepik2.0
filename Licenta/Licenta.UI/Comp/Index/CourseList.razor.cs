@@ -10,14 +10,14 @@ namespace Licenta.UI.Comp.Index
     public partial class CourseList : BaseLicentaComp<ComponentResource>
     {
         [Inject] IApiService apiService { get; set; } = default!;
-        private CourseDto[] _courses = new CourseDto[0];
+        private List<CourseDto> _courses = new List<CourseDto>();
 
-        protected override Task OnInitializedAsync()
+        protected override async Task OnInitializedAsync()
         {
             pageState = PageState.Loading;
-            _courses = apiService.GetCourses();
+            _courses = (await apiService.GetCourses()).ToList();
             pageState = PageState.Success;
-            return base.OnInitializedAsync();
+            await base.OnInitializedAsync();
         }
 
     }

@@ -10,10 +10,10 @@ namespace Licenta.UI.Pages
         [Inject] public IApiService apiService { get; set; } = default!;
         private CourseDto? _course;
 
-        protected override Task OnInitializedAsync()
+        protected override async Task OnInitializedAsync()
         {
-            _course = apiService.GetCourse(CourseId);
-            return base.OnInitializedAsync();
+            _course = await apiService.GetCourse(CourseId);
+            await base.OnInitializedAsync();
         }
     }
 }

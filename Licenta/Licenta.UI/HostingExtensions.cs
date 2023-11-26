@@ -183,7 +183,19 @@ namespace Licenta.UI
 
         #endregion
 
-
+        private static void AddHttpClients(this WebApplicationBuilder builder)
+        {
+            builder.Services.AddHttpClient("Api", httpClient =>
+            {
+                httpClient.BaseAddress = new Uri("https://Licenta.API:8081/api");
+            }).ConfigureHttpMessageHandlerBuilder(builder =>
+            {
+                builder.PrimaryHandler = new HttpClientHandler
+                {
+                    ServerCertificateCustomValidationCallback = (m, c, ch, e) => true
+                };
+            }); ;
+        }
 
         #region Configure Services
         /// <summary>
@@ -200,8 +212,9 @@ namespace Licenta.UI
             // KAFKA
             builder.Services.AddSingleton<IEbusListener, EbusListener>();
             builder.Services.AddScoped<IMyKafkaClient, MyKafkaClient>();
-            builder.Services.AddScoped<IApiService, ApiService>();
+            builder.Services.AddScoped<IApiService, ApiConnectorService>();
 
+            builder.AddHttpClients();
 
             // Add services to the container.
             builder.Services.AddRazorPages();
@@ -246,6 +259,8 @@ namespace Licenta.UI
             app.UsePathBase(basePath);
             return app;
         }
+
+  
 
 
         #endregion
