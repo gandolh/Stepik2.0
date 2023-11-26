@@ -1,12 +1,10 @@
 ﻿using Licenta.Db;
+using System.ComponentModel;
 
 internal class Program
 {
     private static async Task Main(string[] args)
     {
-        //Console.WriteLine("Hello, World!");
-
-        LicentaContext context = new LicentaContext();
-       await context.InitDb();
+        Console.WriteLine("Hello, World!");
     }
 }
