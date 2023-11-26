@@ -17,6 +17,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Components.UI\Components.UI.csproj" />
+    <ProjectReference Include="..\Licenta.SDK\Licenta.SDK.csproj" />
   </ItemGroup>
 
   <ItemGroup>
