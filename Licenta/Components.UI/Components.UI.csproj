@@ -19,8 +19,4 @@
     <Folder Include="wwwroot\" />
   </ItemGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\Licenta.SDK\Licenta.Sdk.Localization\Licenta.Sdk.Localization.csproj" />
-  </ItemGroup>
-
 </Project>
