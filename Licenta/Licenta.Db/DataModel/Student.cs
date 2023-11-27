@@ -8,7 +8,7 @@ namespace Licenta.Db.Data
 {
     internal class Student
     {
-        public string Id { get; set; } = string.Empty;
+        public int Id { get; set; } = 0;
         public string Firstname { get; set; } = string.Empty;
         public string Lastname { get; set; } = string.Empty;
         public string Password { get; set; } = string.Empty;

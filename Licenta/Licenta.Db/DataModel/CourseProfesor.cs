@@ -8,7 +8,7 @@ namespace Licenta.Db.Data
 {
     internal class CourseProfesor
     {
-        public string CourseId { get; set; } = string.Empty;
-        public string ProfesorId { get; set; } = string.Empty;
+        public int CourseId { get; set; } = 0;
+        public int ProfesorId { get; set; } = 0;
     }
 }

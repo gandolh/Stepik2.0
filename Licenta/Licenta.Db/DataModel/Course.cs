@@ -1,14 +1,18 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Licenta.Db.Data
+﻿namespace Licenta.Db.Data
 {
-    internal class Course
+    public class Course
     {
-        public string Id { get; set; } = string.Empty;
+        public int Id { get; set; } = 0;
         public string Name { get; set; } = string.Empty;
+        public Course()
+        {
+            
+        }
+
+        public Course(int id, string name)
+        {
+            Id = id;
+            Name = name;
+        }
     }
 }

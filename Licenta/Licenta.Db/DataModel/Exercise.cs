@@ -8,8 +8,8 @@ namespace Licenta.Db.Data
 {
     internal class Exercise
     {
-        public string Id { get; set; } = string.Empty;
-        public string LessonId { get; set; } = string.Empty;
+        public int Id { get; set; } = 0;
+        public int LessonId { get; set; } = 0;
         public string Enunciation { get; set; } = string.Empty;
         // 0 code / 1 quiz
         public int Type { get; set; } = 0;

@@ -8,10 +8,10 @@ namespace Licenta.Db.Data
 {
     internal class Submission
     {
-        public string Id { get; set; } = string.Empty;
+        public int Id { get; set; } = 0;
         // % out of 100
         public int points { get; set; } = 0;
-        public string StudentId { get; set; } = string.Empty;
-        public string ExerciseId {  get; set; } = string.Empty;
+        public int StudentId { get; set; } = 0;
+        public int ExerciseId { get; set; } = 0;
     }
 }
