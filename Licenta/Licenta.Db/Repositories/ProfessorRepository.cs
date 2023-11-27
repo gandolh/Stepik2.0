@@ -3,9 +3,9 @@ using Licenta.Db.Seeder.Interfaces;
 
 namespace Licenta.Db.Repositories
 {
-    public class CourseRepository : BaseRepository<Course>
+    public class ProfessorRepository : BaseRepository<Profesor>
     {
-        public CourseRepository(IDapperDbClient dbClient) : base(dbClient)
+        public ProfessorRepository(IDapperDbClient dbClient) : base(dbClient)
         {
         }
 
@@ -16,15 +16,21 @@ namespace Licenta.Db.Repositories
 
                 CREATE TABLE {_tableName} (
                     Id SERIAL PRIMARY KEY,
-                    Name VARCHAR(255)
+                    Firstname VARCHAR(100),
+                    Lastname VARCHAR(100),
+                    Password VARCHAR(255)
                 );
                 """;
             await _dbClient.ExecuteAsync(sql);
         }
 
-        public override async Task Insert(Course data)
+        public override async Task Insert(Profesor data)
         {
-            string sql = $"INSERT INTO {_tableName} (Name) VALUES (@Name)";
+            string sql = $"""
+                INSERT INTO {_tableName}
+                (Firstname, Lastname, Password) 
+                VALUES (@Firstname,@Lastname,@Password);
+            """;
             var rowsAffected = await _dbClient.ExecuteAsync(sql, data);
         }
     }

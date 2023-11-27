@@ -15,19 +15,19 @@ services:
       - ./dbeaver-data:/home/dbeaver
 
 
-  keycloak:
-    image: quay.io/keycloak/keycloak:21.0.2
-    container_name: keycloak
-    environment:
-      KEYCLOAK_ADMIN: admin
-      KEYCLOAK_ADMIN_PASSWORD: admin
-    command: start-dev
-    networks:
-      - docker_licenta
-    ports:
-      - "8080:8080"
-    volumes:
-      - ./Keycloak/custom-theme:/opt/keycloak/themes/custom-theme
+  # keycloak:
+  #   image: quay.io/keycloak/keycloak:21.0.2
+  #   container_name: keycloak
+  #   environment:
+  #     KEYCLOAK_ADMIN: admin
+  #     KEYCLOAK_ADMIN_PASSWORD: admin
+  #   command: start-dev
+  #   networks:
+  #     - docker_licenta
+  #   ports:
+  #     - "8080:8080"
+  #   volumes:
+  #     - ./Keycloak/custom-theme:/opt/keycloak/themes/custom-theme
 
   postgres:
     image: postgres:latest
@@ -35,7 +35,7 @@ services:
     environment:
       POSTGRES_USER: admin
       POSTGRES_PASSWORD: admin
-      POSTGRES_DB: my_postgres_database
+      POSTGRES_DB: licenta_db
     ports:
       - "5432:5432"
     networks:

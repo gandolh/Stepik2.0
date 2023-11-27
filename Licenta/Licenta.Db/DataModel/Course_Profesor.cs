@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Licenta.Db.Data
 {
-    internal class CourseProfesor
+    internal class Course_Profesor
     {
         public int CourseId { get; set; } = 0;
         public int ProfesorId { get; set; } = 0;

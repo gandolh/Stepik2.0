@@ -3,7 +3,7 @@
     public interface IRepository<T> 
     {
         public Task GetOne(string id);
-        public Task GetAll(int start, int length);
+        public Task<List<T>> GetAll(int start, int length);
         public Task Insert(T data);
         public Task Update(T data);
         public Task Delete(string id);

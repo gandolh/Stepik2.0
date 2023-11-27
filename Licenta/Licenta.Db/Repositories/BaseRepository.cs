@@ -11,20 +11,22 @@ namespace Licenta.Db.Repositories
     public abstract class BaseRepository<T> : IRepository<T>
     {
         protected readonly IDapperDbClient _dbClient;
+        protected readonly string _tableName;
 
         public BaseRepository(IDapperDbClient dbClient)
         {
             _dbClient = dbClient;
+            _tableName = typeof(T).Name;
         }
 
         public abstract Task CreateTable();
         public async Task DropTable()
         {
-            string tableName = typeof(T).Name;
             await _dbClient.ExecuteAsync($"""
-                DROP TABLE IF EXISTS {tableName};
+                DROP TABLE IF EXISTS {_tableName};
                 """);
         }
+        public abstract Task Insert(T data);
 
         public Task Delete(string id)
         {
@@ -32,9 +34,10 @@ namespace Licenta.Db.Repositories
         }
 
 
-        public Task GetAll(int start, int length)
+        public async Task<List<T>> GetAll(int start = 0, int length = 25)
         {
-            throw new NotImplementedException();
+            string sql = $"SELECT * FROM {_tableName} OFFSET {start} LIMIT {length}";
+            return await _dbClient.QueryAsync<T>(sql);
         }
 
         public Task GetOne(string id)
@@ -42,10 +45,6 @@ namespace Licenta.Db.Repositories
             throw new NotImplementedException();
         }
 
-        public Task Insert(T data)
-        {
-            throw new NotImplementedException();
-        }
 
         public Task Update(T data)
         {
