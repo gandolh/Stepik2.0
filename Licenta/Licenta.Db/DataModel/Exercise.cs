@@ -13,6 +13,18 @@ namespace Licenta.Db.Data
         public string Enunciation { get; set; } = string.Empty;
         // 0 code / 1 quiz
         public int Type { get; set; } = 0;
+        public Exercise()
+        {
+
+        }
+
+        public Exercise(int id, int lessonId, string enunciation, int type)
+        {
+            Id = id;
+            LessonId = lessonId;
+            Enunciation = enunciation;
+            Type = type;
+        }
 
     }
 }

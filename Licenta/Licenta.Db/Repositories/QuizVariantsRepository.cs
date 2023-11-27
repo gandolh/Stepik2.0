@@ -1,11 +1,16 @@
 ﻿using Licenta.Db.Data;
 using Licenta.Db.Seeder.Interfaces;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace Licenta.Db.Repositories
 {
-    public class ProfessorRepository : BaseRepository<Profesor>
+    internal class QuizVariantsRepository : BaseRepository<QuizVariant>
     {
-        public ProfessorRepository(IDapperDbClient dbClient) : base(dbClient)
+        public QuizVariantsRepository(IDapperDbClient dbClient) : base(dbClient)
         {
         }
 
@@ -16,21 +21,20 @@ namespace Licenta.Db.Repositories
 
                 CREATE TABLE {_tableName} (
                     Id SERIAL PRIMARY KEY,
-                    Firstname VARCHAR(100),
-                    Lastname VARCHAR(100),
-                    Password VARCHAR(255)
+                    ExerciseId INT,
+                    Text VARCHAR(255),
+                    IsCorrect BOOLEAN
                 );
                 """;
             await _dbClient.ExecuteAsync(sql);
         }
 
-        public override async Task InsertAsync(Profesor data)
+        public override async Task InsertAsync(QuizVariant data)
         {
             string sql = $"""
-                INSERT INTO {_tableName}
-                (Firstname, Lastname, Password) 
-                VALUES (@Firstname,@Lastname,@Password);
-            """;
+                INSERT INTO {_tableName} (ExerciseId, Text, IsCorrect)
+                VALUES (@ExerciseId, @Text, @IsCorrect);
+                """;
             var rowsAffected = await _dbClient.ExecuteAsync(sql, data);
         }
     }

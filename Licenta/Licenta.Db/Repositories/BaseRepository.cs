@@ -19,34 +19,34 @@ namespace Licenta.Db.Repositories
             _tableName = typeof(T).Name;
         }
 
-        public abstract Task CreateTable();
-        public async Task DropTable()
+        public abstract Task CreateTableAsync();
+        public async Task DropTableAsync()
         {
             await _dbClient.ExecuteAsync($"""
                 DROP TABLE IF EXISTS {_tableName};
                 """);
         }
-        public abstract Task Insert(T data);
+        public abstract Task InsertAsync(T data);
 
-        public Task Delete(string id)
+        public Task DeleteAsync(string id)
         {
             throw new NotImplementedException();
         }
 
 
-        public async Task<List<T>> GetAll(int start = 0, int length = 25)
+        public async Task<List<T>> GetAllAsync(int start = 0, int length = 25)
         {
             string sql = $"SELECT * FROM {_tableName} OFFSET {start} LIMIT {length}";
             return await _dbClient.QueryAsync<T>(sql);
         }
 
-        public Task GetOne(string id)
+        public Task GetOneAsync(string id)
         {
             throw new NotImplementedException();
         }
 
 
-        public Task Update(T data)
+        public Task UpdateAsync(T data)
         {
             throw new NotImplementedException();
         }

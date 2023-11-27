@@ -2,12 +2,12 @@
 {
     public interface IRepository<T> 
     {
-        public Task GetOne(string id);
-        public Task<List<T>> GetAll(int start, int length);
-        public Task Insert(T data);
-        public Task Update(T data);
-        public Task Delete(string id);
-        public Task CreateTable();
-        public Task DropTable();
+        public Task GetOneAsync(string id);
+        public Task<List<T>> GetAllAsync(int start, int length);
+        public Task InsertAsync(T data);
+        public Task UpdateAsync(T data);
+        public Task DeleteAsync(string id);
+        public Task CreateTableAsync();
+        public Task DropTableAsync();
     }
 }

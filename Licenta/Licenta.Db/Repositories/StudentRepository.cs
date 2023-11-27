@@ -1,11 +1,16 @@
 ﻿using Licenta.Db.Data;
 using Licenta.Db.Seeder.Interfaces;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace Licenta.Db.Repositories
 {
-    public class ProfessorRepository : BaseRepository<Profesor>
+    internal class StudentRepository : BaseRepository<Student>
     {
-        public ProfessorRepository(IDapperDbClient dbClient) : base(dbClient)
+        public StudentRepository(IDapperDbClient dbClient) : base(dbClient)
         {
         }
 
@@ -24,7 +29,7 @@ namespace Licenta.Db.Repositories
             await _dbClient.ExecuteAsync(sql);
         }
 
-        public override async Task InsertAsync(Profesor data)
+        public override async Task InsertAsync(Student data)
         {
             string sql = $"""
                 INSERT INTO {_tableName}

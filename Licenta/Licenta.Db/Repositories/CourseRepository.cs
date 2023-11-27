@@ -9,7 +9,7 @@ namespace Licenta.Db.Repositories
         {
         }
 
-        public override async Task CreateTable()
+        public override async Task CreateTableAsync()
         {
             string sql = $"""
                 DROP TABLE IF EXISTS {_tableName};
@@ -22,7 +22,7 @@ namespace Licenta.Db.Repositories
             await _dbClient.ExecuteAsync(sql);
         }
 
-        public override async Task Insert(Course data)
+        public override async Task InsertAsync(Course data)
         {
             string sql = $"INSERT INTO {_tableName} (Name) VALUES (@Name)";
             var rowsAffected = await _dbClient.ExecuteAsync(sql, data);

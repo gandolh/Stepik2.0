@@ -14,7 +14,7 @@ namespace Licenta.Db.Repositories
         {
         }
 
-        public override async Task CreateTable()
+        public override async Task CreateTableAsync()
         {
             string sql = $"""
                 DROP TABLE IF EXISTS {_tableName};
@@ -29,14 +29,13 @@ namespace Licenta.Db.Repositories
             await _dbClient.ExecuteAsync(sql);
         }
 
-        public override async Task Insert(Exercise data)
+        public override async Task InsertAsync(Exercise data)
         {
-            //string sql = """
-            //    INSERT INTO Exercises (LessonId, Enunciation, Type)
-            //    VALUES (101, 'Write a program to calculate the sum of two numbers.', 0);
-            //    """;
-            //var rowsAffected = await _dbClient.ExecuteAsync(sql, data);
-            throw new NotImplementedException();
+            string sql = $"""
+                INSERT INTO {_tableName} (LessonId, Enunciation, Type)
+                VALUES (@LessonId, @Enunciation, @Type);
+                """;
+            var rowsAffected = await _dbClient.ExecuteAsync(sql, data);
         }
     }
 }
