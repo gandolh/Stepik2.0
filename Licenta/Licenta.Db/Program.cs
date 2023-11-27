@@ -9,6 +9,8 @@ internal class Program
 {
     private static async Task Main(string[] args)
     {
+        Console.WriteLine("Starting");
+        
         IConfiguration configuration = new ConfigurationBuilder()
         .SetBasePath(Directory.GetCurrentDirectory())
         .AddJsonFile("appsettings.json", optional: true, reloadOnChange: true)
@@ -16,13 +18,10 @@ internal class Program
         .Build();
         IDatabaseConnectionSettings settings = new DatabaseConnectionSettings();
         configuration.GetSection("Database").Bind(settings);
-        IDbFactory dbFactory = new NpgsqlDbFactory(settings);
-        dbFactory.Context().Open();
-        var transaction = dbFactory.Context().BeginTransaction();
-        IDapperDbClient dbClient = new DapperDbClient(dbFactory, transaction);
-        DataSeeder dataSeed = new DataSeeder(dbClient);
+
+        DataSeeder dataSeed = new DataSeeder(settings);
         await dataSeed.Seed();
-        Console.WriteLine("Starting");
+
         Console.WriteLine("Done");
     }
 }
