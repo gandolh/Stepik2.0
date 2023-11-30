@@ -20,7 +20,7 @@ internal class Program
         configuration.GetSection("Database").Bind(settings);
 
         DataSeeder dataSeed = new DataSeeder(settings);
-        await dataSeed.Seed();
+        await dataSeed.SeedAsync();
 
         Console.WriteLine("Done");
     }

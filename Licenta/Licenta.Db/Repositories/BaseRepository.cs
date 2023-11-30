@@ -19,6 +19,11 @@ namespace Licenta.Db.Repositories
             _tableName = typeof(T).Name;
         }
 
+        public string GetTableName()
+        {
+            return _tableName;
+        }
+
         public abstract Task CreateTableAsync();
         public async Task DropTableAsync()
         {

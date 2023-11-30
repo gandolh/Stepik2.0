@@ -1,4 +1,4 @@
-﻿namespace Licenta.Db.Data
+﻿namespace Licenta.Db.DataModel
 {
     public class Profesor
     {

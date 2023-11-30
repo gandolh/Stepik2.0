@@ -1,4 +1,4 @@
-﻿using Licenta.Db.Data;
+﻿using Licenta.Db.DataModel;
 using Licenta.Db.Seeder.Interfaces;
 using System;
 using System.Collections.Generic;

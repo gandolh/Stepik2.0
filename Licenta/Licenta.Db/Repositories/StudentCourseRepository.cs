@@ -3,9 +3,9 @@ using Licenta.Db.Seeder.Interfaces;
 
 namespace Licenta.Db.Repositories
 {
-    public class SubmissionRepository : BaseRepository<Submission>
+    internal class StudentCourseRepository : BaseRepository<Student_Course>
     {
-        public SubmissionRepository(IDapperDbClient dbClient) : base(dbClient)
+        public StudentCourseRepository(IDapperDbClient dbClient) : base(dbClient)
         {
         }
 
@@ -15,22 +15,16 @@ namespace Licenta.Db.Repositories
                 DROP TABLE IF EXISTS {_tableName};
 
                 CREATE TABLE {_tableName} (
-                    Id SERIAL PRIMARY KEY,
-                    Points INT,
                     StudentId INT,
-                    ExerciseId INT
+                    CourseId INT
                 );
                 """;
             await _dbClient.ExecuteAsync(sql);
         }
 
-        public override async Task InsertAsync(Submission data)
+        public override async Task InsertAsync(Student_Course data)
         {
-            string sql = $"""
-                INSERT INTO {_tableName}
-                (Points, StudentId, ExerciseId) 
-                VALUES (@Points,@StudentId,@ExerciseId);
-            """;
+            string sql = $"INSERT INTO {_tableName} (StudentId, CourseId) VALUES (@StudentId, @CourseId)";
             var rowsAffected = await _dbClient.ExecuteAsync(sql, data);
         }
     }

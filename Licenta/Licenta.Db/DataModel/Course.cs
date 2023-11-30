@@ -1,4 +1,4 @@
-﻿namespace Licenta.Db.Data
+﻿namespace Licenta.Db.DataModel
 {
     public class Course
     {
@@ -6,7 +6,7 @@
         public string Name { get; set; } = string.Empty;
         public Course()
         {
-            
+
         }
 
         public Course(int id, string name)
