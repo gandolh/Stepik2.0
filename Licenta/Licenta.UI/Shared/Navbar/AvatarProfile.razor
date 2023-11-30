@@ -1,0 +1,33 @@
+@* 
+@inject NavigationManager NavManager;
+@inherits BaseLicentaComp<ComponentResource>
+<Dropdown>
+    <DropdownToggle ElementId="NavProfile" Class="nav-profile d-flex align-items-center pe-0">
+        <ProfileIcon Email="@_email"/>
+        <span class="d-none d-md-block dropdown-toggle ps-2">@_firstInitial. @_lastName</span>
+    </DropdownToggle>
+    <DropdownMenu ElementId="NavProfileMenu" Class="profile">
+        <HeaderContent>
+            <h6>@_fullName</h6>
+        </HeaderContent>
+        <Items>
+            <DropdownItem Href="Profile"
+                    AnchorClass="dropdown-item d-flex align-items-center">
+                <i class="bi bi-person"></i>
+                <span>@Localizer["MyProfile"]</span>
+            </DropdownItem>
+            <DropdownItem Href="faq"
+                          AnchorClass="dropdown-item d-flex align-items-center">
+                <i class="bi bi-question-circle"></i>
+                <span>@Localizer["NeedHelp"]</span>
+
+            </DropdownItem>
+            <DropdownItem Href=@($"/logout?postLogoutRedirectUri={NavManager.Uri }")
+                          AnchorClass="dropdown-item d-flex align-items-center">
+                <i class="bi bi-box-arrow-right"></i>
+                <span>@Localizer["SignOut"]</span>
+            </DropdownItem>
+        </Items>
+    </DropdownMenu>
+</Dropdown>
+ *@

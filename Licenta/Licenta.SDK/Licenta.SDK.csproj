@@ -7,6 +7,24 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Localization\Resources\ComponentResource-en.json" />
+    <None Remove="Localization\Resources\ComponentResource-ro.json" />
+    <None Remove="Localization\Resources\ComponentResource.json" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="Localization\Resources\ComponentResource-en.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Localization\Resources\ComponentResource-ro.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Localization\Resources\ComponentResource.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Confluent.Kafka" Version="2.3.0" />
     <PackageReference Include="Microsoft.Extensions.Configuration" Version="8.0.0" />
     <PackageReference Include="Microsoft.Extensions.FileProviders.Abstractions" Version="8.0.0" />

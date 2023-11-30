@@ -1,0 +1,10 @@
+﻿.indexContainer{
+    display:grid;
+    grid-template-rows: auto 1fr;
+}
+
+/*.IndexGridMenu {
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+}
+*/

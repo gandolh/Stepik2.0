@@ -1,0 +1,24 @@
+﻿
+
+@inherits BaseLicentaComp<ComponentResource>
+
+<Dropdown>
+    <DropdownToggle Class="nav-icon">
+        <Icon Name="@IconNameParam" />
+        <span class="badge bg-primary badge-number">0</span>
+    </DropdownToggle>
+    <DropdownMenu Class="notifications">
+        <Items>
+                <DropdownItem Class="notification-item text-center" AnchorClass="w-100 text-center">
+                    @if (ParentPageState == PageState.Loading)
+                    {
+                            <Loading Label="@ErrorLabel" />
+                    }
+                    else
+                    {
+                            <h5> @EmptyLabel </h5>
+                    }
+                </DropdownItem>
+        </Items>
+    </DropdownMenu>
+</Dropdown>
