@@ -1,8 +1,9 @@
 ﻿using Licenta.Runner.CodeRunners;
 using Licenta.Sdk.Config;
-using Licenta.Sdk.Models.Data;
 using Licenta.Sdk.Models.Dtos;
 using Licenta.Sdk.Models.Mappers;
+using Licenta.SDK.Models.Dtos;
+using Licenta.SDK.Models.Mapper;
 using System.Text.Json;
 
 namespace Licenta.Runner
@@ -28,8 +29,8 @@ namespace Licenta.Runner
 
         internal void RunCode(string reqJson)
         {
-            CodeRunReqDto dto = JsonSerializer.Deserialize<CodeRunReqDto>(reqJson) ?? new();
-            MapperBase<CodeRunReq, CodeRunReqDto> mapper = new CodeRunReqMapper();
+            Sdk.Models.Dtos.CodeRunReqDto dto = JsonSerializer.Deserialize<Sdk.Models.Dtos.CodeRunReqDto>(reqJson) ?? new();
+            MapperBase<CodeRunReqDto, Sdk.Models.Dtos.CodeRunReqDto> mapper = new CodeRunReqMapper();
             var codeRunReq = mapper.Map(dto);
 
             ICodeRunner codeRunner = codeRunReq.Language switch

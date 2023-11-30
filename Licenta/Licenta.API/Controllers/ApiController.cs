@@ -1,9 +1,6 @@
-﻿using Licenta.API.Mappers;
-using Licenta.Db.Data;
-using Licenta.Db.Repository;
-using Licenta.Sdk.Models.Dtos;
-using Licenta.Sdk.Models.Interfaces;
-using Licenta.Sdk.Models.Mappers;
+﻿using Licenta.Db.DataModel;
+using Licenta.Db.Repositories;
+using Licenta.SDK.Models.Mapper;
 using Microsoft.AspNetCore.Mvc;
 using Npgsql;
 
@@ -11,27 +8,11 @@ namespace Licenta.API.Controllers
 {
     [ApiController]
     [Route("api")]
-    public class ApiController : ControllerBase, IApiService, IDisposable
+    public class ApiController : ControllerBase
     {
         private readonly IConfiguration _iConfig;
-        private readonly NpgsqlConnection conn;
         public ApiController(IConfiguration iConfig){
             _iConfig = iConfig;
-            conn = new NpgsqlConnection(_iConfig["AppConfig:ConnectionString"]);
-
-        }
-
-        
-
-        [HttpGet(nameof(GetAccesedLessons))]
-        public async Task<IEnumerable<LastAccesedDto>> GetAccesedLessons(string userId)
-        {
-            conn.Open();
-            LastAccesedRepository lar = new LastAccesedRepository(conn);
-            IEnumerable<LastAccesed> lasts =  lar.GetAll(userId: userId);
-            LastAccesedMapper mapper = new();
-            IEnumerable<LastAccesedDto> dtos = mapper.Map(lasts);
-            return dtos;
 
         }
 
@@ -41,37 +22,14 @@ namespace Licenta.API.Controllers
             CourseRepository cr = new CourseRepository(conn);
             Course course = cr.GetOne(courseId);
             MapperBase<Course, CourseDto> mapper = new CourseMapper();
-            CourseDto dto = mapper.Map(course, 
+            CourseDto dto = mapper.Map(course,
                 (course) => course.LastAccesedLesson = null);
 
             // TODO: add from LastAccesedRepository
             return dto;
         }
 
-        [HttpGet(nameof(GetCourses))]
-        public async Task<IEnumerable<CourseDto>> GetCourses()
-        {
-            CourseRepository cr = new CourseRepository(conn);
-            IEnumerable<Course> courses = cr.GetAll();
-            MapperBase<Course, CourseDto> mapper = new CourseMapper();
-            IEnumerable<CourseDto> dtos = mapper.Map(courses);
-            return dtos;
-        }
 
-        [HttpGet(nameof(GetEvents))]
-        public async Task<IEnumerable<EventDto>> GetEvents(DateTime? after = null)
-        {
-            EventRepository er = new EventRepository(conn);
-            IEnumerable<Event> events = er.GetAll();
-            MapperBase<Event, EventDto> mapper = new EventMapper();
-            var dto = mapper.Map(events);
-            return dto;
-        }
 
-        public void Dispose()
-        {
-            conn.Close();
-            conn.Dispose();
-        }
     }
 }

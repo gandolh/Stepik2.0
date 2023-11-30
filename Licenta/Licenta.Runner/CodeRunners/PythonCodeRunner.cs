@@ -1,11 +1,11 @@
-﻿using Licenta.Sdk.Models.Data;
+﻿using Licenta.SDK.Models.Dtos;
 using System.Diagnostics;
 
 namespace Licenta.Runner.CodeRunners
 {
     public class PythonCodeRunner : ICodeRunner
     {
-        public async Task<CodeRunResult> Run(CodeRunReq req)
+        public async Task<CodeRunResult> Run(CodeRunReqDto req)
         {
             string path = "/code_to_run/" + Guid.NewGuid().ToString() + "_script.py";
             string command = $"python3";

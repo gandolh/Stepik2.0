@@ -1,11 +1,11 @@
-﻿using Licenta.Sdk.Models.Data;
+﻿using Licenta.SDK.Models.Dtos;
 using System.Diagnostics;
 
 namespace Licenta.Runner.CodeRunners
 {
     public class CppCodeRunner : ICodeRunner
     {
-        public async Task<CodeRunResult> Run(CodeRunReq req)
+        public async Task<CodeRunResult> Run(CodeRunReqDto req)
         {
             string filename = Guid.NewGuid().ToString();
             string cppPath = "/code_to_run/" + filename + "_cpp.cpp";

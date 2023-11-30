@@ -18,6 +18,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Licenta.Db\Licenta.Db.csproj" />
+    <ProjectReference Include="..\Licenta.SDK\Licenta.SDK.csproj" />
   </ItemGroup>
 
 </Project>

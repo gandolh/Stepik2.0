@@ -1,11 +1,11 @@
 using Licenta.Runner.CodeRunners;
-using Licenta.Sdk.Models.Data;
+using Licenta.SDK.Models.Dtos;
 
 namespace Licenta.Runner.Tests
 {
     public class CodeRunner
     {
-        CodeRunReq cppCodeTest = new CodeRunReq()
+        CodeRunReqDto cppCodeTest = new CodeRunReqDto()
         {
             Code = """
             #include <iostream>
@@ -37,7 +37,7 @@ namespace Licenta.Runner.Tests
             Input = "2\n3",
             Language = CodeLanguage.Cpp
         };
-        CodeRunReq pythonCodeTest = new CodeRunReq()
+        CodeRunReqDto pythonCodeTest = new CodeRunReqDto()
         {
             Code = """
             # Define a function to sum two numbers

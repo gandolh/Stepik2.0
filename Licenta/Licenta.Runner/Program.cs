@@ -1,5 +1,5 @@
 using Licenta.Runner.CodeRunners;
-using Licenta.Sdk.Models.Data;
+using Licenta.SDK.Models.Dtos;
 
 //var builder = Host.CreateApplicationBuilder(args);
 
@@ -34,7 +34,7 @@ using Licenta.Sdk.Models.Data;
 
 
 ICodeRunner cppCodeRunner = new CppCodeRunner();
-await cppCodeRunner.Run(new CodeRunReq()
+await cppCodeRunner.Run(new CodeRunReqDto()
 {
     Code = """
             #include <iostream>
