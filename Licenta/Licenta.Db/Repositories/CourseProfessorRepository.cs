@@ -17,11 +17,9 @@ namespace Licenta.Db.Repositories
         public override async Task CreateTableAsync()
         {
             string sql = $"""
-                DROP TABLE IF EXISTS {_tableName};
-
                 CREATE TABLE {_tableName} (
-                    CourseId INT,
-                    ProfessorId INT
+                    CourseId INT REFERENCES Course(Id),
+                    ProfessorId INT REFERENCES Profesor(Id)
                 );
                 """;
             await _dbClient.ExecuteAsync(sql);

@@ -1,10 +1,4 @@
 ﻿using Licenta.Db.Seeder.Interfaces;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Licenta.Db.Repositories
 {
@@ -42,7 +36,9 @@ namespace Licenta.Db.Repositories
         public async Task<List<T>> GetAllAsync(int start = 0, int length = 25)
         {
             string sql = $"SELECT * FROM {_tableName} OFFSET {start} LIMIT {length}";
-            return await _dbClient.QueryAsync<T>(sql);
+            _dbClient.CommitTransaction();
+             return await _dbClient.QueryAsync<T>(sql);
+
         }
 
         public Task GetOneAsync(string id)

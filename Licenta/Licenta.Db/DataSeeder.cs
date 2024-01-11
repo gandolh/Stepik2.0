@@ -9,101 +9,122 @@ namespace Licenta.Db
     internal class DataSeeder
     {
         private readonly IDapperDbClient _dbClient;
+        private readonly IDbFactory _dbFactory;
+        private readonly CourseRepository CourseRepository;
+        private readonly ProfessorRepository ProfessorRepository;
+        private readonly StudentRepository StudentRepository;
+        private readonly LessonRepository LessonRepository;
+        private readonly ExerciseRepository ExerciseRepository;
+        private readonly QuizVariantsRepository QuizVariantsRepository;
+        private readonly SubmissionRepository SubmissionRepository;
+        private readonly StudentCourseRepository StudentCourseRepository;
+        private readonly CourseProfessorRepository CourseProfessorRepository;
+
+
+
+
 
         public DataSeeder(IDatabaseConnectionSettings settings)
         {
             IDbFactory dbFactory = new NpgsqlDbFactory(settings);
-            dbFactory.Context().Open();
-            var transaction = dbFactory.Context().BeginTransaction();
-            IDapperDbClient dbClient = new DapperDbClient(dbFactory, transaction);
+            _dbFactory = dbFactory;
+            _dbFactory.Context().Open();
+         
+            IDapperDbClient dbClient = new DapperDbClient(dbFactory);
             _dbClient = dbClient;
+            CourseRepository = new CourseRepository(_dbClient);
+            ProfessorRepository = new ProfessorRepository(_dbClient);
+            StudentRepository = new StudentRepository(_dbClient);
+            LessonRepository = new LessonRepository(_dbClient);
+            ExerciseRepository = new ExerciseRepository(_dbClient);
+            QuizVariantsRepository = new QuizVariantsRepository(_dbClient);
+            SubmissionRepository = new SubmissionRepository(_dbClient);
+            StudentCourseRepository = new StudentCourseRepository(_dbClient);
+            CourseProfessorRepository = new CourseProfessorRepository(_dbClient);
         }
 
 
         public async Task SeedAsync()
         {
-            await SeedCourseAsync();
-            await SeedProfesorAsync();
-            await SeedLessonAsync();
-            await SeedExerciseAsync();
-            await SeedQuizVariantAsync();
-            await SeedStudentAsync();
-            await SeedSubmissionAsync();
-            await SeedCourseProfesorAsync();
-            await SeedStudentCourseAsync();
+
+            await DropAll();
+            await CreateTables();
+            await InsertData();
+            await LogResults();
         }
 
-
-        internal async Task SeedCourseAsync()
+        private async Task DropAll()
         {
-            CourseRepository cr = new CourseRepository(_dbClient);
-            var objects = DataSampling.GetCourses();
-            await BuildSchemaAsync(cr, objects);
+            await DropTable(CourseProfessorRepository);
+            await DropTable(StudentCourseRepository);
+            await DropTable(ProfessorRepository);
+            await DropTable(QuizVariantsRepository);
+            await DropTable(SubmissionRepository);
+            await DropTable(ExerciseRepository);
+            await DropTable(LessonRepository);
+            await DropTable(StudentRepository);
+            await DropTable(CourseRepository);
         }
 
-        internal async Task SeedProfesorAsync()
+        private async Task CreateTables()
         {
-            ProfessorRepository pr = new ProfessorRepository(_dbClient);
-            var objects = DataSampling.GetProfesor();
-            await BuildSchemaAsync(pr, objects);
+            await CreateTable(CourseRepository);
+            await CreateTable(ProfessorRepository);
+            await CreateTable(StudentRepository);
+            await CreateTable(LessonRepository);
+            await CreateTable(ExerciseRepository);
+            await CreateTable(QuizVariantsRepository);
+            await CreateTable(SubmissionRepository);
+            await CreateTable(StudentCourseRepository);
+            await CreateTable(CourseProfessorRepository);
         }
 
-        internal async Task SeedStudentAsync()
+        private async Task InsertData()
         {
-            StudentRepository sr = new StudentRepository(_dbClient);
-            var objects = DataSampling.GetStudents();
-            await BuildSchemaAsync(sr, objects);
+            await GenericInsertData(CourseRepository, DataSampling.GetCourses);
+            await GenericInsertData(ProfessorRepository, DataSampling.GetProfesor);
+            await GenericInsertData(StudentRepository, DataSampling.GetStudents);
+            await GenericInsertData(LessonRepository, DataSampling.GetLesson);
+            await GenericInsertData(ExerciseRepository, DataSampling.GetExercise);
+            await GenericInsertData(QuizVariantsRepository, DataSampling.GetQuizVariants);
+            await GenericInsertData(SubmissionRepository, DataSampling.GetSubmissions);
+            await GenericInsertData(StudentCourseRepository, DataSampling.GetStudentCourse);
+            await GenericInsertData(CourseProfessorRepository, DataSampling.GetCourseProfesor);
         }
 
-        internal async Task SeedLessonAsync()
+        private async Task LogResults()
         {
-            LessonRepository lr = new LessonRepository(_dbClient);
-            var objects = DataSampling.GetLesson();
-            await BuildSchemaAsync(lr, objects);
+            await LogResult(CourseRepository);
+            await LogResult(ProfessorRepository);
+            await LogResult(StudentRepository);
+            await LogResult(LessonRepository);
+            await LogResult(ExerciseRepository);
+            await LogResult(QuizVariantsRepository);
+            await LogResult(SubmissionRepository);
+            await LogResult(StudentCourseRepository);
+            await LogResult(CourseProfessorRepository);
         }
 
-        internal async Task SeedExerciseAsync()
+        private async Task DropTable<T>(BaseRepository<T> repository)
         {
-            ExerciseRepository er = new ExerciseRepository(_dbClient);
-            var objects = DataSampling.GetExercise();
-            await BuildSchemaAsync(er, objects);
+            await repository.DropTableAsync();
         }
 
-        internal async Task SeedQuizVariantAsync()
-        {
-            QuizVariantsRepository qvr = new QuizVariantsRepository(_dbClient);
-            var objects = DataSampling.GetQuizVariants();
-            await BuildSchemaAsync(qvr, objects);
-        }
-
-        internal async Task SeedSubmissionAsync()
-        {
-            SubmissionRepository sr = new SubmissionRepository(_dbClient);
-            var objects = DataSampling.GetSubmissions();
-            await BuildSchemaAsync(sr, objects);
-        }
-
-        private async Task SeedStudentCourseAsync()
-        {
-            StudentCourseRepository scr = new StudentCourseRepository(_dbClient);
-            var objects = DataSampling.GetStudentCourse();
-            await BuildSchemaAsync(scr, objects);
-        }
-
-        private async Task SeedCourseProfesorAsync()
-        {
-            CourseProfessorRepository cpr = new CourseProfessorRepository(_dbClient);
-            var objects = DataSampling.GetCourseProfesor();
-            await BuildSchemaAsync(cpr, objects);
-        }
-
-
-        private async Task BuildSchemaAsync<T>(BaseRepository<T> repository, T[] objects)
+        private async Task CreateTable<T>(BaseRepository<T> repository)
         {
             await repository.CreateTableAsync();
+        }
+
+        private async Task GenericInsertData<T>(BaseRepository<T> repository, Func<T[]> getData)
+        {
+            T[] objects = getData();
             foreach (var obj in objects)
                 await repository.InsertAsync(obj);
+        }
 
+
+        private async Task LogResult<T>(BaseRepository<T> repository)
+        {
             var insertedData = await repository.GetAllAsync();
             string data = JsonSerializer.Serialize(insertedData);
             Console.WriteLine($"Table: {repository.GetTableName()} \r\n Data: {data}");

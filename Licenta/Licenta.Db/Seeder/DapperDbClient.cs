@@ -9,12 +9,12 @@ namespace Licenta.Db.Seeder
     {
         protected readonly IDbFactory dbFactory;
 
-        protected readonly IDbTransaction dbTransaction;
+        protected IDbTransaction dbTransaction;
 
-        public DapperDbClient(IDbFactory dbFactory, IDbTransaction? dbTransaction)
+        public DapperDbClient(IDbFactory dbFactory)
         {
             this.dbFactory = dbFactory ?? throw new ArgumentNullException(nameof(dbFactory));
-            this.dbTransaction = dbTransaction ?? throw new ArgumentNullException(nameof(dbTransaction));
+            dbTransaction = dbFactory.Context().BeginTransaction();
         }
 
         public void Dispose()
@@ -25,36 +25,40 @@ namespace Licenta.Db.Seeder
 
         public async Task<List<TReturn>> QueryAsync<TFirst, TSecond, TReturn>(string sql, Func<TFirst, TSecond, TReturn> map, object param = null, string splitOn = "id")
         {
-            return (await DbFactory.Context().QueryAsync(sql, map, param: param, transaction: DbTransaction, splitOn: splitOn)).ToList();
+            return (await dbFactory.Context().QueryAsync(sql, map, param: param, transaction: dbTransaction, splitOn: splitOn)).ToList();
         }
 
         public async Task<List<TReturn>> QueryAsync<TReturn>(string sql, object param = null)
         {
-            return (await DbFactory.Context().QueryAsync<TReturn>(sql, param, DbTransaction)).ToList();
+            return (await dbFactory.Context().QueryAsync<TReturn>(sql, param, dbTransaction)).ToList();
         }
 
         public async Task<GridReader> QueryMultipleAsync(string sql, object param = null)
         {
-            return await DbFactory.Context().QueryMultipleAsync(sql, param, DbTransaction);
+            return await dbFactory.Context().QueryMultipleAsync(sql, param, dbTransaction);
         }
 
         public async Task<int> ExecuteAsync(string sql, object param = null)
         {
-            return await DbFactory.Context().ExecuteAsync(sql, param, DbTransaction);
+            return await dbFactory.Context().ExecuteAsync(sql, param, dbTransaction);
         }
 
         public async Task<TReturn> QueryFirstOrDefaultAsync<TReturn>(string sql, object param = null)
         {
-            return await DbFactory.Context().QueryFirstOrDefaultAsync<TReturn>(sql, param, DbTransaction);
+            return await dbFactory.Context().QueryFirstOrDefaultAsync<TReturn>(sql, param, dbTransaction);
         }
 
         public async Task<TReturn> ExecuteScalarAsync<TReturn>(string sql, object param = null)
         {
-            return await DbFactory.Context().ExecuteScalarAsync<TReturn>(sql, param, DbTransaction);
+            return await dbFactory.Context().ExecuteScalarAsync<TReturn>(sql, param, dbTransaction);
         }
 
-        public IDbFactory DbFactory => dbFactory;
+        public void CommitTransaction()
+        {
+            dbTransaction.Commit();
+            dbTransaction = dbFactory.Context().BeginTransaction();
+        }
 
-        public IDbTransaction DbTransaction => dbTransaction;
+   
     }
 }

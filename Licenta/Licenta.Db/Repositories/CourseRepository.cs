@@ -12,8 +12,6 @@ namespace Licenta.Db.Repositories
         public override async Task CreateTableAsync()
         {
             string sql = $"""
-                DROP TABLE IF EXISTS {_tableName};
-
                 CREATE TABLE {_tableName} (
                     Id SERIAL PRIMARY KEY,
                     Name VARCHAR(255)
