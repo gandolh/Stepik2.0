@@ -3,9 +3,9 @@ using Licenta.Db.Seeder.Interfaces;
 
 namespace Licenta.Db.Repositories
 {
-    public class ProfessorRepository : BaseRepository<Profesor>
+    public class TeacherRepository : BaseRepository<Teacher>
     {
-        public ProfessorRepository(IDapperDbClient dbClient) : base(dbClient)
+        public TeacherRepository(IDapperDbClient dbClient) : base(dbClient)
         {
         }
 
@@ -22,7 +22,7 @@ namespace Licenta.Db.Repositories
             await _dbClient.ExecuteAsync(sql);
         }
 
-        public override async Task InsertAsync(Profesor data)
+        public override async Task InsertAsync(Teacher data)
         {
             string sql = $"""
                 INSERT INTO {_tableName}

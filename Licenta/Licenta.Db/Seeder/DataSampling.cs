@@ -22,20 +22,20 @@ namespace Licenta.Db.Seeder
         ];
             return objects;
         }
-        public static Profesor[] GetProfesor()
+        public static Teacher[] GetTeacher()
         {
-            Profesor[] objects =
+            Teacher[] objects =
              [
-                new Profesor(1, "John", "Smith", "password1"),
-                 new Profesor(2, "Alice", "Johnson", "password2"),
-                 new Profesor(3, "Michael", "Brown", "password3"),
-                 new Profesor(4, "Emily", "Davis", "password4"),
-                 new Profesor(5, "David", "Martinez", "password5"),
-                 new Profesor(6, "Sarah", "Garcia", "password6"),
-                 new Profesor(7, "Chris", "Wilson", "password7"),
-                 new Profesor(8, "Jennifer", "Lopez", "password8"),
-                 new Profesor(9, "Daniel", "Lee", "password9"),
-                 new Profesor(10, "Laura", "Taylor", "password10")
+                new Teacher(1, "John", "Smith", "password1"),
+                 new Teacher(2, "Alice", "Johnson", "password2"),
+                 new Teacher(3, "Michael", "Brown", "password3"),
+                 new Teacher(4, "Emily", "Davis", "password4"),
+                 new Teacher(5, "David", "Martinez", "password5"),
+                 new Teacher(6, "Sarah", "Garcia", "password6"),
+                 new Teacher(7, "Chris", "Wilson", "password7"),
+                 new Teacher(8, "Jennifer", "Lopez", "password8"),
+                 new Teacher(9, "Daniel", "Lee", "password9"),
+                 new Teacher(10, "Laura", "Taylor", "password10")
              ];
             return objects;
         }
@@ -131,23 +131,23 @@ namespace Licenta.Db.Seeder
              ];
             return objects;
         }
-        public static Course_Professor[] GetCourseProfesor()
+        public static Course_Teacher[] GetCourseTeacher()
         {
-            Course_Professor[] objects =
+            Course_Teacher[] objects =
             [
-                new Course_Professor(1, 1),
-                new Course_Professor(1, 2),
-                new Course_Professor(1, 3),
-                new Course_Professor(2, 2),
-                new Course_Professor(2, 3),
-                new Course_Professor(3, 3),
-                new Course_Professor(4, 4),
-                new Course_Professor(5, 5),
-                new Course_Professor(6, 6),
-                new Course_Professor(7, 7),
-                new Course_Professor(8, 8),
-                new Course_Professor(9, 9),
-                new Course_Professor(10, 10)
+                new Course_Teacher(1, 1),
+                new Course_Teacher(1, 2),
+                new Course_Teacher(1, 3),
+                new Course_Teacher(2, 2),
+                new Course_Teacher(2, 3),
+                new Course_Teacher(3, 3),
+                new Course_Teacher(4, 4),
+                new Course_Teacher(5, 5),
+                new Course_Teacher(6, 6),
+                new Course_Teacher(7, 7),
+                new Course_Teacher(8, 8),
+                new Course_Teacher(9, 9),
+                new Course_Teacher(10, 10)
             ];
             return objects;
         }

@@ -6,20 +6,20 @@ using System.Threading.Tasks;
 
 namespace Licenta.Db.DataModel
 {
-    internal class Course_Professor
+    internal class Course_Teacher
     {
         public int CourseId { get; set; } = 0;
-        public int ProfessorId { get; set; } = 0;
+        public int TeacherId { get; set; } = 0;
 
-        public Course_Professor()
+        public Course_Teacher()
         {
 
         }
 
-        public Course_Professor(int courseId, int professorId)
+        public Course_Teacher(int courseId, int teacherId)
         {
             CourseId = courseId;
-            ProfessorId = professorId;
+            TeacherId = teacherId;
         }
     }
 }

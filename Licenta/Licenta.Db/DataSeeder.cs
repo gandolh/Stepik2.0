@@ -11,14 +11,14 @@ namespace Licenta.Db
         private readonly IDapperDbClient _dbClient;
         private readonly IDbFactory _dbFactory;
         private readonly CourseRepository CourseRepository;
-        private readonly ProfessorRepository ProfessorRepository;
+        private readonly TeacherRepository TeacherRepository;
         private readonly StudentRepository StudentRepository;
         private readonly LessonRepository LessonRepository;
         private readonly ExerciseRepository ExerciseRepository;
         private readonly QuizVariantsRepository QuizVariantsRepository;
         private readonly SubmissionRepository SubmissionRepository;
         private readonly StudentCourseRepository StudentCourseRepository;
-        private readonly CourseProfessorRepository CourseProfessorRepository;
+        private readonly CourseTeacherRepository CourseTeacherRepository;
 
 
 
@@ -33,14 +33,14 @@ namespace Licenta.Db
             IDapperDbClient dbClient = new DapperDbClient(dbFactory);
             _dbClient = dbClient;
             CourseRepository = new CourseRepository(_dbClient);
-            ProfessorRepository = new ProfessorRepository(_dbClient);
+            TeacherRepository = new TeacherRepository(_dbClient);
             StudentRepository = new StudentRepository(_dbClient);
             LessonRepository = new LessonRepository(_dbClient);
             ExerciseRepository = new ExerciseRepository(_dbClient);
             QuizVariantsRepository = new QuizVariantsRepository(_dbClient);
             SubmissionRepository = new SubmissionRepository(_dbClient);
             StudentCourseRepository = new StudentCourseRepository(_dbClient);
-            CourseProfessorRepository = new CourseProfessorRepository(_dbClient);
+            CourseTeacherRepository = new CourseTeacherRepository(_dbClient);
         }
 
 
@@ -55,9 +55,9 @@ namespace Licenta.Db
 
         private async Task DropAll()
         {
-            await DropTable(CourseProfessorRepository);
+            await DropTable(CourseTeacherRepository);
             await DropTable(StudentCourseRepository);
-            await DropTable(ProfessorRepository);
+            await DropTable(TeacherRepository);
             await DropTable(QuizVariantsRepository);
             await DropTable(SubmissionRepository);
             await DropTable(ExerciseRepository);
@@ -69,40 +69,40 @@ namespace Licenta.Db
         private async Task CreateTables()
         {
             await CreateTable(CourseRepository);
-            await CreateTable(ProfessorRepository);
+            await CreateTable(TeacherRepository);
             await CreateTable(StudentRepository);
             await CreateTable(LessonRepository);
             await CreateTable(ExerciseRepository);
             await CreateTable(QuizVariantsRepository);
             await CreateTable(SubmissionRepository);
             await CreateTable(StudentCourseRepository);
-            await CreateTable(CourseProfessorRepository);
+            await CreateTable(CourseTeacherRepository);
         }
 
         private async Task InsertData()
         {
             await GenericInsertData(CourseRepository, DataSampling.GetCourses);
-            await GenericInsertData(ProfessorRepository, DataSampling.GetProfesor);
+            await GenericInsertData(TeacherRepository, DataSampling.GetTeacher);
             await GenericInsertData(StudentRepository, DataSampling.GetStudents);
             await GenericInsertData(LessonRepository, DataSampling.GetLesson);
             await GenericInsertData(ExerciseRepository, DataSampling.GetExercise);
             await GenericInsertData(QuizVariantsRepository, DataSampling.GetQuizVariants);
             await GenericInsertData(SubmissionRepository, DataSampling.GetSubmissions);
             await GenericInsertData(StudentCourseRepository, DataSampling.GetStudentCourse);
-            await GenericInsertData(CourseProfessorRepository, DataSampling.GetCourseProfesor);
+            await GenericInsertData(CourseTeacherRepository, DataSampling.GetCourseTeacher);
         }
 
         private async Task LogResults()
         {
             await LogResult(CourseRepository);
-            await LogResult(ProfessorRepository);
+            await LogResult(TeacherRepository);
             await LogResult(StudentRepository);
             await LogResult(LessonRepository);
             await LogResult(ExerciseRepository);
             await LogResult(QuizVariantsRepository);
             await LogResult(SubmissionRepository);
             await LogResult(StudentCourseRepository);
-            await LogResult(CourseProfessorRepository);
+            await LogResult(CourseTeacherRepository);
         }
 
         private async Task DropTable<T>(BaseRepository<T> repository)

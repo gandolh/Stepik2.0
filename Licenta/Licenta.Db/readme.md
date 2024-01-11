@@ -3,13 +3,13 @@ Lesson
 Exercice (quiz or code)
 Quiz variants
 Student
-Profesor
+Teacher
 Submissions
 
 One course has many Lessons
-one course has one or many profesors
+one course has one or many Teacher
 one course has many students
-profesor has many courses
+Teacher has many courses
 One lesson has code exercise or quiz exercise 
 (quiz) exercise has quiz variants
 one exercise has many submisions
@@ -50,7 +50,7 @@ password (encrypted) : string
 courseId : string
 
 
-Profesor
+Teacher
 id : string
 firstname : string
 lastname : string
@@ -62,7 +62,7 @@ points : int (% out of 100)
 studentId : string
 exerciseId : string
 
-Course_Profesor
+Course_Teacher
 courseId: string
-profesorId : string
+TeacherId : string
 

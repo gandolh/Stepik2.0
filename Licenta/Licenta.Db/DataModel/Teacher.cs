@@ -1,18 +1,18 @@
 ﻿namespace Licenta.Db.DataModel
 {
-    public class Profesor
+    public class Teacher
     {
         public int Id { get; set; } = 0;
         public string Firstname { get; set; } = string.Empty;
         public string Lastname { get; set; } = string.Empty;
         public string Password { get; set; } = string.Empty;
 
-        public Profesor()
+        public Teacher()
         {
 
         }
 
-        public Profesor(int id, string firstname, string lastname, string password)
+        public Teacher(int id, string firstname, string lastname, string password)
         {
             Id = id;
             Firstname = firstname;
