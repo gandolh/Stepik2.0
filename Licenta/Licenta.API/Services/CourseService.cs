@@ -4,27 +4,41 @@ using Licenta.Db.DataModel;
 using Licenta.Db.Repositories;
 using Licenta.Db.Seeder.Interfaces;
 using Licenta.SDK.Models.Dtos;
+using Microsoft.AspNetCore.Http.HttpResults;
+using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
+using System.Reflection.Metadata.Ecma335;
 
 namespace Licenta.API.Services
 {
     public class CourseService
     {
         private readonly CourseRepository _courseRepository;
-        private readonly CourseMapper _mapper;
+        private readonly CourseMapper _courseMapper;
+        private readonly FullCourseMapper _fullCourseMapper;
 
         public CourseService(CourseRepository courseRepository)
         {
             _courseRepository = courseRepository;
-            _mapper = new CourseMapper();
+            _courseMapper = new CourseMapper();
+            _fullCourseMapper = new FullCourseMapper();
 
         }
 
         internal async Task<List<CourseDto>> GetAll(bool includeStudents, bool includeTeachers)
         {
             var courses = await _courseRepository.GetAllAsync();
-            var dtos = _mapper.Map(courses);
+            var dtos = _courseMapper.Map(courses);
             return dtos;
+        }
+
+        internal async Task<FullCourseDto?> GetOne(int courseId)
+        {
+            Course? course =  await _courseRepository.GetJoinedCourse(courseId);
+            if (course == null)
+                return null;
+            var dto = _fullCourseMapper.Map(course);
+            return dto;
         }
     }
 }

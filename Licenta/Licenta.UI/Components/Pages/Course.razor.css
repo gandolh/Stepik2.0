@@ -18,3 +18,8 @@
     background-image: linear-gradient( rgba(255, 255, 255, 0.4), rgba(255, 255, 255, 0.4) ), url("imgs/backgroundCourse.jpg");
     background-size: cover;
 }
+
+
+.collection-item{
+    line-height:unset;
+}

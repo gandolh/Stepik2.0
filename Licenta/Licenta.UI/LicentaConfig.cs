@@ -25,6 +25,7 @@ namespace Licenta.UI
     public class LicentaEndpoints
     {
         public string GetCourses { get; set;} = string.Empty;
+        public string GetOne { get; set;} = string.Empty;
         public string GetCoursesByStudent { get; set;} = string.Empty;
     }
 }

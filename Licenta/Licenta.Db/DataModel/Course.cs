@@ -14,5 +14,9 @@
             Id = id;
             Name = name;
         }
+
+
+        // QUERYING
+        public List<Module> Modules { get; set; } = new List<Module>();
     }
 }

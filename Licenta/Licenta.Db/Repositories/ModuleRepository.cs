@@ -8,9 +8,9 @@ using System.Threading.Tasks;
 
 namespace Licenta.Db.Repositories
 {
-    public class LessonRepository : BaseRepository<Lesson>
+    internal class ModuleRepository : BaseRepository<Module>
     {
-        public LessonRepository(IDapperDbClient dbClient) : base(dbClient)
+        public ModuleRepository(IDapperDbClient dbClient) : base(dbClient)
         {
         }
 
@@ -19,20 +19,20 @@ namespace Licenta.Db.Repositories
             string sql = $"""
                 CREATE TABLE {_tableName}(
                     Id SERIAL PRIMARY KEY,
-                    ModuleId INT REFERENCES Module(Id),
-                    Name VARCHAR(255)
+                    CourseId INT REFERENCES Course(Id),
+                    Name VARCHAR(255) DEFAULT ''
                 );
                 
                 """;
             await _dbClient.ExecuteAsync(sql);
         }
 
-        public override async Task InsertAsync(Lesson data)
+        public override async Task InsertAsync(Module data)
         {
             string sql = $"""
                 INSERT INTO {_tableName}
-                (ModuleId, Name) 
-                VALUES (@ModuleId, @Name);
+                (CourseId, Name) 
+                VALUES (@CourseId, @Name);
             """;
             var rowsAffected = await _dbClient.ExecuteAsync(sql, data);
         }

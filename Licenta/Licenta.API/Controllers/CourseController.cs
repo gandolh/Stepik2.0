@@ -52,9 +52,12 @@ namespace Licenta.API.Controllers
         [SwaggerOperation(Summary = "Get one course by id",
         Description = "The response could include list of participating students" +
             "and teachers")]
-        public async Task<ActionResult<CourseDto>> GetOne(int courseId, bool includeStudents, bool includeTeachers)
+        public async Task<ActionResult<FullCourseDto>> GetOne(int courseId)
         {
-            throw new NotImplementedException();
+            var res = await _courseService.GetOne(courseId);
+            if(res == null)
+                return NotFound();
+            return Ok(res);
         }
 
         [HttpPost]

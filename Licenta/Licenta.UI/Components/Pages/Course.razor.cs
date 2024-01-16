@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Components;
+﻿using Licenta.SDK.Models.Dtos;
+using Licenta.UI.Services;
+using Microsoft.AspNetCore.Components;
 using Microsoft.JSInterop;
 
 namespace Licenta.UI.Components.Pages
@@ -7,15 +9,20 @@ namespace Licenta.UI.Components.Pages
     {
         [Parameter] public int Id { get; set; } = 0;
         [Inject] IJSRuntime JSRuntime { get; set; } = default!;
+        [Inject] HttpLicentaClient HttpLicentaClient { get; set; } = default!;
 
-        protected override Task OnAfterRenderAsync(bool firstRender)
+        private FullCourseDto _fullCourseDto = new FullCourseDto();
+
+        protected override async Task OnAfterRenderAsync(bool firstRender)
         {
             if (firstRender)
             {
-                JSRuntime.InvokeVoidAsync("Main.initializeCollapsible");
+                _fullCourseDto = await HttpLicentaClient.GetOneCourse(Id);
+                 await JSRuntime.InvokeVoidAsync("Main.initializeCollapsible");
+                StateHasChanged();
             }
 
-            return base.OnAfterRenderAsync(firstRender);
+            await base.OnAfterRenderAsync(firstRender);
         }
     }
 }

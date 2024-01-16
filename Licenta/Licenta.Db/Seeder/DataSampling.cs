@@ -39,23 +39,26 @@ namespace Licenta.Db.Seeder
              ];
             return objects;
         }
-        public static Lesson[] GetLesson()
+        public static Lesson[] GetLessons()
         {
-            Lesson[] objects =
-                [
-                    new Lesson(1, 1, "Introduction to Computer Science Basics"),
-                    new Lesson(2, 2, "Fundamentals of Data Structures"),
-                    new Lesson(3, 3, "Networking Principles"),
-                    new Lesson(4, 4, "Database Design and Management"),
-                    new Lesson(5, 5, "Software Development Methodologies"),
-                    new Lesson(6, 6, "Operating System Concepts"),
-                    new Lesson(7, 7, "Introduction to Artificial Intelligence"),
-                    new Lesson(8, 8, "Cybersecurity Fundamentals"),
-                    new Lesson(9, 9, "Web Development Essentials"),
-                    new Lesson(10, 10, "Introduction to Machine Learning")
-                ];
-            return objects;
+            Lesson[] lessons =
+            [
+        new Lesson(1, 1, "Introduction to Computer Science Basics"),
+                new Lesson(2, 1, "Programming Fundamentals"),
+                new Lesson(3, 2, "Data Structures Overview"),
+                new Lesson(4, 2, "Advanced Data Structures"),
+                new Lesson(5, 3, "Networking Principles"),
+                new Lesson(6, 3, "Network Security"),
+                new Lesson(7, 4, "Database Design and Management"),
+                new Lesson(8, 4, "Query Optimization"),
+                new Lesson(9, 5, "Software Development Methodologies"),
+                new Lesson(10, 5, "Agile Best Practices"),
+                // Add more lessons as needed
+            ];
+
+            return lessons;
         }
+
         public static Exercise[] GetExercise()
         {
             Exercise[] objects =
@@ -177,6 +180,25 @@ namespace Licenta.Db.Seeder
              ];
 
             return objects;
+        }
+
+        public static Module[] GetModules()
+        {
+            Module[] modules =
+            [
+                new Module { Id = 1, CourseId = 1, Name = "Module 1 - Introduction" },
+                new Module { Id = 2, CourseId = 1, Name = "Module 2 - Basics" },
+                new Module { Id = 3, CourseId = 2, Name = "Module 1 - Fundamentals" },
+                new Module { Id = 4, CourseId = 2, Name = "Module 2 - Advanced Concepts" },
+                new Module { Id = 5, CourseId = 3, Name = "Module 1 - Networking Basics" },
+                new Module { Id = 6, CourseId = 3, Name = "Module 2 - Routing and Switching" },
+                new Module { Id = 7, CourseId = 4, Name = "Module 1 - Database Design" },
+                new Module { Id = 8, CourseId = 4, Name = "Module 2 - Query Optimization" },
+                new Module { Id = 9, CourseId = 5, Name = "Module 1 - Agile Methodologies" },
+                new Module { Id = 10, CourseId = 5, Name = "Module 2 - Project Management" },
+            ];
+
+            return modules;
         }
     }
 }

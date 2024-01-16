@@ -3,7 +3,7 @@
     public class Lesson
     {
         public int Id { get; set; } = 0;
-        public int CourseId { get; set; } = 0;
+        public int ModuleId { get; set; } = 0;
         public string Name { get; set; } = string.Empty;
 
         public Lesson()
@@ -11,10 +11,10 @@
 
         }
 
-        public Lesson(int id, int courseId, string name)
+        public Lesson(int id, int moduleId, string name)
         {
             Id = id;
-            CourseId = courseId;
+            ModuleId = moduleId;
             Name = name;
         }
     }

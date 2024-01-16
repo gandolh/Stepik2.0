@@ -4,7 +4,7 @@
     <li>
         <div class="user-view">
             <div class="background background-course"></div>
-            <p class="course-name"> course name </p>
+            <p class="course-name"> @_fullCourseDto.Name </p>
         </div>
     </li>
     <li><div class="divider"></div></li>
@@ -12,30 +12,21 @@
 
     <li>
         <ul class="collapsible">
-            <li>
-                <div class="collapsible-header"><i class="material-icons">filter_drama</i>Module 1</div>
-                <div class="collapsible-body">
-                    <ul class="collection">
-                        <li class="collection-item">lectie 1</li>
-                        <li class="collection-item">lectie 2</li>
-                        <li class="collection-item">lectie 3</li>
-                        <li class="collection-item">lectie 4</li>
-                    </ul>
-                </div>
-            </li>
-            <li>
-                <div class="collapsible-header"><i class="material-icons">place</i>Module 2</div>
-                <div class="collapsible-body">
-                    <ul class="collection">
-                        <li class="collection-item">lectie 1</li>
-                        <li class="collection-item">lectie 2</li>
-                        <li class="collection-item">lectie 3</li>
-                        <li class="collection-item">lectie 4</li>
-                    </ul>
-
-                </div>
-            </li>
-
+            @foreach (var module in _fullCourseDto.Modules)
+            {
+                <li>
+                    <div class="collapsible-header"><i class="material-icons">filter_drama</i>@module.Name</div>
+                    <div class="collapsible-body">
+                        <ul class="collection">
+                            @foreach (var lesson in module.Lessons)
+                            {
+                                <li class="collection-item">@lesson.Name</li>
+                            }
+                        </ul>
+                    </div>
+                </li>
+                <li><div class="divider"></div></li>
+            }
         </ul>
     </li>
 

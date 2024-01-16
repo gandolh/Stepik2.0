@@ -28,5 +28,19 @@ namespace Licenta.UI.Services
             return resp;
         }
 
+        public async Task<FullCourseDto> GetOneCourse(int courseId)
+        {
+            var querryParameters = new Dictionary<string, string>()
+            {
+                {"courseId", courseId.ToString() },
+            };
+            var resp = await _myHttpClient.GetAsync<FullCourseDto>(
+                _licentaConfig.GetPathTo(_licentaConfig.Endpoints.GetOne),
+                querryParameters
+                );
+
+            return resp;
+        }
+
     }
 }
