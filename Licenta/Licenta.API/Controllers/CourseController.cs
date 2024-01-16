@@ -1,4 +1,5 @@
 ﻿using Licenta.API.Models;
+using Licenta.API.Services;
 using Licenta.Db.DataModel;
 using Microsoft.AspNetCore.Mvc;
 using Swashbuckle.AspNetCore.Annotations;
@@ -9,6 +10,14 @@ namespace Licenta.API.Controllers
     [Route("[controller]/[action]")]
     public class CourseController : ControllerBase
     {
+        private readonly CourseService _courseService;
+
+        public CourseController(CourseService courseService)
+        {
+            _courseService = courseService;
+        }
+
+
         [HttpGet]
         [SwaggerOperation(Summary = "Get all courses",
         Description = "Get all courses. The response could include list of participating students" +

@@ -1,4 +1,5 @@
 ﻿using Licenta.API.Models;
+using Licenta.API.Services;
 using Licenta.Db.DataModel;
 using Microsoft.AspNetCore.Mvc;
 using Swashbuckle.AspNetCore.Annotations;
@@ -9,6 +10,14 @@ namespace Licenta.API.Controllers
     [Route("[controller]/[action]")]
     public class SubmissionController : ControllerBase
     {
+        private readonly SubmissionService _submissionService;
+
+        public SubmissionController(SubmissionService submissionService)
+        {
+            _submissionService = submissionService;
+        }
+
+
         [HttpGet]
         [SwaggerOperation(Summary = "Get all submissions of a student", Description = "")]
         public async Task<IEnumerable<Submission>> GetAllByStudent(int studentId)
