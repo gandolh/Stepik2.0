@@ -15,4 +15,8 @@
     <ProjectReference Include="..\Components.UI\Components.UI.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Components\Courses\" />
+  </ItemGroup>
+
 </Project>

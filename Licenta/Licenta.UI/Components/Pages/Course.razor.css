@@ -1,0 +1,20 @@
+﻿.container-course {
+    padding-left: calc(300px + 2rem);
+    padding-right: 2rem;
+}
+
+@media only screen and (max-width : 992px) {
+    .container-course {
+        padding-left: 0;
+    }
+}
+
+.course-name {
+    font-weight: bold;
+    font-size: 1.25rem;
+}
+
+.background-course {
+    background-image: linear-gradient( rgba(255, 255, 255, 0.4), rgba(255, 255, 255, 0.4) ), url("imgs/backgroundCourse.jpg");
+    background-size: cover;
+}
