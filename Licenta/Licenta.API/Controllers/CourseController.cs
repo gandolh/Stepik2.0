@@ -20,7 +20,7 @@ namespace Licenta.API.Controllers
 
 
         [HttpGet]
-        [SwaggerOperation(Summary = "Get all courses",
+        [SwaggerOperation(Summary = "Get all courses of a teacher",
         Description = "Get all courses of a teacher. The response could include list of participating students" +
             "and all the teachers that teaches that course")]
         public async Task<IEnumerable<Course>> GetAllByTeacher(int teacherId, bool includeStudents, bool includeTeachers)

@@ -46,7 +46,7 @@ namespace Licenta.API.Controllers
         }
 
         [HttpDelete]
-        [SwaggerOperation(Summary = "delete exercise", Description = "")]
+        [SwaggerOperation(Summary = "Delete lesson", Description = "")]
         public async Task<DeleteResult> Delete(int id)
         {
             throw new NotImplementedException();

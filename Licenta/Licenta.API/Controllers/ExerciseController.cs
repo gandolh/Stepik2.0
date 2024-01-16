@@ -11,21 +11,21 @@ namespace Licenta.API.Controllers
     public class ExerciseController : ControllerBase
     {
         [HttpGet]
-        [SwaggerOperation(Summary = "get all exercises of a student", Description = "")]
+        [SwaggerOperation(Summary = "Get all exercises of a student", Description = "")]
         public async Task<IEnumerable<Exercise>> GetAllByStudent(int studentId)
         {
             throw new NotImplementedException();
         }
 
         [HttpGet]
-        [SwaggerOperation(Summary = "get all exercises of a lesson", Description = "")]
+        [SwaggerOperation(Summary = "Get all exercises of a lesson", Description = "")]
         public async Task<IEnumerable<Exercise>> GetAllByLesson(int lessonId)
         {
             throw new NotImplementedException();
         }
 
         [HttpGet]
-        [SwaggerOperation(Summary = "get exercise by id",
+        [SwaggerOperation(Summary = "Get exercise by id",
             Description = "The response could include submissions for that exercise.")]
         public async Task<ActionResult<Exercise>> GetOne(int submissionId, bool includeSubmissions)
         {
@@ -33,7 +33,6 @@ namespace Licenta.API.Controllers
         }
 
         [HttpPost]
-        [HttpGet]
         [SwaggerOperation(Summary = "Create exercise", Description = "")]
         public async Task<CreateResult> Add(Exercise c)
         {
