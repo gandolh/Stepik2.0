@@ -1,0 +1,16 @@
+
+<div class="LoadingScreen @Class">
+    <div class="progress">
+        <div class="indeterminate"></div>
+    </div>
+
+
+    @if (!string.IsNullOrEmpty(Label))
+    {
+        @Label
+    }
+    else
+    {
+        @ChildContent
+    }
+</div>  

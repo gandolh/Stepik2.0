@@ -1,0 +1,31 @@
+﻿@using global::Components.UI
+@inherits BaseLicentaComp;
+
+<h1> Welcome back, "user"  </h1>
+<div class="grid-3-cols">
+    <div class="CourseList">
+        <h3> Cursuri: </h3>
+        @if(pageState == PageState.Loading)
+        {
+            <Loading/>
+            <p>AAAAAAAAAAA</p>
+        }else
+        {
+            <ul class="collection">
+                @foreach (var course in _courses)
+                {
+                    <li class="collection-item">@course</li>
+                }
+            </ul>
+        }
+
+    </div>
+    <div class="UpcomingDeadlines">
+        <h3> Deadline-uri: </h3>
+
+    </div>
+    <div class="LastAccesed">
+        <h3>Ultimele accesari:</h3>
+
+    </div>
+</div>

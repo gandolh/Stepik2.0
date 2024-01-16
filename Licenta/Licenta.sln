@@ -15,7 +15,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Licenta.SDK", "Licenta.SDK\
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Licenta.API", "Licenta.API\Licenta.API.csproj", "{5A5C6453-BDEA-42FC-BF4E-F099A007F373}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Licenta.UI", "Licenta.UI\Licenta.UI.csproj", "{79720E66-4B85-480F-B02E-0AD9A27DC0DF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Licenta.UI", "Licenta.UI\Licenta.UI.csproj", "{79720E66-4B85-480F-B02E-0AD9A27DC0DF}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
