@@ -12,6 +12,7 @@ namespace Licenta.UI
         }
         public static void AddMyServices(this WebApplicationBuilder builder)
         {
+            builder.Services.AddSingleton<LicentaConfig, LicentaConfig>();
             builder.Services.AddSingleton<MyHttpClient, MyHttpClient>();
             builder.Services.AddScoped<HttpLicentaClient, HttpLicentaClient>();
     }
@@ -36,13 +37,13 @@ namespace Licenta.UI
 
         public static void UseLocalization(this WebApplication app)
         {
-            var supportedCultures = new[] { "ro-RO", "en-US" };
-            var localizationOptions = new RequestLocalizationOptions()
-                .SetDefaultCulture(supportedCultures[0])
-                .AddSupportedCultures(supportedCultures)
-                .AddSupportedUICultures(supportedCultures);
+            //var supportedCultures = new[] { "ro-RO", "en-US" };
+            //var localizationOptions = new RequestLocalizationOptions()
+            //    .SetDefaultCulture(supportedCultures[0])
+            //    .AddSupportedCultures(supportedCultures)
+            //    .AddSupportedUICultures(supportedCultures);
 
-            app.UseRequestLocalization(localizationOptions);
+            app.UseRequestLocalization();
         }
 
         /// <summary>

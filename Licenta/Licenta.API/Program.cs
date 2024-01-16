@@ -1,13 +1,30 @@
 using Licenta.API.Services;
+using Licenta.Db.Repositories;
+using Licenta.Db.Seeder;
+using Licenta.Db.Seeder.Interfaces;
 
 static void ConfigureDI(IServiceCollection services)
 {
+    services.AddSingleton<IDatabaseConnectionSettings, DatabaseConnectionSettings>();
+    services.AddSingleton<IDbFactory, NpgsqlDbFactory>();
+    services.AddScoped<IDapperDbClient, DapperDbClient>();
+
+    // services
     services.AddScoped<CourseService>();
     services.AddScoped<ExerciseService>();
     services.AddScoped<LessonService>();
     services.AddScoped<StudentService>();
     services.AddScoped<SubmissionService>();
     services.AddScoped<TeacherService>();
+
+
+    // repositories
+    services.AddScoped<CourseRepository>();
+    services.AddScoped<ExerciseRepository>();
+    services.AddScoped<LessonRepository>();
+    services.AddScoped<StudentRepository>();
+    services.AddScoped<SubmissionRepository>();
+    services.AddScoped<TeacherRepository>();
 
 }
 

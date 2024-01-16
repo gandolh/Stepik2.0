@@ -1,9 +1,19 @@
 ﻿using Licenta.Db.Seeder.Interfaces;
+using Microsoft.Extensions.Configuration;
 
 namespace Licenta.Db.Seeder
 {
-    internal class DatabaseConnectionSettings : IDatabaseConnectionSettings
+    public class DatabaseConnectionSettings : IDatabaseConnectionSettings
     {
+        public DatabaseConnectionSettings()
+        {
+            
+        }
+
+        public DatabaseConnectionSettings(IConfiguration iConfig)
+        {
+            iConfig.GetSection("Database").Bind(this);
+        }
         public string Host { get; set; } = "";
 
         public uint Port { get; set; } = 0;

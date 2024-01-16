@@ -9,18 +9,19 @@ namespace Licenta.Db.Seeder
     {
         protected readonly IDbFactory dbFactory;
 
-        protected IDbTransaction dbTransaction;
+        protected IDbTransaction? dbTransaction;
 
         public DapperDbClient(IDbFactory dbFactory)
         {
             this.dbFactory = dbFactory ?? throw new ArgumentNullException(nameof(dbFactory));
-            dbTransaction = dbFactory.Context().BeginTransaction();
+            this.dbFactory.Context().Open();
         }
 
         public void Dispose()
         {
+            dbFactory.Context().Close();
             dbFactory.Dispose();
-            dbTransaction.Dispose();
+            dbTransaction?.Dispose();
         }
 
         public async Task<List<TReturn>> QueryAsync<TFirst, TSecond, TReturn>(string sql, Func<TFirst, TSecond, TReturn> map, object param = null, string splitOn = "id")
@@ -55,7 +56,7 @@ namespace Licenta.Db.Seeder
 
         public void CommitTransaction()
         {
-            dbTransaction.Commit();
+            dbTransaction?.Commit();
             dbTransaction = dbFactory.Context().BeginTransaction();
         }
 

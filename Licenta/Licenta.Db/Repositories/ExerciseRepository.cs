@@ -1,14 +1,9 @@
 ﻿using Licenta.Db.DataModel;
 using Licenta.Db.Seeder.Interfaces;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Licenta.Db.Repositories
 {
-    internal class ExerciseRepository : BaseRepository<Exercise>
+    public class ExerciseRepository : BaseRepository<Exercise>
     {
         public ExerciseRepository(IDapperDbClient dbClient) : base(dbClient)
         {
