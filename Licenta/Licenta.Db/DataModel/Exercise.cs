@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Licenta.Db.DataModel
 {
-    internal class Exercise
+    public class Exercise
     {
         public int Id { get; set; } = 0;
         public int LessonId { get; set; } = 0;

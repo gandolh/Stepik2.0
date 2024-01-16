@@ -1,6 +1,6 @@
 ﻿namespace Licenta.Db.DataModel
 {
-    internal class Student
+    public class Student
     {
         public int Id { get; set; } = 0;
         public string Firstname { get; set; } = string.Empty;
