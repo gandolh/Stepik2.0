@@ -27,3 +27,15 @@ h1:focus {
 .darker-border-checkbox.form-check-input {
     border-color: #929292;
 }
+
+
+/* ==================== Mine ================*/
+
+.nav-wrapper{
+ padding: 0 10px;
+}
+
+.nav-wrapper ul {
+    display: flex;
+    gap: 0.5rem;
+}
