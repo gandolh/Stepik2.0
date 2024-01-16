@@ -12,7 +12,7 @@ namespace Licenta.Db.DataModel
         public int LessonId { get; set; } = 0;
         public string Enunciation { get; set; } = string.Empty;
         // 0 code / 1 quiz
-        public int Type { get; set; } = 0;
+        public ExerciseType Type { get; set; } = 0;
         public Exercise()
         {
 
@@ -23,7 +23,7 @@ namespace Licenta.Db.DataModel
             Id = id;
             LessonId = lessonId;
             Enunciation = enunciation;
-            Type = type;
+            Type = (ExerciseType)type;
         }
 
     }

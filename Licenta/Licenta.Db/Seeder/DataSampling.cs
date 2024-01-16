@@ -43,16 +43,26 @@ namespace Licenta.Db.Seeder
         {
             Lesson[] lessons =
             [
-        new Lesson(1, 1, "Introduction to Computer Science Basics"),
-                new Lesson(2, 1, "Programming Fundamentals"),
-                new Lesson(3, 2, "Data Structures Overview"),
-                new Lesson(4, 2, "Advanced Data Structures"),
-                new Lesson(5, 3, "Networking Principles"),
-                new Lesson(6, 3, "Network Security"),
-                new Lesson(7, 4, "Database Design and Management"),
-                new Lesson(8, 4, "Query Optimization"),
-                new Lesson(9, 5, "Software Development Methodologies"),
-                new Lesson(10, 5, "Agile Best Practices"),
+        new Lesson(1, 1, "Introduction to Computer Science Basics",
+        "Introduction to Computer Science Basics is a foundational course designed" +
+        " to provide learners with a comprehensive understanding of fundamental concepts " +
+        "in computer science. This course serves as a gateway for individuals with varying " +
+        "levels of technical background to explore the key principles that underpin the world" +
+        " of computing. Topics covered include algorithms, data structures, programming languages," +
+        " and problem-solving techniques. Participants will gain hands-on experience through " +
+        "practical exercises, fostering critical thinking and computational skills. Whether you're" +
+        " a beginner eager to demystify the world of computers or someone looking to solidify " +
+        "foundational knowledge, this course lays the groundwork for a deeper exploration into the" +
+        " diverse and dynamic field of computer science."),
+                new Lesson(2, 1, "Programming Fundamentals", ""),
+                new Lesson(3, 2, "Data Structures Overview", ""),
+                new Lesson(4, 2, "Advanced Data Structures", ""),
+                new Lesson(5, 3, "Networking Principles", ""),
+                new Lesson(6, 3, "Network Security", ""),
+                new Lesson(7, 4, "Database Design and Management", ""),
+                new Lesson(8, 4, "Query Optimization", ""),
+                new Lesson(9, 5, "Software Development Methodologies", ""),
+                new Lesson(10, 5, "Agile Best Practices", ""),
                 // Add more lessons as needed
             ];
 

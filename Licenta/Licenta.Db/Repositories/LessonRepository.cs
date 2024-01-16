@@ -1,10 +1,5 @@
 ﻿using Licenta.Db.DataModel;
 using Licenta.Db.Seeder.Interfaces;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Licenta.Db.Repositories
 {
@@ -20,7 +15,8 @@ namespace Licenta.Db.Repositories
                 CREATE TABLE {_tableName}(
                     Id SERIAL PRIMARY KEY,
                     ModuleId INT REFERENCES Module(Id),
-                    Name VARCHAR(255)
+                    Name VARCHAR(255),
+                    Body VARCHAR(10000)
                 );
                 
                 """;
@@ -31,8 +27,8 @@ namespace Licenta.Db.Repositories
         {
             string sql = $"""
                 INSERT INTO {_tableName}
-                (ModuleId, Name) 
-                VALUES (@ModuleId, @Name);
+                (ModuleId, Name, Body) 
+                VALUES (@ModuleId, @Name, @Body);
             """;
             var rowsAffected = await _dbClient.ExecuteAsync(sql, data);
         }
