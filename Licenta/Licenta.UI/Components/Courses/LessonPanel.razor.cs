@@ -2,6 +2,8 @@
 using Licenta.SDK.Models.Dtos;
 using Licenta.UI.Services;
 using Microsoft.AspNetCore.Components;
+using Microsoft.JSInterop;
+using System.Text.Json;
 
 namespace Licenta.UI.Components.Courses
 {
@@ -11,16 +13,28 @@ namespace Licenta.UI.Components.Courses
 
         [Parameter] public LessonDto? ActiveLessonSummarry { get; set; }
         [Inject] public HttpLicentaClient HttpLicentaClient { get; set; } = default!;
+        [Inject] public IJSRuntime JSRuntime { get; set; } = default!;
         [Inject] public KafkaLicentaClient KafkaLicentaClient { get; set; } = default!;
         [Inject] public LicentaConfig LicentaConfig { get; set; } = default!;
+
+
+        private CodeLanguage _selectedLanguage { get; set; }
+        private CodeRunResultDto? _codeResult;
+
 
         protected override async Task OnParametersSetAsync()
         {
             if(ActiveLessonSummarry != null)
             {
-            _fullLessonDto = await HttpLicentaClient.GetOneLesson(ActiveLessonSummarry.Id);
+                _fullLessonDto = await HttpLicentaClient.GetOneLesson(ActiveLessonSummarry.Id);
             }
             await base.OnParametersSetAsync();
+        }
+
+        protected override async Task OnAfterRenderAsync(bool firstRender)
+        {
+            await JSRuntime.InvokeVoidAsync("Main.initializeFormSelect");
+            await base.OnAfterRenderAsync(firstRender);
         }
 
         private async Task HandleRunCode()
@@ -29,7 +43,7 @@ namespace Licenta.UI.Components.Courses
             {
                 Code = HelloWorldCppStr,
                 Input = "",
-                Language = CodeLanguage.Cpp
+                Language = _selectedLanguage
             };
             await KafkaLicentaClient.RunCode(LicentaConfig.Kafka.Endpoints.RunCode, req, OnCodeRunned);
         }
@@ -39,10 +53,15 @@ namespace Licenta.UI.Components.Courses
             KafkaLicentaClient.RemoveNotifier(LicentaConfig.Kafka.Endpoints.RunCode.Replace("Req","Resp"),
                 dto.OperationId);
 
-            await Task.CompletedTask;
+            _codeResult = JsonSerializer.Deserialize<CodeRunResultDto>(dto.Body) ?? new();
+                
+            await InvokeAsync(()=> StateHasChanged());
         }
 
-
+        private async Task HandleSubmitCode()
+        {
+            await Task.CompletedTask;
+        }
 
         private string HelloWorldCppStr = """
                 #include <iostream>

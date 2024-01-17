@@ -73,7 +73,7 @@ namespace Licenta.UI.Services
 
             // invoke UI callback
             await InvokeCallback(
-                consumeResult.Topic.Replace("Resp", "Req"),
+                consumeResult.Topic,
                 result.OperationId,
                 result);
         }

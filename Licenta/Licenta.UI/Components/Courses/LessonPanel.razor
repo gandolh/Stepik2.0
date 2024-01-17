@@ -11,22 +11,18 @@ else
     {
         if (exercise.IsCodeRunner)
         {
-            <div class="row">
-                <div class="input-field col s12">
-                    <textarea id="code" class="validate">
-                        @HelloWorldCppStr
-                    </textarea>
-                    <label for="code" class=""></label>
-                </div>
-            </div>
-            <div class="row">
-                <button class="btn waves-effect waves-light" @onclick="HandleRunCode" >
-                    Run code
-                    <i class="material-icons right">send</i>
-                </button>
+            <ProgrammingLangSelect @bind-Language=_selectedLanguage />
+            <CodeEditor />
+            @if (_codeResult != null)
+            {
+                <ResultCodeRun CodeResult=@_codeResult />
+            }
 
-            </div>
+            <BtnGroupCodeRun
+                OnRunCode="HandleRunCode"
+                OnSubmitCode="HandleSubmitCode" />
 
+          
         }
         else
         {

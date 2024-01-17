@@ -33,7 +33,7 @@ namespace Licenta.Runner
                 _ => new NullCodeRunner()
             };
 
-            CodeRunResult RunResult = await codeRunner.Run(reqDto);
+            CodeRunResultDto RunResult = await codeRunner.Run(reqDto);
             KafkaDto kafkaDto = new KafkaDto("", opId, JsonSerializer.Serialize(RunResult));
             _kafkaConnector.Produce(_runnerConfig.Kafka.Endpoints.RunCode,
                 Guid.NewGuid().ToString(),

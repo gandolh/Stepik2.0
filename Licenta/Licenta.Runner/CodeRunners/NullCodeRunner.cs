@@ -4,7 +4,7 @@ namespace Licenta.Runner.CodeRunners
 {
     internal class NullCodeRunner : ICodeRunner
     {
-        public Task<CodeRunResult> Run(CodeRunReqDto req)
+        public Task<CodeRunResultDto> Run(CodeRunReqDto req)
         {
             throw new NotImplementedException();
         }

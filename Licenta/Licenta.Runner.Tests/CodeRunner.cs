@@ -64,7 +64,7 @@ namespace Licenta.Runner.Tests
         public async Task RunCppCode()
         {
             ICodeRunner codeRunner = new CppCodeRunner();
-            CodeRunResult resp = await codeRunner.Run(cppCodeTest);
+            CodeRunResultDto resp = await codeRunner.Run(cppCodeTest);
             Assert.Empty(resp.Error);
         }
 
@@ -72,7 +72,7 @@ namespace Licenta.Runner.Tests
         public async Task RunPythonCode()
         {
             ICodeRunner codeRunner = new PythonCodeRunner();
-            CodeRunResult resp = await codeRunner.Run(pythonCodeTest);
+            CodeRunResultDto resp = await codeRunner.Run(pythonCodeTest);
             Assert.Empty(resp.Error);
         }
     }

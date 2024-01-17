@@ -9,8 +9,8 @@
 
     public enum CodeLanguage
     {
-        Python,
         Cpp,
+        Python,
         Undefined
     }
 }

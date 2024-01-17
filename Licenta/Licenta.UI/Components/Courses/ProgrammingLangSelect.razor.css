@@ -1,0 +1,11 @@
+﻿.select-language-row {
+    display: flex;
+    justify-content: flex-end;
+}
+
+
+.select-language-innerrow {
+    display: flex;
+    flex-direction: column-reverse;
+    width: 300px;
+}

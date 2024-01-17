@@ -8,7 +8,13 @@ const initializeCollapsible = () => {
     var instances = M.Collapsible.init(elems, {});
 }
 
+const initializeFormSelect = () => {
+    var elems = document.querySelectorAll('select');
+    var instances = M.FormSelect.init(elems, {});
+}
+
 var Main = {
     initializeNav: initializeNav,
-    initializeCollapsible: initializeCollapsible
+    initializeCollapsible: initializeCollapsible,
+    initializeFormSelect: initializeFormSelect
 }

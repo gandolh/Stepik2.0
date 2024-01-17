@@ -1,0 +1,16 @@
+﻿@if (CodeResult.ErrorCode == SDK.Models.Dtos.ErrorCodeStatus.NoError)
+{
+    <pre>
+    <code>
+            @CodeResult.Result
+                </code>
+            </pre>
+}
+else
+{
+    <pre>
+    <code>
+            @CodeResult.Error
+                    </code>
+                </pre>
+}

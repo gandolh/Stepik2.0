@@ -5,7 +5,7 @@ namespace Licenta.Runner.CodeRunners
 {
     public class PythonCodeRunner : ICodeRunner
     {
-        public async Task<CodeRunResult> Run(CodeRunReqDto req)
+        public async Task<CodeRunResultDto> Run(CodeRunReqDto req)
         {
             string path = "/code_to_run/" + Guid.NewGuid().ToString() + "_script.py";
             string command = $"python3";
@@ -42,10 +42,12 @@ namespace Licenta.Runner.CodeRunners
             Console.WriteLine("error: " + error);
             Console.WriteLine("result: " + result);
 
-            return new CodeRunResult()
+            return new CodeRunResultDto()
             {
                 Result = result,
-                Error = error
+                Error = error,
+                ErrorCode = string.IsNullOrEmpty(error) ?
+                  ErrorCodeStatus.NoError : ErrorCodeStatus.UnknownError
             };
         }
     }

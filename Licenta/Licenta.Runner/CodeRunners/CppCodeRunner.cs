@@ -5,7 +5,7 @@ namespace Licenta.Runner.CodeRunners
 {
     public class CppCodeRunner : ICodeRunner
     {
-        public async Task<CodeRunResult> Run(CodeRunReqDto req)
+        public async Task<CodeRunResultDto> Run(CodeRunReqDto req)
         {
             Directory.CreateDirectory("/code_to_run");
 
@@ -16,7 +16,7 @@ namespace Licenta.Runner.CodeRunners
             await Compile(cppPath, outPath, req.Code);
             return await RunCompilled(outPath, req.Input);
         }
-        private async Task<CodeRunResult> RunCompilled(string outPath, string InputData)
+        private async Task<CodeRunResultDto> RunCompilled(string outPath, string InputData)
         {
             ProcessStartInfo processStartInfo = new()
             {
@@ -48,10 +48,12 @@ namespace Licenta.Runner.CodeRunners
             Console.WriteLine("error: " + error);
             Console.WriteLine("result: " + result);
 
-            return new CodeRunResult()
+            return new CodeRunResultDto()
             {
                 Result = result,
-                Error = error
+                Error = error,
+                ErrorCode = string.IsNullOrEmpty(error) ?
+                    ErrorCodeStatus.NoError : ErrorCodeStatus.UnknownError
             };
         }
         private async Task Compile(string cppPath, string outPath, string code)
