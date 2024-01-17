@@ -12,6 +12,7 @@ else
         if (exercise.IsCodeRunner)
         {
             <ProgrammingLangSelect @bind-Language=_selectedLanguage />
+            <p style="font-weight: bold;font-size: 1.5rem;">@exercise.Enunciation</p>
             <CodeEditor />
             @if (_codeResult != null)
             {

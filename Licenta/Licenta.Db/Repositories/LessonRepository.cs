@@ -43,7 +43,6 @@ namespace Licenta.Db.Repositories
             string getExercisesSql = $"SELECT * FROM Exercise WHERE LessonId={lessonId}";
             List<Exercise> exercises = await _dbClient.QueryAsync<Exercise>(getExercisesSql);
 
-
             IEnumerable<int> idsQuizExercises = exercises.Where(e => e.Type == ExerciseType.Quiz).Select(e => e.Id);
             if(idsQuizExercises.Count() > 0)
             {

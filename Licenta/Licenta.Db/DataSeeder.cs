@@ -15,6 +15,7 @@ namespace Licenta.Db
         private readonly ModuleRepository ModuleRepository;
         private readonly LessonRepository LessonRepository;
         private readonly ExerciseRepository ExerciseRepository;
+        private readonly CodeEvaluationEntryRepository CodeEvaluationEntryRepository;
         private readonly QuizVariantsRepository QuizVariantsRepository;
         private readonly SubmissionRepository SubmissionRepository;
         private readonly StudentCourseRepository StudentCourseRepository;
@@ -38,6 +39,7 @@ namespace Licenta.Db
             LessonRepository = new LessonRepository(_dbClient);
             ExerciseRepository = new ExerciseRepository(_dbClient);
             QuizVariantsRepository = new QuizVariantsRepository(_dbClient);
+            CodeEvaluationEntryRepository = new CodeEvaluationEntryRepository(_dbClient);
             SubmissionRepository = new SubmissionRepository(_dbClient);
             StudentCourseRepository = new StudentCourseRepository(_dbClient);
             CourseTeacherRepository = new CourseTeacherRepository(_dbClient);
@@ -59,6 +61,7 @@ namespace Licenta.Db
             await DropTable(StudentCourseRepository);
             await DropTable(TeacherRepository);
             await DropTable(QuizVariantsRepository);
+            await DropTable(CodeEvaluationEntryRepository);
             await DropTable(SubmissionRepository);
             await DropTable(ExerciseRepository);
             await DropTable(LessonRepository);
@@ -76,6 +79,7 @@ namespace Licenta.Db
             await CreateTable(LessonRepository);
             await CreateTable(ExerciseRepository);
             await CreateTable(QuizVariantsRepository);
+            await CreateTable(CodeEvaluationEntryRepository);
             await CreateTable(SubmissionRepository);
             await CreateTable(StudentCourseRepository);
             await CreateTable(CourseTeacherRepository);
@@ -90,6 +94,7 @@ namespace Licenta.Db
             await GenericInsertData(LessonRepository, DataSampling.GetLessons);
             await GenericInsertData(ExerciseRepository, DataSampling.GetExercise);
             await GenericInsertData(QuizVariantsRepository, DataSampling.GetQuizVariants);
+            await GenericInsertData(CodeEvaluationEntryRepository, DataSampling.GetCodeEvaluationEntry);
             await GenericInsertData(SubmissionRepository, DataSampling.GetSubmissions);
             await GenericInsertData(StudentCourseRepository, DataSampling.GetStudentCourse);
             await GenericInsertData(CourseTeacherRepository, DataSampling.GetCourseTeacher);
@@ -104,6 +109,7 @@ namespace Licenta.Db
             await LogResult(LessonRepository);
             await LogResult(ExerciseRepository);
             await LogResult(QuizVariantsRepository);
+            await LogResult(CodeEvaluationEntryRepository);
             await LogResult(SubmissionRepository);
             await LogResult(StudentCourseRepository);
             await LogResult(CourseTeacherRepository);

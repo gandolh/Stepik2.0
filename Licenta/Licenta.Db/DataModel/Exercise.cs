@@ -23,5 +23,6 @@
 
         // for QUERYING
         public List<QuizVariant> QuizVariants { get; set; } = new List<QuizVariant>();
+        public List<CodeEvaluationEntry> CodeEvaluationEntries { get; set; } = new List<CodeEvaluationEntry>();
     }
 }

@@ -73,7 +73,7 @@ namespace Licenta.Db.Seeder
         {
             Exercise[] objects =
             [
-                new Exercise(1, 1, "Write a program to calculate factorial in C#", 0),
+                new Exercise(1, 1, "Write a program to calculate factorial", 0),
                 new Exercise(2, 2, "Implement a linked list data structure", 0),
                 new Exercise(3, 3, "Design a simple network topology", 1),
                 new Exercise(4, 4, "Create a SQL query to retrieve specific data", 0),
@@ -110,6 +110,21 @@ namespace Licenta.Db.Seeder
             ];
             return objects;
         }
+
+        public static CodeEvaluationEntry[] GetCodeEvaluationEntry()
+        {
+            CodeEvaluationEntry[] objects =
+           [
+               new CodeEvaluationEntry(1, 1, "1", "1"),
+               new CodeEvaluationEntry(2, 1, "2", "2"),
+               new CodeEvaluationEntry(3, 1, "3", "6"),
+               new CodeEvaluationEntry(4, 1, "4", "24"),
+               new CodeEvaluationEntry(5, 1, "5", "120"),
+               
+           ];
+            return objects;
+        }
+
         public static Student[] GetStudents()
         {
             Student[] objects =
