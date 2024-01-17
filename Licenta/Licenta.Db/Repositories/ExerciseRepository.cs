@@ -15,6 +15,7 @@ namespace Licenta.Db.Repositories
                 CREATE TABLE {_tableName} (
                     Id SERIAL PRIMARY KEY,
                     LessonId INT REFERENCES Lesson(Id),
+                    SampleInput TEXT,
                     Enunciation TEXT,
                     Type INT
                 );
@@ -25,8 +26,8 @@ namespace Licenta.Db.Repositories
         public override async Task InsertAsync(Exercise data)
         {
             string sql = $"""
-                INSERT INTO {_tableName} (LessonId, Enunciation, Type)
-                VALUES (@LessonId, @Enunciation, @Type);
+                INSERT INTO {_tableName} (LessonId, Enunciation, SampleInput, Type)
+                VALUES (@LessonId, @Enunciation, @SampleInput, @Type);
                 """;
             var rowsAffected = await _dbClient.ExecuteAsync(sql, data);
         }

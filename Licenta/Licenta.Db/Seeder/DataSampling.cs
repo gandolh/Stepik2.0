@@ -73,16 +73,16 @@ namespace Licenta.Db.Seeder
         {
             Exercise[] objects =
             [
-                new Exercise(1, 1, "Write a program to calculate factorial", 0),
-                new Exercise(2, 2, "Implement a linked list data structure", 0),
-                new Exercise(3, 3, "Design a simple network topology", 1),
-                new Exercise(4, 4, "Create a SQL query to retrieve specific data", 0),
-                new Exercise(5, 5, "Develop a basic software using agile methodology", 0),
-                new Exercise(6, 6, "Explain the working principles of a file system", 1),
-                new Exercise(7, 7, "Implement a basic AI chatbot", 0),
-                new Exercise(8, 8, "Identify and fix cybersecurity vulnerabilities", 0),
-                new Exercise(9, 9, "Build a simple website using HTML/CSS", 1),
-                new Exercise(10, 10, "Develop a linear regression model in Python", 0)
+                new Exercise(1, 1, "Write a program to calculate factorial", "5", 0),
+                new Exercise(2, 2, "Implement a linked list data structure", "5", 0),
+                new Exercise(3, 3, "Design a simple network topology", "", 1),
+                new Exercise(4, 4, "Create a SQL query to retrieve specific data", "5", 0),
+                new Exercise(5, 5, "Develop a basic software using agile methodology", "5", 0),
+                new Exercise(6, 6, "Explain the working principles of a file system", "", 1),
+                new Exercise(7, 7, "Implement a basic AI chatbot", "", 0),
+                new Exercise(8, 8, "Identify and fix cybersecurity vulnerabilities", "5", 0),
+                new Exercise(9, 9, "Build a simple website using HTML/CSS", "", 1),
+                new Exercise(10, 10, "Develop a linear regression model in Python", "5", 0)
             ];
             return objects;
         }

@@ -19,6 +19,7 @@ namespace Licenta.API.Mappers
                 Id=element.Id,
                 LessonId =element.LessonId,
                 Enunciation=element.Enunciation,
+                SampleInput= element.SampleInput,
                 Type = element.IsCodeRunner ? Db.ExerciseType.Code : Db.ExerciseType.Quiz,
                 QuizVariants = _quizVariantMapper.Map(element.QuizVariants)
             };
@@ -31,6 +32,7 @@ namespace Licenta.API.Mappers
                 Id = element.Id,
                 LessonId = element.LessonId,
                 Enunciation = element.Enunciation,
+                SampleInput = element.SampleInput,
                 IsCodeRunner = element.Type == Db.ExerciseType.Code ? true : false,
                 QuizVariants = _quizVariantMapper.Map(element.QuizVariants)
 
