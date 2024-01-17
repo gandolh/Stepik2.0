@@ -13,6 +13,8 @@ const initializeFormSelect = () => {
     var instances = M.FormSelect.init(elems, {});
 }
 
+
+
 var Main = {
     initializeNav: initializeNav,
     initializeCollapsible: initializeCollapsible,

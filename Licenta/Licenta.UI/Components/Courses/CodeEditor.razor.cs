@@ -1,16 +1,16 @@
-﻿namespace Licenta.UI.Components.Courses
+﻿using Microsoft.AspNetCore.Components;
+
+namespace Licenta.UI.Components.Courses
 {
     public partial class CodeEditor
     {
-        private string HelloWorldCppStr = """
-                #include <iostream>
+        [Parameter] public string Code { get; set; } = string.Empty;
+        [Parameter] public EventCallback<string> CodeChanged { get; set; } = default!;
 
-            int main() {
-                std::cout << "Hello World!";
-                return 0;
-            }   
-
-
-            """;
+        private async Task HandleChange(ChangeEventArgs e)
+        {
+            await CodeChanged.InvokeAsync(e.Value!.ToString());
+        }
     }
+
 }

@@ -19,6 +19,8 @@ namespace Licenta.UI.Components.Courses
 
 
         private CodeLanguage _selectedLanguage { get; set; }
+        private string _code { get; set; } = CodeSamplers.CppStartCode;
+        private string _customInput { get; set; } = string.Empty;
         private CodeRunResultDto? _codeResult;
 
 
@@ -41,8 +43,8 @@ namespace Licenta.UI.Components.Courses
         {
             CodeRunReqDto req = new CodeRunReqDto()
             {
-                Code = HelloWorldCppStr,
-                Input = "",
+                Code = _code,
+                Input = _customInput,
                 Language = _selectedLanguage
             };
             await KafkaLicentaClient.RunCode(LicentaConfig.Kafka.Endpoints.RunCode, req, OnCodeRunned);
@@ -63,15 +65,6 @@ namespace Licenta.UI.Components.Courses
             await Task.CompletedTask;
         }
 
-        private string HelloWorldCppStr = """
-                #include <iostream>
-
-            int main() {
-                std::cout << "Hello World!";
-                return 0;
-            }   
-
-
-            """;
+        
     }
 }
