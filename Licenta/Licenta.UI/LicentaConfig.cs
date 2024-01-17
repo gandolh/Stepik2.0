@@ -32,8 +32,15 @@ namespace Licenta.UI
     }
     public class KafkaOptions
     {
-        public string Endpoint { get; set; } = string.Empty;
+        public string Address { get; set; } = string.Empty;
+        public KafkaEndpoints Endpoints { get; set; } = new();
         public string GroupId { get; set; } = string.Empty;
         public List<string> SubscribeTopics { get; set; } = new();
     }
+
+    public class KafkaEndpoints
+    {
+        public string RunCode { get; set; } = string.Empty;
+    }
 }
+

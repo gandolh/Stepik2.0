@@ -15,6 +15,9 @@ namespace Licenta.UI
             builder.Services.AddSingleton<LicentaConfig, LicentaConfig>();
             builder.Services.AddSingleton<MyHttpClient, MyHttpClient>();
             builder.Services.AddScoped<HttpLicentaClient, HttpLicentaClient>();
+            builder.Services.AddSingleton<IKafkaObserver, KafkaObserver>();
+            builder.Services.AddScoped<IKafkaProducer, KafkaProducer>();
+            builder.Services.AddScoped<KafkaLicentaClient, KafkaLicentaClient>();
     }
 
 

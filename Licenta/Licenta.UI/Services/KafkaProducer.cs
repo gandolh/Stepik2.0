@@ -14,7 +14,7 @@ namespace Licenta.UI.Services
             _licentaConfig = licentaConfig;
             var configProducer = new ProducerConfig
             {
-                BootstrapServers = _licentaConfig.Kafka.Endpoint,
+                BootstrapServers = _licentaConfig.Kafka.Address,
                 SecurityProtocol = SecurityProtocol.Plaintext
             };
 

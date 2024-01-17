@@ -1,5 +1,4 @@
 ﻿using Confluent.Kafka;
-using Licenta.DataAccessService;
 using Licenta.SDK.Models;
 using Licenta.SDK.Models.Dtos;
 using System.Text.Json;
@@ -27,8 +26,9 @@ namespace Licenta.UI.Services
             var configConsumer = new ConsumerConfig
             {
                 GroupId = Guid.NewGuid().ToString(),
-                BootstrapServers = kafkaOptions.Endpoint,
+                BootstrapServers = kafkaOptions.Address,
                 SecurityProtocol = SecurityProtocol.Plaintext,
+                AllowAutoCreateTopics = true
             };
 
             IConsumer<string, string> consumer = new ConsumerBuilder<string, string>(configConsumer).Build();

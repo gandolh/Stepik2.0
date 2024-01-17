@@ -1,4 +1,5 @@
-﻿using Licenta.SDK.Models.Dtos;
+﻿using Confluent.Kafka;
+using Licenta.SDK.Models.Dtos;
 using Licenta.UI.Services;
 using Microsoft.AspNetCore.Components;
 
@@ -10,6 +11,8 @@ namespace Licenta.UI.Components.Courses
 
         [Parameter] public LessonDto? ActiveLessonSummarry { get; set; }
         [Inject] public HttpLicentaClient HttpLicentaClient { get; set; } = default!;
+        [Inject] public KafkaLicentaClient KafkaLicentaClient { get; set; } = default!;
+        [Inject] public LicentaConfig LicentaConfig { get; set; } = default!;
 
         protected override async Task OnParametersSetAsync()
         {
@@ -20,9 +23,23 @@ namespace Licenta.UI.Components.Courses
             await base.OnParametersSetAsync();
         }
 
-        private void HandleRunCode()
+        private async Task HandleRunCode()
         {
+            CodeRunReqDto req = new CodeRunReqDto()
+            {
+                Code = HelloWorldCppStr,
+                Input = "",
+                Language = CodeLanguage.Cpp
+            };
+            await KafkaLicentaClient.RunCode(LicentaConfig.Kafka.Endpoints.RunCode, req, OnCodeRunned);
+        }
 
+        private async Task OnCodeRunned(KafkaDto dto)
+        {
+            KafkaLicentaClient.RemoveNotifier(LicentaConfig.Kafka.Endpoints.RunCode.Replace("Req","Resp"),
+                dto.OperationId);
+
+            await Task.CompletedTask;
         }
 
 
