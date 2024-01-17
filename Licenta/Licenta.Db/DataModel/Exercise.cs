@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Licenta.Db.DataModel
+﻿namespace Licenta.Db.DataModel
 {
     public class Exercise
     {
@@ -25,6 +19,9 @@ namespace Licenta.Db.DataModel
             Enunciation = enunciation;
             Type = (ExerciseType)type;
         }
+    
 
+        // for QUERYING
+        public List<QuizVariant> QuizVariants { get; set; } = new List<QuizVariant>();
     }
 }

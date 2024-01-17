@@ -1,0 +1,22 @@
+﻿@if (_fullLessonDto == null)
+{
+    <h1> Please select a lesson</h1>
+}else
+{
+    <h1> @_fullLessonDto.Name</h1>
+    <p> @_fullLessonDto.Body</p>
+
+    @foreach (var exercise in _fullLessonDto.Exercises)
+    {
+        if (exercise.IsCodeRunner)
+        {
+            <h1>code</h1>
+
+        }
+        else
+        {
+            <h1>quiz</h1>
+        }
+    }
+
+}

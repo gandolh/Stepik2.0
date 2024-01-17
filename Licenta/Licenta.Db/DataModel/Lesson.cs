@@ -19,5 +19,8 @@
             Name = name;
             Body = body;
         }
+
+        // FOR QUERYING
+        public List<Exercise> Exercises { get; set; } = new List<Exercise>();
     }
 }

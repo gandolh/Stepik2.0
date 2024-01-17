@@ -1,12 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Licenta.Db.DataModel
+﻿namespace Licenta.Db.DataModel
 {
-    internal class QuizVariant
+    public class QuizVariant
     {
         public int Id { get; set; } = 0;
         public int ExerciseId { get; set; } = 0;

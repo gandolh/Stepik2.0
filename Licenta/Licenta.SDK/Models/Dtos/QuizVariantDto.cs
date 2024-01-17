@@ -6,10 +6,11 @@ using System.Threading.Tasks;
 
 namespace Licenta.SDK.Models.Dtos
 {
-    public class LessonDto
+    public class QuizVariantDto
     {
         public int Id { get; set; } = 0;
-        public string Name { get; set; } = string.Empty;
-        public string Body { get; set; } = string.Empty;
+        public int ExerciseId { get; set; } = 0;
+        public string Text { get; set; } = string.Empty;
+        public bool IsCorrect { get; set; } = false;
     }
 }

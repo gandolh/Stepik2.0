@@ -35,12 +35,25 @@ namespace Licenta.UI.Services
                 {"courseId", courseId.ToString() },
             };
             var resp = await _myHttpClient.GetAsync<FullCourseDto>(
-                _licentaConfig.GetPathTo(_licentaConfig.Endpoints.GetOne),
+                _licentaConfig.GetPathTo(_licentaConfig.Endpoints.GetOneCourse),
                 querryParameters
                 );
 
             return resp;
         }
 
+        internal async Task<FullLessonDto> GetOneLesson(int id)
+        {
+            var querryParameters = new Dictionary<string, string>()
+            {
+                {"lessonId", id.ToString()},
+            };
+            var resp = await _myHttpClient.GetAsync<FullLessonDto>(
+                _licentaConfig.GetPathTo(_licentaConfig.Endpoints.GetOneLesson),
+                querryParameters
+                );
+
+            return resp;
+        }
     }
 }

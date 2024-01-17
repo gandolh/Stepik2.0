@@ -1,4 +1,5 @@
 ﻿@page "/course/{Id:int}"
+@using Licenta.UI.Components.Courses
 
 <ul id="slide-out" class="sidenav sidenav-fixed">
     <li>
@@ -20,7 +21,8 @@
                         <ul class="collection">
                             @foreach (var lesson in module.Lessons)
                             {
-                                <li class="collection-item">@lesson.Name</li>
+                                <li class="collection-item"
+                                @onclick="()=>HandleSelectLesson(lesson)">@lesson.Name</li>
                             }
                         </ul>
                     </div>
@@ -33,5 +35,5 @@
 
 </ul>
 <div class="container-course">
-    <h1>hello</h1>
+    <LessonPanel ActiveLessonSummarry="@_activeLesson" />
 </div>

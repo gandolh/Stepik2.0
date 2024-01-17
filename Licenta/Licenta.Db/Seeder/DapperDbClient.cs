@@ -14,7 +14,9 @@ namespace Licenta.Db.Seeder
         public DapperDbClient(IDbFactory dbFactory)
         {
             this.dbFactory = dbFactory ?? throw new ArgumentNullException(nameof(dbFactory));
-            this.dbFactory.Context().Open();
+            var dbState = this.dbFactory.Context().State;
+            if (dbState == ConnectionState.Closed)
+                this.dbFactory.Context().Open();
         }
 
         public void Dispose()

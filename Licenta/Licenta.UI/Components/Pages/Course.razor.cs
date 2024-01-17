@@ -2,6 +2,7 @@
 using Licenta.UI.Services;
 using Microsoft.AspNetCore.Components;
 using Microsoft.JSInterop;
+using StackExchange.Redis;
 
 namespace Licenta.UI.Components.Pages
 {
@@ -12,6 +13,7 @@ namespace Licenta.UI.Components.Pages
         [Inject] HttpLicentaClient HttpLicentaClient { get; set; } = default!;
 
         private FullCourseDto _fullCourseDto = new FullCourseDto();
+        private LessonDto? _activeLesson = null;
 
         protected override async Task OnAfterRenderAsync(bool firstRender)
         {
@@ -23,6 +25,11 @@ namespace Licenta.UI.Components.Pages
             }
 
             await base.OnAfterRenderAsync(firstRender);
+        }
+
+        private void HandleSelectLesson(LessonDto lesson)
+        {
+            _activeLesson = lesson;
         }
     }
 }
