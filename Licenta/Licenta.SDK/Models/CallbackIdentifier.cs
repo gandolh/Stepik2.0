@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Licenta.SDK.Models
 {
-    internal class CallbackIdentifier
+    public class CallbackIdentifier
     {
         public string TopicName { get; set; }
         public string OperationId { get; set; }

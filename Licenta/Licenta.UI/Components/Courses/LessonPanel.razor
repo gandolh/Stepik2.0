@@ -1,7 +1,8 @@
 ﻿@if (_fullLessonDto == null)
 {
     <h1> Please select a lesson</h1>
-}else
+}
+else
 {
     <h1> @_fullLessonDto.Name</h1>
     <p> @_fullLessonDto.Body</p>
@@ -10,7 +11,21 @@
     {
         if (exercise.IsCodeRunner)
         {
-            <h1>code</h1>
+            <div class="row">
+                <div class="input-field col s12">
+                    <textarea id="code" class="validate">
+                        @HelloWorldCppStr
+                    </textarea>
+                    <label for="code" class=""></label>
+                </div>
+            </div>
+            <div class="row">
+                <button class="btn waves-effect waves-light" @onclick="HandleRunCode" >
+                    Run code
+                    <i class="material-icons right">send</i>
+                </button>
+
+            </div>
 
         }
         else
