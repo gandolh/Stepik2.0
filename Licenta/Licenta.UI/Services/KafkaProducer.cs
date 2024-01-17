@@ -1,4 +1,5 @@
 ﻿using Confluent.Kafka;
+using Licenta.SDK.Models.Dtos;
 using Microsoft.AspNetCore.Mvc.ModelBinding.Binders;
 using System.Text.Json;
 
@@ -25,12 +26,14 @@ namespace Licenta.UI.Services
         public async Task ProduceAsync(string topicName, string key, object value)
         {
             string str = JsonSerializer.Serialize(value);
+            KafkaDto kafkaDto = new KafkaDto("", key, str);
+            string transferObject = JsonSerializer.Serialize(kafkaDto);
             try
             {
                 await _producer.ProduceAsync(topicName, new Message<string, string>
                 {
                     Key = key,
-                    Value = str
+                    Value = transferObject
                 });
             }
             catch (Exception ex)

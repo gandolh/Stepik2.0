@@ -1,44 +1,44 @@
 using Confluent.Kafka;
 using Licenta.Sdk.Config;
+using Licenta.SDK.Models.Dtos;
+using System.Text.Json;
 
 namespace Licenta.Runner
 {
-    public class KafkaConnector
+    internal class KafkaConnector
     {
-        private readonly KafkaConfig _kafkaConfig;
+        private readonly KafkaOptions _kafkaConfig;
         private IProducer<string, string> _producer;
 
-        public KafkaConnector(KafkaConfig kafkaConfig)
+        internal KafkaConnector(RunnerConfig runnerConfig)
         { 
-            _kafkaConfig = kafkaConfig;
+            _kafkaConfig = runnerConfig.Kafka;
             var config = new ProducerConfig()
             {
-                BootstrapServers = _kafkaConfig.KafkaServer
+                BootstrapServers = _kafkaConfig.Address
             };
             _producer = new ProducerBuilder<string, string>(config).Build();
         }
 
-        public void Consume(CancellationToken stoppingToken, string[] subscribeTopics, Action<string> callback)
+        public void Consume(CancellationToken stoppingToken, Action<string, string> callback)
         {
             var config = new ConsumerConfig
             {
-                BootstrapServers = _kafkaConfig.KafkaServer,
+                BootstrapServers = _kafkaConfig.Address,
                 GroupId = Guid.NewGuid().ToString(),
-                AutoOffsetReset = AutoOffsetReset.Latest
+                AutoOffsetReset = AutoOffsetReset.Latest,
+                AllowAutoCreateTopics = true
             };
             using var consumer = new ConsumerBuilder<string, string>(config).Build();
-            consumer.Subscribe(subscribeTopics);
+            consumer.Subscribe(_kafkaConfig.SubscribeTopics);
             try
             {
 
-                while (true)
+                while (!stoppingToken.IsCancellationRequested)
                 {
                     var message = consumer.Consume(stoppingToken);
                     if (stoppingToken.IsCancellationRequested) return;
-
-                    _ = Task.Run(
-                        () => callback(message.Message.Value))
-                        .ConfigureAwait(false);
+                    _ = Task.Run(() => callback(message.Message.Key, message.Message.Value));
                 }
             }
             catch (Exception ex)
@@ -46,12 +46,12 @@ namespace Licenta.Runner
                 Console.WriteLine($"Error: {ex.Message}");
             }
         }
-        public void Produce(string? key = null, string? value = null)
+        public void Produce(string topicName, string key, KafkaDto value)
         {
             var message = new Message<string, string>();
-            message.Key = key ?? Guid.NewGuid().ToString();
-            message.Value = value ?? "";
-            _producer.Produce(_kafkaConfig.RunCodeTopic, message);
+            message.Key = key;
+            message.Value = JsonSerializer.Serialize(value);
+            _producer.Produce( topicName, message);
         }
     }
 }

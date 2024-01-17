@@ -8,9 +8,9 @@ namespace Licenta.SDK.Models.Dtos
 {
     public class KafkaDto
     {
-        public required string UserId { get; set; }
-        public required string OperationId { get; set; }
-        public required string Body { get; set; }
+        public string UserId { get; set; }
+        public string OperationId { get; set; }
+        public string Body { get; set; }
 
         public KafkaDto(string userId, string operationId, string body)
         {

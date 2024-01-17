@@ -7,14 +7,13 @@ namespace Licenta.Runner.CodeRunners
     {
         public async Task<CodeRunResult> Run(CodeRunReqDto req)
         {
+            Directory.CreateDirectory("/code_to_run");
+
             string filename = Guid.NewGuid().ToString();
             string cppPath = "/code_to_run/" + filename + "_cpp.cpp";
             string outPath = "/code_to_run/" + filename + "_cpp.out";
 
-
-            Directory.CreateDirectory("/code_to_run");
-
-            await Compile(cppPath, outPath, req.Code );
+            await Compile(cppPath, outPath, req.Code);
             return await RunCompilled(outPath, req.Input);
         }
         private async Task<CodeRunResult> RunCompilled(string outPath, string InputData)
