@@ -1,0 +1,1 @@
+Special thanks to https://blog.elijahlopez.ca/posts/aspnet-jwt-authorization/ for jwt implementation.

@@ -25,15 +25,15 @@ namespace Licenta.API.Services
             _teacherUserMapper = new TeacherUserMapper();
         }
 
-        public async Task<bool> Login(LoginReqDto req)
+        public async Task<User?> Login(LoginReqDto req)
         {
             var user = await userRepository.GetOne(req.Email);
             if (user == null)
-                return false;
+                return null;
 
             bool isCorectPassword = BCrypt.Net.BCrypt.Verify(req.Password, user.Password);
-            if(!isCorectPassword) return false;
-            return true;
+            if(!isCorectPassword) return null;
+            return user;
         }
 
         public async Task<bool> Register(RegisterReqDto req)
