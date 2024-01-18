@@ -52,3 +52,9 @@ h1:focus {
 .containerLogin {
     margin-top: -32px;
 }
+
+nav .brand-logo {
+    display: flex;
+    align-items: center;
+    height: 100%;
+}
