@@ -1,0 +1,29 @@
+﻿
+<p style="font-weight: bold;font-size: 1.5rem;">@Exercise.Enunciation</p>
+@{
+    int i = -1;
+    foreach (var item in Exercise.QuizVariants)
+    {
+        int x = ++i;
+        <p>
+            <label>
+                <input name="@item.ExerciseId" type="radio" @onchange="()=>ChangeSelected(x)" />
+                <span>@item.Text</span>
+            </label>
+        </p>
+    }
+}
+
+@if (isCorect == false)
+{
+    <p class="red-text" style="font-weight: bold;"> raspuns incorect </p>
+}
+else if (isCorect == true)
+{
+    <p class="green-text" style="font-weight: bold;"> raspuns corect </p>
+}
+
+<button class="btn waves-effect waves-light" type="button" @onclick="HandleCheckQuiz">
+    Submit
+    <i class="material-icons right">send</i>
+</button>
