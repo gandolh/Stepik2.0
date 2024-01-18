@@ -57,22 +57,15 @@ namespace Licenta.UI.Services
             return resp;
         }
 
-        internal async Task<HttpStatusCode> Login(LoginReqDto reqDto)
+      
+        internal async Task<UserDto?> GetUser(LoginReqDto reqDto)
         {
-            try
-            {
-                string resp = await _myHttpClient.PostAsync(
-                   _licentaConfig.GetPathTo(_licentaConfig.Endpoints.Login),
+                UserDto? resp = await _myHttpClient.PostAsync<UserDto?, LoginReqDto>(
+                   _licentaConfig.GetPathTo(_licentaConfig.Endpoints.GetUser),
                    reqDto
                    );
 
-                return HttpStatusCode.OK;
-
-            }
-            catch (Exception ex)
-            {
-                return HttpStatusCode.NotFound;
-            }
+                return resp;
         }
 
         internal async Task<HttpStatusCode> Register(RegisterReqDto reqDto)

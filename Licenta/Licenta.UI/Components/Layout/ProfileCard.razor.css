@@ -1,0 +1,65 @@
+﻿
+.username-container {
+    background-color: #16161a;
+    border-radius: 50px;
+    padding: 5px 10px;
+}
+
+.profile-container {
+    display: flex;
+    gap: 1rem;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.profile-description {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.profile-img {
+    border-radius: 50%;
+    width: 24px;
+    height: 24px;
+    overflow: hidden;
+    background-image: url("https://e7.pngegg.com/pngimages/550/997/png-clipart-user-icon-foreigners-avatar-child-face.png");
+    background-size: contain;
+}
+
+.profile-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.user-title {
+    color: white;
+    font-weight: bold;
+    font-size: 0.9rem;
+}
+
+.username {
+    color: #4c4c55;
+    font-size: 0.8rem;
+}
+
+.user-title, .username {
+    margin: 0;
+    padding: 0;
+    line-height: initial;
+}
+
+.menu-bar {
+    display: flex;
+    align-items: center;
+}
+
+.menu-bar i {
+    font-size: 25px;
+    color: white;
+}
+
+.menu-bar i:hover {
+    cursor: pointer;
+}

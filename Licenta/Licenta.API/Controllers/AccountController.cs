@@ -32,12 +32,14 @@ namespace Licenta.API.Controllers
             _accountService = accountService;
         }
 
-        [HttpPost] public async Task<ActionResult> Login(LoginReqDto req)
+        [HttpPost]
+        public async Task<ActionResult<UserDto>> GetUser(LoginReqDto req)
         {
-            User? loggedUser = await _accountService.Login(req);
-            if (loggedUser == null) return NotFound();
-            else return Ok(GenerateToken(loggedUser));
+            UserDto? loggedUser = await _accountService.GetUser(req);
+            return Ok(loggedUser);
         }
+
+
 
         [HttpPost]
         public async Task<ActionResult> Register(RegisterReqDto req)
@@ -47,25 +49,22 @@ namespace Licenta.API.Controllers
             else return Ok();
         }
 
-#if DEBUG
-        [HttpGet]
-        [Authorize(Roles = "Student")]
-        public string TestAuthorization()
-        {
-            // JwtRegisteredClaimNames
-            var email = User.FindFirstValue(ClaimTypes.Email);
-            var firstName = User.FindFirstValue(ClaimTypes.GivenName);
-            var lastName = User.FindFirstValue(ClaimTypes.Surname);
-            return $"Email: {email}, FirstName: {firstName}, LastName: {lastName}";
-        }
-#endif
 
-        private string GenerateToken(User user)
+
+        [HttpPost]
+        public async Task<ActionResult> JwtLogin(LoginReqDto req)
+        {
+            UserDto? loggedUser = await _accountService.GetUser(req);
+            if (loggedUser == null) return NotFound();
+            else return Ok(GenerateToken(loggedUser));
+        }
+
+        private string GenerateToken(UserDto user)
         {
             //TODO: implement in user a field for user role
 
             var tokenHandler = new JwtSecurityTokenHandler();
-            var claims = new[] { 
+            var claims = new[] {
                 new Claim(ClaimTypes.Email, user.Email),
                 new Claim(ClaimTypes.GivenName, user.Firstname),
                 new Claim(ClaimTypes.Surname, user.Lastname),
@@ -84,4 +83,5 @@ namespace Licenta.API.Controllers
             return jwtSecurityTokenHandler.WriteToken(token);
         }
     }
+
 }

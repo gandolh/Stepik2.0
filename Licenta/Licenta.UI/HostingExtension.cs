@@ -8,7 +8,9 @@ namespace Licenta.UI
     {
         public static void AddEssentials(this WebApplicationBuilder builder)
         {
+            builder.Services.AddAuthentication("Cookies").AddCookie();
             builder.AddLocalization();
+            builder.Services.AddControllers();
         }
         public static void AddMyServices(this WebApplicationBuilder builder)
         {

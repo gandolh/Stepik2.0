@@ -59,7 +59,8 @@ builder.Services.AddAuthentication(x =>
         ValidateLifetime = true,
         ValidateIssuerSigningKey = true
     };
-});
+}).AddCookie("Cookies");
+
 
 builder.Services.AddAuthorization();
 

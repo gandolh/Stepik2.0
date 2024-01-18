@@ -14,6 +14,7 @@ namespace Licenta.API.Services
         private readonly RegisterReqUserMapper _registerReqUserMapper;
         private readonly StudentUserMapper _studentUserMapper;
         private readonly TeacherUserMapper _teacherUserMapper;
+        private readonly UserMapper _userMapper;
 
         public AccountService(StudentRepository studentRepository, TeacherRepository teacherRepository, UserRepository userRepository)
         {
@@ -23,9 +24,10 @@ namespace Licenta.API.Services
             _registerReqUserMapper = new RegisterReqUserMapper();
             _studentUserMapper = new StudentUserMapper();
             _teacherUserMapper = new TeacherUserMapper();
+            _userMapper = new UserMapper();
         }
 
-        public async Task<User?> Login(LoginReqDto req)
+        public async Task<UserDto?> GetUser(LoginReqDto req)
         {
             var user = await userRepository.GetOne(req.Email);
             if (user == null)
@@ -33,7 +35,7 @@ namespace Licenta.API.Services
 
             bool isCorectPassword = BCrypt.Net.BCrypt.Verify(req.Password, user.Password);
             if(!isCorectPassword) return null;
-            return user;
+            return _userMapper.Map(user);
         }
 
         public async Task<bool> Register(RegisterReqDto req)
