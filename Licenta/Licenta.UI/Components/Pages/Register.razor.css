@@ -15,3 +15,18 @@
 .verticallyCenteredBody .containerRegister {
     margin-top: -32px;
 }
+
+
+.select-role-row {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.select-role-row .btn-inactive{
+    color: black;
+    background-color: #fafafa !important;
+}
+
+.select-role-row .btn-active {
+    background-color: #1976D2 !important;
+}

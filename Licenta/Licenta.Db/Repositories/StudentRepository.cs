@@ -16,6 +16,7 @@ namespace Licenta.Db.Repositories
                     Id SERIAL PRIMARY KEY,
                     Firstname VARCHAR(100),
                     Lastname VARCHAR(100),
+                    Email VARCHAR(255),
                     Password VARCHAR(255)
                 );
                 """;
@@ -26,8 +27,8 @@ namespace Licenta.Db.Repositories
         {
             string sql = $"""
                 INSERT INTO {_tableName}
-                (Firstname, Lastname, Password) 
-                VALUES (@Firstname,@Lastname,@Password);
+                (Firstname, Lastname, Email, Password) 
+                VALUES (@Firstname,@Lastname,@Email,@Password);
             """;
             var rowsAffected = await _dbClient.ExecuteAsync(sql, data);
         }

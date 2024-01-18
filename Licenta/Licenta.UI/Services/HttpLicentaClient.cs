@@ -1,4 +1,5 @@
 ﻿using Licenta.SDK.Models.Dtos;
+using System.Net;
 
 namespace Licenta.UI.Services
 {
@@ -54,6 +55,41 @@ namespace Licenta.UI.Services
                 );
 
             return resp;
+        }
+
+        internal async Task<HttpStatusCode> Login(LoginReqDto reqDto)
+        {
+            try
+            {
+                string resp = await _myHttpClient.PostAsync(
+                   _licentaConfig.GetPathTo(_licentaConfig.Endpoints.Login),
+                   reqDto
+                   );
+
+                return HttpStatusCode.OK;
+
+            }
+            catch (Exception ex)
+            {
+                return HttpStatusCode.NotFound;
+            }
+        }
+
+        internal async Task<HttpStatusCode> Register(RegisterReqDto reqDto)
+        {
+            try
+            {
+                string resp = await _myHttpClient.PostAsync(
+                   _licentaConfig.GetPathTo(_licentaConfig.Endpoints.Register),
+                   reqDto
+                   );
+
+                return HttpStatusCode.OK;
+
+            }catch (Exception ex)
+            {
+                return HttpStatusCode.Forbidden;
+            }
         }
     }
 }

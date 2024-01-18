@@ -1,4 +1,6 @@
-﻿namespace Licenta.Db.DataModel
+﻿using Licenta.Db.Data;
+
+namespace Licenta.Db.DataModel
 {
     public class Exercise
     {

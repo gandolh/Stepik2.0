@@ -1,4 +1,5 @@
-﻿using Licenta.Db.DataModel;
+﻿using Licenta.Db.Data;
+using Licenta.Db.DataModel;
 using Licenta.SDK.Models.Dtos;
 
 namespace Licenta.API.Mappers
@@ -20,7 +21,7 @@ namespace Licenta.API.Mappers
                 LessonId =element.LessonId,
                 Enunciation=element.Enunciation,
                 SampleInput= element.SampleInput,
-                Type = element.IsCodeRunner ? Db.ExerciseType.Code : Db.ExerciseType.Quiz,
+                Type = element.IsCodeRunner ? ExerciseType.Code : ExerciseType.Quiz,
                 QuizVariants = _quizVariantMapper.Map(element.QuizVariants)
             };
         }
@@ -33,7 +34,7 @@ namespace Licenta.API.Mappers
                 LessonId = element.LessonId,
                 Enunciation = element.Enunciation,
                 SampleInput = element.SampleInput,
-                IsCodeRunner = element.Type == Db.ExerciseType.Code ? true : false,
+                IsCodeRunner = element.Type == ExerciseType.Code ? true : false,
                 QuizVariants = _quizVariantMapper.Map(element.QuizVariants)
 
             };

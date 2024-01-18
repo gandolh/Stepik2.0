@@ -8,27 +8,42 @@
 
                 <form class="col s12" id="reg-form">
                     <h4>Register</h4>
-
+                    <div class="select-role-row">
+                        <button type="button" class=@("col s12 btn btn-large waves-effect "
+                                + (_activeIndex == 0 ? "btn-active" :"btn-inactive"))
+                        @onclick="()=>SelectRole(0)">
+                            Student
+                        </button>
+                        <button type="button" class=@("col s12 btn btn-large waves-effect "
+                                + (_activeIndex == 1 ? "btn-active" :"btn-inactive"))
+                                @onclick="()=>SelectRole(1)">
+                            Teacher
+                        </button>
+                    </div>
                     <div class="row">
                         <div class="input-field col s6">
-                            <input placeholder="Nume" id="first_name" type="text" class="validate" required>
+                            <input placeholder="Nume" id="first_name" type="text" class="validate" 
+                                required @bind-value="reqDto.Firstname">
                             <label class="active" for="first_name">First Name</label>
                         </div>
                         <div class="input-field col s6">
-                            <input placeholder="Nume" id="last_name" type="text" class="validate" required>
+                            <input placeholder="Nume" id="last_name" type="text" class="validate"
+                                   required @bind-value="reqDto.Lastname">
                             <label class="active" for="last_name">Last Name</label>
                         </div>
                     </div>
                     <div class="row">
                         <div class="input-field col s12">
-                            <input placeholder="email" id="email" type="email" class="validate" required>
+                            <input placeholder="email" id="email" type="email" class="validate"
+                                   required @bind-value="reqDto.Email">
                             <label class="active" for="email">Email</label>
 
                         </div>
                     </div>
                     <div class="row">
                         <div class="input-field col s12">
-                            <input placeholder="password" id="password" type="password" class="validate" minlength="6" required>
+                            <input placeholder="password" id="password" type="password" class="validate" minlength="6"
+                                   required @bind-value="reqDto.Password">
                             <label class="active" for="password">Password</label>
                         </div>
                     </div>
@@ -36,12 +51,16 @@
                         <div class="input-field col s12">
                             <center>
                                 <div class='row'>
-                                    <button class='col s12 btn btn-large waves-effect teal'>
+                                    <button type="button" @onclick="HandleRegister" class='col s12 btn btn-large waves-effect teal'>
                                         Register
                                     </button>
+                                    @if (_errorMsg != string.Empty)
+                                    {
+                                        <span class="red-text"> @_errorMsg</span>
+                                    }
                                 </div>
                             </center>
-                            <a href="register">Already have an account?</a>
+                            <a href="login" >Already have an account?</a>
                         </div>
                     </div>
                 </form>

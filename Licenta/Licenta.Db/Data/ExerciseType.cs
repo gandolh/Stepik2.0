@@ -1,8 +1,8 @@
-﻿namespace Licenta.Db
+﻿namespace Licenta.Db.Data
 {
     public enum ExerciseType
     {
-        Code, 
+        Code,
         Quiz
     }
 }

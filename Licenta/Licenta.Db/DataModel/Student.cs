@@ -1,23 +1,20 @@
-﻿namespace Licenta.Db.DataModel
+﻿using Licenta.Db.Data;
+
+namespace Licenta.Db.DataModel
 {
-    public class Student
+    public class Student : User
     {
         public int Id { get; set; } = 0;
-        public string Firstname { get; set; } = string.Empty;
-        public string Lastname { get; set; } = string.Empty;
-        public string Password { get; set; } = string.Empty;
 
         public Student()
         {
 
         }
 
-        public Student(int id, string firstname, string lastname, string password)
+        public Student(int id, string firstname, string lastname, string password) 
+            : base(firstname, lastname, password)
         {
             Id = id;
-            Firstname = firstname;
-            Lastname = lastname;
-            Password = password;
         }
     }
 }

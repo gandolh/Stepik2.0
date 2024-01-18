@@ -14,14 +14,17 @@
                     <div class='row'>
                         <h4>Login</h4>
                         <div class='input-field col s12'>
-                            <input placeholder="email" id="email" type="email" class="validate" required>
+                            <input placeholder="email" id="email" type="email" class="validate"
+                                   required @bind-value=reqDto.Email>
                             <label class="active" for="email">Email</label>
                         </div>
                     </div>
 
                     <div class='row'>
                         <div class='input-field col s12'>
-                            <input placeholder="password" id="password" type="password" class="validate" minlength="6" required>
+                            <input placeholder="password" id="password" type="password"
+                                   class="validate" minlength="6"
+                                   required @bind-value=reqDto.Password>
                             <label class="active" for="password">Password</label>
                         </div>
                         <label style='float: right;'>
@@ -32,7 +35,11 @@
                     <br />
                     <center>
                         <div class='row'>
-                            <button class='col s12 btn btn-large waves-effect teal'>Login</button>
+                            <button type="button" class='col s12 btn btn-large waves-effect teal' @onclick="HandleLogin">Login</button>
+                            @if (_errorMsg != string.Empty)
+                            {
+                                <span class="red-text"> @_errorMsg</span>
+                            }
                         </div>
                     </center>
                     <a href="register">Create account</a>

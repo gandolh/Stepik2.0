@@ -1,4 +1,5 @@
-﻿using Licenta.Db.DataModel;
+﻿using Licenta.Db.Data;
+using Licenta.Db.DataModel;
 using Licenta.Db.Seeder.Interfaces;
 
 namespace Licenta.Db.Repositories
