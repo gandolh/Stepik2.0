@@ -1,0 +1,17 @@
+﻿.col.s6 > .btn {
+    width: 100%;
+}
+
+.row {
+    margin-bottom: 10px;
+}
+
+.ngl {
+    position: absolute;
+    top: -20px;
+    right: -20px;
+}
+
+.verticallyCenteredBody .containerRegister {
+    margin-top: -32px;
+}

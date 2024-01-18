@@ -1,0 +1,52 @@
+﻿@page "/register"
+
+
+<main>
+    <center class="verticallyCenteredBody bodyWithoutNavHeight">
+        <div class="container containerRegister">
+            <div class="z-depth-1 grey lighten-4 row" style="display: inline-block; padding: 32px 48px 0px 48px; border: 1px solid #EEE;">
+
+                <form class="col s12" id="reg-form">
+                    <h4>Register</h4>
+
+                    <div class="row">
+                        <div class="input-field col s6">
+                            <input placeholder="Nume" id="first_name" type="text" class="validate" required>
+                            <label class="active" for="first_name">First Name</label>
+                        </div>
+                        <div class="input-field col s6">
+                            <input placeholder="Nume" id="last_name" type="text" class="validate" required>
+                            <label class="active" for="last_name">Last Name</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <input placeholder="email" id="email" type="email" class="validate" required>
+                            <label class="active" for="email">Email</label>
+
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <input placeholder="password" id="password" type="password" class="validate" minlength="6" required>
+                            <label class="active" for="password">Password</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <center>
+                                <div class='row'>
+                                    <button class='col s12 btn btn-large waves-effect teal'>
+                                        Register
+                                    </button>
+                                </div>
+                            </center>
+                            <a href="register">Already have an account?</a>
+                        </div>
+                    </div>
+                </form>
+
+            </div>
+        </div>
+    </center>
+</main>

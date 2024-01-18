@@ -39,3 +39,16 @@ h1:focus {
     display: flex;
     gap: 0.5rem;
 }
+
+.bodyWithoutNavHeight {
+    height: calc(100vh - 64px);
+}
+
+.verticallyCenteredBody {
+    display: flex;
+    align-items: center;
+}
+
+.containerLogin {
+    margin-top: -32px;
+}
