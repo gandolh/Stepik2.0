@@ -58,3 +58,11 @@ nav .brand-logo {
     align-items: center;
     height: 100%;
 }
+.btn, .btn-large, .btn-small,
+.btn:hover, .btn-large:hover, .btn-small:hover {
+    background-color: #03a9f4;
+}
+
+nav .btn-small, nav .btn-small:hover {
+    background-color: #1976d2;
+}
