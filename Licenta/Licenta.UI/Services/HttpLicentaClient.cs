@@ -14,12 +14,12 @@ namespace Licenta.UI.Services
             _licentaConfig = licentaConfig;
         }
 
-        public async Task<List<CourseDto>> GetCourses(string email)
+        public async Task<List<CourseDto>> GetCourses(string email,bool includeTeachers = false,bool includeStudents = false)
         {
             var querryParameters = new Dictionary<string, string>()
             {
-                {"includeStudents","false" },
-                {"includeTeachers","false" },
+                {"includeStudents",includeTeachers.ToString() },
+                {"includeTeachers", includeStudents.ToString() },
             };
             var resp = await _myHttpClient.GetAsync<List<CourseDto>>(
                 _licentaConfig.GetPathTo(_licentaConfig.Endpoints.GetCoursesByStudent),

@@ -33,7 +33,7 @@ namespace Licenta.API.Controllers
         }
 
         [HttpGet]
-        [SwaggerOperation(Summary = "Get a lesson by id.",
+        [SwaggerOperation(Summary = "Get a lesson by Id.",
             Description = "The response could include exercises of that lesson")]
         public async Task<ActionResult<FullLessonDto>> GetOne(int lessonId)
         {

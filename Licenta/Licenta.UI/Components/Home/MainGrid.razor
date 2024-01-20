@@ -3,12 +3,11 @@
 
 <h1> Welcome back, "user"  </h1>
 <div class="grid-3-cols">
-    <div class="CourseList">
+    <SimpleCardPanel Class="CourseList">
         <h3> Cursuri: </h3>
         @if(pageState == PageState.Loading)
         {
             <Loading/>
-            <p>AAAAAAAAAAA</p>
         }else
         {
             <ul class="collection">
@@ -18,14 +17,12 @@
                 }
             </ul>
         }
-
-    </div>
-    <div class="UpcomingDeadlines">
+    </SimpleCardPanel>
+    <SimpleCardPanel Class="UpcomingDeadlines">
         <h3> Deadline-uri: </h3>
 
-    </div>
-    <div class="LastAccesed">
+    </SimpleCardPanel>
+    <SimpleCardPanel Class="LastAccesed">
         <h3>Ultimele accesari:</h3>
-
-    </div>
+    </SimpleCardPanel>
 </div>

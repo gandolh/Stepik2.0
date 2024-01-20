@@ -10,7 +10,7 @@
 
         public CreateResult(Type t, int id)
         {
-            ComposedResult = $"{t.Name} created with id: {id}";
+            ComposedResult = $"{t.Name} created with Id: {id}";
         }
     }
 }

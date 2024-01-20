@@ -49,7 +49,7 @@ namespace Licenta.API.Controllers
         }
 
         [HttpGet]
-        [SwaggerOperation(Summary = "Get one course by id",
+        [SwaggerOperation(Summary = "Get one course by Id",
         Description = "The response could include list of participating students" +
             "and teachers")]
         public async Task<ActionResult<FullCourseDto>> GetOne(int courseId)

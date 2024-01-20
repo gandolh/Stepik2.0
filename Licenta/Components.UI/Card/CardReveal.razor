@@ -8,6 +8,10 @@
     </div>
     <div class="card-reveal">
         <span class="card-title grey-text text-darken-4">@CardTitle<i class="material-icons right">close</i></span>
-        <p>@CardDescription</p>
+
+        @foreach (var line in CardDescription)
+        {
+            <p>@line</p>
+        }
     </div>
 </div>

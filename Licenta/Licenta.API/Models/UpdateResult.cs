@@ -9,7 +9,7 @@
 
         public UpdateResult(Type t, int id)
         {
-            ComposedResult = $"{t.Name} updated with id: {id}";
+            ComposedResult = $"{t.Name} updated with Id: {id}";
         }
     }
 }

@@ -33,7 +33,7 @@ namespace Licenta.API.Controllers
         }
 
         [HttpGet]
-        [SwaggerOperation(Summary = "Get exercise by id",
+        [SwaggerOperation(Summary = "Get exercise by Id",
             Description = "The response could include submissions for that exercise.")]
         public async Task<ActionResult<Exercise>> GetOne(int submissionId, bool includeSubmissions)
         {

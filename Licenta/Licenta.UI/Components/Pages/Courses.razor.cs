@@ -15,10 +15,21 @@ namespace Licenta.UI.Components.Pages
         protected override async Task OnAfterRenderAsync(bool firstRender)
         {
             if(firstRender) {
-                _courses = await httpLicentaClient.GetCourses(User.Email);
+                _courses = await httpLicentaClient.GetCourses(User.Email, true, true);
                 StateHasChanged();
             }
             await base.OnAfterRenderAsync(firstRender);    
+        }
+
+        private string[] GetDescription(CourseDto courseDto)
+        {
+            string teachers = "Profesori: " + string.Join(",",
+                courseDto.Teachers.Select(el => $"{el.Firstname} {el.Lastname}"));
+
+            int studentsTake = courseDto.Students.Count() > 5 ? 5 : courseDto.Students.Count();
+            string students = "Studenti: " + string.Join(",",
+                courseDto.Students.Select(el => $"{el.Firstname} {el.Lastname}" ));
+            return [teachers, students];
         }
     }
 }

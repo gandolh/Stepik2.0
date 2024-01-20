@@ -47,5 +47,30 @@ namespace Licenta.Db.Repositories
             course.Modules= modules;
             return course;
         }
+
+        public async Task<List<Course>> GetDetailedAsync(bool includeStudents, bool includeTeachers)
+        {
+            string getCoursesSql = $"SELECT * FROM Course";
+            string getTeachersSql = $"SELECT * FROM Teacher";
+            string getStudentsSql = $"SELECT * FROM Student";
+            string getCourseTeacherSql = $"SELECT * FROM course_teacher";
+            string getCourseStudentSql = $"SELECT * FROM student_course";
+
+            var courses = await _dbClient.QueryAsync<Course>(getCoursesSql);
+            var teachers = await _dbClient.QueryAsync<Teacher>(getTeachersSql);
+            var students = await _dbClient.QueryAsync<Student>(getStudentsSql);
+            var teacherCourse = await _dbClient.QueryAsync<Course_Teacher>(getCourseTeacherSql);
+            var studentCourse = await _dbClient.QueryAsync<Student_Course>(getCourseStudentSql);
+
+            courses.ForEach(c => {
+                var teacherIds = teacherCourse.Where(el => el.CourseId == c.Id).Select(t => t.TeacherId);
+                c.Teachers = teachers.Where(t => teacherIds.Contains(t.Id)).ToList();
+
+                var studentIds = studentCourse.Where(el => el.CourseId == c.Id).Select(t => t.StudentId);
+                c.Students = students.Where(t => studentIds.Contains(t.Id)).ToList();
+            });
+
+            return courses;
+        }
     }
 }

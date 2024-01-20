@@ -6,7 +6,11 @@
     <div class="grid-courses">
         @foreach (var course in _courses)
         {
-            <CardReveal CardTitle="@course.Name" AnchorText="Către curs" AnchorHref=@($"course/{course.Id}")/>
+            <CardReveal 
+                CardTitle="@course.Name"
+                CardDescription="@GetDescription(course)"
+                AnchorText="Către curs"
+                AnchorHref=@($"course/{course.Id}")/>
         }
     </div>
 </div>

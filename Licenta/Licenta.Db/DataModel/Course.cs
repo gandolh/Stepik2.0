@@ -18,5 +18,7 @@
 
         // QUERYING
         public List<Module> Modules { get; set; } = new List<Module>();
+        public List<Teacher> Teachers { get; set; } = new List<Teacher>();
+        public List<Student> Students { get; set; } = new List<Student>();
     }
 }

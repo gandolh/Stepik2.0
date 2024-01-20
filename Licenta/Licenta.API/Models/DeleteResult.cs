@@ -9,7 +9,7 @@
 
         public DeleteResult(Type t, int id)
         {
-            ComposedResult = $"{t.Name} deleted with id: {id}";
+            ComposedResult = $"{t.Name} deleted with Id: {id}";
         }
     }
 }

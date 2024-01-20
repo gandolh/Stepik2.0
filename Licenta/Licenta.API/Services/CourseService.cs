@@ -16,18 +16,20 @@ namespace Licenta.API.Services
         private readonly CourseRepository _courseRepository;
         private readonly CourseMapper _courseMapper;
         private readonly FullCourseMapper _fullCourseMapper;
+        private readonly TeacherMapper _teacherMapper;
 
         public CourseService(CourseRepository courseRepository)
         {
             _courseRepository = courseRepository;
             _courseMapper = new CourseMapper();
             _fullCourseMapper = new FullCourseMapper();
+            _teacherMapper = new TeacherMapper();
 
         }
 
         internal async Task<List<CourseDto>> GetAll(bool includeStudents, bool includeTeachers)
         {
-            var courses = await _courseRepository.GetAllAsync();
+            var courses = await _courseRepository.GetDetailedAsync(includeStudents, includeTeachers);
             var dtos = _courseMapper.Map(courses);
             return dtos;
         }

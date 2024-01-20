@@ -33,7 +33,7 @@ namespace Licenta.API.Controllers
         }
 
         [HttpGet]
-        [SwaggerOperation(Summary = "Get one submission by id", Description = "")]
+        [SwaggerOperation(Summary = "Get one submission by Id", Description = "")]
         public async Task<ActionResult<Submission>> GetOne(int submissionId)
         {
             throw new NotImplementedException();

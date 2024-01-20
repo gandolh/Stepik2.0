@@ -1,14 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Microsoft.AspNetCore.Components;
 
 namespace Components.UI.Card
 {
     public partial class SimpleCardPanel
     {
-
-        public string Text { get; set; } = string.Empty;
+       [Parameter] public string Text { get; set; } = string.Empty;
+       [Parameter] public RenderFragment? ChildContent { get; set; }
+       [Parameter] public string Class { get; set; } = string.Empty;
     }
 }
