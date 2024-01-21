@@ -48,6 +48,38 @@ const handleLogout = async () => {
     await postData(url, {}, callbackError, callbackSucces);
 }
 
+const initializeEditor = (idElt, value, language) => {
+    // Through the options literal, the behaviour of the editor can be easily customized.
+    // Here are a few examples of config options that can be passed to the editor.
+    // You can also call editor.updateOptions at any time to change the options.
+    if (window.editor)
+        window.editor.dispose()
+
+    window.editor = monaco.editor.create(document.getElementById(idElt), {
+        padding: {
+            top: 15
+        },
+        value: value,
+        language: language,
+
+        lineNumbers: "off",
+        roundedSelection: false,
+        scrollBeyondLastLine: false,
+        readOnly: false,
+        theme: "vs-dark",
+    });
+    setTimeout(function () {
+        editor.updateOptions({
+            lineNumbers: "on",
+        });
+    }, 2000);
+
+
+}
+
+const GetCode = () => {
+    return window.editor.getValue();
+}
 
 
 var Main = {
@@ -55,7 +87,9 @@ var Main = {
     initializeCollapsible: initializeCollapsible,
     initializeFormSelect: initializeFormSelect,
     handleLogin: handleLogin,
-    handleLogout: handleLogout
+    handleLogout: handleLogout,
+    initializeEditor: initializeEditor,
+    GetCode: GetCode
 }
 
 

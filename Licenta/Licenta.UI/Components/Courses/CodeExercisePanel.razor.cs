@@ -1,6 +1,7 @@
 ﻿using Licenta.SDK.Models.Dtos;
 using Licenta.UI.Services;
 using Microsoft.AspNetCore.Components;
+using Microsoft.JSInterop;
 using System.Text.Json;
 
 namespace Licenta.UI.Components.Courses
@@ -10,9 +11,10 @@ namespace Licenta.UI.Components.Courses
         [Parameter] public required ExerciseDto Exercise { get; set; }
         [Inject] public KafkaLicentaClient KafkaLicentaClient { get; set; } = default!;
         [Inject] public LicentaConfig LicentaConfig { get; set; } = default!;
+        [Inject] public IJSRuntime JSRuntime { get; set; } = default!;
 
         private CodeLanguage _selectedLanguage { get; set; }
-        private string _code { get; set; } = CodeSamplers.CppStartCode;
+
         private string _customInput { get; set; } = string.Empty;
         private CodeRunResultDto? _codeResult;
 
@@ -24,9 +26,11 @@ namespace Licenta.UI.Components.Courses
 
         private async Task HandleRunCode()
         {
+            string code = await JSRuntime.InvokeAsync<string>("Main.GetCode");
+
             CodeRunReqDto req = new CodeRunReqDto()
             {
-                Code = _code,
+                Code = code,
                 Input = _customInput,
                 Language = _selectedLanguage
             };

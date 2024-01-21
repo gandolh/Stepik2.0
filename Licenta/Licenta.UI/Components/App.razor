@@ -7,6 +7,9 @@
     <base href="/" />
 
     <!--Import Google Icon Font-->
+    <link rel="stylesheet"
+          data-name="vs/editor/editor.main"
+          href="vendor/monaco/dev/vs/editor/editor.main.css" />
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link type="text/css" rel="stylesheet" href="css/materialize.min.css" media="screen,projection" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -17,6 +20,12 @@
 
 <body>
     <Routes @rendermode="@InteractiveServer" />
+    <script>
+        var require = { paths: { vs: 'vendor/monaco/dev/vs' } };
+    </script>
+    <script type="text/javascript" src="vendor/monaco/dev/vs/loader.js"></script>
+    <script type="text/javascript" src="vendor/monaco/dev/vs/editor/editor.main.nls.js"></script>
+    <script type="text/javascript" src="vendor/monaco/dev/vs/editor/editor.main.js"></script>
 
     <script type="text/javascript" src="js/materialize.min.js"></script>
     <script type="text/javascript" src="js/main.js"></script>

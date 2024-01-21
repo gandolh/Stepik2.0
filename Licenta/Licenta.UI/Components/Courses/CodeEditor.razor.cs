@@ -1,16 +1,23 @@
 ﻿using Microsoft.AspNetCore.Components;
+using Microsoft.JSInterop;
 
 namespace Licenta.UI.Components.Courses
 {
     public partial class CodeEditor
     {
-        [Parameter] public string Code { get; set; } = string.Empty;
-        [Parameter] public EventCallback<string> CodeChanged { get; set; } = default!;
-
-        private async Task HandleChange(ChangeEventArgs e)
+        [Inject] public IJSRuntime JSRuntime { get; set; } = default!;
+        private string _code { get; set; } = CodeSamplers.CppStartCode;
+        protected override async Task OnAfterRenderAsync(bool firstRender)
         {
-            await CodeChanged.InvokeAsync(e.Value!.ToString());
+            if (firstRender)
+            {
+                await JSRuntime.InvokeVoidAsync("Main.initializeEditor", 
+                    "code-editor", _code, "cpp");
+            }
+
+            await base.OnAfterRenderAsync(firstRender);
         }
+
     }
 
 }
