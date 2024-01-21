@@ -7,10 +7,12 @@ namespace Licenta.API.Mappers
     public class ExerciseMapper : BaseMapper<Exercise, ExerciseDto>
     {
         private readonly QuizVariantMapper _quizVariantMapper;
+        private readonly CodeEvaluationEntryMapper _codeEvalMapper;
 
         public ExerciseMapper()
         {
             _quizVariantMapper = new QuizVariantMapper();
+            _codeEvalMapper = new CodeEvaluationEntryMapper();
         }
 
         public override Exercise Map(ExerciseDto element)
@@ -22,7 +24,8 @@ namespace Licenta.API.Mappers
                 Enunciation=element.Enunciation,
                 SampleInput= element.SampleInput,
                 Type = element.IsCodeRunner ? ExerciseType.Code : ExerciseType.Quiz,
-                QuizVariants = _quizVariantMapper.Map(element.QuizVariants)
+                QuizVariants = _quizVariantMapper.Map(element.QuizVariants),
+                CodeEvaluationEntries = _codeEvalMapper.Map(element.CodeEvaluationEntries)
             };
         }
 
@@ -35,8 +38,8 @@ namespace Licenta.API.Mappers
                 Enunciation = element.Enunciation,
                 SampleInput = element.SampleInput,
                 IsCodeRunner = element.Type == ExerciseType.Code ? true : false,
-                QuizVariants = _quizVariantMapper.Map(element.QuizVariants)
-
+                QuizVariants = _quizVariantMapper.Map(element.QuizVariants),
+                CodeEvaluationEntries = _codeEvalMapper.Map(element.CodeEvaluationEntries)
             };
         }
     }

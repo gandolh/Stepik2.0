@@ -1,0 +1,16 @@
+﻿.submit-result-group p{
+    margin:0;
+}
+.submit-result-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    padding: 10px;
+    border-radius: 5px;
+    background: #1e1e1e;
+    margin-bottom: 2px;
+}
+.submit-result-row {
+    max-height: 250px;
+    overflow: auto;
+}

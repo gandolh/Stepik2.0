@@ -1,0 +1,24 @@
+﻿@if (submitResults.Count() > 0)
+{
+    <div class="submit-result-row row">
+        @foreach (var submit in submitResults)
+        {
+            if (submit.resultDto != null)
+            {
+                <div class="@(ExpectedEqualsResult(submit) ? "green-text" : "red-text") submit-result-group">
+                    @if (submit.resultDto.ErrorCode == SDK.Models.Dtos.ErrorCodeStatus.NoError)
+                    {
+                        <p>Result: @submit.resultDto.Result</p>
+                        <p>Expected: @submit.evaluationEntryDto.ExpectedResult</p>
+                    }
+                    else
+                    {
+                        <p>
+                            @submit.resultDto.Error
+                        </p>
+                    }
+                </div>
+            }
+        }
+    </div>
+}

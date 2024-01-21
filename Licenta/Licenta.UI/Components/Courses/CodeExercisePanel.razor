@@ -1,4 +1,5 @@
-﻿<ProgrammingLangSelect @bind-Language=_selectedLanguage />
+﻿@using Licenta.SDK.Models.Dtos
+<ProgrammingLangSelect @bind-Language=_selectedLanguage />
 <p style="font-weight: bold;font-size: 1.5rem;">@Exercise.Enunciation</p>
 <CodeEditor  />
 <CustomInput @bind-Value=@_customInput />
@@ -7,5 +8,9 @@
     <ResultCodeRun CodeResult=@_codeResult />
 }
 
+<SubmitResultComp Exercise="Exercise" Language=@CodeLanguage.Cpp 
+    @ref="@submitResultComp"/>
+
+
 <BtnGroupCodeRun OnRunCode="HandleRunCode"
-                 OnSubmitCode="HandleSubmitCode" />
+                 OnSubmitCode="OnSubmitCode" />

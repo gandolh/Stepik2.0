@@ -19,5 +19,5 @@
             Input = input;
             ExpectedResult = expectedResult;
         }
-    }
+    }   
 }

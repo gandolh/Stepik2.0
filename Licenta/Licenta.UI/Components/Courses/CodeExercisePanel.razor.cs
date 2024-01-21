@@ -1,4 +1,5 @@
 ﻿using Licenta.SDK.Models.Dtos;
+using Licenta.UI.Data;
 using Licenta.UI.Services;
 using Microsoft.AspNetCore.Components;
 using Microsoft.JSInterop;
@@ -17,6 +18,7 @@ namespace Licenta.UI.Components.Courses
 
         private string _customInput { get; set; } = string.Empty;
         private CodeRunResultDto? _codeResult;
+        private SubmitResultComp submitResultComp = default!;
 
         protected override Task OnParametersSetAsync()
         {
@@ -39,6 +41,7 @@ namespace Licenta.UI.Components.Courses
 
         private async Task OnCodeRunned(KafkaDto dto)
         {
+            submitResultComp.Clear();
             KafkaLicentaClient.RemoveNotifier(LicentaConfig.Kafka.Endpoints.RunCode.Replace("Req", "Resp"),
                 dto.OperationId);
 
@@ -47,9 +50,10 @@ namespace Licenta.UI.Components.Courses
             await InvokeAsync(() => StateHasChanged());
         }
 
-        private async Task HandleSubmitCode()
+        private async void OnSubmitCode()
         {
-            await Task.CompletedTask;
+            _codeResult = null;
+           await submitResultComp.HandleSubmitCode();
         }
     }
 }

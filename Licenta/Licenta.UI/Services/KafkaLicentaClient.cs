@@ -13,11 +13,12 @@ namespace Licenta.UI.Services
             _kafkaProducer = kafkaProducer;
         }
 
-        internal async Task RunCode(string topicName, CodeRunReqDto req, Func<KafkaDto, Task> callback)
+        internal async Task<string> RunCode(string topicName, CodeRunReqDto req, Func<KafkaDto, Task> callback)
         {
             string opId = Guid.NewGuid().ToString();
             await _kafkaProducer.ProduceAsync(topicName, opId, req);
             await _kafkaObserver.AddNotifier(topicName.Replace("Req", "Resp"), opId, callback);
+            return opId;
         }
 
 
