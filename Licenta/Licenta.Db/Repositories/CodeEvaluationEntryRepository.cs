@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Licenta.Db.Repositories
 {
-    internal class CodeEvaluationEntryRepository : BaseRepository<CodeEvaluationEntry>
+    public class CodeEvaluationEntryRepository : BaseRepository<CodeEvaluationEntry>
     {
         public CodeEvaluationEntryRepository(IDapperDbClient dbClient) : base(dbClient)
         {

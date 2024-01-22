@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Licenta.SDK.Models.Dtos
 {
-    public class FullCourseDto : CourseDto
+    public class FullCourseDto : CourseDto, IDtoWithId
     {
         public List<ModuleDto> Modules { get; set; } = new(); 
     }

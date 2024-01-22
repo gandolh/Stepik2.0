@@ -1,0 +1,10 @@
+﻿.main-crud {
+    padding-left: calc(300px + 2rem);
+    padding-right: 2rem;
+}
+
+@media only screen and (max-width : 992px) {
+    .main-crud {
+        padding-left: 0;
+    }
+}

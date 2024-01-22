@@ -12,14 +12,17 @@
           href="vendor/monaco/dev/vs/editor/editor.main.css" />
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link type="text/css" rel="stylesheet" href="css/materialize.min.css" media="screen,projection" />
+    <link type="text/css" rel="stylesheet" href="vendor/simple-datatables/style.css" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="app.css" />
     <link rel="stylesheet" href="Licenta.UI.styles.css" />
     <HeadOutlet @rendermode="@InteractiveServer" />
 </head>
-
+    
 <body>
     <Routes @rendermode="@InteractiveServer" />
+    <script src="vendor/simple-datatables/simple-datatables.js"></script>
+    <script type="text/javascript" src="js/materialize.min.js"></script>
     <script>
         var require = { paths: { vs: 'vendor/monaco/dev/vs' } };
     </script>
@@ -27,8 +30,8 @@
     <script type="text/javascript" src="vendor/monaco/dev/vs/editor/editor.main.nls.js"></script>
     <script type="text/javascript" src="vendor/monaco/dev/vs/editor/editor.main.js"></script>
 
-    <script type="text/javascript" src="js/materialize.min.js"></script>
     <script type="text/javascript" src="js/main.js"></script>
+    <script type="text/javascript" src="js/auth.js"></script>
     <script src="_framework/blazor.web.js"></script>
 </body>
 

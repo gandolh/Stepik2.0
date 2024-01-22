@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Licenta.SDK.Models.Dtos
 {
-    public class QuizVariantDto
+    public class QuizVariantDto : IDtoWithId
     {
         public int Id { get; set; } = 0;
         public int ExerciseId { get; set; } = 0;

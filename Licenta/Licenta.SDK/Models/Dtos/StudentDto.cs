@@ -1,6 +1,6 @@
 ﻿namespace Licenta.SDK.Models.Dtos
 {
-    public class StudentDto
+    public class StudentDto : IDtoWithId
     {
         public int Id { get; set; } = 0;
         public string Firstname { get; set; } = string.Empty;

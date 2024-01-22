@@ -1,4 +1,76 @@
-﻿const initializeNav = () => {
+﻿const sampleDataTableData = {
+    headings: [
+        "Name",
+        "Job",
+        "Company"
+    ],
+    data: [
+        [
+            "Hedwig F. Nguyen",
+            "Manager",
+            "Arcu Vel Foundation"
+        ],
+        [
+            "Genevieve U. Watts",
+            "Manager",
+            "Eget Incorporated"
+
+        ],
+        [
+            "Kyra S. Baldwin",
+            "Manager",
+            "Lorem Vitae Limited"
+
+        ],
+        [
+            "Stephen V. Hill",
+            "Manager",
+            "Eget Mollis Institute"
+
+        ],
+        [
+            "Vielka Q. Chapman",
+            "Manager",
+            "Velit Pellentesque Ultricies Institute"
+
+        ],
+        [
+            "Ocean W. Curtis",
+            "Manager",
+            "Eu Ltd"
+
+        ],
+        [
+            "Kato F. Tucker",
+            "Manager",
+            "Vel Lectus Limited"
+
+        ],
+        [
+            "Robin J. Wise",
+            "Manager",
+            "Curabitur Dictum PC"
+
+        ],
+        [
+            "Uriel H. Guerrero",
+            "Assistant",
+            "Mauris Inc."
+
+        ],
+        [
+            "Yasir W. Benson",
+            "Assistant",
+            "At Incorporated"
+
+        ]
+    ]
+};
+
+
+
+
+const initializeNav = () => {
         var elems = document.querySelectorAll('.sidenav');
         var instances = M.Sidenav.init(elems, {});
 }
@@ -11,41 +83,6 @@ const initializeCollapsible = () => {
 const initializeFormSelect = () => {
     var elems = document.querySelectorAll('select');
     var instances = M.FormSelect.init(elems, {});
-}
-
-const handleLogin = async () => {
-    var email = document.getElementById("email").value;
-    var password = document.getElementById("password").value;
-    const callbackError = (error) => {
-        document.getElementById("error-login").innerText = "Perechea email și parolă este invalidă";
-    }
-
-    const callbackSucces = () => {
-        window.location = window.location.origin;
-    }
-    const currentHost = window.location.host;
-    const url = `https://${currentHost}/api/login`;
-
-    await postData(url, {
-        email: email,
-        password: password
-    }, callbackError, callbackSucces);
-
-}
-
-const handleLogout = async () => {
-    const currentHost = window.location.host;
-    const url = `https://${currentHost}/api/logout`;
-
-    const callbackError = (error) => {
-        console.log(error);
-    }
-
-    const callbackSucces = () => {
-        window.location = window.location.origin;
-    }
-
-    await postData(url, {}, callbackError, callbackSucces);
 }
 
 const initializeEditor = (idElt, value, language) => {
@@ -81,46 +118,33 @@ const GetCode = () => {
     return window.editor.getValue();
 }
 
+const InitDataTable = (eltId, json) => {
+
+    const btnGroup = `<div style="text-align:center;" >
+                <a class="btn waves-effect waves-light" >
+                    <i class="material-icons left">visibility</i> View
+                </a>
+                <a class="btn waves-effect waves-light" >
+                    <i class="material-icons left">edit</i> Update
+                </a>
+                <a class="btn waves-effect waves-light red" >
+                    <i class="material-icons left">cancel</i> Remove
+                </a>
+            </div>`;
+
+    json.data.map(el => el[el.length - 1] = btnGroup)
+    const dataTable = new simpleDatatables.DataTable(`#${eltId}`, {
+        //data:  sampleDataTableData 
+        data: json
+    })
+}
 
 var Main = {
     initializeNav: initializeNav,
     initializeCollapsible: initializeCollapsible,
     initializeFormSelect: initializeFormSelect,
-    handleLogin: handleLogin,
-    handleLogout: handleLogout,
     initializeEditor: initializeEditor,
-    GetCode: GetCode
+    GetCode: GetCode,
+    InitDataTable: InitDataTable
 }
 
-
-async function postData(url, postData, callbackError, callbackSucces) {
-    // Get the current site host
-
-    // Define the URL
-    
-
-    try {
-        // Make the POST request with await
-        const response = await fetch(url, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(postData)
-        });
-
-        // Check for errors
-        if (!response.ok) {
-            throw new Error(`HTTP error! Status: ${response.status}`);
-        }
-
-        // Parse and handle the response data
-        const data = await response.text();
-        callbackSucces();
-        //console.log('Response data:', data);
-
-    } catch (error) {
-        // Handle errors
-        callbackError(error);
-    }
-}

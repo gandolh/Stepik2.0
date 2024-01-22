@@ -27,6 +27,7 @@ namespace Licenta.UI
     {
         public string GetCourses { get; set; } = string.Empty;
         public string GetOneCourse { get; set; } = string.Empty;
+        public string GetCodeEvaluations { get; set; } = string.Empty;
         public string GetOneLesson { get; set; } = string.Empty;
         public string GetCoursesByStudent { get; set; } = string.Empty;
         public string Register { get; set; } = string.Empty;

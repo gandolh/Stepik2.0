@@ -3,7 +3,7 @@ using System.Net;
 
 namespace Licenta.UI.Services
 {
-    public class HttpLicentaClient
+    public class HttpLicentaClient 
     {
         private readonly MyHttpClient _myHttpClient;
         private readonly LicentaConfig _licentaConfig;
@@ -38,6 +38,17 @@ namespace Licenta.UI.Services
             var resp = await _myHttpClient.GetAsync<FullCourseDto>(
                 _licentaConfig.GetPathTo(_licentaConfig.Endpoints.GetOneCourse),
                 querryParameters
+                );
+
+            return resp;
+        }
+
+        internal async Task<List<CodeEvaluationEntryDto>> GetCodeEvaluations()
+        {
+
+            var resp = await _myHttpClient.GetAsync<List<CodeEvaluationEntryDto>>(
+                _licentaConfig.GetPathTo(_licentaConfig.Endpoints.GetCodeEvaluations),
+                new Dictionary<string, string>()
                 );
 
             return resp;

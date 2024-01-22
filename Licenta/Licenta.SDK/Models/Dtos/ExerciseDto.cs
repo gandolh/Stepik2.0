@@ -1,6 +1,6 @@
 ﻿namespace Licenta.SDK.Models.Dtos
 {
-    public class ExerciseDto
+    public class ExerciseDto : IDtoWithId
     {
         public int Id { get; set; } = 0;
         public int LessonId { get; set; } = 0;

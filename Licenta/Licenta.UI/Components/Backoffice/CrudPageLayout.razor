@@ -1,0 +1,15 @@
+﻿<ul id="slide-out" class="sidenav sidenav-fixed">
+    @foreach (var index in Enumerable.Range(0, CrudPages.Count()))
+    {
+        <li>
+            <a href="crud/@CrudHrefPages[index]"> @CrudPages[index] </a>
+        </li>
+    }
+</ul>
+
+
+<main class="main-crud">
+    <div class="container">
+        @ChildContent
+    </div>
+</main>

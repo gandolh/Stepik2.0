@@ -1,0 +1,21 @@
+﻿@page "/crud/codeeval/{ViewMode?}";
+@using Licenta.UI.Components.Backoffice.CodeEval
+
+<CrudPageLayout>
+        @if (string.IsNullOrEmpty(ViewMode))
+        {
+            <CodeEvalAll
+                />
+        }
+        else if (ViewMode == "one")
+        {
+            <h1>one</h1>
+        }
+        else
+        {
+            <h1> other </h1>
+        }
+</CrudPageLayout>
+
+@* <form class="col s12">
+</form> *@

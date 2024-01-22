@@ -1,0 +1,50 @@
+@typeparam TItem
+@*
+    <CascadingValue> allows descendant components (defined in ChildContent) to receive the specified value.
+    Child components need to declare a cascading parameter with the same type as "Value" (i.e. Grid<TRowData>).
+    This allows GridColumn to get the Grid instance by using a CascadingParameter
+
+        [CascadingParameter]public Grid<TRowData> OwnerGrid { get; set; }
+
+    IsFixed="true" indicates that "Value" will not change. This is a
+    performance optimization that allows the framework to skip setting up
+    change notifications.
+*@
+<CascadingValue IsFixed="true" Value=this>
+    @Columns
+</CascadingValue>
+@* Render the table *@
+<!-- Table with hoverable rows -->
+
+
+@* this is the original table and it will be cloned 
+    so blazor events doesnt apply here
+*@
+<table id=@DataTableId class="table datatable @AdditionalClasses @(Bordered ? "table-bordered" : "") @(Hoverable ? "table-hover": "")" style="display:none">
+    <thead>
+        <tr>
+            @foreach (var column in _columns)
+            {
+                <th scope="col" data-sortable="@(column.Sortable ? "true" : "false")">
+                    @column.Header
+                    </th>
+
+            }
+        </tr>
+    </thead>
+    <tbody>
+
+        @foreach (TItem data in Data)
+        {
+            <tr>
+                @foreach (var column in _columns)
+                {
+                    <td>
+                        @column.CreateCell(data)
+                    </td>
+                }
+            </tr>
+        }
+    </tbody>
+</table>
+<!-- End Table with hoverable rows -->    
