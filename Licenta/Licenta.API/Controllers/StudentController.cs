@@ -1,6 +1,7 @@
 ﻿using Licenta.API.Models;
 using Licenta.API.Services;
 using Licenta.Db.DataModel;
+using Licenta.SDK.Models.Dtos;
 using Microsoft.AspNetCore.Mvc;
 using Swashbuckle.AspNetCore.Annotations;
 
@@ -10,11 +11,18 @@ namespace Licenta.API.Controllers
     [Route("[controller]/[action]")]
     public class StudentController : ControllerBase
     {
-        private readonly StudentService _studentService;
+        private readonly StudentService _service;
 
         public StudentController(StudentService studentService)
         {
-            _studentService = studentService;
+            _service = studentService;
+        }
+
+        [HttpGet]
+        [SwaggerOperation(Summary = "Get all students", Description = "")]
+        public async Task<IEnumerable<StudentDto>> GetAll()
+        {
+            return await _service.GetAll();
         }
 
 

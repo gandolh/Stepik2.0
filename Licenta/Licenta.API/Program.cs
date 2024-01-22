@@ -22,6 +22,8 @@ static void ConfigureDI(IServiceCollection services)
     services.AddScoped<TeacherService>();
     services.AddScoped<AccountService>();
     services.AddScoped<CodeEvaluationEntryService>();
+    services.AddScoped<ModuleService>();
+    services.AddScoped<QuizVariantService>();
 
 
     // repositories
@@ -33,6 +35,8 @@ static void ConfigureDI(IServiceCollection services)
     services.AddScoped<TeacherRepository>();
     services.AddScoped<UserRepository>();
     services.AddScoped<CodeEvaluationEntryRepository>();
+    services.AddScoped<ModuleRepository>();
+    services.AddScoped<QuizVariantsRepository>();
 
 }
 

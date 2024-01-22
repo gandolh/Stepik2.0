@@ -68,7 +68,66 @@ namespace Licenta.UI.Services
             return resp;
         }
 
-      
+        internal async Task<List<ExerciseDto>> GetExercises()
+        {
+            var resp = await _myHttpClient.GetAsync<List<ExerciseDto>>(
+               _licentaConfig.GetPathTo(_licentaConfig.Endpoints.GetExercises),
+               new Dictionary<string, string>()
+               );
+
+            return resp;
+        }
+
+        internal async Task<List<LessonDto>> GetLessons()
+        {
+            var resp = await _myHttpClient.GetAsync<List<LessonDto>>(
+               _licentaConfig.GetPathTo(_licentaConfig.Endpoints.GetLessons),
+               new Dictionary<string, string>()
+               );
+
+            return resp;
+        }
+
+        internal async Task<List<ModuleDto>> GetModules()
+        {
+            var resp = await _myHttpClient.GetAsync<List<ModuleDto>>(
+               _licentaConfig.GetPathTo(_licentaConfig.Endpoints.GetModules),
+               new Dictionary<string, string>()
+               );
+
+            return resp;
+        }
+
+        internal async Task<List<QuizVariantDto>> GetQuizVariants()
+        {
+            var resp = await _myHttpClient.GetAsync<List<QuizVariantDto>>(
+               _licentaConfig.GetPathTo(_licentaConfig.Endpoints.GetQuizVariants),
+               new Dictionary<string, string>()
+               );
+
+            return resp;
+        }
+
+        internal async Task<List<StudentDto>> GetStudents()
+        {
+            var resp = await _myHttpClient.GetAsync<List<StudentDto>>(
+               _licentaConfig.GetPathTo(_licentaConfig.Endpoints.GetStudents),
+               new Dictionary<string, string>()
+               );
+
+            return resp;
+        }
+
+        internal async Task<List<TeacherDto>> GetTeachers()
+        {
+            var resp = await _myHttpClient.GetAsync<List<TeacherDto>>(
+               _licentaConfig.GetPathTo(_licentaConfig.Endpoints.GetTeachers),
+               new Dictionary<string, string>()
+               );
+
+            return resp;
+        }
+
         internal async Task<UserDto?> GetUser(LoginReqDto reqDto)
         {
                 UserDto? resp = await _myHttpClient.PostAsync<UserDto?, LoginReqDto>(

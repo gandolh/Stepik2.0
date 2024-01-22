@@ -1,19 +1,16 @@
-﻿
-using Licenta.SDK.Models.Dtos;
+﻿using Licenta.SDK.Models.Dtos;
 using Licenta.UI.Data;
-using Licenta.UI.Services;
-using Microsoft.AspNetCore.Components;
 using Microsoft.JSInterop;
 
-namespace Licenta.UI.Components.Backoffice.CodeEval
+namespace Licenta.UI.Components.Backoffice.Student
 {
-    public partial class CodeEvalAll : BaseShowAll
+    public partial class StudentAll : BaseShowAll
     {
         protected override async Task OnAfterRenderAsync(bool firstRender)
         {
-            if(firstRender)
+            if (firstRender)
             {
-                List<CodeEvaluationEntryDto> elts = await LicentaClient.GetCodeEvaluations();
+                var elts = await LicentaClient.GetStudents();
                 DataTableJson json = new DataTableJson();
                 json.ImportOverride(elts);
 

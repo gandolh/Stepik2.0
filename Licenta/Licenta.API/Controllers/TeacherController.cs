@@ -1,6 +1,7 @@
 ﻿using Licenta.API.Models;
 using Licenta.API.Services;
 using Licenta.Db.DataModel;
+using Licenta.SDK.Models.Dtos;
 using Microsoft.AspNetCore.Mvc;
 using Swashbuckle.AspNetCore.Annotations;
 
@@ -10,19 +11,18 @@ namespace Licenta.API.Controllers
     [Route("[controller]/[action]")]
     public class TeacherController : ControllerBase
     {
-        private readonly TeacherService _teacherService;
+        private readonly TeacherService _service;
 
         public TeacherController(TeacherService teacherService)
         {
-            _teacherService = teacherService;
+            _service = teacherService;
         }
-
 
         [HttpGet]
         [SwaggerOperation(Summary = "Get all teachers", Description = "")]
-        public async Task<IEnumerable<Teacher>> GetAll(int exerciseId)
+        public async Task<IEnumerable<TeacherDto>> GetAll()
         {
-            throw new NotImplementedException();
+            return await _service.GetAll();
         }
 
         [HttpGet]

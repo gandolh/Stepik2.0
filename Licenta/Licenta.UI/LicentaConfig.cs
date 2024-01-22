@@ -32,6 +32,13 @@ namespace Licenta.UI
         public string GetCoursesByStudent { get; set; } = string.Empty;
         public string Register { get; set; } = string.Empty;
         public string GetUser { get; set; } = string.Empty;
+        public string GetExercises { get;  set; } = string.Empty;
+        public string GetLessons { get; set; } = string.Empty;
+        public string GetModules { get;  set; } = string.Empty;
+        public string GetQuizVariants { get;  set; } = string.Empty;
+        public string GetStudents { get;  set; } = string.Empty;
+        public string GetTeachers { get;  set; } = string.Empty;
+
     }
     public class KafkaOptions
     {

@@ -1,6 +1,7 @@
 ﻿using Licenta.API.Models;
 using Licenta.API.Services;
 using Licenta.Db.DataModel;
+using Licenta.SDK.Models.Dtos;
 using Microsoft.AspNetCore.Mvc;
 using Swashbuckle.AspNetCore.Annotations;
 
@@ -11,12 +12,20 @@ namespace Licenta.API.Controllers
     [Route("[controller]/[action]")]
     public class ExerciseController : ControllerBase
     {
-        private readonly ExerciseService _exerciseService;
+        private readonly ExerciseService _service;
 
         public ExerciseController(ExerciseService exerciseService)
         {
-            _exerciseService = exerciseService;
+            _service = exerciseService;
         }
+
+        [HttpGet]
+        [SwaggerOperation(Summary = "Get all exercises", Description = "")]
+        public async Task<IEnumerable<ExerciseDto>> GetAll()
+        {
+            return await _service.GetAll();
+        }
+
 
         [HttpGet]
         [SwaggerOperation(Summary = "Get all exercises of a student", Description = "")]

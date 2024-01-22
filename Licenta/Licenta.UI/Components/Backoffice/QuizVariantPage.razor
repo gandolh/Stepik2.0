@@ -1,24 +1,18 @@
-﻿@inherits BaseCrudPage
-@page "/crud/quizvar"
+﻿@page "/crud/quizvar/{ViewMode?}"
+@using Licenta.UI.Components.Backoffice.QuizVariant
+@inherits BaseCrudPage
 
 <CrudPageLayout>
-        <form class="col s12">
-            <div class='row'>
-                <div class='input-field col s12'>
-                    <input placeholder="email" id="email" type="email" class="validate"
-                           required>
-                    <label class="active" for="email">Email</label>
-                </div>
-            </div>
-
-            <div class='row'>
-                <div class='input-field col s12'>
-                    <input placeholder="password" id="password" type="password"
-                           class="validate" minlength="6"
-                           required>
-                    <label class="active" for="password">Password</label>
-                </div>
-            </div>
-        </form>
-
+    @if (string.IsNullOrEmpty(ViewMode))
+    {
+        <QuizVariantAll />
+    }
+    else if (ViewMode == "one")
+    {
+        <h1>one</h1>
+    }
+    else
+    {
+        <h1> other </h1>
+    }
 </CrudPageLayout>

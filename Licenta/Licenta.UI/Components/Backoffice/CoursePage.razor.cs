@@ -1,6 +1,8 @@
-﻿namespace Licenta.UI.Components.Backoffice
+﻿using Microsoft.AspNetCore.Components;
+
+namespace Licenta.UI.Components.Backoffice
 {
-    public partial class CoursePage
+    public partial class CoursePage : BaseCrudPage
     {
     }
 }

@@ -2,9 +2,7 @@
 
 namespace Licenta.UI.Components.Backoffice
 {
-    public partial class CodeEvaluationEntryPage
+    public partial class CodeEvaluationEntryPage : BaseCrudPage
     {
-        [Parameter]
-        public string ViewMode { get; set; } = string.Empty;
     }
 }

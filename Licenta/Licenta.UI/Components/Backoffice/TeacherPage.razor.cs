@@ -1,6 +1,6 @@
 ﻿namespace Licenta.UI.Components.Backoffice
 {
-    public partial class TeacherPage
+    public partial class TeacherPage : BaseCrudPage
     {
     }
 }

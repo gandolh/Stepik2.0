@@ -11,11 +11,18 @@ namespace Licenta.API.Controllers
     [Route("[controller]/[action]")]
     public class LessonController : ControllerBase
     {
-        private readonly LessonService _lessonService;
+        private readonly LessonService _service;
 
         public LessonController(LessonService lessonService)
         {
-            _lessonService = lessonService;
+            _service = lessonService;
+        }
+
+        [HttpGet]
+        [SwaggerOperation(Summary = "Get all lessons", Description = "")]
+        public async Task<IEnumerable<LessonDto>> GetAll()
+        {
+            return await _service.GetAll();
         }
 
         [HttpGet]
@@ -37,7 +44,7 @@ namespace Licenta.API.Controllers
             Description = "The response could include exercises of that lesson")]
         public async Task<ActionResult<FullLessonDto>> GetOne(int lessonId)
         {
-            var res = await _lessonService.GetOne(lessonId);
+            var res = await _service.GetOne(lessonId);
             if (res == null)
                 return NotFound();
             return Ok(res);

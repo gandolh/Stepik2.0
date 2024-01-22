@@ -1,6 +1,18 @@
-﻿@page "/crud/student";
-<CrudPageLayout>
-    <form class="col s12">
-    </form>
+﻿@page "/crud/student/{ViewMode?}";
+@using Licenta.UI.Components.Backoffice.Student
+@inherits BaseCrudPage
 
+<CrudPageLayout>
+    @if (string.IsNullOrEmpty(ViewMode))
+    {
+        <StudentAll />
+    }
+    else if (ViewMode == "one")
+    {
+        <h1>one</h1>
+    }
+    else
+    {
+        <h1> other </h1>
+    }
 </CrudPageLayout>

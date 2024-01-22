@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Licenta.Db.Repositories
 {
-    internal class ModuleRepository : BaseRepository<Module>
+    public class ModuleRepository : BaseRepository<Module>
     {
         public ModuleRepository(IDapperDbClient dbClient) : base(dbClient)
         {
