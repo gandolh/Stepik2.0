@@ -1,4 +1,6 @@
-﻿@if (submitResults.Count() > 0)
+﻿@inherits BaseLicentaComp
+
+@if (submitResults.Count() > 0)
 {
     <div class="submit-result-row row">
         @foreach (var submit in submitResults)

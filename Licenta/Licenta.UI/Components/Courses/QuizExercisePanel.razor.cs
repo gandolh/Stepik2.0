@@ -1,9 +1,10 @@
-﻿using Licenta.SDK.Models.Dtos;
+﻿using Components.UI;
+using Licenta.SDK.Models.Dtos;
 using Microsoft.AspNetCore.Components;
 
 namespace Licenta.UI.Components.Courses
 {
-    public partial class QuizExercisePanel
+    public partial class QuizExercisePanel : BaseLicentaComp
     {
         [Parameter] public required FullExerciseDto Exercise { get; set; }
         private int _selectedIndex = 0;

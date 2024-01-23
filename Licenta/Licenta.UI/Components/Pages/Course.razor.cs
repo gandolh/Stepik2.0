@@ -1,4 +1,5 @@
-﻿using Licenta.SDK.Models.Dtos;
+﻿using Components.UI;
+using Licenta.SDK.Models.Dtos;
 using Licenta.UI.Services;
 using Microsoft.AspNetCore.Components;
 using Microsoft.JSInterop;
@@ -6,7 +7,7 @@ using StackExchange.Redis;
 
 namespace Licenta.UI.Components.Pages
 {
-    public partial class Course
+    public partial class Course : BaseLicentaComp
     {
         [Parameter] public int Id { get; set; } = 0;
         [Inject] IJSRuntime JSRuntime { get; set; } = default!;

@@ -1,9 +1,10 @@
-﻿using Microsoft.AspNetCore.Components;
+﻿using Components.UI;
+using Microsoft.AspNetCore.Components;
 using Microsoft.JSInterop;
 
 namespace Licenta.UI.Components.Courses
 {
-    public partial class CodeEditor
+    public partial class CodeEditor : BaseLicentaComp
     {
         [Inject] public IJSRuntime JSRuntime { get; set; } = default!;
         private string _code { get; set; } = CodeSamplers.CppStartCode;

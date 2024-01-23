@@ -1,4 +1,5 @@
 ﻿
+using Components.UI;
 using Licenta.SDK.Models.Dtos;
 using Licenta.UI.Data;
 using Licenta.UI.Services;
@@ -8,7 +9,7 @@ using System.Text.Json;
 
 namespace Licenta.UI.Components.Courses
 {
-    public partial class SubmitResultComp
+    public partial class SubmitResultComp : BaseLicentaComp
     {
         [Inject] public IJSRuntime JSRuntime { get; set; } = default!;
         [Inject] public KafkaLicentaClient KafkaLicentaClient { get; set; } = default!;

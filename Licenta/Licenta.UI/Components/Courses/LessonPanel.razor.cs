@@ -1,4 +1,5 @@
-﻿using Confluent.Kafka;
+﻿using Components.UI;
+using Confluent.Kafka;
 using Licenta.SDK.Models.Dtos;
 using Licenta.UI.Services;
 using Microsoft.AspNetCore.Components;
@@ -7,7 +8,7 @@ using System.Text.Json;
 
 namespace Licenta.UI.Components.Courses
 {
-    public partial class LessonPanel
+    public partial class LessonPanel : BaseLicentaComp
     {
         private FullLessonDto? _fullLessonDto;
 

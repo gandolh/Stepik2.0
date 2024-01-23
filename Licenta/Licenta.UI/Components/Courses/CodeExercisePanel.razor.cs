@@ -1,4 +1,5 @@
-﻿using Licenta.SDK.Models.Dtos;
+﻿using Components.UI;
+using Licenta.SDK.Models.Dtos;
 using Licenta.UI.Data;
 using Licenta.UI.Services;
 using Microsoft.AspNetCore.Components;
@@ -7,7 +8,7 @@ using System.Text.Json;
 
 namespace Licenta.UI.Components.Courses
 {
-    public partial class CodeExercisePanel
+    public partial class CodeExercisePanel : BaseLicentaComp
     {
         [Parameter] public required FullExerciseDto Exercise { get; set; }
         [Inject] public KafkaLicentaClient KafkaLicentaClient { get; set; } = default!;

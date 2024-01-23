@@ -1,9 +1,10 @@
-﻿using Licenta.SDK.Models.Dtos;
+﻿using Components.UI;
+using Licenta.SDK.Models.Dtos;
 using Microsoft.AspNetCore.Components;
 
 namespace Licenta.UI.Components.Courses
 {
-    public partial class ProgrammingLangSelect
+    public partial class ProgrammingLangSelect : BaseLicentaComp
     {
         [Parameter] public CodeLanguage Language { get; set; } = CodeLanguage.Cpp;
         [Parameter] public EventCallback<CodeLanguage> LanguageChanged { get; set; }

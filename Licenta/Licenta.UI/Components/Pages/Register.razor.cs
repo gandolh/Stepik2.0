@@ -1,4 +1,5 @@
-﻿using Confluent.Kafka;
+﻿using Components.UI;
+using Confluent.Kafka;
 using Licenta.SDK.Models.Dtos;
 using Licenta.UI.Services;
 using Microsoft.AspNetCore.Components;
@@ -6,7 +7,7 @@ using System.Net;
 
 namespace Licenta.UI.Components.Pages
 {
-    public partial class Register
+    public partial class Register : BaseLicentaComp
     {
         [Inject] public HttpLicentaClient HttpLicentaClient { get; set; } = default!;
         [Inject] public NavigationManager NavManager { get; set; } = default!;

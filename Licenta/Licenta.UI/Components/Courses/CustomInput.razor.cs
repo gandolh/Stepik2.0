@@ -1,9 +1,10 @@
-﻿using Microsoft.AspNetCore.Components;
+﻿using Components.UI;
+using Microsoft.AspNetCore.Components;
 using Microsoft.JSInterop;
 
 namespace Licenta.UI.Components.Courses
 {
-    public partial class CustomInput
+    public partial class CustomInput : BaseLicentaComp
     {
         [Parameter] public string Value { get; set; } = string.Empty;
         [Parameter] public EventCallback<string> ValueChanged { get; set; }

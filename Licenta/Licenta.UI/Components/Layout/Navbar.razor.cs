@@ -1,9 +1,10 @@
-﻿using Microsoft.AspNetCore.Components;
+﻿using Components.UI;
+using Microsoft.AspNetCore.Components;
 using Microsoft.JSInterop;
 
 namespace Licenta.UI.Components.Layout
 {
-    public partial class Navbar
+    public partial class Navbar : BaseLicentaComp
     {
         [Inject] public IJSRuntime JSRuntime { get; set; } = default!;
 

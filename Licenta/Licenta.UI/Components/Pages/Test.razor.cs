@@ -1,9 +1,10 @@
-﻿using Microsoft.AspNetCore.Components;
+﻿using Components.UI;
+using Microsoft.AspNetCore.Components;
 using Microsoft.JSInterop;
 
 namespace Licenta.UI.Components.Pages
 {
-    public partial class Test
+    public partial class Test : BaseLicentaComp
     {
         [Inject] public IJSRuntime JSRuntime { get; set; } = default!;
 
