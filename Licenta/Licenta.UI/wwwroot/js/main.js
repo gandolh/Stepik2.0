@@ -142,6 +142,10 @@ const DestroyDataTable = (eltId) => {
     mySimpleDatatables[eltId].destroy();
 }
 
+const showToast = (msg, type) => {
+    $.notify(msg, type);
+}
+
 var Main = {
     initializeNav: initializeNav,
     initializeCollapsible: initializeCollapsible,
@@ -149,6 +153,7 @@ var Main = {
     initializeEditor: initializeEditor,
     GetCode: GetCode,
     InitDataTable: InitDataTable,
-    DestroyDataTable: DestroyDataTable
+    DestroyDataTable: DestroyDataTable,
+    showToast: showToast
 }
 

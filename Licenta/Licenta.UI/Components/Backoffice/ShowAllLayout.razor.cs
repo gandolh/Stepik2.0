@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Components;
+using Microsoft.JSInterop;
 
 namespace Licenta.UI.Components.Backoffice
 {
@@ -7,6 +8,7 @@ namespace Licenta.UI.Components.Backoffice
         [Parameter] public RenderFragment ChildContent { get; set; } = default!;
         [Parameter] public EventCallback OnSaving { get; set; } = default!;
         [Inject] public NavigationManager NavManager { get; set; } = default!;
+        [Inject] public IJSRuntime JsRuntime { get; set; } = default!;
 
         private string GetAllUrl()
         {
@@ -14,6 +16,12 @@ namespace Licenta.UI.Components.Backoffice
             if(index != -1)
             return NavManager.Uri.Substring(0, index);
             return NavManager.Uri;
+        }
+        
+        private async Task HandleSaving()
+        {
+           await OnSaving.InvokeAsync();
+            await JsRuntime.InvokeVoidAsync("Main.showToast", "Date actualizate", "success");
         }
     }
 }
