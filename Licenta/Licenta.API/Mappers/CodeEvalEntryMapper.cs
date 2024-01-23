@@ -10,7 +10,8 @@ namespace Licenta.API.Mappers
             return new()
             {
                 Id = element.Id,
-                Input= element.Input,
+                Input = element.Input,
+                ExerciseId = element.ExerciseId,
                 ExpectedResult = element.ExpectedResult,
             };
         }
@@ -21,6 +22,7 @@ namespace Licenta.API.Mappers
             {
                 Id = element.Id,
                 Input = element.Input,
+                ExerciseId = element.ExerciseId,
                 ExpectedResult = element.ExpectedResult,
             };
         }

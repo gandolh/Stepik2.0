@@ -11,12 +11,13 @@
                 <label class="active" for="Text">Text</label>
             </div>
             <div class='input-field col s6'>
-                <input @bind-value=dto.IsCorrect placeholder="IsCorrect"
-                       id="IsCorrect" type="text" class="validate"
-                       required disabled=@Disabled>
-                <label class="active" for="IsCorrect">IsCorrect</label>
+
+                <label>
+                    <input type="checkbox" @bind-value=@dto.IsCorrect disabled=@Disabled/>
+                    <span>IsCorrect</span>
+                </label>
             </div>
         </div>
     </ShowAllLayout>
-}Text
+}
 

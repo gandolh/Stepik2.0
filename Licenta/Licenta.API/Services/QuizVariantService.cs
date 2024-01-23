@@ -31,7 +31,7 @@ namespace Licenta.API.Services
 
         internal async Task<QuizVariantDto> GetOne(int id)
         {
-            return _fullMapper.Map(await _repository.GetOneAsync(id));
+            return _mapper.Map(await _repository.GetOneAsync(id));
         }
 
         internal async Task<UpdateResult> Update(QuizVariantDto c)

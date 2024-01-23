@@ -16,6 +16,7 @@ namespace Licenta.API.Mappers
         {
             return new()
             {
+                Id= element.Id,
                 ExerciseId=element.ExerciseId,
                 Text=element.Text,
                 IsCorrect=element.IsCorrect,
@@ -27,6 +28,7 @@ namespace Licenta.API.Mappers
         {
             return new()
             {
+                Id = element.Id,
                 ExerciseId = element.ExerciseId,
                 Text = element.Text,
                 IsCorrect = element.IsCorrect,

@@ -200,13 +200,13 @@ namespace Licenta.UI.Services
             return resp;
         }
 
-        internal async Task<FullQuizVariantDto> GetOneQuizVariant(int id)
+        internal async Task<QuizVariantDto> GetOneQuizVariant(int id)
         {
             var querryParameters = new Dictionary<string, string>()
             {
                 {"id",id.ToString() },
             };
-            var resp = await _myHttpClient.GetAsync<FullQuizVariantDto>(
+            var resp = await _myHttpClient.GetAsync<QuizVariantDto>(
                _licentaConfig.GetPathTo(_licentaConfig.Endpoints.GetOneQuizVariant),
                querryParameters
                );

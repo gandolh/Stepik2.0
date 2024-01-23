@@ -41,7 +41,7 @@ namespace Licenta.Db.Repositories
         {
             string sql = $"""
                 UPDATE {_tableName} SET 
-                CourseId=@CourseId, Name=@Name
+                Name=@Name
                 WHERE Id=@Id
                 """;
             await _dbClient.ExecuteAsync(sql, data);
