@@ -72,5 +72,15 @@ namespace Licenta.Db.Repositories
 
             return courses;
         }
+
+        public override async Task UpdateAsync(Course data)
+        {
+            string sql = $"""
+                UPDATE {_tableName} SET 
+                Name=@Name
+                WHERE Id=@Id
+                """;
+            await _dbClient.ExecuteAsync(sql, data);
+        }
     }
 }

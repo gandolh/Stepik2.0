@@ -25,5 +25,15 @@ namespace Licenta.Db.Repositories
             string sql = $"INSERT INTO {_tableName} (StudentId, CourseId) VALUES (@StudentId, @CourseId)";
             var rowsAffected = await _dbClient.ExecuteAsync(sql, data);
         }
+
+        public override async Task UpdateAsync(Student_Course data)
+        {
+            string sql = $"""
+                UPDATE {_tableName} SET 
+                StudentId=@StudentId, CourseId=@CourseId
+                WHERE Id=@Id
+                """;
+            await _dbClient.ExecuteAsync(sql, data);
+        }
     }
 }

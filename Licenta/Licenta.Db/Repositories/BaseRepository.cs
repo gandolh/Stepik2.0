@@ -47,9 +47,6 @@ namespace Licenta.Db.Repositories
         }
 
 
-        public Task UpdateAsync(T data)
-        {
-            throw new NotImplementedException();
-        }
+        public abstract Task UpdateAsync(T data);
     }
 }

@@ -31,5 +31,15 @@ namespace Licenta.Db.Repositories
             """;
             var rowsAffected = await _dbClient.ExecuteAsync(sql, data);
         }
+
+        public override async Task UpdateAsync(Submission data)
+        {
+            string sql = $"""
+                UPDATE {_tableName} SET 
+                Points=@Points, StudentId=@StudentId, ExerciseId=@ExerciseId
+                WHERE Id=@Id
+                """;
+            await _dbClient.ExecuteAsync(sql, data);
+        }
     }
 }
