@@ -55,6 +55,15 @@ namespace Licenta.UI.Services
             return response;
         }
 
+        private async Task<HttpResponseMessage> BasePut(string url, StringContent data)
+        {
+            var request = new HttpRequestMessage(HttpMethod.Put, url);
+            request.Content = data;
+            var response = await _httpClient.SendAsync(request);
+            response.EnsureSuccessStatusCode();
+            return response;
+        }
+
         #region GET
 
         public async Task<T> GetAsync<T>(string url, Dictionary<string, string>? parameters = null)
@@ -136,7 +145,7 @@ namespace Licenta.UI.Services
         internal async Task<string> PutAsync<T>(string url, T data)
         {
             var json = JsonSerializer.Serialize(data);
-            var response = await BasePost(url, new StringContent(json, Encoding.UTF8, "application/json"));
+            var response = await BasePut(url, new StringContent(json, Encoding.UTF8, "application/json"));
             response.EnsureSuccessStatusCode();
            return await response.Content.ReadAsStringAsync();
         }

@@ -11,11 +11,11 @@ namespace Licenta.API.Controllers
     [Route("[controller]/[action]")]
     public class CourseController : ControllerBase
     {
-        private readonly CourseService _courseService;
+        private readonly CourseService _service;
 
         public CourseController(CourseService courseService)
         {
-            _courseService = courseService;
+            _service = courseService;
         }
 
 
@@ -45,7 +45,7 @@ namespace Licenta.API.Controllers
         public async Task<IEnumerable<CourseDto>> GetAllByStudent(int studentId, bool includeStudents, bool includeTeachers)
         {
             // temporary for showcase. TODO: implement filter
-            return await _courseService.GetAll(includeStudents, includeTeachers);
+            return await _service.GetAll(includeStudents, includeTeachers);
         }
 
         [HttpGet]
@@ -54,7 +54,7 @@ namespace Licenta.API.Controllers
             "and teachers")]
         public async Task<ActionResult<FullCourseDto>> GetOne(int courseId)
         {
-            var res = await _courseService.GetOne(courseId);
+            var res = await _service.GetOne(courseId);
             if(res == null)
                 return NotFound();
             return Ok(res);
@@ -71,7 +71,7 @@ namespace Licenta.API.Controllers
         [SwaggerOperation(Summary = "Update course", Description = "")]
         public async Task<UpdateResult> Update(CourseDto c)
         {
-            throw new NotImplementedException();
+            return await _service.Update(c);
         }
 
         [HttpDelete]

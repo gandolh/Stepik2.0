@@ -52,16 +52,16 @@ namespace Licenta.API.Controllers
 
         [HttpPost]
         [SwaggerOperation(Summary = "Create student", Description = "")]
-        public async Task<CreateResult> Add(Student c)
+        public async Task<CreateResult> Add(StudentDto c)
         {
             throw new NotImplementedException();
         }
 
         [HttpPut]
         [SwaggerOperation(Summary = "Update student", Description = "")]
-        public async Task<UpdateResult> Update(Student c)
+        public async Task<UpdateResult> Update(StudentDto c)
         {
-            throw new NotImplementedException();
+            return await _service.Update(c);
         }
 
         [HttpDelete]

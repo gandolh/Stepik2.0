@@ -1,4 +1,5 @@
-﻿using Licenta.API.Services;
+﻿using Licenta.API.Models;
+using Licenta.API.Services;
 using Licenta.Db.DataModel;
 using Licenta.SDK.Models.Dtos;
 using Microsoft.AspNetCore.Mvc;
@@ -34,6 +35,13 @@ namespace Licenta.API.Controllers
             if (res == null)
                 return NotFound();
             return Ok(res);
+        }
+
+        [HttpPut]
+        [SwaggerOperation(Summary = "Update module", Description = "")]
+        public async Task<UpdateResult> Update(ModuleDto c)
+        {
+            return await _service.Update(c);
         }
     }
 }

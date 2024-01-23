@@ -1,4 +1,6 @@
 ﻿using Licenta.API.Mappers;
+using Licenta.API.Models;
+using Licenta.Db.DataModel;
 using Licenta.Db.Repositories;
 using Licenta.SDK.Models.Dtos;
 
@@ -26,6 +28,12 @@ namespace Licenta.API.Services
         internal async Task<ExerciseDto> GetOne(int id)
         {
             return _mapper.Map(await _repository.GetOneAsync(id));
+        }
+
+        internal async Task<UpdateResult> Update(ExerciseDto c)
+        {
+            await _repository.UpdateAsync(_mapper.Map(c));
+            return new(typeof(ExerciseDto), c.Id);
         }
     }
 }

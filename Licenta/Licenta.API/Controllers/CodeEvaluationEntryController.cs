@@ -48,7 +48,7 @@ namespace Licenta.API.Controllers
         [SwaggerOperation(Summary = "Update exercise", Description = "")]
         public async Task<UpdateResult> Update(CodeEvaluationEntryDto c)
         {
-            throw new NotImplementedException();
+            return await _service.Update(c);
         }
 
         [HttpDelete]

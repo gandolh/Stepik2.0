@@ -1,5 +1,6 @@
 ﻿
 using Licenta.API.Mappers;
+using Licenta.API.Models;
 using Licenta.Db.DataModel;
 using Licenta.Db.Repositories;
 using Licenta.Db.Seeder.Interfaces;
@@ -13,34 +14,40 @@ namespace Licenta.API.Services
 {
     public class CourseService
     {
-        private readonly CourseRepository _courseRepository;
-        private readonly CourseMapper _courseMapper;
-        private readonly FullCourseMapper _fullCourseMapper;
+        private readonly CourseRepository _repository;
+        private readonly CourseMapper _mapper;
+        private readonly FullCourseMapper _fullMapper;
         private readonly TeacherMapper _teacherMapper;
 
         public CourseService(CourseRepository courseRepository)
         {
-            _courseRepository = courseRepository;
-            _courseMapper = new CourseMapper();
-            _fullCourseMapper = new FullCourseMapper();
+            _repository = courseRepository;
+            _mapper = new CourseMapper();
+            _fullMapper = new FullCourseMapper();
             _teacherMapper = new TeacherMapper();
 
         }
 
         internal async Task<List<CourseDto>> GetAll(bool includeStudents, bool includeTeachers)
         {
-            var courses = await _courseRepository.GetDetailedAsync(includeStudents, includeTeachers);
-            var dtos = _courseMapper.Map(courses);
+            var courses = await _repository.GetDetailedAsync(includeStudents, includeTeachers);
+            var dtos = _mapper.Map(courses);
             return dtos;
         }
 
         internal async Task<FullCourseDto?> GetOne(int courseId)
         {
-            Course? course =  await _courseRepository.GetJoinedCourse(courseId);
+            Course? course =  await _repository.GetJoinedCourse(courseId);
             if (course == null)
                 return null;
-            var dto = _fullCourseMapper.Map(course);
+            var dto = _fullMapper.Map(course);
             return dto;
+        }
+
+        internal async Task<UpdateResult> Update(CourseDto c)
+        {
+            await _repository.UpdateAsync(_mapper.Map(c));
+            return new(typeof(CourseDto), c.Id);
         }
     }
 }
