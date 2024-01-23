@@ -3,7 +3,7 @@ using System.Net;
 
 namespace Licenta.UI.Services
 {
-    public class HttpLicentaClient 
+    public class HttpLicentaClient
     {
         private readonly MyHttpClient _myHttpClient;
         private readonly LicentaConfig _licentaConfig;
@@ -14,7 +14,7 @@ namespace Licenta.UI.Services
             _licentaConfig = licentaConfig;
         }
 
-        public async Task<List<CourseDto>> GetCourses(string email,bool includeTeachers = false,bool includeStudents = false)
+        public async Task<List<CourseDto>> GetCourses(string email, bool includeTeachers = false, bool includeStudents = false)
         {
             var querryParameters = new Dictionary<string, string>()
             {
@@ -130,12 +130,12 @@ namespace Licenta.UI.Services
 
         internal async Task<UserDto?> GetUser(LoginReqDto reqDto)
         {
-                UserDto? resp = await _myHttpClient.PostAsync<UserDto?, LoginReqDto>(
-                   _licentaConfig.GetPathTo(_licentaConfig.Endpoints.GetUser),
-                   reqDto
-                   );
+            UserDto? resp = await _myHttpClient.PostAsync<UserDto?, LoginReqDto>(
+               _licentaConfig.GetPathTo(_licentaConfig.Endpoints.GetUser),
+               reqDto
+               );
 
-                return resp;
+            return resp;
         }
 
         internal async Task<HttpStatusCode> Register(RegisterReqDto reqDto)
@@ -149,7 +149,8 @@ namespace Licenta.UI.Services
 
                 return HttpStatusCode.OK;
 
-            }catch (Exception ex)
+            }
+            catch (Exception ex)
             {
                 return HttpStatusCode.Forbidden;
             }
@@ -239,6 +240,72 @@ namespace Licenta.UI.Services
                );
 
             return resp;
+        }
+
+        internal async Task UpdateCodeEvaluation(CodeEvaluationEntryDto? dto)
+        {
+            await _myHttpClient.PutAsync(
+               _licentaConfig.GetPathTo(_licentaConfig.Endpoints.UpdateCodeEvaluation),
+               dto);
+
+        }
+
+        internal async Task UpdateCourse(CourseDto? dto)
+        {
+            await _myHttpClient.PutAsync(
+              _licentaConfig.GetPathTo(_licentaConfig.Endpoints.UpdateCourse),
+              dto
+              );
+
+        }
+
+        internal async Task UpdateExercise(ExerciseDto? dto)
+        {
+            await _myHttpClient.PutAsync(
+              _licentaConfig.GetPathTo(_licentaConfig.Endpoints.UpdateExercise),
+              dto
+              );
+
+        }
+
+        internal async Task UpdateLesson(LessonDto? dto)
+        {
+            await _myHttpClient.PutAsync(
+              _licentaConfig.GetPathTo(_licentaConfig.Endpoints.UpdateLesson),
+              dto);
+
+        }
+
+        internal async Task UpdateModule(ModuleDto? dto)
+        {
+            await _myHttpClient.PutAsync(
+              _licentaConfig.GetPathTo(_licentaConfig.Endpoints.UpdateModule),
+              dto);
+
+        }
+
+        internal async Task UpdateQuizVariant(QuizVariantDto? dto)
+        {
+            await _myHttpClient.PutAsync(
+              _licentaConfig.GetPathTo(_licentaConfig.Endpoints.UpdateQuizVariant),
+              dto);
+
+        }
+
+        internal async Task UpdateStudent(StudentDto? dto)
+        {
+            await _myHttpClient.PutAsync(
+              _licentaConfig.GetPathTo(_licentaConfig.Endpoints.UpdateStudent),
+              dto);
+
+        }
+
+        internal async Task UpdateTeacher(TeacherDto? dto)
+        {
+            await _myHttpClient.PutAsync(
+              _licentaConfig.GetPathTo(_licentaConfig.Endpoints.UpdateTeacher),
+              dto);
+
         }
     }
 }

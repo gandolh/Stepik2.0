@@ -1,6 +1,9 @@
-﻿using Licenta.UI.Data;
+﻿using Licenta.SDK.Models.Dtos;
+using Licenta.UI.Data;
+using System;
 using System.Text;
 using System.Text.Json;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace Licenta.UI.Services
 {
@@ -126,9 +129,17 @@ namespace Licenta.UI.Services
             response.EnsureSuccessStatusCode();
             return await response.Content.ReadAsStreamAsync();
         }
+
+
         #endregion
         #region PUT
-
+        internal async Task<string> PutAsync<T>(string url, T data)
+        {
+            var json = JsonSerializer.Serialize(data);
+            var response = await BasePost(url, new StringContent(json, Encoding.UTF8, "application/json"));
+            response.EnsureSuccessStatusCode();
+           return await response.Content.ReadAsStringAsync();
+        }
         #endregion
         #region Delete
 

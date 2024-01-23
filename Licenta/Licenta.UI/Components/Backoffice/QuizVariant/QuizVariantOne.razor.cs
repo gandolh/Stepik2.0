@@ -15,5 +15,10 @@ namespace Licenta.UI.Components.Backoffice.QuizVariant
             }
             await base.OnAfterRenderAsync(firstRender);
         }
+
+        public async Task HandleSaving()
+        {
+            await HttpLicentaClient.UpdateQuizVariant(dto);
+        }
     }
 }

@@ -2,7 +2,7 @@
 
 @if (dto != null)
 {
-     <ShowAllLayout>
+    <ShowAllLayout OnSaving=HandleSaving>
         <div class='row'>
             <div class='input-field col s6'>
                 <input @bind-value=dto.Name placeholder="Name"

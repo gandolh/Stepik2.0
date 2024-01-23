@@ -5,6 +5,7 @@ namespace Licenta.UI.Components.Backoffice
     public partial class ShowAllLayout
     {
         [Parameter] public RenderFragment ChildContent { get; set; } = default!;
+        [Parameter] public EventCallback OnSaving { get; set; } = default!;
         [Inject] public NavigationManager NavManager { get; set; } = default!;
 
         private string GetAllUrl()

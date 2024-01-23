@@ -15,5 +15,10 @@ namespace Licenta.UI.Components.Backoffice.Lesson
             }
             await base.OnAfterRenderAsync(firstRender);
         }
+
+        public async Task HandleSaving()
+        {
+            await HttpLicentaClient.UpdateLesson(dto);
+        }
     }
 }

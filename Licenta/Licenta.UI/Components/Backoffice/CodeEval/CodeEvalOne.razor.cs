@@ -1,5 +1,4 @@
 ﻿using Licenta.SDK.Models.Dtos;
-using Microsoft.AspNetCore.Components;
 
 namespace Licenta.UI.Components.Backoffice.CodeEval
 {
@@ -15,6 +14,11 @@ namespace Licenta.UI.Components.Backoffice.CodeEval
                 StateHasChanged();
             }
             await base.OnAfterRenderAsync(firstRender);
+        }
+
+        public async Task HandleSaving()
+        {
+            await HttpLicentaClient.UpdateCodeEvaluation(dto);
         }
     }
 }
