@@ -1,8 +1,8 @@
 ﻿@inherits BaseShowOne
 
 @if (dto != null)
-{    
-    <form class="formShowOne">
+{
+    <ShowAllLayout>
         <div class='row'>
             <div class='input-field col s6'>
                 <input @bind-value=dto.Enunciation placeholder="Enunciation"
@@ -17,7 +17,7 @@
                 <label class="active" for="Input">SampleInput</label>
             </div>
         </div>
-    </form>
+    </ShowAllLayout>
 
     
     
