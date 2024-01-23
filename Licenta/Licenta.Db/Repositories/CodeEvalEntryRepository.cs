@@ -45,5 +45,6 @@ namespace Licenta.Db.Repositories
                 """;
              await _dbClient.ExecuteAsync(sql, data);
         }
+
     }
 }

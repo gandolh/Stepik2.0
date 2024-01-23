@@ -52,6 +52,15 @@ namespace Licenta.UI
         public string UpdateQuizVariant { get;  set; } = string.Empty;
         public string UpdateStudent { get;  set; } = string.Empty;
         public string UpdateTeacher { get;  set; } = string.Empty;
+        public string DeleteCodeEvaluation {get;set;} = string.Empty;
+        public string DeleteCourse {get;set;} = string.Empty;
+        public string DeleteExercise {get;set;} = string.Empty;
+        public string DeleteLesson {get;set;} = string.Empty;
+        public string DeleteModule {get;set;} = string.Empty;
+        public string DeleteQuizVariant {get;set;} = string.Empty;
+        public string DeleteStudent {get;set;} = string.Empty;
+        public string DeleteTeacher { get; set; } = string.Empty;
+
     }
     public class KafkaOptions
     {

@@ -6,7 +6,7 @@
         public Task<List<T>> GetAllAsync(int start, int length);
         public Task InsertAsync(T data);
         public Task UpdateAsync(T data);
-        public Task DeleteAsync(string id);
+        public Task DeleteAsync(int id);
         public Task CreateTableAsync();
         public Task DropTableAsync();
     }

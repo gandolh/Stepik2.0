@@ -20,6 +20,8 @@ namespace Licenta.API.Services
             _mapper = new LessonMapper(); 
         }
 
+
+
         internal async Task<IEnumerable<LessonDto>> GetAll()
         {
             return _mapper.Map(await _repository.GetAllAsync());
@@ -38,6 +40,12 @@ namespace Licenta.API.Services
         {
             await _repository.UpdateAsync(_mapper.Map(c));
             return new(typeof(LessonDto), c.Id);
+        }
+
+        internal async Task<DeleteResult> Delete(int id)
+        {
+            await _repository.DeleteAsync(id);
+            return new(typeof(LessonDto), id);
         }
     }
 }

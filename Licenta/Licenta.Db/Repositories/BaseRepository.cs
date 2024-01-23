@@ -27,9 +27,10 @@ namespace Licenta.Db.Repositories
         }
         public abstract Task InsertAsync(T data);
 
-        public Task DeleteAsync(string id)
+        public async Task DeleteAsync(int id)
         {
-            throw new NotImplementedException();
+            string sql = $"DELETE FROM {_tableName} WHERE Id={id}";
+            await _dbClient.ExecuteAsync(sql);
         }
 
 

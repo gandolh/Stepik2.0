@@ -64,6 +64,14 @@ namespace Licenta.UI.Services
             return response;
         }
 
+        private async Task<HttpResponseMessage> BaseDelete(string url)
+        {
+            var request = new HttpRequestMessage(HttpMethod.Delete, url);
+            var response = await _httpClient.SendAsync(request);
+            response.EnsureSuccessStatusCode();
+            return response;
+        }
+
         #region GET
 
         public async Task<T> GetAsync<T>(string url, Dictionary<string, string>? parameters = null)
@@ -149,9 +157,18 @@ namespace Licenta.UI.Services
             response.EnsureSuccessStatusCode();
            return await response.Content.ReadAsStringAsync();
         }
+
         #endregion
         #region Delete
-
+        internal async Task<string> DeleteAsync(string url, Dictionary<string, string> parameters)
+        {
+            url = await AddQuerryParamsIfExists(url, parameters);
+            HttpResponseMessage response = await BaseDelete(url);
+            string respJson = await response.Content.ReadAsStringAsync();
+            //T resp = JsonSerializer.Deserialize<T>(respJson, jsonSerializerOptions)
+            //    ?? throw new Exception("Cannot deserialize json from web request");
+            return respJson;
+        }
         #endregion
     }
 }

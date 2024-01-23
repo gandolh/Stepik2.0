@@ -3,6 +3,10 @@
 <table class="table table-sm table-striped" id="@EltId">
 </table>
 
-<ModalOneLayout ModalTitle="Code eval Modal" ModalId=@($"{_modalRemoveId}")>
-    <p> hello </p>
+<ModalOneLayout 
+    ModalTitle="Delete code evaluation" 
+    ModalId=@($"{_modalRemoveId}")
+    OnRemove=HandleRemove
+>
+    <p> Are you sure? </p>
 </ModalOneLayout>

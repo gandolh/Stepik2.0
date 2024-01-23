@@ -9,7 +9,8 @@ namespace Licenta.UI.Components.Backoffice
     {
         protected const string EltId = "example";
         [Inject] protected IJSRuntime JSRuntime { get; set; } = default!;
-        [Inject] protected HttpLicentaClient LicentaClient { get; set; } = default!;
+        [Inject] protected HttpLicentaClient httpLicentaClient { get; set; } = default!;
+        protected string _modalRemoveId = "modal-show-all-remove";
 
         public async ValueTask DisposeAsync()
         {

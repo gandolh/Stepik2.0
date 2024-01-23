@@ -119,18 +119,30 @@ const GetCode = () => {
 }
 
 const InitDataTable = (eltId, json, modalRemoveId) => {
+    if (mySimpleDatatables[eltId] !== undefined) {
+        mySimpleDatatables[eltId].destroy();
+    }
 
-    const btnGroup = `<div style="text-align:center;" >
+    let btnGroup = `<div style="text-align:center;" >
         <a href="%linkUpdate%" class="btn waves-effect waves-light" >
             <i class="material-icons left">edit</i> Update
         </a>
-        <button class="btn waves-effect waves-light red" onclick="MicroModal.show('${modalRemoveId}');">
+        <button class="btn waves-effect waves-light red"
+                data-micromodal-trigger="${modalRemoveId}"
+                onclick="Main.SelectId('${modalRemoveId}', %EltId%)">
             <i class="material-icons left">cancel</i> Remove
         </button>
     </div>`;
 
     //console.log(json)
-    json.data.map(el => el[el.length - 1] = btnGroup.replace("%linkUpdate%", el[el.length - 1]))
+    json.data.map(el => {
+        const linkUpdate = el[el.length - 1];
+        let id = linkUpdate.split("/");
+        id = id[id.length - 1];
+        btnGroup = btnGroup.replace("%linkUpdate%", linkUpdate)
+        el[el.length - 1] = btnGroup.replace("%EltId%", id)
+    }
+    )
     mySimpleDatatables[eltId] = new simpleDatatables.DataTable(`#${eltId}`, {
         //data:  sampleDataTableData 
         data: json
@@ -146,6 +158,27 @@ const showToast = (msg, type) => {
     $.notify(msg, type);
 }
 
+const triggerAreYouSure = () => {
+    swal("Are you sure?", {
+        dangerMode: true,
+        buttons: true,
+    });
+}
+
+const SelectId = (modalId, id) => {
+    document.getElementById(modalId).setAttribute("data-eltId", id)
+}
+
+const GetSelectedId = (modalId) => {
+    return document.getElementById(modalId).getAttribute("data-eltId")
+}
+
+const ModalClose = (modalId) => {
+    MicroModal.close(modalId);
+}
+
+
+
 var Main = {
     initializeNav: initializeNav,
     initializeCollapsible: initializeCollapsible,
@@ -154,6 +187,10 @@ var Main = {
     GetCode: GetCode,
     InitDataTable: InitDataTable,
     DestroyDataTable: DestroyDataTable,
-    showToast: showToast
+    showToast: showToast,
+    triggerAreYouSure: triggerAreYouSure,
+    SelectId: SelectId,
+    GetSelectedId: GetSelectedId,
+    ModalClose: ModalClose
 }
 

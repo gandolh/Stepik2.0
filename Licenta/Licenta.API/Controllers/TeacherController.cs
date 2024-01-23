@@ -60,7 +60,7 @@ namespace Licenta.API.Controllers
         [SwaggerOperation(Summary = "Delete teacher", Description = "")]
         public async Task<DeleteResult> Delete(int id)
         {
-            throw new NotImplementedException();
+            return await _service.Delete(id);
         }
 
     }

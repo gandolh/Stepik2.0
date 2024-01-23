@@ -33,5 +33,10 @@ namespace Licenta.API.Services
             await _repository.UpdateAsync(_mapper.Map(c));
             return new(typeof(TeacherDto), c.Id);
         }
+        internal async Task<DeleteResult> Delete(int id)
+        {
+            await _repository.DeleteAsync(id);
+            return new(typeof(TeacherDto), id);
+        }
     }
 }

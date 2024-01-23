@@ -2,3 +2,9 @@
 
 <table class="table table-sm table-striped" id="@EltId">
 </table>
+
+<ModalOneLayout ModalTitle="Delete lesson"
+                ModalId=@($"{_modalRemoveId}")
+                OnRemove=HandleRemove>
+    <p> Are you sure? </p>
+</ModalOneLayout>

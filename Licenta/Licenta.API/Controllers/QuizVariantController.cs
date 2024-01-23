@@ -42,5 +42,12 @@ namespace Licenta.API.Controllers
         {
             return await _service.Update(c);
         }
+
+        [HttpDelete]
+        [SwaggerOperation(Summary = "Delete quiz variant", Description = "")]
+        public async Task<DeleteResult> Delete(int id)
+        {
+            return await _service.Delete(id);
+        }
     }
 }

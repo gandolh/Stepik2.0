@@ -67,6 +67,14 @@ nav .btn-small, nav .btn-small:hover {
     background-color: #1976d2;
 }
 
+.btn{
+    z-index:0;
+}
+
+.sidenav.sidenav-fixed{
+    z-index:0;
+}
+
 code {
     background-color: #272822;
     color: #f8f8f2;

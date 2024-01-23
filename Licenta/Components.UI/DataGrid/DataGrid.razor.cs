@@ -36,7 +36,7 @@ namespace Components.UI.DataGrid
             }
             else
             {
-                await JsRuntime.InvokeVoidAsync("JSShared.InitializeDatatable", DataTableId);
+                await JsRuntime.InvokeVoidAsync("Main.InitializeDatatable", DataTableId);
             }
             await base.OnAfterRenderAsync(firstRender);
         }
@@ -45,7 +45,7 @@ namespace Components.UI.DataGrid
 
         public async ValueTask DisposeAsync()
         {
-            await JsRuntime.InvokeVoidAsync("JSShared.DisposeDatatable", DataTableId);
+            await JsRuntime.InvokeVoidAsync("Main.DisposeDatatable", DataTableId);
         }
     }
 }

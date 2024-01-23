@@ -10,14 +10,26 @@ namespace Licenta.UI.Components.Backoffice.Student
         {
             if (firstRender)
             {
-                var elts = await LicentaClient.GetStudents();
-                DataTableJson json = new DataTableJson();
-                json.ImportOverride(elts);
-
-                await JSRuntime.InvokeVoidAsync("Main.InitDataTable", EltId, json);
+                await LoadDatatable();
+                await JSRuntime.InvokeVoidAsync("MicroModal.init");
             }
 
             await base.OnAfterRenderAsync(firstRender);
+        }
+
+        private async Task HandleRemove(int selectedId)
+        {
+            await httpLicentaClient.DeleteStudent(selectedId);
+            await LoadDatatable();
+        }
+
+        private async Task LoadDatatable()
+        {
+            var elts = await httpLicentaClient.GetStudents();
+            DataTableJson json = new DataTableJson();
+            json.ImportOverride(elts);
+
+            await JSRuntime.InvokeVoidAsync("Main.InitDataTable", EltId, json, _modalRemoveId);
         }
     }
 }

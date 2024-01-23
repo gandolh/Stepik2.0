@@ -249,7 +249,6 @@ namespace Licenta.UI.Services
                dto);
 
         }
-
         internal async Task UpdateCourse(CourseDto? dto)
         {
             await _myHttpClient.PutAsync(
@@ -258,7 +257,6 @@ namespace Licenta.UI.Services
               );
 
         }
-
         internal async Task UpdateExercise(ExerciseDto? dto)
         {
             await _myHttpClient.PutAsync(
@@ -267,7 +265,6 @@ namespace Licenta.UI.Services
               );
 
         }
-
         internal async Task UpdateLesson(LessonDto? dto)
         {
             await _myHttpClient.PutAsync(
@@ -275,7 +272,6 @@ namespace Licenta.UI.Services
               dto);
 
         }
-
         internal async Task UpdateModule(ModuleDto? dto)
         {
             await _myHttpClient.PutAsync(
@@ -283,7 +279,6 @@ namespace Licenta.UI.Services
               dto);
 
         }
-
         internal async Task UpdateQuizVariant(QuizVariantDto? dto)
         {
             await _myHttpClient.PutAsync(
@@ -291,7 +286,6 @@ namespace Licenta.UI.Services
               dto);
 
         }
-
         internal async Task UpdateStudent(StudentDto? dto)
         {
             await _myHttpClient.PutAsync(
@@ -299,7 +293,6 @@ namespace Licenta.UI.Services
               dto);
 
         }
-
         internal async Task UpdateTeacher(TeacherDto? dto)
         {
             await _myHttpClient.PutAsync(
@@ -307,5 +300,88 @@ namespace Licenta.UI.Services
               dto);
 
         }
+
+        internal async Task DeleteCodeEvaluation(int id)
+        {
+            var querryParameters = new Dictionary<string, string>()
+            {
+                {"id",id.ToString() },
+            };
+
+            await _myHttpClient.DeleteAsync(
+              _licentaConfig.GetPathTo(_licentaConfig.Endpoints.DeleteCodeEvaluation),
+              querryParameters);
+        }
+        internal async Task DeleteCourse(int id)
+        {
+            var querryParameters = new Dictionary<string, string>()
+            {
+                {"id",id.ToString() },
+            };
+            await _myHttpClient.DeleteAsync(
+              _licentaConfig.GetPathTo(_licentaConfig.Endpoints.DeleteCourse),
+              querryParameters);
+        }
+        internal async Task DeleteExercise(int id)
+        {
+            var querryParameters = new Dictionary<string, string>()
+            {
+                {"id",id.ToString() },
+            };
+            await _myHttpClient.DeleteAsync(
+              _licentaConfig.GetPathTo(_licentaConfig.Endpoints.DeleteExercise),
+              querryParameters);
+        }
+        internal async Task DeleteLesson(int id)
+        {
+            var querryParameters = new Dictionary<string, string>()
+            {
+                {"id",id.ToString() },
+            };
+            await _myHttpClient.DeleteAsync(
+              _licentaConfig.GetPathTo(_licentaConfig.Endpoints.DeleteLesson),
+              querryParameters);
+        }
+        internal async Task DeleteModule(int id)
+        {
+            var querryParameters = new Dictionary<string, string>()
+            {
+                {"id",id.ToString() },
+            };
+            await _myHttpClient.DeleteAsync(
+              _licentaConfig.GetPathTo(_licentaConfig.Endpoints.DeleteModule),
+              querryParameters);
+        }
+        internal async Task DeleteQuizVariant(int id)
+        {
+            var querryParameters = new Dictionary<string, string>()
+            {
+                {"id",id.ToString() },
+            };
+            await _myHttpClient.DeleteAsync(
+              _licentaConfig.GetPathTo(_licentaConfig.Endpoints.DeleteQuizVariant),
+              querryParameters);
+        }
+        internal async Task DeleteStudent(int id)
+        {
+            var querryParameters = new Dictionary<string, string>()
+            {
+                {"id",id.ToString() },
+            };
+            await _myHttpClient.DeleteAsync(
+              _licentaConfig.GetPathTo(_licentaConfig.Endpoints.DeleteStudent),
+              querryParameters);
+        }
+        internal async Task DeleteTeacher(int id)
+        {
+            var querryParameters = new Dictionary<string, string>()
+            {
+                {"id",id.ToString() },
+            };
+            await _myHttpClient.DeleteAsync(
+              _licentaConfig.GetPathTo(_licentaConfig.Endpoints.DeleteTeacher),
+              querryParameters);
+        }
+
     }
 }

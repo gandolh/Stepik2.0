@@ -3,6 +3,10 @@
     padding-right: 2rem;
 }
 
+.sidenav-crud {
+    margin-top: 64px;
+}
+
 @media only screen and (max-width : 992px) {
     .main-crud {
         padding-left: 0;
