@@ -1,6 +1,7 @@
-﻿using Licenta.Sdk.Localization;
+﻿using Licenta.SDK;
+using Licenta.SDK.Localization;
 using Licenta.UI.Services;
-using Microsoft.Extensions.Localization;
+using Microsoft.Extensions.FileProviders;
 
 namespace Licenta.UI
 {
@@ -29,26 +30,25 @@ namespace Licenta.UI
         /// <param name="services"></param>
         private static void AddLocalization(this WebApplicationBuilder builder)
         {
-            // Register localization as usual
-            builder.Services.AddLocalization(options =>
-            {
-                options.ResourcesPath = Path.Join("Localization", "Resources");
-            });
-            // And add out custom factory
-            builder.Services.AddSingleton
-                <IStringLocalizerFactory, JsonStringLocalizerFactory>();
+            var fileProvider = new EmbeddedFileProvider(typeof(SdkAssemblyRef).Assembly);
+            var resourcesPath = Path.Join("Localization", "Resources");
+            var roResource = fileProvider.GetFileInfo(Path.Combine(resourcesPath, $"Resource-ro.json"));
+            var enResource = fileProvider.GetFileInfo(Path.Combine(resourcesPath, $"Resource-en.json"));
+            var fallbackResource = fileProvider.GetFileInfo(Path.Combine(resourcesPath, $"Resource.json"));
+            MyStringLocalizerFactory myStringLocalizer = new MyStringLocalizerFactory(roResource, enResource, fallbackResource);
+            builder.Services.AddSingleton(myStringLocalizer);
         }
 
 
         public static void UseLocalization(this WebApplication app)
         {
-            //var supportedCultures = new[] { "ro-RO", "en-US" };
-            //var localizationOptions = new RequestLocalizationOptions()
-            //    .SetDefaultCulture(supportedCultures[0])
-            //    .AddSupportedCultures(supportedCultures)
-            //    .AddSupportedUICultures(supportedCultures);
+            var supportedCultures = new[] { "ro-RO", "en-US" };
+            var localizationOptions = new RequestLocalizationOptions()
+                .SetDefaultCulture(supportedCultures[0])
+                .AddSupportedCultures(supportedCultures)
+                .AddSupportedUICultures(supportedCultures);
 
-            app.UseRequestLocalization();
+            app.UseRequestLocalization(localizationOptions);
         }
 
         /// <summary>

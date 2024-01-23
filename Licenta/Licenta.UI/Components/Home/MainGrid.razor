@@ -1,28 +1,35 @@
-﻿@using global::Components.UI
+﻿@using Licenta.SDK.Services
+@using Microsoft.AspNetCore.Components.Authorization
+@using global::Components.UI
 @inherits BaseLicentaComp;
 
-<h1> Welcome back, "user"  </h1>
-<div class="grid-3-cols">
-    <SimpleCardPanel Class="CourseList">
-        <h3> Cursuri: </h3>
-        @if(pageState == PageState.Loading)
-        {
-            <Loading/>
-        }else
-        {
-            <ul class="collection">
-                @foreach (var course in _courses)
-                {
-                    <li class="collection-item">@course.Name</li>
-                }
-            </ul>
-        }
-    </SimpleCardPanel>
-    <SimpleCardPanel Class="UpcomingDeadlines">
-        <h3> Deadline-uri: </h3>
+    <AuthorizeView>
+        <Authorized>
+            <h1> Welcome back, @ClaimHelper.GetFullName(context.User) </h1>
+            <div class="grid-3-cols">
+                <SimpleCardPanel Class="CourseList">
+                    <h3> Cursuri: </h3>
+                    @if (pageState == PageState.Loading)
+                    {
+                        <Loading />
+                    }
+                    else
+                    {
+                        <ul class="collection">
+                            @foreach (var course in _courses)
+                            {
+                                <li class="collection-item">@course.Name</li>
+                            }
+                        </ul>
+                    }
+                </SimpleCardPanel>
+                <SimpleCardPanel Class="UpcomingDeadlines">
+                    <h3> Deadline-uri: </h3>
 
-    </SimpleCardPanel>
-    <SimpleCardPanel Class="LastAccesed">
-        <h3>Ultimele accesari:</h3>
-    </SimpleCardPanel>
-</div>
+                </SimpleCardPanel>
+                <SimpleCardPanel Class="LastAccesed">
+                    <h3>Ultimele accesari:</h3>
+                </SimpleCardPanel>
+            </div>
+        </Authorized>
+    </AuthorizeView>

@@ -110,3 +110,11 @@ pre {
 .justify-end{
     justify-content: flex-end;
 }
+
+.language-picker-field {
+    background: #ffffffce;
+    margin-top: 9px;
+    /*width: 60px;*/
+    padding-left: 10px;
+    border-radius: 5px;
+}

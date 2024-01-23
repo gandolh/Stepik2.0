@@ -1,6 +1,6 @@
 ﻿using Licenta.Sdk.Config;
 
-namespace Licenta.DataAccessService
+namespace Licenta.SDK.Services
 {
     public class MySqlClient
     {
@@ -15,7 +15,7 @@ namespace Licenta.DataAccessService
 
         //TODO: Implement
         // maybe ORM with entity framework
-    
-    
+
+
     }
 }

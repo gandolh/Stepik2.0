@@ -2,7 +2,7 @@
 using StackExchange.Redis;
 using System.Text.Json;
 
-namespace Licenta.DataAccessService
+namespace Licenta.SDK.Services
 {
     public class RedisClient
     {
@@ -48,7 +48,7 @@ namespace Licenta.DataAccessService
             var str = await _redisDatabase.StringGetAsync(key);
 
             if (str.IsNull)
-                return default(T);
+                return default;
 
             T val = JsonSerializer.Deserialize<T>(str);
 
