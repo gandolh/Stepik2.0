@@ -43,16 +43,6 @@ namespace Licenta.UI.Services
             return resp;
         }
 
-        internal async Task<List<CodeEvaluationEntryDto>> GetCodeEvaluations()
-        {
-
-            var resp = await _myHttpClient.GetAsync<List<CodeEvaluationEntryDto>>(
-                _licentaConfig.GetPathTo(_licentaConfig.Endpoints.GetCodeEvaluations),
-                new Dictionary<string, string>()
-                );
-
-            return resp;
-        }
 
         internal async Task<FullLessonDto> GetOneLesson(int id)
         {
@@ -63,6 +53,16 @@ namespace Licenta.UI.Services
             var resp = await _myHttpClient.GetAsync<FullLessonDto>(
                 _licentaConfig.GetPathTo(_licentaConfig.Endpoints.GetOneLesson),
                 querryParameters
+                );
+
+            return resp;
+        }
+        internal async Task<List<FullCodeEvaluationEntryDto>> GetCodeEvaluations()
+        {
+
+            var resp = await _myHttpClient.GetAsync<List<FullCodeEvaluationEntryDto>>(
+                _licentaConfig.GetPathTo(_licentaConfig.Endpoints.GetCodeEvaluations),
+                new Dictionary<string, string>()
                 );
 
             return resp;
@@ -98,9 +98,9 @@ namespace Licenta.UI.Services
             return resp;
         }
 
-        internal async Task<List<QuizVariantDto>> GetQuizVariants()
+        internal async Task<List<FullQuizVariantDto>> GetQuizVariants()
         {
-            var resp = await _myHttpClient.GetAsync<List<QuizVariantDto>>(
+            var resp = await _myHttpClient.GetAsync<List<FullQuizVariantDto>>(
                _licentaConfig.GetPathTo(_licentaConfig.Endpoints.GetQuizVariants),
                new Dictionary<string, string>()
                );
@@ -153,6 +153,92 @@ namespace Licenta.UI.Services
             {
                 return HttpStatusCode.Forbidden;
             }
+        }
+
+        internal async Task<CodeEvaluationEntryDto> GetOneCodeEvaluation(int id)
+        {
+            var querryParameters = new Dictionary<string, string>()
+            {
+                {"id",id.ToString() },
+            };
+
+            var resp = await _myHttpClient.GetAsync<CodeEvaluationEntryDto>(
+              _licentaConfig.GetPathTo(_licentaConfig.Endpoints.GetOneCodeEvaluation),
+              querryParameters
+              );
+
+            return resp;
+        }
+
+        internal async Task<ExerciseDto> GetOneExercise(int id)
+        {
+            var querryParameters = new Dictionary<string, string>()
+            {
+                {"id",id.ToString() },
+            };
+            var resp = await _myHttpClient.GetAsync<ExerciseDto>(
+               _licentaConfig.GetPathTo(_licentaConfig.Endpoints.GetOneExercise),
+               querryParameters
+               );
+
+            return resp;
+        }
+
+
+        internal async Task<ModuleDto> GetOneModule(int id)
+        {
+            var querryParameters = new Dictionary<string, string>()
+            {
+                {"id",id.ToString() },
+            };
+            var resp = await _myHttpClient.GetAsync<ModuleDto>(
+               _licentaConfig.GetPathTo(_licentaConfig.Endpoints.GetOneModule),
+               querryParameters
+               );
+
+            return resp;
+        }
+
+        internal async Task<FullQuizVariantDto> GetOneQuizVariant(int id)
+        {
+            var querryParameters = new Dictionary<string, string>()
+            {
+                {"id",id.ToString() },
+            };
+            var resp = await _myHttpClient.GetAsync<FullQuizVariantDto>(
+               _licentaConfig.GetPathTo(_licentaConfig.Endpoints.GetOneQuizVariant),
+               querryParameters
+               );
+
+            return resp;
+        }
+
+        internal async Task<StudentDto> GetOneStudent(int id)
+        {
+            var querryParameters = new Dictionary<string, string>()
+            {
+                {"id",id.ToString() },
+            };
+            var resp = await _myHttpClient.GetAsync<StudentDto>(
+               _licentaConfig.GetPathTo(_licentaConfig.Endpoints.GetOneStudent),
+               querryParameters
+               );
+
+            return resp;
+        }
+
+        internal async Task<TeacherDto> GetOneTeacher(int id)
+        {
+            var querryParameters = new Dictionary<string, string>()
+            {
+                {"id",id.ToString() },
+            };
+            var resp = await _myHttpClient.GetAsync<TeacherDto>(
+               _licentaConfig.GetPathTo(_licentaConfig.Endpoints.GetOneTeacher),
+               querryParameters
+               );
+
+            return resp;
         }
     }
 }

@@ -3,12 +3,13 @@ using Licenta.SDK.Models.Dtos;
 
 namespace Licenta.API.Mappers
 {
-    public class CodeEvaluationEntryMapper : BaseMapper<CodeEvaluationEntry, CodeEvaluationEntryDto>
+    public class CodeEvalEntryMapper : BaseMapper<CodeEvaluationEntry, CodeEvaluationEntryDto>
     {
         public override CodeEvaluationEntry Map(CodeEvaluationEntryDto element)
         {
             return new()
             {
+                Id = element.Id,
                 Input= element.Input,
                 ExpectedResult = element.ExpectedResult,
             };
@@ -18,6 +19,7 @@ namespace Licenta.API.Mappers
         {
             return new()
             {
+                Id = element.Id,
                 Input = element.Input,
                 ExpectedResult = element.ExpectedResult,
             };

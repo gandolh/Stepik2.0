@@ -15,7 +15,7 @@ namespace Licenta.Db
         private readonly ModuleRepository ModuleRepository;
         private readonly LessonRepository LessonRepository;
         private readonly ExerciseRepository ExerciseRepository;
-        private readonly CodeEvaluationEntryRepository CodeEvaluationEntryRepository;
+        private readonly CodeEvalEntryRepository CodeEvaluationEntryRepository;
         private readonly QuizVariantsRepository QuizVariantsRepository;
         private readonly SubmissionRepository SubmissionRepository;
         private readonly StudentCourseRepository StudentCourseRepository;
@@ -39,7 +39,7 @@ namespace Licenta.Db
             LessonRepository = new LessonRepository(_dbClient);
             ExerciseRepository = new ExerciseRepository(_dbClient);
             QuizVariantsRepository = new QuizVariantsRepository(_dbClient);
-            CodeEvaluationEntryRepository = new CodeEvaluationEntryRepository(_dbClient);
+            CodeEvaluationEntryRepository = new CodeEvalEntryRepository(_dbClient);
             SubmissionRepository = new SubmissionRepository(_dbClient);
             StudentCourseRepository = new StudentCourseRepository(_dbClient);
             CourseTeacherRepository = new CourseTeacherRepository(_dbClient);

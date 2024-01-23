@@ -1,4 +1,4 @@
-﻿@page "/crud/quizvar/{ViewMode?}"
+﻿@page "/crud/quizvar/{ViewMode?}/{Id:int?}"
 @using Licenta.UI.Components.Backoffice.QuizVariant
 @inherits BaseCrudPage
 
@@ -6,13 +6,8 @@
     @if (string.IsNullOrEmpty(ViewMode))
     {
         <QuizVariantAll />
-    }
-    else if (ViewMode == "one")
+    }else if (ViewMode.Contains("one") && Id!= null)
     {
-        <h1>one</h1>
-    }
-    else
-    {
-        <h1> other </h1>
+        <QuizVariantOne Id="@((int)Id)" />
     }
 </CrudPageLayout>

@@ -34,9 +34,12 @@ namespace Licenta.API.Controllers
 
         [HttpGet]
         [SwaggerOperation(Summary = "Get teacher by Id", Description = "")]
-        public async Task<ActionResult<Teacher>> GetOne(int teacherId)
+        public async Task<ActionResult<TeacherDto>> GetOne(int id)
         {
-            throw new NotImplementedException();
+            var res = await _service.GetOne(id);
+            if (res == null)
+                return NotFound();
+            return Ok(res);
         }
 
         [HttpPost]

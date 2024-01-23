@@ -12,18 +12,19 @@ namespace Licenta.UI.Data
         // data -> row by row, column by column
         public string[][] Data { get; set; } = [];
 
-        internal void ImportOverride(List<CodeEvaluationEntryDto> elts)
+        internal void ImportOverride(List<FullCodeEvaluationEntryDto> elts)
         {
-            Headings = ["Input", "ExpectedResult", ""];
+            Headings = ["Enunciation", "Input", "ExpectedResult", ""];
             int collectionCount = elts.Count();
             int headingsCount = Headings.Count();
             Data = new string[collectionCount][];
             for (int i = 0; i < collectionCount; i++)
             {
                 Data[i] = new string[headingsCount];
-                Data[i][0] = elts[i].Input;
-                Data[i][1] = elts[i].ExpectedResult;
-                Data[i][2] = elts[i].Id.ToString();
+                Data[i][0] = elts[i].Exercise.Enunciation;
+                Data[i][1] = elts[i].Input;
+                Data[i][2] = elts[i].ExpectedResult;
+                Data[i][3] = "crud/codeeval/one/"+ elts[i].Id;
             }
         }
 
@@ -48,7 +49,8 @@ namespace Licenta.UI.Data
                 Data[i][0] = elts[i].Name;
                 Data[i][1] = teacherList;
                 Data[i][2] = studentList;
-                Data[i][3] = elts[i].Id.ToString();
+                Data[i][3] = "crud/course/one/" + elts[i].Id;
+
             }
         }
 
@@ -64,7 +66,7 @@ namespace Licenta.UI.Data
                 Data[i][0] = elts[i].Enunciation;
                 Data[i][1] = elts[i].SampleInput;
                 Data[i][2] = elts[i].IsCodeRunner.ToString();
-                Data[i][3] = elts[i].Id.ToString();
+                Data[i][3] = "crud/exercise/one/" + elts[i].Id;
             }
         }
 
@@ -79,7 +81,7 @@ namespace Licenta.UI.Data
                 Data[i] = new string[headingsCount];
                 Data[i][0] = elts[i].Name;
                 Data[i][1] = elts[i].Body;
-                Data[i][2] = elts[i].Id.ToString();
+                Data[i][2] = "crud/lesson/one/" + elts[i].Id;
             }
         }
 
@@ -93,22 +95,23 @@ namespace Licenta.UI.Data
             {
                 Data[i] = new string[headingsCount];
                 Data[i][0] = elts[i].Name;
-                Data[i][1] = elts[i].Id.ToString();
+                Data[i][1] = "crud/module/one/" + elts[i].Id;
             }
         }
 
-        internal void ImportOverride(List<QuizVariantDto> elts)
+        internal void ImportOverride(List<FullQuizVariantDto> elts)
         {
-            Headings = ["Text", "IsCorrect", ""];
+            Headings = ["Enunciation", "Text", "IsCorrect", ""];
             int collectionCount = elts.Count();
             int headingsCount = Headings.Count();
             Data = new string[collectionCount][];
             for (int i = 0; i < collectionCount; i++)
             {
                 Data[i] = new string[headingsCount];
-                Data[i][0] = elts[i].Text;
-                Data[i][1] = elts[i].IsCorrect.ToString();
-                Data[i][2] = elts[i].Id.ToString();
+                Data[i][0] = elts[i].Exercise.Enunciation;
+                Data[i][1] = elts[i].Text;
+                Data[i][2] = elts[i].IsCorrect.ToString();
+                Data[i][3] = "crud/quizvar/one/" + elts[i].Id;
             }
         }
 
@@ -123,7 +126,7 @@ namespace Licenta.UI.Data
                 Data[i] = new string[headingsCount];
                 Data[i][0] = elts[i].Firstname;
                 Data[i][1] = elts[i].Lastname;
-                Data[i][2] = elts[i].Id.ToString();
+                Data[i][2] = "crud/student/one/" + elts[i].Id;
             }
         }
 
@@ -138,7 +141,7 @@ namespace Licenta.UI.Data
                 Data[i] = new string[headingsCount];
                 Data[i][0] = elts[i].Firstname;
                 Data[i][1] = elts[i].Lastname;
-                Data[i][2] = elts[i].Id.ToString();
+                Data[i][2] = "crud/teacher/one/" + elts[i].Id;
             }
         }
     }

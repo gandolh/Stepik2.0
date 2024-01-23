@@ -1,0 +1,19 @@
+
+<div class="modal micromodal-slide" id="@ModalId" aria-hidden="true">
+    <div class="modal__overlay" tabindex="-1" data-micromodal-close>
+        <div class="modal__container" role="dialog" aria-modal="true" aria-labelledby="@ModalId-title">
+            <header class="modal__header">
+                <h2 class="modal__title" id="@ModalId-title">
+                    @Title
+                </h2>
+                <button class="modal__close" aria-label="Close modal" data-micromodal-close></button>
+            </header>
+            <main class="modal__content" id="@ModalId-content">
+                @Body
+            </main>
+            <footer class="modal__footer">
+               @Footer
+            </footer>
+        </div>
+    </div>
+</div>

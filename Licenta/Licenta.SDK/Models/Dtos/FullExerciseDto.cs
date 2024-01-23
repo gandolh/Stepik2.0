@@ -1,12 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Licenta.SDK.Models.Dtos
+﻿namespace Licenta.SDK.Models.Dtos
 {
-    public class FullExerciseDto
+    public class FullExerciseDto : ExerciseDto
     {
+        // if type quiz
+        public List<QuizVariantDto> QuizVariants { get; set; } = new();
+        public List<CodeEvaluationEntryDto> CodeEvaluationEntries { get; set; } = new();
     }
 }

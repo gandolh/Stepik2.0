@@ -19,5 +19,7 @@
             Input = input;
             ExpectedResult = expectedResult;
         }
+
+        public Exercise? Exercise { get; set; }
     }   
 }

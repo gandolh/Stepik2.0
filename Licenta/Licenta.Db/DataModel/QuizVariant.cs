@@ -6,6 +6,8 @@
         public int ExerciseId { get; set; } = 0;
         public string Text { get; set; } = string.Empty;
         public bool IsCorrect { get; set; } = false;
+
+
         public QuizVariant()
         {
 
@@ -18,5 +20,7 @@
             Text = text;
             IsCorrect = isCorrect;
         }
+
+        public Exercise? Exercise { get; set; }
     }
 }

@@ -20,5 +20,10 @@ namespace Licenta.API.Services
         {
             return _mapper.Map(await _repository.GetAllAsync());
         }
+
+        internal async Task<TeacherDto> GetOne(int id)
+        {
+            return _mapper.Map(await _repository.GetOneAsync(id));
+        }
     }
 }

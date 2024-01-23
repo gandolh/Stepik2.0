@@ -7,11 +7,11 @@ namespace Licenta.API.Mappers
 {
     public class FullLessonMapper : BaseMapper<Lesson, FullLessonDto>
     {
-        private readonly ExerciseMapper _exerciseMapper;
+        private readonly FullExerciseMapper _exerciseMapper;
 
         public FullLessonMapper()
         {
-            _exerciseMapper = new ExerciseMapper();
+            _exerciseMapper = new FullExerciseMapper();
         }
 
         public override Lesson Map(FullLessonDto element)

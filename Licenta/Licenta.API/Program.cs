@@ -34,7 +34,7 @@ static void ConfigureDI(IServiceCollection services)
     services.AddScoped<SubmissionRepository>();
     services.AddScoped<TeacherRepository>();
     services.AddScoped<UserRepository>();
-    services.AddScoped<CodeEvaluationEntryRepository>();
+    services.AddScoped<CodeEvalEntryRepository>();
     services.AddScoped<ModuleRepository>();
     services.AddScoped<QuizVariantsRepository>();
 

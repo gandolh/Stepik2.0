@@ -42,11 +42,14 @@ namespace Licenta.API.Controllers
         }
 
         [HttpGet]
-        [SwaggerOperation(Summary = "Get exercise by Id",
+        [SwaggerOperation(Summary = "Get exercise by id",
             Description = "The response could include submissions for that exercise.")]
-        public async Task<ActionResult<Exercise>> GetOne(int submissionId, bool includeSubmissions)
+        public async Task<ActionResult<ExerciseDto>> GetOne(int id)
         {
-            throw new NotImplementedException();
+            var res = await _service.GetOne(id);
+            if (res == null)
+                return NotFound();
+            return Ok(res);
         }
 
         [HttpPost]

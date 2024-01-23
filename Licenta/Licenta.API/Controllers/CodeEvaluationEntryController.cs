@@ -20,18 +20,21 @@ namespace Licenta.API.Controllers
 
         [HttpGet]
         [SwaggerOperation(Summary = "Get all code evals entries", Description = "")]
-        public async Task<IEnumerable<CodeEvaluationEntryDto>> GetAll()
+        public async Task<IEnumerable<FullCodeEvaluationEntryDto>> GetAll()
         {
             return await _service.GetAll();
         }
 
 
         [HttpGet]
-        [SwaggerOperation(Summary = "Get code eval entry by Id",
+        [SwaggerOperation(Summary = "Get code eval entry by id",
             Description = "")]
-        public async Task<ActionResult<CodeEvaluationEntryDto>> GetOne()
+        public async Task<ActionResult<CodeEvaluationEntryDto>> GetOne(int id)
         {
-            throw new NotImplementedException();
+            var res = await _service.GetOne(id);
+            if (res == null)
+                return NotFound();
+            return Ok(res);
         }
 
         [HttpPost]

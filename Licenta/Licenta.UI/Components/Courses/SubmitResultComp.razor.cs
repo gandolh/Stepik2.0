@@ -13,7 +13,7 @@ namespace Licenta.UI.Components.Courses
         [Inject] public IJSRuntime JSRuntime { get; set; } = default!;
         [Inject] public KafkaLicentaClient KafkaLicentaClient { get; set; } = default!;
         [Inject] public LicentaConfig LicentaConfig { get; set; } = default!;
-        [Parameter] public ExerciseDto Exercise { get; set; } = default!;
+        [Parameter] public FullExerciseDto Exercise { get; set; } = default!;
         [Parameter] public CodeLanguage Language { get; set; } 
         private List<SubmitResult> submitResults = [];
 

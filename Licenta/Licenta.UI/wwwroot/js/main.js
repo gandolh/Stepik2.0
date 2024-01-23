@@ -66,13 +66,13 @@
         ]
     ]
 };
-
+var mySimpleDatatables = {};
 
 
 
 const initializeNav = () => {
-        var elems = document.querySelectorAll('.sidenav');
-        var instances = M.Sidenav.init(elems, {});
+    var elems = document.querySelectorAll('.sidenav');
+    var instances = M.Sidenav.init(elems, {});
 }
 
 const initializeCollapsible = () => {
@@ -118,25 +118,28 @@ const GetCode = () => {
     return window.editor.getValue();
 }
 
-const InitDataTable = (eltId, json) => {
+const InitDataTable = (eltId, json, modalRemoveId) => {
 
     const btnGroup = `<div style="text-align:center;" >
-                <a class="btn waves-effect waves-light" >
-                    <i class="material-icons left">visibility</i> View
-                </a>
-                <a class="btn waves-effect waves-light" >
-                    <i class="material-icons left">edit</i> Update
-                </a>
-                <a class="btn waves-effect waves-light red" >
-                    <i class="material-icons left">cancel</i> Remove
-                </a>
-            </div>`;
+        <a href="%linkUpdate%" class="btn waves-effect waves-light" >
+            <i class="material-icons left">edit</i> Update
+        </a>
+        <button class="btn waves-effect waves-light red" onclick="MicroModal.show('${modalRemoveId}');">
+            <i class="material-icons left">cancel</i> Remove
+        </button>
+    </div>`;
 
-    json.data.map(el => el[el.length - 1] = btnGroup)
-    const dataTable = new simpleDatatables.DataTable(`#${eltId}`, {
+    //console.log(json)
+    json.data.map(el => el[el.length - 1] = btnGroup.replace("%linkUpdate%", el[el.length - 1]))
+    mySimpleDatatables[eltId] = new simpleDatatables.DataTable(`#${eltId}`, {
         //data:  sampleDataTableData 
         data: json
     })
+        
+}
+
+const DestroyDataTable = (eltId) => {
+    mySimpleDatatables[eltId].destroy();
 }
 
 var Main = {
@@ -145,6 +148,7 @@ var Main = {
     initializeFormSelect: initializeFormSelect,
     initializeEditor: initializeEditor,
     GetCode: GetCode,
-    InitDataTable: InitDataTable
+    InitDataTable: InitDataTable,
+    DestroyDataTable: DestroyDataTable
 }
 

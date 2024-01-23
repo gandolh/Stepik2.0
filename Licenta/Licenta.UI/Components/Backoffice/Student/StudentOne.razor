@@ -1,1 +1,22 @@
-﻿
+﻿@inherits BaseShowOne
+
+@if (dto != null)
+{
+    <form class="formShowOne">
+        <div class='row'>
+            <div class='input-field col s6'>
+                <input @bind-value=dto.Firstname placeholder="Firstname"
+                       id="Firstname" type="text" class="validate"
+                       required disabled=@Disabled>
+                <label class="active" for="Firstname">Firstname</label>
+            </div>
+            <div class='input-field col s6'>
+                <input @bind-value=dto.Lastname placeholder="Lastname"
+                       id="Lastname" type="text" class="validate"
+                       required disabled=@Disabled>
+                <label class="active" for="Lastname">Lastname</label>
+            </div>
+        </div>
+    </form>
+}
+ 

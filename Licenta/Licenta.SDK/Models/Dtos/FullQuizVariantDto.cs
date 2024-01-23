@@ -2,6 +2,6 @@
 {
     public class FullQuizVariantDto : QuizVariantDto
     {
-        //public ExerciseDto Exercise { get; set; }
+        public required ExerciseDto Exercise { get; set; }
     }
 }

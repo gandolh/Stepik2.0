@@ -1,1 +1,15 @@
-﻿
+﻿@inherits BaseShowOne
+
+@if (dto != null)
+{
+    <form class="formShowOne">
+        <div class='row'>
+            <div class='input-field col s6'>
+                <input @bind-value=dto.Name placeholder="Name"
+                       id="Name" type="text" class="validate"
+                       required disabled=@Disabled>
+                <label class="active" for="Input">Name</label>
+            </div>
+        </div>
+    </form>
+}

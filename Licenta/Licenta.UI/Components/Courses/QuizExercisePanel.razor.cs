@@ -5,7 +5,7 @@ namespace Licenta.UI.Components.Courses
 {
     public partial class QuizExercisePanel
     {
-        [Parameter] public required ExerciseDto Exercise { get; set; }
+        [Parameter] public required FullExerciseDto Exercise { get; set; }
         private int _selectedIndex = 0;
         private bool? isCorect = null;
 

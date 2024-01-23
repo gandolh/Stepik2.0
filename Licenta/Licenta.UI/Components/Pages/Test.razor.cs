@@ -11,9 +11,7 @@ namespace Licenta.UI.Components.Pages
         {
             if (firstRender)
             {
-              await JSRuntime.InvokeVoidAsync("Main.initializeEditor", "code-editor",
-                  "// First line\nfunction hello() {\n\talert('Hello world!');\n}\n// Last line",
-                  "javascript");
+              await JSRuntime.InvokeVoidAsync("MicroModal.init");
             }
 
             await base.OnAfterRenderAsync(firstRender);

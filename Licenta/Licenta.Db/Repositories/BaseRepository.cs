@@ -36,14 +36,14 @@ namespace Licenta.Db.Repositories
         public async Task<List<T>> GetAllAsync(int start = 0, int length = 25)
         {
             string sql = $"SELECT * FROM {_tableName} OFFSET {start} LIMIT {length}";
-            _dbClient.CommitTransaction();
              return await _dbClient.QueryAsync<T>(sql);
 
         }
 
-        public Task GetOneAsync(string id)
+        public async Task<T> GetOneAsync(int id)
         {
-            throw new NotImplementedException();
+            string sql = $"SELECT * FROM {_tableName} where Id={id}";
+            return await _dbClient.QueryFirstOrDefaultAsync<T>(sql);
         }
 
 

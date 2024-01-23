@@ -8,9 +8,9 @@ using System.Threading.Tasks;
 
 namespace Licenta.Db.Repositories
 {
-    public class CodeEvaluationEntryRepository : BaseRepository<CodeEvaluationEntry>
+    public class CodeEvalEntryRepository : BaseRepository<CodeEvaluationEntry>
     {
-        public CodeEvaluationEntryRepository(IDapperDbClient dbClient) : base(dbClient)
+        public CodeEvalEntryRepository(IDapperDbClient dbClient) : base(dbClient)
         {
         }
 

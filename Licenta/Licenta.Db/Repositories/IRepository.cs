@@ -2,7 +2,7 @@
 {
     public interface IRepository<T> 
     {
-        public Task GetOneAsync(string id);
+        public Task<T> GetOneAsync(int id);
         public Task<List<T>> GetAllAsync(int start, int length);
         public Task InsertAsync(T data);
         public Task UpdateAsync(T data);

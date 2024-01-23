@@ -1,1 +1,22 @@
-﻿
+﻿@inherits BaseShowOne
+
+@if (dto != null)
+{
+    <form class="formShowOne">
+        <div class='row'>
+            <div class='input-field col s6'>
+                <input @bind-value=dto.Input placeholder="Input"
+                       id="Input" type="text" class="validate"
+                       required disabled=@Disabled>
+                <label class="active" for="Input">Input</label>
+            </div>
+            <div class='input-field col s6'>
+                <input @bind-value=dto.ExpectedResult placeholder="ExpectedResult"
+                       id="ExpectedResult" type="text" class="validate"
+                       required disabled=@Disabled>
+                <label class="active" for="ExpectedResult">ExpectedResult</label>
+            </div>
+        </div>
+    </form>
+}
+

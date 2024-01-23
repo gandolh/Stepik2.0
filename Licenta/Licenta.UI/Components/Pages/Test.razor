@@ -1,3 +1,16 @@
 ﻿@page "/test"
 
-<div id="code-editor" style="height: 500px; margin-top:20px;"></div>
+<Components.UI.Modal.Modal Title="Title">
+    <Body>
+        <p> Help </p>
+    </Body>
+    <Footer>
+        <button class="btn waves-effect waves-light green" type="button" >Continue</button>
+        <button class="btn waves-effect waves-light red" type="button" data-micromodal-close aria-label="Close this dialog window">Close</button>
+    </Footer>
+</Components.UI.Modal.Modal>
+
+
+<button style="margin-top:20px" data-micromodal-trigger="modal-1">
+    press me
+</button>

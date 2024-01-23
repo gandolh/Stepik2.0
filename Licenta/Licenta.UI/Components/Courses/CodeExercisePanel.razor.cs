@@ -9,7 +9,7 @@ namespace Licenta.UI.Components.Courses
 {
     public partial class CodeExercisePanel
     {
-        [Parameter] public required ExerciseDto Exercise { get; set; }
+        [Parameter] public required FullExerciseDto Exercise { get; set; }
         [Inject] public KafkaLicentaClient KafkaLicentaClient { get; set; } = default!;
         [Inject] public LicentaConfig LicentaConfig { get; set; } = default!;
         [Inject] public IJSRuntime JSRuntime { get; set; } = default!;
