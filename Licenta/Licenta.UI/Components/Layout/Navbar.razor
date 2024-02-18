@@ -14,21 +14,13 @@
                     <Authorized>
                         <li><a href="crud">Crud</a></li>
                         <li><a href="courses">Cursuri</a></li>
-                        <li> <LanguagePicker/> </li>
                         <li style="display: flex;align-items: center;">
                             <ProfileCard Fullname=@ClaimHelper.GetFullName(context.User)
                                          Email=@ClaimHelper.GetEmail(context.User) />
                         </li>
-                        <li>
-                            <button class="waves-effect waves-light btn-small" onclick="Auth.handleLogout()">Log out</button>
-                        </li>
-
                     </Authorized>
                     <NotAuthorized>
-                        <li>
-                            <a style="margin-left:0px;margin-right:5px;" href="login" class="waves-effect waves-light btn-small">Login</a>
-                            <a style="margin-left:0px;margin-right:0px;" href="register" class="waves-effect waves-light btn-small">Register</a>
-                        </li>
+                        <UnathenticatedGroupBtn/>
                     </NotAuthorized>
                 </AuthorizeView>
             </CascadingAuthenticationState>

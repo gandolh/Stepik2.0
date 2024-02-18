@@ -21,7 +21,7 @@ namespace Licenta.UI.Components.Pages
             if (firstRender)
             {
                 _fullCourseDto = await HttpLicentaClient.GetOneCourse(Id);
-                 await JSRuntime.InvokeVoidAsync("Main.initializeCollapsible");
+                 await JSRuntime.InvokeVoidAsync("MaterializeInitializer.initializeCollapsible");
                 StateHasChanged();
             }
 

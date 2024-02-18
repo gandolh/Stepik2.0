@@ -1,7 +1,7 @@
 ﻿
-const handleLogin = async () => {
-    var email = document.getElementById("email").value;
-    var password = document.getElementById("password").value;
+const handleLogin = async (email, password) => {
+    var email = email ?? document.getElementById("email").value;
+    var password = password ?? document.getElementById("password").value;
     const callbackError = (error) => {
         document.getElementById("error-login").innerText = "Perechea email și parolă este invalidă";
     }

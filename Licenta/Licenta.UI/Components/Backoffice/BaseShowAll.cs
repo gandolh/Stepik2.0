@@ -15,7 +15,7 @@ namespace Licenta.UI.Components.Backoffice
 
         public async ValueTask DisposeAsync()
         {
-            await JSRuntime.InvokeVoidAsync("Main.DestroyDataTable", EltId);
+            await JSRuntime.InvokeVoidAsync("MaterializeInitializer.DestroyDataTable", EltId);
         }
     }
 }

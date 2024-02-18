@@ -24,7 +24,7 @@ public partial class LanguagePicker
 
     protected override async Task OnAfterRenderAsync(bool firstRender)
     {
-        await JSRuntime.InvokeVoidAsync("Main.initializeFormSelect");
+        await JSRuntime.InvokeVoidAsync("MaterializeInitializer.initializeFormSelect");
         await base.OnAfterRenderAsync(firstRender);
     }
 

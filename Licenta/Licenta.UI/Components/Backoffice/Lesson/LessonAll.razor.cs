@@ -29,7 +29,7 @@ namespace Licenta.UI.Components.Backoffice.Lesson
             DataTableJson json = new DataTableJson();
             json.ImportOverride(elts);
 
-            await JSRuntime.InvokeVoidAsync("Main.InitDataTable", EltId, json, _modalRemoveId);
+            await JSRuntime.InvokeVoidAsync("MaterializeInitializer.InitDataTable", EltId, json, _modalRemoveId);
         }
     }
 }

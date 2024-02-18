@@ -5,6 +5,10 @@
     padding: 5px 10px;
 }
 
+.dropdown-container #user-menu {
+    margin-top: 5px;
+}
+
 .profile-container {
     display: flex;
     gap: 1rem;
@@ -23,8 +27,6 @@
     width: 24px;
     height: 24px;
     overflow: hidden;
-    background-image: url("https://e7.pngegg.com/pngimages/550/997/png-clipart-user-icon-foreigners-avatar-child-face.png");
-    background-size: contain;
 }
 
 .profile-img img {
@@ -63,3 +65,4 @@
 .menu-bar i:hover {
     cursor: pointer;
 }
+

@@ -1,11 +1,22 @@
 ﻿@inherits BaseLicentaComp
-
 <div class="username-container">
-    <div class="profile-container">
-        <div class="profile-img"></div>
-        <div class="profile-description">
-            <p class="user-title">@Fullname</p>
-            <p class="username">@Email</p>
+    <a class='dropdown-trigger' data-target='user-menu'>
+        <div class="profile-container">
+            <img src="imgs/avatar-child-face.png" class="profile-img"/>
+            <div class="profile-description">
+                <p class="user-title">@Fullname</p>
+                <p class="username">@Email</p>
+            </div>
         </div>
-    </div>
+    </a>
+    <!-- Dropdown Structure -->
 </div>
+<div class="dropdown-container" id="user-menu-container">
+    <ul id='user-menu' class='dropdown-content'>
+        <li><a href="/profile">Profil</a></li>
+        <li><a href="/settings">Setări</a></li>
+        <li class="divider" tabindex="-1"></li>
+        <li><a onclick="Auth.handleLogout()">Log out</a></li>
+    </ul>
+</div>
+
