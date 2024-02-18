@@ -9,16 +9,16 @@
                 <form class="col s12" id="reg-form">
                     <h4>Register</h4>
                     <div class="select-role-row">
-                        <button type="button" class=@("col s12 btn btn-large waves-effect "
-                                + (_activeIndex == 0 ? "btn-active" :"btn-inactive"))
-                        @onclick="()=>SelectRole(0)">
+                        <Button Class=@("col s12 "+ (_activeIndex == 0 ? "btn-active" :"btn-inactive"))
+                        Size="ButtonSize.Large"
+                        Clicked="()=>SelectRole(0)">
                             Student
-                        </button>
-                        <button type="button" class=@("col s12 btn btn-large waves-effect "
-                                + (_activeIndex == 1 ? "btn-active" :"btn-inactive"))
-                                @onclick="()=>SelectRole(1)">
+                        </Button>
+                        <Button Class=@("col s12 " + (_activeIndex == 1 ? "btn-active" :"btn-inactive"))
+                                Size="ButtonSize.Large"
+                                Clicked="()=>SelectRole(1)">
                             Teacher
-                        </button>
+                        </Button>
                     </div>
                     <div class="row">
                         <div class="input-field col s6">
@@ -51,9 +51,9 @@
                         <div class="input-field col s12">
                             <center>
                                 <div class='row'>
-                                    <button type="button" @onclick="HandleRegister" class='col s12 btn btn-large waves-effect'>
+                                    <Button Clicked="@HandleRegister" Class='col s12' Size="ButtonSize.Large">
                                         Register
-                                    </button>
+                                    </Button>
                                     @if (_errorMsg != string.Empty)
                                     {
                                         <span class="red-text"> @_errorMsg</span>

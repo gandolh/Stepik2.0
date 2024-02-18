@@ -1,3 +1,4 @@
+@using Components.UI.Buttons
 
 <div class="modal micromodal-slide" id="@ModalId" aria-hidden="true">
     <div class="modal__overlay" tabindex="-1" data-micromodal-close>
@@ -6,7 +7,7 @@
                 <h2 class="modal__title" id="@ModalId-title">
                     @Title
                 </h2>
-                <button class="modal__close" aria-label="Close modal" data-micromodal-close></button>
+                <Button Class="modal__close" Style="Enums.ButtonStyle.None" AriaLabel="Close modal" data-micromodal-close></Button>
             </header>
             <main class="modal__content" id="@ModalId-content">
                 @Body

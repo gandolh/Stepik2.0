@@ -1,0 +1,23 @@
+@if (!string.IsNullOrEmpty(OnJsClick))
+{
+<button class="@GetButtonStyleClass() @GetSizeClass() @GetColorClass() @GetColorTintClass() @Class" 
+        type="@GetButtonType()" 
+        name="@Name" 
+        aria-label="@AriaLabel"
+        @attributes="@Attributes"
+        onclick="@OnJsClick">
+    @ChildContent
+    </button>
+}
+else
+{
+    <button class="@GetButtonStyleClass() @GetSizeClass() @GetColorClass() @GetColorTintClass() @Class"
+            type="@GetButtonType()"
+            name="@Name"
+            aria-label="@AriaLabel"
+            @attributes="@Attributes"
+             @onclick=Clicked>
+        @ChildContent
+    </button>
+    
+}
