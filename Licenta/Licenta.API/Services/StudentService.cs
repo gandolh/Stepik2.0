@@ -6,37 +6,10 @@ using Licenta.SDK.Models.Dtos;
 
 namespace Licenta.API.Services
 {
-    public class StudentService
+    public class StudentService : BaseCrudService<Student, StudentDto>
     {
-        private readonly StudentRepository _repository;
-        private readonly StudentMapper _mapper;
-
-        public StudentService(StudentRepository repository)
+        public StudentService(StudentRepository repository) : base(repository, new StudentMapper())
         {
-            _repository = repository;
-            _mapper = new StudentMapper();
-        }
-
-        internal async Task<IEnumerable<StudentDto>> GetAll()
-        {
-            return _mapper.Map(await _repository.GetAllAsync());
-        }
-
-        internal async Task<StudentDto> GetOne(int id)
-        {
-            return _mapper.Map(await _repository.GetOneAsync(id));
-        }
-
-        internal async Task<UpdateResult> Update(StudentDto c)
-        {
-            await _repository.UpdateAsync(_mapper.Map(c));
-            return new(typeof(StudentDto), c.Id);
-        }
-
-        internal async Task<DeleteResult> Delete(int id)
-        {
-            await _repository.DeleteAsync(id);
-            return new(typeof(StudentDto), id);
         }
     }
 }

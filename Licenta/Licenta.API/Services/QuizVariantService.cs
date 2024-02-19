@@ -6,19 +6,15 @@ using Licenta.SDK.Models.Dtos;
 
 namespace Licenta.API.Services
 {
-    public class QuizVariantService
+    public class QuizVariantService : BaseCrudService<QuizVariant, QuizVariantDto>
     {
-        private readonly QuizVariantsRepository _repository;
         private readonly ExerciseRepository _exerciseRepository;
         private readonly FullQuizVariantMapper _fullMapper;
-        private readonly QuizVariantMapper _mapper;
 
-        public QuizVariantService(QuizVariantsRepository repository, ExerciseRepository exerciseRepository)
+        public QuizVariantService(QuizVariantsRepository repository, ExerciseRepository exerciseRepository) : base(repository, new QuizVariantMapper())
         {
-            _repository = repository;
             _exerciseRepository = exerciseRepository;
             _fullMapper = new FullQuizVariantMapper();
-            _mapper = new();
         }
 
         internal async Task<IEnumerable<FullQuizVariantDto>> GetAll()
@@ -29,21 +25,5 @@ namespace Licenta.API.Services
             return _fullMapper.Map(quizVariants);
         }
 
-        internal async Task<QuizVariantDto> GetOne(int id)
-        {
-            return _mapper.Map(await _repository.GetOneAsync(id));
-        }
-
-        internal async Task<UpdateResult> Update(QuizVariantDto c)
-        {
-            await _repository.UpdateAsync(_mapper.Map(c));
-            return new(typeof(QuizVariantDto), c.Id);
-        }
-
-        internal async Task<DeleteResult> Delete(int id)
-        {
-            await _repository.DeleteAsync(id);
-            return new(typeof(QuizVariantDto), id);
-        }
     }
 }

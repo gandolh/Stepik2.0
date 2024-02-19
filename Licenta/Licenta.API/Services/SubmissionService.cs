@@ -1,6 +1,8 @@
-﻿namespace Licenta.API.Services
+﻿using Licenta.Db.DataModel;
+
+namespace Licenta.API.Services
 {
-    public class SubmissionService
+    public class SubmissionService 
     {
     }
 }

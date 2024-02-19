@@ -3,23 +3,18 @@ using Licenta.API.Models;
 using Licenta.Db.DataModel;
 using Licenta.Db.Repositories;
 using Licenta.SDK.Models.Dtos;
-using System.Diagnostics;
 
 namespace Licenta.API.Services
 {
-    public class CodeEvaluationEntryService
+    public class CodeEvaluationEntryService : BaseCrudService<CodeEvaluationEntry, CodeEvaluationEntryDto>
     {
-        private readonly CodeEvalEntryRepository _repository;
         private readonly FullCodeEvalEntryMapper _fullMapper;
-        private readonly CodeEvalEntryMapper _mapper;
         private readonly ExerciseRepository _exerciseRepository;
-        public CodeEvaluationEntryService(CodeEvalEntryRepository repository, ExerciseRepository exerciseRepository)
+        public CodeEvaluationEntryService(CodeEvalEntryRepository repository, ExerciseRepository exerciseRepository) 
+            : base(repository, new CodeEvalEntryMapper())
         {
-            _repository = repository;
             _exerciseRepository = exerciseRepository;
             _fullMapper = new();
-            _mapper = new();
-
         }
 
         internal async Task<IEnumerable<FullCodeEvaluationEntryDto>> GetAll()
@@ -30,21 +25,5 @@ namespace Licenta.API.Services
             return _fullMapper.Map(codeEvals);
         }
 
-        internal async Task<CodeEvaluationEntryDto> GetOne(int id)
-        {
-            return _mapper.Map(await _repository.GetOneAsync(id));
-        }
-
-        internal async Task<UpdateResult> Update(CodeEvaluationEntryDto c)
-        {
-            await _repository.UpdateAsync(_mapper.Map(c));
-            return new(typeof(CodeEvaluationEntryDto), c.Id);
-        }
-
-        internal async Task<DeleteResult> Delete(int id)
-        {
-            await _repository.DeleteAsync(id);
-            return new(typeof(CodeEvaluationEntryDto), id);
-        }
     }
 }
