@@ -1,4 +1,5 @@
 using Licenta.API.Services;
+using Licenta.API.Services.Crud;
 using Licenta.Db.Repositories;
 using Licenta.Db.Seeder;
 using Licenta.Db.Seeder.Interfaces;

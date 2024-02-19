@@ -1,10 +1,10 @@
 ﻿using Licenta.API.Models;
-using Licenta.API.Services;
+using Licenta.API.Services.Crud;
 using Licenta.Db.DataModel;
 using Microsoft.AspNetCore.Mvc;
 using Swashbuckle.AspNetCore.Annotations;
 
-namespace Licenta.API.Controllers
+namespace Licenta.API.Controllers.Crud
 {
     [ApiController]
     [Route("[controller]/[action]")]

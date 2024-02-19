@@ -3,7 +3,7 @@ using Licenta.SDK.Models.Dtos;
 
 namespace Licenta.API.Mappers
 {
-    public class FullQuizVariantMapper : BaseMapper<FullQuizVariantDto, QuizVariant>
+    public class FullQuizVariantMapper : BaseMapper<QuizVariant, FullQuizVariantDto>
     {
         private readonly ExerciseMapper _exerciseMapper;
 
