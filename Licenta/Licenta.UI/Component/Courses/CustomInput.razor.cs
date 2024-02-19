@@ -11,7 +11,7 @@ namespace Licenta.UI.Component.Courses
         [Inject] public IJSRuntime JSRuntime { get; set; } = default!;
 
 
-        private async void HandleValueChanged(ChangeEventArgs e)
+        private async Task HandleValueChanged(ChangeEventArgs e)
         {
             await ValueChanged.InvokeAsync(e.Value!.ToString());
         }

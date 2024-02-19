@@ -1,8 +1,10 @@
-﻿@inherits BaseLicentaComp
+﻿
+@inherits BaseLicentaComp
 
-<div class="row">
-    <div class="input-field col s12">
-        <input placeholder="Custom Input" id="custom_input" type="text" class="validate" @onchange="HandleValueChanged" value="@Value">
-        <label class="active" for="custom_input">Custom Input</label>
-    </div>
-</div>
+<Row>
+    <InputField ColSize="ColSize.S12">
+        <Input Placeholder="Custom Input" Id="custom_input" InputType="@InputType.Text"
+            Class="validate" Changed="HandleValueChanged" Value="@Value"/>
+        <Label Class="active" For="custom_input" Text="Custom Input" />
+    </InputField>
+</Row>
