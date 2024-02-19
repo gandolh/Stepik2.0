@@ -1,19 +1,19 @@
 ﻿@page "/profile"
+@using Components.UI.Tabs
 @using Licenta.UI.Component.Profile
 @using Microsoft.AspNetCore.Components.Authorization
 
 <div class="container">
     <AuthorizeView>
         <Authorized>
-            <div class="row">
-                <div class="col s12">
-                    <ul class="tabs">
-                        <li class="tab col s3"><a class="active" href="#overview">Overview</a></li>
-                        <li class="tab col s3"><a href="#editProfile">Edit Profile</a></li>
-                        <li class="tab col s3"><a href="#notifications">Notifications</a></li>
-                        <li class="tab col s3"><a href="#changePassword">Change Password</a></li>
-                    </ul>
-                </div>
+            <Tabs>
+                <CurrentTabs>
+                    <li class="tab col s3"><a class="active" href="#overview">Overview</a></li>
+                    <li class="tab col s3"><a href="#editProfile">Edit Profile</a></li>
+                    <li class="tab col s3"><a href="#notifications">Notifications</a></li>
+                    <li class="tab col s3"><a href="#changePassword">Change Password</a></li>
+                </CurrentTabs>
+                <Content>
                 <div id="overview" class="col s12">
                     <OverviewProfileData User="@ConvertToDto(context.User)" />
                 </div>
@@ -21,12 +21,13 @@
                     <EditProfileData User="@ConvertToDto(context.User)" />
                 </div>
                 <div id="notifications" class="col s12">
-                    <NotificationsSettings/>
+                    <NotificationsSettings />
                 </div>
                 <div id="changePassword" class="col s12">
-                   <ResetPassword/>
+                    <ResetPassword />
                 </div>
-            </div>
+                </Content>
+            </Tabs>
         </Authorized>
     </AuthorizeView>
 

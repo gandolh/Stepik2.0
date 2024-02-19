@@ -20,37 +20,37 @@
                             Teacher
                         </Button>
                     </div>
-                    <div class="row">
-                        <div class="input-field col s6">
-                            <input placeholder="Nume" id="first_name" type="text" class="validate" 
-                                required @bind-value="reqDto.Firstname">
-                            <label class="active" for="first_name">First Name</label>
-                        </div>
-                        <div class="input-field col s6">
-                            <input placeholder="Nume" id="last_name" type="text" class="validate"
-                                   required @bind-value="reqDto.Lastname">
-                            <label class="active" for="last_name">Last Name</label>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="input-field col s12">
-                            <input placeholder="email" id="email" type="email" class="validate"
-                                   required @bind-value="reqDto.Email">
-                            <label class="active" for="email">Email</label>
+                    <Row>
+                        <InputField ColSize="ColSize.S6">
+                            <Input Placeholder="Nume" Id="first_name" Class="validate" 
+                                required @bind-Value="reqDto.Firstname">
+                            <Label Class="active" For="first_name" Text="First Name"/>
+                        </InputField>
+                        <InputField ColSize="ColSize.S6">
+                            <Input Placeholder="Nume" Id="last_name" Class="validate"
+                                   required @bind-Value="reqDto.Lastname">
+                            <Label Class="active" For="last_name" Text="Last Name"/>
+                        </InputField>
+                    </Row>
+                    <Row>
+                        <InputField ColSize="ColSize.S12">
+                            <Input Placeholder="email" Id="email" InputType="InputType.Email" Class="validate"
+                                   required @bind-Value="reqDto.Email">
+                            <Label Class="active" For="email" Text="Email" />
 
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="input-field col s12">
-                            <input placeholder="password" id="password" type="password" class="validate" minlength="6"
-                                   required @bind-value="reqDto.Password">
-                            <label class="active" for="password">Password</label>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="input-field col s12">
+                        </InputField>
+                    </Row>
+                    <Row>
+                        <InputField ColSize="ColSize.S12">
+                            <Input Placeholder="password" Id="password" InputType="InputType.Password" Class="validate" minlength="6"
+                                   required @bind-Value="reqDto.Password">
+                            <Label Class="active" For="password" Text="Password"/>
+                        </InputField>
+                    </Row>
+                    <Row>
+                        <InputField ColSize="ColSize.S12">
                             <center>
-                                <div class='row'>
+                                <Row>
                                     <Button Clicked="@HandleRegister" Class='col s12' Size="ButtonSize.Large">
                                         Register
                                     </Button>
@@ -58,11 +58,11 @@
                                     {
                                         <span class="red-text"> @_errorMsg</span>
                                     }
-                                </div>
+                                </Row>
                             </center>
                             <a href="login" >Already have an account?</a>
-                        </div>
-                    </div>
+                        </InputField>
+                    </Row>
                 </form>
 
             </div>

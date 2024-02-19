@@ -10,7 +10,7 @@ namespace Components.UI.Form
         [Parameter] public string? Value { get; set; }
         [Parameter] public string Class { get; set; } = string.Empty;
         [Parameter] public InputType InputType { get; set; } = InputType.Text;
-        [Parameter] public EventCallback<ChangeEventArgs> Changed { get; set; } = default!;
+        [Parameter] public EventCallback<ChangeEventArgs> ValueChanged { get; set; } = default!;
         [Parameter] public string Name { get; set; } = String.Empty;
 
         private string GetInputType()
