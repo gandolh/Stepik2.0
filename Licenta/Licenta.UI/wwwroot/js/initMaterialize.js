@@ -94,8 +94,8 @@ const InitDataTable = (eltId, json, modalRemoveId) => {
         <a href="%linkUpdate%" class="btn waves-effect waves-light" >
             <i class="material-icons left">edit</i> Update
         </a>
-        <button class="btn waves-effect waves-light red"
-                data-micromodal-trigger="${modalRemoveId}"
+        <button class="btn waves-effect waves-light red modal-trigger"
+                data-target="${modalRemoveId}"
                 onclick="Main.SelectId('${modalRemoveId}', %EltId%)">
             <i class="material-icons left">cancel</i> Remove
         </button>
@@ -133,6 +133,11 @@ const InitTabs = () => {
     var instance = M.Tabs.init(elems, {});
 }
 
+const InitModal = () => {
+    var elems = document.querySelectorAll('.modal');
+    var instances = M.Modal.init(elems, {});
+}
+
 
 
 
@@ -143,5 +148,6 @@ var MaterializeInitializer = {
     InitDataTable: InitDataTable,
     DestroyDataTable: DestroyDataTable,
     InitDropdown: InitDropdown,
-    InitTabs: InitTabs
+    InitTabs: InitTabs,
+    InitModal: InitModal
 }

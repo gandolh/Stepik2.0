@@ -1,0 +1,17 @@
+﻿@inherits LayoutComponentBase
+@using Licenta.SDK.Localization
+@using Licenta.UI.Component.Layout;
+@using Microsoft.AspNetCore.Components.Authorization
+
+<CascadingAuthenticationState>
+    <CascadingValue TValue="MyStringLocalizer" Value="Localizer">
+        <Navbar />
+        @Body
+
+        <div id="blazor-error-ui">
+            An unhandled error has occurred.
+            <a href="" class="reload">Reload</a>
+            <a class="dismiss">🗙</a>
+        </div>
+    </CascadingValue>
+</CascadingAuthenticationState>

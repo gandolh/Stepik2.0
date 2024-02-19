@@ -43,6 +43,7 @@ const triggerAreYouSure = () => {
 }
 
 const SelectId = (modalId, id) => {
+    console.log(modalId);
     document.getElementById(modalId).setAttribute("data-eltId", id)
 }
 

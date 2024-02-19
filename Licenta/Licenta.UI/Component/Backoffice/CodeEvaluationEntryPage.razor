@@ -1,0 +1,13 @@
+﻿@page "/crud/codeeval/{ViewMode?}/{Id:int?}";
+@inherits BaseCrudPage
+@using Licenta.UI.Component.Backoffice.CodeEval
+
+<CrudPageLayout>
+        @if (string.IsNullOrEmpty(ViewMode))
+    {
+        <CodeEvalAll/>
+    }else if (ViewMode.Contains("one") && Id!= null)
+    {
+        <CodeEvalOne Id="@((int)Id)" />
+    }
+</CrudPageLayout>

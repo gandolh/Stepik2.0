@@ -1,0 +1,13 @@
+﻿@page "/crud/course/{ViewMode?}/{Id:int?}";
+@inherits BaseCrudPage
+@using Licenta.UI.Component.Backoffice.Course
+
+<CrudPageLayout>
+    @if (string.IsNullOrEmpty(ViewMode))
+    {
+        <CourseAll />
+    }else if (ViewMode.Contains("one") && Id!= null)
+    {
+        <CourseOne Id="@((int)Id)" />
+    }
+</CrudPageLayout>

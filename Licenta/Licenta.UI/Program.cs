@@ -1,5 +1,5 @@
 using Licenta.UI;
-using Licenta.UI.Components;
+using Licenta.UI.Component;
 
 var builder = WebApplication.CreateBuilder(args);
 

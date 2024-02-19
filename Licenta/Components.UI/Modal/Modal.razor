@@ -1,20 +1,10 @@
 @using Components.UI.Buttons
 
-<div class="modal micromodal-slide" id="@ModalId" aria-hidden="true">
-    <div class="modal__overlay" tabindex="-1" data-micromodal-close>
-        <div class="modal__container" role="dialog" aria-modal="true" aria-labelledby="@ModalId-title">
-            <header class="modal__header">
-                <h2 class="modal__title" id="@ModalId-title">
-                    @Title
-                </h2>
-                <Button Class="modal__close" Style="Enums.ButtonStyle.None" AriaLabel="Close modal" data-micromodal-close></Button>
-            </header>
-            <main class="modal__content" id="@ModalId-content">
-                @Body
-            </main>
-            <footer class="modal__footer">
-               @Footer
-            </footer>
-        </div>
+<div id="@ModalId" class="modal">
+    <div class="modal-content">
+        @Body
+    </div>
+    <div class="modal-footer">
+        @Footer
     </div>
 </div>

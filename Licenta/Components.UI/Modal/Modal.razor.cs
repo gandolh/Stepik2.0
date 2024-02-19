@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Components;
+using Microsoft.JSInterop;
 
 namespace Components.UI.Modal
 {
@@ -9,5 +10,12 @@ namespace Components.UI.Modal
         [Parameter] public RenderFragment Body { get; set; } = default!;
         [Parameter] public RenderFragment Footer { get; set; } = default!;
 
+        [Inject] public IJSRuntime JSRuntime { get; set; } = default!;
+
+        protected override async Task OnAfterRenderAsync(bool firstRender)
+        {
+            await JSRuntime.InvokeVoidAsync("MaterializeInitializer.InitModal");
+            await base.OnAfterRenderAsync(firstRender);
+        }
     }
 }
