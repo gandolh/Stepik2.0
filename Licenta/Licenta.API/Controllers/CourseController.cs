@@ -9,13 +9,10 @@ namespace Licenta.API.Controllers
 {
     [ApiController]
     [Route("[controller]/[action]")]
-    public class CourseController : ControllerBase
+    public class CourseController : BaseCrudController<Course,CourseDto>
     {
-        private readonly CourseService _service;
-
-        public CourseController(CourseService courseService)
+        public CourseController(CourseService service) : base(service)
         {
-            _service = courseService;
         }
 
         [HttpGet]
@@ -24,7 +21,7 @@ namespace Licenta.API.Controllers
            "and all the teachers that teaches that course")]
         public async Task<IEnumerable<CourseDto>> GetAllByStudent(int studentId, bool includeStudents, bool includeTeachers)
         {
-            return await _service.GetAll(includeStudents, includeTeachers);
+            return await ((CourseService)_service).GetAll(includeStudents, includeTeachers);
         }
 
         [HttpGet]
@@ -33,24 +30,12 @@ namespace Licenta.API.Controllers
             "and teachers")]
         public async Task<ActionResult<FullCourseDto>> GetOne(int courseId)
         {
-            var res = await _service.GetFullOne(courseId);
+            var res = await ((CourseService)_service).GetFullOne(courseId);
             if(res == null)
                 return NotFound();
             return Ok(res);
         }
 
-        [HttpPut]
-        [SwaggerOperation(Summary = "Update course", Description = "")]
-        public async Task<UpdateResult> Update(CourseDto c)
-        {
-            return await _service.Update(c);
-        }
-
-        [HttpDelete]
-        [SwaggerOperation(Summary = "delete course", Description = "")]
-        public async Task<DeleteResult> Delete(int id)
-        {
-            return await _service.Delete(id);
-        }
+    
     }
 }

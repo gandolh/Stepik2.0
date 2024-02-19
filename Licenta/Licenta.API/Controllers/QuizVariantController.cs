@@ -9,20 +9,18 @@ namespace Licenta.API.Controllers
 {
     [ApiController]
     [Route("[controller]/[action]")]
-    public class QuizVariantController : ControllerBase
+    public class QuizVariantController : BaseCrudController<QuizVariant, QuizVariantDto>
     {
-        private readonly QuizVariantService _service;
 
-        public QuizVariantController(QuizVariantService service)
+        public QuizVariantController(QuizVariantService service) : base(service)
         {
-            _service = service;
         }
 
         [HttpGet]
         [SwaggerOperation(Summary = "Get all quiz variants", Description = "")]
         public async Task<IEnumerable<FullQuizVariantDto>> GetAll()
         {
-            return await _service.GetAll();
+            return await ((QuizVariantService)_service).GetAll();
         }
 
         [HttpGet]
@@ -36,18 +34,5 @@ namespace Licenta.API.Controllers
             return Ok(res);
         }
 
-        [HttpPut]
-        [SwaggerOperation(Summary = "Update quiz variant", Description = "")]
-        public async Task<UpdateResult> Update(QuizVariantDto c)
-        {
-            return await _service.Update(c);
-        }
-
-        [HttpDelete]
-        [SwaggerOperation(Summary = "Delete quiz variant", Description = "")]
-        public async Task<DeleteResult> Delete(int id)
-        {
-            return await _service.Delete(id);
-        }
     }
 }

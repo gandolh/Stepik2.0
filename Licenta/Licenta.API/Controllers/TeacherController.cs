@@ -9,14 +9,10 @@ namespace Licenta.API.Controllers
 {
     [ApiController]
     [Route("[controller]/[action]")]
-    public class TeacherController : ControllerBase
+    public class TeacherController : BaseCrudController<Teacher, TeacherDto>
     {
-        private readonly TeacherService _service;
 
-        public TeacherController(TeacherService teacherService)
-        {
-            _service = teacherService;
-        }
+        public TeacherController(TeacherService service) : base(service) { }
 
         [HttpGet]
         [SwaggerOperation(Summary = "Get all teachers", Description = "")]
@@ -35,19 +31,6 @@ namespace Licenta.API.Controllers
             return Ok(res);
         }
 
-        [HttpPut]
-        [SwaggerOperation(Summary = "Update teacher", Description = "")]
-        public async Task<UpdateResult> Update(TeacherDto c)
-        {
-            return await _service.Update(c);
-        }
-
-        [HttpDelete]
-        [SwaggerOperation(Summary = "Delete teacher", Description = "")]
-        public async Task<DeleteResult> Delete(int id)
-        {
-            return await _service.Delete(id);
-        }
 
     }
 }

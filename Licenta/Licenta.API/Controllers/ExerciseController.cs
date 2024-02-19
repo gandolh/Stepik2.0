@@ -10,13 +10,11 @@ namespace Licenta.API.Controllers
 
     [ApiController]
     [Route("[controller]/[action]")]
-    public class ExerciseController : ControllerBase
+    public class ExerciseController : BaseCrudController<Exercise, ExerciseDto>
     {
-        private readonly ExerciseService _service;
 
-        public ExerciseController(ExerciseService exerciseService)
+        public ExerciseController(ExerciseService service) : base(service)
         {
-            _service = exerciseService;
         }
 
         [HttpGet]
@@ -37,20 +35,5 @@ namespace Licenta.API.Controllers
                 return NotFound();
             return Ok(res);
         }
-
-        [HttpPut]
-        [SwaggerOperation(Summary = "Update exercise", Description = "")]
-        public async Task<UpdateResult> Update(ExerciseDto c)
-        {
-            return await _service.Update(c);
-        }
-
-        [HttpDelete]
-        [SwaggerOperation(Summary = "Delete exercise", Description = "")]
-        public async Task<DeleteResult> Delete(int id)
-        {
-            return await _service.Delete(id);
-        }
-
     }
 }

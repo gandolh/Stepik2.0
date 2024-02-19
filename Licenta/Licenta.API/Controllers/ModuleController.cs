@@ -10,13 +10,11 @@ namespace Licenta.API.Controllers
 
     [ApiController]
     [Route("[controller]/[action]")]
-    public class ModuleController : ControllerBase
+    public class ModuleController : BaseCrudController<Module,ModuleDto>
     {
-        private readonly ModuleService _service;
 
-        public ModuleController(ModuleService service)
+        public ModuleController(ModuleService service) : base(service)
         {
-            _service = service;
         }
 
         [HttpGet]
@@ -37,18 +35,6 @@ namespace Licenta.API.Controllers
             return Ok(res);
         }
 
-        [HttpPut]
-        [SwaggerOperation(Summary = "Update module", Description = "")]
-        public async Task<UpdateResult> Update(ModuleDto c)
-        {
-            return await _service.Update(c);
-        }
-
-        [HttpDelete]
-        [SwaggerOperation(Summary = "Delete module", Description = "")]
-        public async Task<DeleteResult> Delete(int id)
-        {
-            return await _service.Delete(id);
-        }
+    
     }
 }
