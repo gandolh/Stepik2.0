@@ -26,13 +26,6 @@ namespace Licenta.API.Controllers
         }
 
         [HttpGet]
-        [SwaggerOperation(Summary = "Get all teachers for a student", Description = "")]
-        public async Task<IEnumerable<Teacher>> GetAllByStudent(int studentId)
-        {
-            throw new NotImplementedException();
-        }
-
-        [HttpGet]
         [SwaggerOperation(Summary = "Get teacher by Id", Description = "")]
         public async Task<ActionResult<TeacherDto>> GetOne(int id)
         {
@@ -40,13 +33,6 @@ namespace Licenta.API.Controllers
             if (res == null)
                 return NotFound();
             return Ok(res);
-        }
-
-        [HttpPost]
-        [SwaggerOperation(Summary = "Create teacher", Description = "")]
-        public async Task<CreateResult> Add(TeacherDto c)
-        {
-            throw new NotImplementedException();
         }
 
         [HttpPut]

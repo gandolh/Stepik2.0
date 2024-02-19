@@ -37,13 +37,6 @@ namespace Licenta.API.Controllers
             return Ok(res);
         }
 
-        [HttpPost]
-        [SwaggerOperation(Summary = "Create exercise", Description = "")]
-        public async Task<CreateResult> Add(CodeEvaluationEntryDto c)
-        {
-            throw new NotImplementedException();
-        }
-
         [HttpPut]
         [SwaggerOperation(Summary = "Update exercise", Description = "")]
         public async Task<UpdateResult> Update(CodeEvaluationEntryDto c)

@@ -25,21 +25,6 @@ namespace Licenta.API.Controllers
             return await _service.GetAll();
         }
 
-
-        [HttpGet]
-        [SwaggerOperation(Summary = "Get all students of a course", Description = "")]
-        public async Task<IEnumerable<Student>> GetAllByCourse(int courseId)
-        {
-            throw new NotImplementedException();
-        }
-
-        [HttpGet]
-        [SwaggerOperation(Summary = "Get all students of a teacher", Description = "")]
-        public async Task<IEnumerable<Student>> GetAllByTeacher(int teacherId)
-        {
-            throw new NotImplementedException();
-        }
-
         [HttpGet]
         [SwaggerOperation(Summary = "Get student by Id", Description = "")]
         public async Task<ActionResult<StudentDto>> GetOne(int id)
@@ -50,12 +35,6 @@ namespace Licenta.API.Controllers
             return Ok(res);
         }
 
-        [HttpPost]
-        [SwaggerOperation(Summary = "Create student", Description = "")]
-        public async Task<CreateResult> Add(StudentDto c)
-        {
-            throw new NotImplementedException();
-        }
 
         [HttpPut]
         [SwaggerOperation(Summary = "Update student", Description = "")]
