@@ -2,13 +2,15 @@
 
 <div class="me-3 " style="font-size:15px;">
     <h1> Setări </h1>
-    <div class="input-field col s12 language-picker-field">
-        <select value="@_cultureName" @onchange=HandleChangeCulture>
-            @foreach (var culture in suportedCultures)
-            {
-                <option value="@culture.Name">@culture.TwoLetterISOLanguageName</option>
-            }
-        </select>
-        <label>Language:</label>
-    </div>  
+    <InputField Class="language-picker-field" ColSize="ColSize.S12">
+        <Select Value="@_cultureName" Changed=HandleChangeCulture>
+            <Options>
+                @foreach (var culture in suportedCultures)
+                {
+                    <Option Value="@culture.Name" Text="@culture.TwoLetterISOLanguageName" />
+                }
+            </Options>
+        </Select>
+        <Label>Language:</Label>
+    </InputField>
 </div>

@@ -1,1 +1,11 @@
-<label class="@Class" for="@For">@Text</label>
+<label class="@Class" for="@For">
+    @if (!string.IsNullOrEmpty(Text))
+    {
+        @Text
+    }
+    else
+    {
+        @ChildContent
+    }
+
+</label>

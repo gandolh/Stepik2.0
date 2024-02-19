@@ -5,6 +5,7 @@
         Text,
         Password,
         Email,
-        Number
+        Number,
+        Radio
     }
 }

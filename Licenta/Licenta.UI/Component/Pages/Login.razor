@@ -6,38 +6,37 @@
             <div class="z-depth-1 grey lighten-4 row" style="display: inline-block; padding: 32px 48px 0px 48px; border: 1px solid #EEE;">
 
                 <form class="col s12">
-                    <div class='row'>
+                    <Row>
                         <div class='col s12'>
                         </div>
-                    </div>
+                    </Row>
 
-                    <div class='row'>
+                    <Row>
                         <h4>Login</h4>
-                        <div class='input-field col s12'>
-                            <input placeholder="email" id="email" type="email" class="validate"
-                                   required>
-                            <label class="active" for="email">Email</label>
-                        </div>
-                    </div>
+                        <InputField ColSize="ColSize.S12">
+                            <Input Placeholder="email" Id="email" InputType="@InputType.Email" Class="validate"
+                                   required/>
+                            <Label Class="active" For="email" Text="Email"/>
+                        </InputField>
+                    </Row>
 
-                    <div class='row'>
-                        <div class='input-field col s12'>
-                            <input placeholder="password" id="password" type="password"
-                                   class="validate" minlength="6"
-                                   required>
-                            <label class="active" for="password">Password</label>
-                        </div>
+                    <Row>
+                        <InputField ColSize="ColSize.S12">
+                            <Input Placeholder="password" Id="password" InputType="@InputType.Password"
+                                   Class="validate" minlength="6" required/>
+                            <Label Class="active" For="password" Text="Password"/>
+                        </InputField>
                         <label style='float: right;'>
                             <a class='teal-text' href='#!'><b>Forgot Password?</b></a>
                         </label>
-                    </div>
+                    </Row>
 
                     <br />
                     <center>
-                        <div class='row'>
+                        <Row>
                             <Button Class='col s12' Size=@ButtonSize.Large OnJsClick="Auth.handleLogin()">Login</Button>
                                 <span id="error-login" class="red-text"> </span>
-                        </div>
+                        </Row>
                     </center>
                     <a href="register">Create account</a>
                 </form>

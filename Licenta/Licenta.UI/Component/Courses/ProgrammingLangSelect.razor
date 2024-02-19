@@ -1,11 +1,13 @@
 ﻿@inherits BaseLicentaComp
 
-<div class="row select-language-row">
+<Row Class="select-language-row">
     <div class="select-language-innerrow">
-        <select class="browser-default" @onchange="HandleLanguageChanged">
-            <option value="0">Cpp</option>
-            <option value="1">Python</option>
-        </select>
-        <label>Choose your language</label>
+        <Select Class="browser-default" Changed="HandleLanguageChanged">
+            <Options>
+                <Option Value="0" Text="Cpp" />
+                <Option Value="1" Text="Python" />
+            </Options>
+        </Select>
+        <Label Text="Choose your language"></Label>
     </div>
-</div>
+</Row>

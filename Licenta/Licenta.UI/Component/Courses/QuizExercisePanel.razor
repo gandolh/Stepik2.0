@@ -6,10 +6,11 @@
     {
         int x = ++i;
         <p>
-            <label>
-                <input name="@item.ExerciseId" type="radio" @onchange="()=>ChangeSelected(x)" />
-                <span>@item.Text</span>
-            </label>
+            <RadioButton RadioId=@($"radioExercise_{item.ExerciseId.ToString()}_{x}")
+                         Name="@item.ExerciseId.ToString()"
+                         Text="@item.Text"
+                         Changed="()=>ChangeSelected(x)"
+                         Value="@x.ToString()" />
         </p>
     }
 }

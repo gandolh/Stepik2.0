@@ -6,7 +6,8 @@ namespace Components.UI.Form
     public partial class InputField
     {
         [Parameter] public RenderFragment ChildContent { get; set; } = default!;
-        [Parameter] public ColSize ColSize { get; set; } = default!;
+        [Parameter] public ColSize ColSize { get; set; }
+        [Parameter] public string Class { get; set; } = string.Empty;
 
         private string GetSizeClass()
         {
