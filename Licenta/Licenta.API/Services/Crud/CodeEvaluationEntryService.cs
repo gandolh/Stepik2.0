@@ -15,7 +15,7 @@ namespace Licenta.API.Services.Crud
             _exerciseRepository = exerciseRepository;
         }
 
-        internal async Task<IEnumerable<FullCodeEvaluationEntryDto>> GetAll()
+        internal override async Task<IEnumerable<FullCodeEvaluationEntryDto>> GetFullAll()
         {
             var codeEvals = await _repository.GetAllAsync();
             var exercises = await _exerciseRepository.GetAllAsync();
@@ -23,5 +23,15 @@ namespace Licenta.API.Services.Crud
             return _fullMapper.Map(codeEvals);
         }
 
+
+        internal override async Task<FullCodeEvaluationEntryDto?> GetFullOne(int id)
+        {
+            var codeEval = await _repository.GetOneAsync(id);
+            if(codeEval == null)
+                return null;
+            var exercises = await _exerciseRepository.GetAllAsync();
+            codeEval.Exercise = exercises.Find(ex => ex.Id == codeEval.ExerciseId);
+            return _fullMapper.Map(codeEval);
+        }
     }
 }

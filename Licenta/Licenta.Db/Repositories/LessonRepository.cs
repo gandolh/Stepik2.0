@@ -34,7 +34,7 @@ namespace Licenta.Db.Repositories
             var rowsAffected = await _dbClient.ExecuteAsync(sql, data);
         }
 
-        public async Task<Lesson?> GetJoinedLesson(int lessonId)
+        public async Task<Lesson?> GetFullOne(int lessonId)
         {
             string getLessonSql = $"SELECT * FROM Lesson WHERE Id={lessonId}";
             Lesson lesson = await _dbClient.QueryFirstOrDefaultAsync<Lesson>(getLessonSql);

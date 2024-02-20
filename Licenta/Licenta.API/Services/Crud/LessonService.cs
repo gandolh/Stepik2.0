@@ -3,6 +3,7 @@ using Licenta.API.Models;
 using Licenta.Db.DataModel;
 using Licenta.Db.Repositories;
 using Licenta.SDK.Models.Dtos;
+using Microsoft.IdentityModel.Tokens;
 
 namespace Licenta.API.Services.Crud
 {
@@ -13,5 +14,17 @@ namespace Licenta.API.Services.Crud
         {
         }
 
+        internal override async Task<IEnumerable<FullLessonDto>> GetFullAll()
+        {
+            return _fullMapper.Map(await _repository.GetAllAsync());
+        }
+
+        internal override async Task<FullLessonDto?> GetFullOne(int id)
+        {
+            var lesson = await ((LessonRepository)_repository).GetFullOne(id);
+            if (lesson == null)
+                return null;
+            return _fullMapper.Map(lesson);
+        }
     }
 }

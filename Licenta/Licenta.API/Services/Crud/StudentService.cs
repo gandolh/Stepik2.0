@@ -11,5 +11,15 @@ namespace Licenta.API.Services.Crud
         public StudentService(StudentRepository repository) : base(repository, new StudentMapper(), new StudentMapper())
         {
         }
+
+        internal override async Task<IEnumerable<StudentDto>> GetFullAll()
+        {
+            return await base.GetAll();
+        }
+
+        internal override async Task<StudentDto> GetFullOne(int id)
+        {
+            return await base.GetOne(id);
+        }
     }
 }

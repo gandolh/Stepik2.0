@@ -15,5 +15,17 @@ namespace Licenta.API.Services.Crud
 
         }
 
+        internal override async Task<IEnumerable<FullCourseDto>> GetFullAll()
+        {
+           return _fullMapper.Map(await ((CourseRepository)_repository).GetFullAll());
+        }
+
+        internal override async Task<FullCourseDto?> GetFullOne(int id)
+        {
+            var course = await ((CourseRepository)_repository).GetFullOne(id);
+            if (course == null)
+                return null;
+            return _fullMapper.Map(course);
+        }
     }
 }

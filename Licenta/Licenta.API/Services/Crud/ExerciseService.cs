@@ -13,6 +13,14 @@ namespace Licenta.API.Services.Crud
         {
         }
 
+        internal override Task<IEnumerable<FullExerciseDto>> GetFullAll()
+        {
+            throw new NotImplementedException();
+        }
 
+        internal override Task<FullExerciseDto> GetFullOne(int id)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

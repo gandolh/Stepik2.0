@@ -29,7 +29,7 @@ namespace Licenta.Db.Repositories
             var rowsAffected = await _dbClient.ExecuteAsync(sql, data);
         }
 
-        public async Task<Course?> GetJoinedCourse(int courseId)
+        public async Task<Course?> GetFullOne(int courseId)
         {
             string sqlGetCourse = $"SELECT * FROM {_tableName} WHERE Id={courseId}";
             Course course = await _dbClient.QueryFirstOrDefaultAsync<Course>(sqlGetCourse);
@@ -48,7 +48,7 @@ namespace Licenta.Db.Repositories
             return course;
         }
 
-        public async Task<List<Course>> GetDetailedAsync(bool includeStudents, bool includeTeachers)
+        public async Task<List<Course>> GetFullAll()
         {
             string getCoursesSql = $"SELECT * FROM Course";
             string getTeachersSql = $"SELECT * FROM Teacher";

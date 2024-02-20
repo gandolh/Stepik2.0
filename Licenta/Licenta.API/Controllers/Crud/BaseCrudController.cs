@@ -8,8 +8,9 @@ using Swashbuckle.AspNetCore.Annotations;
 namespace Licenta.API.Controllers.Crud
 {
     public abstract class BaseCrudController<T, TDto, TFullDto>
-        : ControllerBase
-        where TDto : IDtoWithId where TFullDto : IDtoWithId
+        : ControllerBase, IBaseCrudController<TDto, TFullDto> 
+        where TDto : IDtoWithId 
+        where TFullDto : IDtoWithId
     {
         protected readonly BaseCrudService<T, TDto, TFullDto> _service;
 

@@ -6,7 +6,9 @@ using Licenta.SDK.Models.Dtos;
 
 namespace Licenta.API.Services.Crud
 {
-    public abstract class BaseCrudService<T, TDto, TFullDto> where TDto : IDtoWithId where TFullDto : IDtoWithId
+    public abstract class BaseCrudService<T, TDto, TFullDto>
+        where TDto : IDtoWithId
+        where TFullDto : IDtoWithId
     {
         protected readonly BaseRepository<T> _repository;
         protected readonly BaseMapper<T, TDto> _mapper;
@@ -29,15 +31,8 @@ namespace Licenta.API.Services.Crud
             return _mapper.Map(await _repository.GetOneAsync(id));
         }
 
-        internal virtual async Task<IEnumerable<TFullDto>> GetFullAll()
-        {
-            return _fullMapper.Map(await _repository.GetAllAsync());
-        }
-
-        internal virtual async Task<TFullDto> GetFullOne(int id)
-        {
-            return _fullMapper.Map(await _repository.GetOneAsync(id));
-        }
+        internal abstract Task<IEnumerable<TFullDto>> GetFullAll();
+        internal abstract Task<TFullDto?> GetFullOne(int id);
 
         internal async Task<UpdateResult> Update(TDto c)
         {

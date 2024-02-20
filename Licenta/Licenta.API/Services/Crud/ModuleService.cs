@@ -10,5 +10,15 @@ namespace Licenta.API.Services.Crud
         public ModuleService(ModuleRepository repository) : base(repository, new ModuleMapper(), new ModuleMapper())
         {
         }
+
+        internal override async Task<IEnumerable<ModuleDto>> GetFullAll()
+        {
+            return await base.GetAll();
+        }
+
+        internal override async Task<ModuleDto> GetFullOne(int id)
+        {
+            return await base.GetOne(id);
+        }
     }
 }
