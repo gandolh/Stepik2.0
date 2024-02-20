@@ -1,4 +1,6 @@
 ﻿
+using Microsoft.AspNetCore.Http.HttpResults;
+
 namespace Licenta.UI
 {
     public class LicentaConfig
@@ -13,55 +15,91 @@ namespace Licenta.UI
         {
             iConfig.GetSection("LicentaConfig").Bind(this);
         }
-        public string UrlApi { get; set; } = string.Empty;
         public KafkaOptions Kafka { get; set; } = new();
         public LicentaEndpoints Endpoints { get; set; } = new();
-
-        internal string GetPathTo(string endpoint)
-        {
-            return UrlApi + endpoint;
-        }
     }
 
     public class LicentaEndpoints
     {
-        public string GetCourses { get; set; } = string.Empty;
-        public string GetOneCourse { get; set; } = string.Empty;
-        public string GetCodeEvaluations { get; set; } = string.Empty;
-        public string GetOneLesson { get; set; } = string.Empty;
-        public string GetCoursesByStudent { get; set; } = string.Empty;
-        public string Register { get; set; } = string.Empty;
-        public string GetUser { get; set; } = string.Empty;
-        public string GetExercises { get;  set; } = string.Empty;
-        public string GetLessons { get; set; } = string.Empty;
-        public string GetModules { get;  set; } = string.Empty;
-        public string GetQuizVariants { get;  set; } = string.Empty;
-        public string GetStudents { get;  set; } = string.Empty;
-        public string GetTeachers { get;  set; } = string.Empty;
-        public string GetOneCodeEvaluation { get;  set; } = string.Empty;
-        public string GetOneExercise { get;  set; } = string.Empty;
-        public string GetOneModule { get;  set; } = string.Empty;
-        public string GetOneQuizVariant { get;  set; } = string.Empty;
-        public string GetOneStudent { get;  set; } = string.Empty;
-        public string GetOneTeacher { get;  set; } = string.Empty;
-        public string UpdateCodeEvaluation { get; set; } = string.Empty;
-        public string UpdateCourse { get;  set; } = string.Empty;
-        public string UpdateExercise { get;  set; } = string.Empty;
-        public string UpdateLesson { get;  set; } = string.Empty;
-        public string UpdateModule { get;  set; } = string.Empty;
-        public string UpdateQuizVariant { get;  set; } = string.Empty;
-        public string UpdateStudent { get;  set; } = string.Empty;
-        public string UpdateTeacher { get;  set; } = string.Empty;
-        public string DeleteCodeEvaluation {get;set;} = string.Empty;
-        public string DeleteCourse {get;set;} = string.Empty;
-        public string DeleteExercise {get;set;} = string.Empty;
-        public string DeleteLesson {get;set;} = string.Empty;
-        public string DeleteModule {get;set;} = string.Empty;
-        public string DeleteQuizVariant {get;set;} = string.Empty;
-        public string DeleteStudent {get;set;} = string.Empty;
-        public string DeleteTeacher { get; set; } = string.Empty;
+        public static string UrlApi { get; set; } = "https://LICENTA.API:8081";
 
+        public LicentaEndpoints()
+        {
+            CodeEvaluationEntry = new BaseCrudEndpoint(UrlApi + "/api/CodeEvaluationEntry");
+            Course = new BaseCrudEndpoint(UrlApi + "/api/Course");
+            Exercise = new BaseCrudEndpoint(UrlApi + "/api/Exercise");
+            Lesson = new BaseCrudEndpoint(UrlApi + "/api/Lesson");
+            Module = new BaseCrudEndpoint(UrlApi + "/api/Module");
+            QuizVariant = new BaseCrudEndpoint(UrlApi + "/api/QuizVariant");
+            Student = new BaseCrudEndpoint(UrlApi + "/api/Student");
+            Teacher = new BaseCrudEndpoint(UrlApi + "/api/Teacher");
+            Account = new AccountEndpoint(UrlApi + "/api/Account");
+        }
+
+        public readonly BaseCrudEndpoint CodeEvaluationEntry;
+        public readonly BaseCrudEndpoint Course;
+        public readonly BaseCrudEndpoint Exercise;
+        public readonly BaseCrudEndpoint Lesson;
+        public readonly BaseCrudEndpoint Module;
+        public readonly BaseCrudEndpoint QuizVariant;
+        public readonly BaseCrudEndpoint Student;
+        public readonly BaseCrudEndpoint Teacher;
+        public readonly AccountEndpoint Account;
     }
+
+    public class AccountEndpoint
+    {
+        public string Prefix;
+        public readonly string GetUser;
+        public readonly string Register;
+        public readonly string JwtLogin;
+        public readonly string GenerateToken;
+
+
+        public AccountEndpoint(string prefix)
+        {
+            Prefix = prefix;
+            GetUser = prefix + "/GetUser";
+            Register = prefix + "/Register";
+            JwtLogin = prefix + "/JwtLogin";
+            GenerateToken = prefix + "/GenerateToken";
+        }
+    }
+
+    public class BaseCrudEndpoint
+    {
+        private static readonly string EndpointGetAll = "/GetAll";
+        private static readonly string EndpointGetById = "/GetOne";
+        private static readonly string EndpointGetFullAll = "/GetFullAll";
+        private static readonly string EndpointGetFullById = "/GetFullOne";
+        private static readonly string EndpointCreate = "";
+        private static readonly string EndpointUpdate = "/Update";
+        private static readonly string EndpointDelete = "/Delete";
+
+
+        public readonly string GetAll;
+        public readonly string GetById;
+        public readonly string GetFullAll;
+        public readonly string GetFullById;
+        public readonly string Create;
+        public readonly string Update;
+        public readonly string Delete;
+
+        public BaseCrudEndpoint(string prefix)
+        {
+            Prefix = prefix;
+            GetAll = prefix + EndpointGetAll;
+            GetById = prefix + EndpointGetById;
+            GetFullAll = prefix + EndpointGetFullAll;
+            GetFullById = prefix + EndpointGetFullById;
+            Create = prefix + EndpointCreate;
+            Update = prefix + EndpointUpdate;
+            Delete = prefix + EndpointDelete;
+        }
+
+        public string Prefix;
+    }
+
     public class KafkaOptions
     {
         public string Address { get; set; } = string.Empty;

@@ -9,7 +9,7 @@ namespace Licenta.API.Controllers.Crud
 {
 
     [ApiController]
-    [Route("[controller]/[action]")]
+    [Route("api/[controller]/[action]")]
     public class ModuleController : BaseCrudController<Module, ModuleDto, ModuleDto>
     {
 

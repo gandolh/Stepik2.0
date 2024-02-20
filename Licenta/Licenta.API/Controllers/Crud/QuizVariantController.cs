@@ -8,7 +8,7 @@ using Swashbuckle.AspNetCore.Annotations;
 namespace Licenta.API.Controllers.Crud
 {
     [ApiController]
-    [Route("[controller]/[action]")]
+    [Route("api/[controller]/[action]")]
     public class QuizVariantController : BaseCrudController<QuizVariant, QuizVariantDto, FullQuizVariantDto>
     {
 

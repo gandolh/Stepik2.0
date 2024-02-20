@@ -7,7 +7,7 @@ using Swashbuckle.AspNetCore.Annotations;
 namespace Licenta.API.Controllers.Crud
 {
     [ApiController]
-    [Route("[controller]/[action]")]
+    [Route("api/[controller]/[action]")]
     public class SubmissionController : ControllerBase
     {
         private readonly SubmissionService _submissionService;

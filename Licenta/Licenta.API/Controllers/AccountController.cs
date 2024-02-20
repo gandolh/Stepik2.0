@@ -1,7 +1,5 @@
 ﻿using Licenta.API.Services;
-using Licenta.Db.Data;
 using Licenta.SDK.Models.Dtos;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
@@ -11,7 +9,7 @@ using System.Text;
 namespace Licenta.API.Controllers
 {
     [ApiController]
-    [Route("[controller]/[action]")]
+    [Route("api/[controller]/[action]")]
     public partial class AccountController : ControllerBase
     {
         private readonly SigningCredentials credentials;

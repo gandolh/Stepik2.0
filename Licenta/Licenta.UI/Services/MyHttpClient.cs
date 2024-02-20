@@ -20,16 +20,15 @@ namespace Licenta.UI.Services
             _httpClient = new HttpClient(clientHandler);
         }
 
-
         private Task<string> AddQuerryParamsIfExists(string url, Dictionary<string, string>? parameters)
         {
-            string userId = User.UserId;
-            bool? userIdFound = parameters?.TryGetValue(nameof(userId), out _);
-            if (userId != "" && userIdFound != true)
-            {
-                parameters = parameters ?? new Dictionary<string, string>();
-                parameters.Add("userId", userId);
-            }
+            //string userId = User.UserId;
+            //bool? userIdFound = parameters?.TryGetValue(nameof(userId), out _);
+            //if (userId != "" && userIdFound != true)
+            //{
+            //    parameters = parameters ?? new Dictionary<string, string>();
+            //    parameters.Add("userId", userId);
+            //}
             if (parameters != null)
                 url = url + "?" + string.Join("&", parameters.Select(x => x.Key + "=" + x.Value));
             return Task.FromResult(url);
