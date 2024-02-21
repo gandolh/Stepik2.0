@@ -5,6 +5,6 @@ namespace Licenta.UI.Component.Profile
 {
     public partial class EditProfileData
     {
-        [Parameter] public UserDto User { get; set; } = default!;
+        [Parameter] public PortalUserDto User { get; set; } = default!;
     }
 }

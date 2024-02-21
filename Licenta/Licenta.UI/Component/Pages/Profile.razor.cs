@@ -20,9 +20,9 @@ namespace Licenta.UI.Component.Pages
         }
 
 
-        private UserDto ConvertToDto(ClaimsPrincipal claimPrincipal)
+        private PortalUserDto ConvertToDto(ClaimsPrincipal claimPrincipal)
         {
-            return new UserDto()
+            return new PortalUserDto()
             {
                 Firstname = ClaimHelper.GetFirstName(claimPrincipal),
                 Lastname = ClaimHelper.GetLastName(claimPrincipal),

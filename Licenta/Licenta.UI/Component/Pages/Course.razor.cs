@@ -3,7 +3,6 @@ using Licenta.SDK.Models.Dtos;
 using Licenta.UI.Services;
 using Microsoft.AspNetCore.Components;
 using Microsoft.JSInterop;
-using StackExchange.Redis;
 
 namespace Licenta.UI.Component.Pages
 {
@@ -14,13 +13,13 @@ namespace Licenta.UI.Component.Pages
         [Inject] HttpLicentaClient HttpLicentaClient { get; set; } = default!;
 
         private FullCourseDto _fullCourseDto = new FullCourseDto();
-        private LessonDto? _activeLesson = null;
+        private FullLessonDto? _activeLesson = null;
 
         protected override async Task OnAfterRenderAsync(bool firstRender)
         {
             if (firstRender)
             {
-                _fullCourseDto = await HttpLicentaClient.GetOneCourse(Id);
+                _fullCourseDto = await HttpLicentaClient.GetFullOneCourse(Id);
                  await JSRuntime.InvokeVoidAsync("MaterializeInitializer.initializeCollapsible");
                 StateHasChanged();
             }
@@ -28,7 +27,7 @@ namespace Licenta.UI.Component.Pages
             await base.OnAfterRenderAsync(firstRender);
         }
 
-        private void HandleSelectLesson(LessonDto lesson)
+        private void HandleSelectLesson(FullLessonDto lesson)
         {
             _activeLesson = lesson;
         }

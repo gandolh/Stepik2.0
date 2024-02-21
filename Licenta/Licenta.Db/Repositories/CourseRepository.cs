@@ -1,5 +1,7 @@
-﻿using Licenta.Db.DataModel;
+﻿using Licenta.Db.Data;
+using Licenta.Db.DataModel;
 using Licenta.Db.Seeder.Interfaces;
+using Licenta.SDK.Models;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Security.Principal;
@@ -37,36 +39,42 @@ namespace Licenta.Db.Repositories
 
             string sqlGetModules = $"SELECT * FROM Module WHERE CourseId = {courseId}";
             List<Module> modules = await _dbClient.QueryAsync<Module>(sqlGetModules);
-            var moduleIds = string.Join(',',modules.Select(m => m.Id));
+            var moduleIds = string.Join(',', modules.Select(m => m.Id));
             string sqlGetLesson = $"SELECT * FROM Lesson WHERE moduleId in ({moduleIds})";
             List<Lesson> lessons = await _dbClient.QueryAsync<Lesson>(sqlGetLesson);
 
+            var lessonsIds = string.Join(',', lessons.Select(el => el.Id));
+            string sqlGetExercises = $"SELECT * FROM Exercise WHERE lessonId in ({lessonsIds})";
+            List<Exercise> exercises = await _dbClient.QueryAsync<Exercise>(sqlGetExercises);
 
+            
+            lessons.ForEach(l => l.Exercises = exercises.Where(e => e.LessonId == l.Id).ToList());
             modules.ForEach(m => m.Lessons = lessons.Where(l => l.ModuleId == m.Id).ToList());
 
-            course.Modules= modules;
+            course.Modules = modules;
             return course;
         }
 
         public async Task<List<Course>> GetFullAll()
         {
             string getCoursesSql = $"SELECT * FROM Course";
-            string getTeachersSql = $"SELECT * FROM Teacher";
-            string getStudentsSql = $"SELECT * FROM Student";
-            string getCourseTeacherSql = $"SELECT * FROM course_teacher";
-            string getCourseStudentSql = $"SELECT * FROM student_course";
+
+            //todo replace
+            string getTeachersSql = $"SELECT * FROM PortalUser INNER JOIN Role ON PortalUser.Id = Role.UserId where type={(int)RoleType.Teacher}";
+            string getStudentsSql = $"SELECT * FROM PortalUser INNER JOIN Role ON PortalUser.Id = Role.UserId where type={(int)RoleType.Student}";
+            string getCourseUserSql = $"SELECT * FROM course_user";
 
             var courses = await _dbClient.QueryAsync<Course>(getCoursesSql);
-            var teachers = await _dbClient.QueryAsync<Teacher>(getTeachersSql);
-            var students = await _dbClient.QueryAsync<Student>(getStudentsSql);
-            var teacherCourse = await _dbClient.QueryAsync<Course_Teacher>(getCourseTeacherSql);
-            var studentCourse = await _dbClient.QueryAsync<Student_Course>(getCourseStudentSql);
+            var teachers = await _dbClient.QueryAsync<PortalUser>(getTeachersSql);
+            var students = await _dbClient.QueryAsync<PortalUser>(getStudentsSql);
+            var usersCourse = await _dbClient.QueryAsync<Course_User>(getCourseUserSql);
 
-            courses.ForEach(c => {
-                var teacherIds = teacherCourse.Where(el => el.CourseId == c.Id).Select(t => t.TeacherId);
+            courses.ForEach(c =>
+            {
+                var teacherIds = usersCourse.Where(el => el.CourseId == c.Id && el.ParticipationType == 1).Select(t => t.UserId);
                 c.Teachers = teachers.Where(t => teacherIds.Contains(t.Id)).ToList();
 
-                var studentIds = studentCourse.Where(el => el.CourseId == c.Id).Select(t => t.StudentId);
+                var studentIds = usersCourse.Where(el => el.CourseId == c.Id && el.ParticipationType == 0).Select(t => t.UserId);
                 c.Students = students.Where(t => studentIds.Contains(t.Id)).ToList();
             });
 

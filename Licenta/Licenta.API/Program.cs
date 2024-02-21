@@ -18,9 +18,8 @@ static void ConfigureDI(IServiceCollection services)
     services.AddScoped<CourseService>();
     services.AddScoped<ExerciseService>();
     services.AddScoped<LessonService>();
-    services.AddScoped<StudentService>();
     services.AddScoped<SubmissionService>();
-    services.AddScoped<TeacherService>();
+    services.AddScoped<UserService>();
     services.AddScoped<AccountService>();
     services.AddScoped<CodeEvaluationEntryService>();
     services.AddScoped<ModuleService>();
@@ -31,9 +30,8 @@ static void ConfigureDI(IServiceCollection services)
     services.AddScoped<CourseRepository>();
     services.AddScoped<ExerciseRepository>();
     services.AddScoped<LessonRepository>();
-    services.AddScoped<StudentRepository>();
+    services.AddScoped<UserRepository>();
     services.AddScoped<SubmissionRepository>();
-    services.AddScoped<TeacherRepository>();
     services.AddScoped<UserRepository>();
     services.AddScoped<CodeEvalEntryRepository>();
     services.AddScoped<ModuleRepository>();

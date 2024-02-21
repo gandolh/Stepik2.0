@@ -10,7 +10,7 @@ namespace Licenta.API.Controllers.Crud
 
     [ApiController]
     [Route("api/[controller]/[action]")]
-    public class ModuleController : BaseCrudController<Module, ModuleDto, ModuleDto>
+    public class ModuleController : BaseCrudController<Module, ModuleDto, FullModuleDto>
     {
 
         public ModuleController(ModuleService service) : base(service)
@@ -28,12 +28,12 @@ namespace Licenta.API.Controllers.Crud
             return await base.GetOne(id);
         }
         [SwaggerOperation(Summary = "Get full module all", Description = "")]
-        public override async Task<IEnumerable<ModuleDto>> GetFullAll()
+        public override async Task<IEnumerable<FullModuleDto>> GetFullAll()
         {
             return await base.GetFullAll();
         }
         [SwaggerOperation(Summary = "Get full module by Id", Description = "")]
-        public override async Task<ActionResult<ModuleDto>> GetFullOne(int id)
+        public override async Task<ActionResult<FullModuleDto>> GetFullOne(int id)
         {
             return await base.GetFullOne(id);
         }

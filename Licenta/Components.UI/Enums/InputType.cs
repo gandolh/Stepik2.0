@@ -6,6 +6,7 @@
         Password,
         Email,
         Number,
-        Radio
+        Radio,
+        Check
     }
 }

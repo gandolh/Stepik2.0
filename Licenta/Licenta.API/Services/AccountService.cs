@@ -2,34 +2,27 @@
 using Licenta.Db.Data;
 using Licenta.Db.DataModel;
 using Licenta.Db.Repositories;
+using Licenta.SDK.Models;
 using Licenta.SDK.Models.Dtos;
 
 namespace Licenta.API.Services
 {
     public class AccountService
     {
-        private readonly StudentRepository studentRepository;
-        private readonly TeacherRepository teacherRepository;
-        private readonly UserRepository userRepository;
+        private readonly UserRepository _userRepository;
         private readonly RegisterReqUserMapper _registerReqUserMapper;
-        private readonly StudentUserMapper _studentUserMapper;
-        private readonly TeacherUserMapper _teacherUserMapper;
         private readonly UserMapper _userMapper;
 
-        public AccountService(StudentRepository studentRepository, TeacherRepository teacherRepository, UserRepository userRepository)
+        public AccountService(UserRepository userRepository)
         {
-            this.studentRepository = studentRepository;
-            this.teacherRepository = teacherRepository;
-            this.userRepository = userRepository;
+            this._userRepository = userRepository;
             _registerReqUserMapper = new RegisterReqUserMapper();
-            _studentUserMapper = new StudentUserMapper();
-            _teacherUserMapper = new TeacherUserMapper();
             _userMapper = new UserMapper();
         }
 
-        public async Task<UserDto?> GetUser(LoginReqDto req)
+        public async Task<PortalUserDto?> GetUser(LoginReqDto req)
         {
-            var user = await userRepository.GetOne(req.Email);
+            var user = await _userRepository.GetOne(req.Email);
             if (user == null)
                 return null;
 
@@ -40,16 +33,12 @@ namespace Licenta.API.Services
 
         public async Task<bool> Register(RegisterReqDto req)
         {
-            var existingUser = await userRepository.GetOne(req.Email);
+            var existingUser = await _userRepository.GetOne(req.Email);
             if (existingUser != null) return false;
 
-            User user = _registerReqUserMapper.Map(req);
+            PortalUser user = _registerReqUserMapper.Map(req);
             user.Password = BCrypt.Net.BCrypt.HashPassword(req.Password);
-
-            if (req.UserType == (int)UserType.Student)
-                await studentRepository.InsertAsync(_studentUserMapper.Map(user));
-            else
-                await teacherRepository.InsertAsync(_teacherUserMapper.Map(user));
+            await _userRepository.InsertAsync(user);
             return true;
         }
     }

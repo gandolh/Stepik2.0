@@ -132,7 +132,7 @@ namespace Licenta.UI.Data
             }
         }
 
-        internal void ImportOverride(List<TeacherDto> elts)
+        internal void ImportOverride(List<PortalUserDto> elts)
         {
             elts.Sort((e1, e2) => e1.Id - e2.Id);
             Headings = ["Id", "Firstname", "Lastname", ""];
@@ -146,26 +146,10 @@ namespace Licenta.UI.Data
                 Data[i][++index] = elts[i].Id.ToString();
                 Data[i][++index] = elts[i].Firstname;
                 Data[i][++index] = elts[i].Lastname;
-                Data[i][++index] = "crud/student/one/" + elts[i].Id;
+                Data[i][++index] = "crud/user/one/" + elts[i].Id;
             }
         }
 
-        internal void ImportOverride(List<StudentDto> elts)
-        {
-            elts.Sort((e1, e2) => e1.Id - e2.Id);
-            Headings = ["Id", "Firstname", "Lastname", ""];
-            int collectionCount = elts.Count();
-            int headingsCount = Headings.Count();
-            Data = new string[collectionCount][];
-            for (int i = 0; i < collectionCount; i++)
-            {
-                int index = -1;
-                Data[i] = new string[headingsCount];
-                Data[i][++index] = elts[i].Id.ToString();
-                Data[i][++index] = elts[i].Firstname;
-                Data[i][++index] = elts[i].Lastname;
-                Data[i][++index] = "crud/teacher/one/" + elts[i].Id;
-            }
-        }
+       
     }
 }

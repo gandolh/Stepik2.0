@@ -10,16 +10,15 @@ namespace Licenta.Db
         private readonly IDapperDbClient _dbClient;
         private readonly IDbFactory _dbFactory;
         private readonly CourseRepository CourseRepository;
-        private readonly TeacherRepository TeacherRepository;
-        private readonly StudentRepository StudentRepository;
+        private readonly RoleRepository RoleRepository;
+        private readonly UserRepository UserRepository;
         private readonly ModuleRepository ModuleRepository;
         private readonly LessonRepository LessonRepository;
         private readonly ExerciseRepository ExerciseRepository;
         private readonly CodeEvalEntryRepository CodeEvaluationEntryRepository;
         private readonly QuizVariantsRepository QuizVariantsRepository;
         private readonly SubmissionRepository SubmissionRepository;
-        private readonly StudentCourseRepository StudentCourseRepository;
-        private readonly CourseTeacherRepository CourseTeacherRepository;
+        private readonly CourseUserRepository CourseUserRepository;
 
 
 
@@ -33,16 +32,15 @@ namespace Licenta.Db
             IDapperDbClient dbClient = new DapperDbClient(dbFactory);
             _dbClient = dbClient;
             CourseRepository = new CourseRepository(_dbClient);
-            TeacherRepository = new TeacherRepository(_dbClient);
-            StudentRepository = new StudentRepository(_dbClient);
+            RoleRepository = new RoleRepository(_dbClient);
+            UserRepository = new UserRepository(_dbClient);
             ModuleRepository = new ModuleRepository(_dbClient);
             LessonRepository = new LessonRepository(_dbClient);
             ExerciseRepository = new ExerciseRepository(_dbClient);
             QuizVariantsRepository = new QuizVariantsRepository(_dbClient);
             CodeEvaluationEntryRepository = new CodeEvalEntryRepository(_dbClient);
             SubmissionRepository = new SubmissionRepository(_dbClient);
-            StudentCourseRepository = new StudentCourseRepository(_dbClient);
-            CourseTeacherRepository = new CourseTeacherRepository(_dbClient);
+            CourseUserRepository = new CourseUserRepository(_dbClient);
         }
 
 
@@ -57,62 +55,58 @@ namespace Licenta.Db
 
         private async Task DropAll()
         {
-            await DropTable(CourseTeacherRepository);
-            await DropTable(StudentCourseRepository);
-            await DropTable(TeacherRepository);
             await DropTable(QuizVariantsRepository);
             await DropTable(CodeEvaluationEntryRepository);
             await DropTable(SubmissionRepository);
             await DropTable(ExerciseRepository);
             await DropTable(LessonRepository);
             await DropTable(ModuleRepository);
-            await DropTable(StudentRepository);
+            await DropTable(RoleRepository);
+            await DropTable(UserRepository);
             await DropTable(CourseRepository);
+            await DropTable(CourseUserRepository);
         }
 
         private async Task CreateTables()
         {
             await CreateTable(CourseRepository);
-            await CreateTable(TeacherRepository);
-            await CreateTable(StudentRepository);
+            await CreateTable(UserRepository);
+            await CreateTable(RoleRepository);
             await CreateTable(ModuleRepository);
             await CreateTable(LessonRepository);
             await CreateTable(ExerciseRepository);
             await CreateTable(QuizVariantsRepository);
             await CreateTable(CodeEvaluationEntryRepository);
             await CreateTable(SubmissionRepository);
-            await CreateTable(StudentCourseRepository);
-            await CreateTable(CourseTeacherRepository);
+            await CreateTable(CourseUserRepository);
         }
 
         private async Task InsertData()
         {
             await GenericInsertData(CourseRepository, DataSampling.GetCourses);
-            await GenericInsertData(TeacherRepository, DataSampling.GetTeacher);
-            await GenericInsertData(StudentRepository, DataSampling.GetStudents);
+            await GenericInsertData(UserRepository, DataSampling.GetUsers);
+            await GenericInsertData(RoleRepository, DataSampling.GetRole);
             await GenericInsertData(ModuleRepository, DataSampling.GetModules);
             await GenericInsertData(LessonRepository, DataSampling.GetLessons);
             await GenericInsertData(ExerciseRepository, DataSampling.GetExercise);
             await GenericInsertData(QuizVariantsRepository, DataSampling.GetQuizVariants);
             await GenericInsertData(CodeEvaluationEntryRepository, DataSampling.GetCodeEvaluationEntry);
             await GenericInsertData(SubmissionRepository, DataSampling.GetSubmissions);
-            await GenericInsertData(StudentCourseRepository, DataSampling.GetStudentCourse);
-            await GenericInsertData(CourseTeacherRepository, DataSampling.GetCourseTeacher);
+            await GenericInsertData(CourseUserRepository, DataSampling.GetCourseUser);
         }
 
         private async Task LogResults()
         {
             await LogResult(CourseRepository);
-            await LogResult(TeacherRepository);
-            await LogResult(StudentRepository);
+            await LogResult(UserRepository);
+            await LogResult(RoleRepository);
             await LogResult(ModuleRepository);
             await LogResult(LessonRepository);
             await LogResult(ExerciseRepository);
             await LogResult(QuizVariantsRepository);
             await LogResult(CodeEvaluationEntryRepository);
             await LogResult(SubmissionRepository);
-            await LogResult(StudentCourseRepository);
-            await LogResult(CourseTeacherRepository);
+            await LogResult(CourseUserRepository);
         }
 
         private async Task DropTable<T>(BaseRepository<T> repository)

@@ -1,9 +1,13 @@
-﻿using System.Security.Claims;
+﻿using Licenta.SDK.Models;
+using System.Security.Claims;
+using System.Text.Json;
 
 namespace Licenta.SDK.Services
 {
     public class ClaimHelper
     {
+        public static readonly string RolesClaimType= "Roles";
+
         public static string GetUserInitials(ClaimsPrincipal? user)
         {
             string givenName = user?.FindFirst(c => c.Type == ClaimTypes.GivenName)?.Value ?? "";
@@ -34,6 +38,14 @@ namespace Licenta.SDK.Services
         public static string GetLastName(ClaimsPrincipal user)
         {
             return user.FindFirst(ClaimTypes.Surname)?.Value ?? "";
+
+        }
+        
+        public static RoleType[] GetRoles(ClaimsPrincipal user)
+        {
+            string value = user.FindFirst(ClaimHelper.RolesClaimType)?.Value ?? "";
+            if(value == "") return new RoleType[0];
+            return JsonSerializer.Deserialize<RoleType[]>(value)!;
 
         }
 

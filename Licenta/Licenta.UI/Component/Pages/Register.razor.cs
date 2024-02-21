@@ -12,14 +12,18 @@ namespace Licenta.UI.Component.Pages
         [Inject] public HttpLicentaClient HttpLicentaClient { get; set; } = default!;
         [Inject] public NavigationManager NavManager { get; set; } = default!;
 
-        public int _activeIndex = 0;
         private RegisterReqDto reqDto = new RegisterReqDto();
         private string _errorMsg = string.Empty;
 
 
-        private void SelectRole(int index)
+        private void ToggleIsStudent()
         {
-            _activeIndex = index;
+            reqDto.IsStudent = !reqDto.IsStudent;
+        }
+
+        private void ToggleIsTeacher()
+        {
+            reqDto.IsTeacher = !reqDto.IsTeacher;
         }
 
 

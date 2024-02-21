@@ -14,7 +14,7 @@ namespace Licenta.UI.Services
             _licentaConfig = licentaConfig;
         }
 
-        public async Task<List<CourseDto>> GetCourses(string email, bool includeTeachers = false, bool includeStudents = false)
+        public async Task<List<CourseDto>> GetCourses()
         {
             var querryParameters = new Dictionary<string, string>()
             {
@@ -27,11 +27,24 @@ namespace Licenta.UI.Services
             return resp;
         }
 
-        public async Task<FullCourseDto> GetOneCourse(int courseId)
+        public async Task<List<FullCourseDto>> GetFullCourses()
         {
             var querryParameters = new Dictionary<string, string>()
             {
-                {"courseId", courseId.ToString() },
+            };
+            var resp = await _myHttpClient.GetAsync<List<FullCourseDto>>(
+                _licentaConfig.Endpoints.Course.GetFullAll,
+                querryParameters
+                );
+
+            return resp;
+        }
+
+        public async Task<CourseDto> GetOneCourse(int courseId)
+        {
+            var querryParameters = new Dictionary<string, string>()
+            {
+                {"id", courseId.ToString() },
             };
             var resp = await _myHttpClient.GetAsync<FullCourseDto>(
                 _licentaConfig.Endpoints.Course.GetById,
@@ -42,14 +55,43 @@ namespace Licenta.UI.Services
         }
 
 
-        internal async Task<FullLessonDto> GetOneLesson(int id)
+        public async Task<FullCourseDto> GetFullOneCourse(int courseId)
         {
             var querryParameters = new Dictionary<string, string>()
             {
-                {"lessonId", id.ToString()},
+                {"id", courseId.ToString() },
+            };
+            var resp = await _myHttpClient.GetAsync<FullCourseDto>(
+                _licentaConfig.Endpoints.Course.GetFullById,
+                querryParameters
+                );
+
+            return resp;
+        }
+
+
+        internal async Task<LessonDto> GetOneLesson(int id)
+        {
+            var querryParameters = new Dictionary<string, string>()
+            {
+                {"id", id.ToString()},
+            };
+            var resp = await _myHttpClient.GetAsync<LessonDto>(
+                _licentaConfig.Endpoints.Lesson.GetById,
+                querryParameters
+                );
+
+            return resp;
+        }
+
+        internal async Task<FullLessonDto> GetFullOneLesson(int id)
+        {
+            var querryParameters = new Dictionary<string, string>()
+            {
+                {"id", id.ToString()},
             };
             var resp = await _myHttpClient.GetAsync<FullLessonDto>(
-                _licentaConfig.Endpoints.Lesson.GetById,
+                _licentaConfig.Endpoints.Lesson.GetFullById,
                 querryParameters
                 );
 
@@ -106,29 +148,29 @@ namespace Licenta.UI.Services
             return resp;
         }
 
-        internal async Task<List<StudentDto>> GetStudents()
+        internal async Task<List<PortalUserDto>> GetStudents()
         {
-            var resp = await _myHttpClient.GetAsync<List<StudentDto>>(
-               _licentaConfig.Endpoints.Student.GetAll,
+            var resp = await _myHttpClient.GetAsync<List<PortalUserDto>>(
+               _licentaConfig.Endpoints.User.GetAllStudents,
                new Dictionary<string, string>()
                );
 
             return resp;
         }
 
-        internal async Task<List<TeacherDto>> GetTeachers()
+        internal async Task<List<PortalUserDto>> GetTeachers()
         {
-            var resp = await _myHttpClient.GetAsync<List<TeacherDto>>(
-               _licentaConfig.Endpoints.Teacher.GetAll,
+            var resp = await _myHttpClient.GetAsync<List<PortalUserDto>>(
+               _licentaConfig.Endpoints.User.GetAllTeachers,
                new Dictionary<string, string>()
                );
 
             return resp;
         }
 
-        internal async Task<UserDto?> GetUser(LoginReqDto reqDto)
+        internal async Task<PortalUserDto?> GetUser(LoginReqDto reqDto)
         {
-            UserDto? resp = await _myHttpClient.PostAsync<UserDto?, LoginReqDto>(
+            PortalUserDto? resp = await _myHttpClient.PostAsync<PortalUserDto?, LoginReqDto>(
                _licentaConfig.Endpoints.Account.GetUser,
                reqDto
                );
@@ -212,28 +254,28 @@ namespace Licenta.UI.Services
             return resp;
         }
 
-        internal async Task<StudentDto> GetOneStudent(int id)
+        internal async Task<PortalUserDto> GetOneStudent(int id)
         {
             var querryParameters = new Dictionary<string, string>()
             {
                 {"id",id.ToString() },
             };
-            var resp = await _myHttpClient.GetAsync<StudentDto>(
-               _licentaConfig.Endpoints.Student.GetById,
+            var resp = await _myHttpClient.GetAsync<PortalUserDto>(
+               _licentaConfig.Endpoints.User.GetById,
                querryParameters
                );
 
             return resp;
         }
 
-        internal async Task<TeacherDto> GetOneTeacher(int id)
+        internal async Task<PortalUserDto> GetOneTeacher(int id)
         {
             var querryParameters = new Dictionary<string, string>()
             {
                 {"id",id.ToString() },
             };
-            var resp = await _myHttpClient.GetAsync<TeacherDto>(
-               _licentaConfig.Endpoints.Teacher.GetById,
+            var resp = await _myHttpClient.GetAsync<PortalUserDto>(
+               _licentaConfig.Endpoints.User.GetById,
                querryParameters
                );
 
@@ -284,17 +326,10 @@ namespace Licenta.UI.Services
               dto);
 
         }
-        internal async Task UpdateStudent(StudentDto? dto)
+        internal async Task UpdateTeacher(PortalUserDto? dto)
         {
             await _myHttpClient.PutAsync(
-              _licentaConfig.Endpoints.Student.Update,
-              dto);
-
-        }
-        internal async Task UpdateTeacher(TeacherDto? dto)
-        {
-            await _myHttpClient.PutAsync(
-              _licentaConfig.Endpoints.Teacher.Update,
+              _licentaConfig.Endpoints.User.Update,
               dto);
 
         }
@@ -367,7 +402,7 @@ namespace Licenta.UI.Services
                 {"id",id.ToString() },
             };
             await _myHttpClient.DeleteAsync(
-              _licentaConfig.Endpoints.Student.Delete,
+              _licentaConfig.Endpoints.User.Delete,
               querryParameters);
         }
         internal async Task DeleteTeacher(int id)
@@ -377,7 +412,7 @@ namespace Licenta.UI.Services
                 {"id",id.ToString() },
             };
             await _myHttpClient.DeleteAsync(
-              _licentaConfig.Endpoints.Teacher.Delete,
+              _licentaConfig.Endpoints.User.Delete,
               querryParameters);
         }
 

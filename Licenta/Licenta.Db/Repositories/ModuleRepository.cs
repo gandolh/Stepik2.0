@@ -27,6 +27,12 @@ namespace Licenta.Db.Repositories
             await _dbClient.ExecuteAsync(sql);
         }
 
+        public async Task<Module> GetFullOneAsync(int id)
+        {
+            await Task.CompletedTask;
+            throw new NotImplementedException();
+        }
+
         public override async Task InsertAsync(Module data)
         {
             string sql = $"""

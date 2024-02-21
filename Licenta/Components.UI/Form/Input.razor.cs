@@ -12,6 +12,8 @@ namespace Components.UI.Form
         [Parameter] public InputType InputType { get; set; } = InputType.Text;
         [Parameter] public EventCallback<string> ValueChanged { get; set; } = default!;
         [Parameter] public string Name { get; set; } = String.Empty;
+        [Parameter(CaptureUnmatchedValues = true)] public IReadOnlyDictionary<string, object>? Attributes { get; set; }
+
 
         private string GetInputType()
         {
@@ -22,6 +24,7 @@ namespace Components.UI.Form
                 InputType.Email => "email",
                 InputType.Number => "number",
                 InputType.Radio => "radio",
+                InputType.Check => "checkbox",
                 _ => "text",
             };
         }

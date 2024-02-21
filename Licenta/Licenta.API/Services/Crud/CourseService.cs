@@ -7,11 +7,11 @@ namespace Licenta.API.Services.Crud
 {
     public class CourseService : BaseCrudService<Course, CourseDto, FullCourseDto>
     {
-        private readonly TeacherMapper _teacherMapper;
+        private readonly UserMapper _userMapper;
 
         public CourseService(CourseRepository courseRepository) : base(courseRepository, new CourseMapper(), new FullCourseMapper())
         {
-            _teacherMapper = new TeacherMapper();
+            _userMapper = new UserMapper();
 
         }
 

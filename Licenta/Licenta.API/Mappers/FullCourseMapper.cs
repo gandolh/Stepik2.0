@@ -6,11 +6,13 @@ namespace Licenta.API.Mappers
 {
     public class FullCourseMapper : BaseMapper<Course, FullCourseDto>
     {
-        private readonly ModuleMapper _moduleMapper;
+        private readonly FullModuleMapper _fullModuleMapper;
+        private readonly UserMapper _userMapper;
 
         public FullCourseMapper()
         {
-            _moduleMapper = new ModuleMapper();
+            _fullModuleMapper = new FullModuleMapper();
+            _userMapper = new UserMapper();
         }
 
         public override Course Map(FullCourseDto element)
@@ -19,7 +21,9 @@ namespace Licenta.API.Mappers
             {
                 Id = element.Id,
                 Name = element.Name,
-                Modules = _moduleMapper.Map(element.Modules)
+                Modules = _fullModuleMapper.Map(element.Modules),
+                Teachers = _userMapper.Map(element.Teachers),
+                Students = _userMapper.Map(element.Students)
             };
         }
 
@@ -28,8 +32,10 @@ namespace Licenta.API.Mappers
             return new FullCourseDto()
             {
                 Id = element.Id,
-                Name = element.Name, 
-                Modules = _moduleMapper.Map(element.Modules)
+                Name = element.Name,
+                Modules = _fullModuleMapper.Map(element.Modules),
+                Teachers = _userMapper.Map(element.Teachers),
+                Students = _userMapper.Map(element.Students)
             };
         }
     }

@@ -15,7 +15,7 @@ namespace Licenta.UI.Component.Home
         protected override async Task OnInitializedAsync()
         {
             pageState = PageState.Loading;
-            _courses = await httpLicentaClient.GetCourses(User.Email);
+            _courses = await httpLicentaClient.GetCourses();
 
             pageState = PageState.Loaded;
             await base.OnInitializedAsync();

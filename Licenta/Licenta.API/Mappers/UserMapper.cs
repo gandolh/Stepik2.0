@@ -1,27 +1,30 @@
-﻿using Licenta.Db.Data;
+﻿using Licenta.Db.DataModel;
+using Licenta.SDK.Models;
 using Licenta.SDK.Models.Dtos;
 
 namespace Licenta.API.Mappers
 {
-    public class UserMapper : BaseMapper<User, UserDto>
+    public class UserMapper : BaseMapper<PortalUser, PortalUserDto>
     {
-        public override User Map(UserDto element)
+        public override PortalUser Map(PortalUserDto element)
         {
-            return new User()
-            {
+            return new PortalUser()
+            { Id = element.Id,
                 Firstname = element.Firstname,
                 Lastname = element.Lastname,
-            Email = element.Email
+                Email = element.Email,
+                Roles = element.Roles.Select(el => (int)el).ToList()
             };
         }
 
-        public override UserDto Map(User element)
+        public override PortalUserDto Map(PortalUser element)
         {
-            return new UserDto()
+            return new PortalUserDto()
             {
                 Firstname = element.Firstname,
                 Lastname = element.Lastname,
-                Email = element.Email
+                Email = element.Email,
+                Roles = element.Roles.Select(el => (RoleType)el).ToList()
             };
         }
     }

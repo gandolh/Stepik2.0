@@ -138,6 +138,10 @@ const InitModal = () => {
     var instances = M.Modal.init(elems, {});
 }
 
+const InitTooltip = () => {
+    var elems = document.querySelectorAll('.tooltipped');
+    var instances = M.Tooltip.init(elems, {});
+}
 
 
 
@@ -149,5 +153,6 @@ var MaterializeInitializer = {
     DestroyDataTable: DestroyDataTable,
     InitDropdown: InitDropdown,
     InitTabs: InitTabs,
-    InitModal: InitModal
+    InitModal: InitModal,
+    InitTooltip: InitTooltip
 }

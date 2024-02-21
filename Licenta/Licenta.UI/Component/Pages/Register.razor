@@ -9,27 +9,50 @@
                 <form class="col s12" id="reg-form">
                     <h4>Register</h4>
                     <div class="select-role-row">
-                        <Button Class=@("col s12 "+ (_activeIndex == 0 ? "btn-active" :"btn-inactive"))
-                        Size="ButtonSize.Large"
-                        Clicked="()=>SelectRole(0)">
-                            Student
-                        </Button>
-                        <Button Class=@("col s12 " + (_activeIndex == 1 ? "btn-active" :"btn-inactive"))
+                        @if (reqDto != null){
+
+                        <p> Choose your profile(s): </p>
+                        <Button Class="col s12 btn-check-usertype"
+                                Animation="false"
+                                Color="(reqDto.IsStudent ? ButtonColor.Primary : ButtonColor.Secondary)"
                                 Size="ButtonSize.Large"
-                                Clicked="()=>SelectRole(1)">
-                            Teacher
+                                Clicked="ToggleIsStudent">
+                            @if (reqDto.IsStudent)
+                            {
+                                <text><i class="medium material-icons">check_box</i> I'm a student</text>
+                            }
+                            else
+                            {
+                                <text><i class="medium material-icons">check_box_outline_blank</i> I'm a student</text>
+                            }
                         </Button>
+                        <Button Class="col s12 btn-check-usertype"
+                                Animation="false"
+                                Color="(reqDto.IsTeacher ? ButtonColor.Primary : ButtonColor.Secondary)"
+                                Size="ButtonSize.Large"
+                                Clicked="ToggleIsTeacher">
+                            @if (reqDto.IsTeacher)
+                            {
+                                <text><i class="medium material-icons">check_box</i> I'm a teacher</text>
+                            }
+                            else
+                            {
+                                <text><i class="medium material-icons">check_box_outline_blank</i> I'm a teacher</text>
+                            }
+                        </Button>
+                        }
                     </div>
+                      @if (reqDto != null){
                     <Row>
                         <InputField ColSize="ColSize.S6">
-                            <Input Placeholder="Nume" Id="first_name" Class="validate" 
-                                required @bind-Value="reqDto.Firstname">
-                            <Label Class="active" For="first_name" Text="First Name"/>
+                            <Input Placeholder="Nume" Id="first_name" Class="validate"
+                                   required @bind-Value="reqDto.Firstname">
+                            <Label Class="active" For="first_name" Text="First Name" />
                         </InputField>
                         <InputField ColSize="ColSize.S6">
                             <Input Placeholder="Nume" Id="last_name" Class="validate"
                                    required @bind-Value="reqDto.Lastname">
-                            <Label Class="active" For="last_name" Text="Last Name"/>
+                            <Label Class="active" For="last_name" Text="Last Name" />
                         </InputField>
                     </Row>
                     <Row>
@@ -44,7 +67,7 @@
                         <InputField ColSize="ColSize.S12">
                             <Input Placeholder="password" Id="password" InputType="InputType.Password" Class="validate" minlength="6"
                                    required @bind-Value="reqDto.Password">
-                            <Label Class="active" For="password" Text="Password"/>
+                            <Label Class="active" For="password" Text="Password" />
                         </InputField>
                     </Row>
                     <Row>
@@ -60,9 +83,10 @@
                                     }
                                 </Row>
                             </center>
-                            <a href="login" >Already have an account?</a>
+                            <a href="login">Already have an account?</a>
                         </InputField>
                     </Row>
+                    }
                 </form>
 
             </div>

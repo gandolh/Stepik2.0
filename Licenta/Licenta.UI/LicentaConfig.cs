@@ -31,8 +31,7 @@ namespace Licenta.UI
             Lesson = new BaseCrudEndpoint(UrlApi + "/api/Lesson");
             Module = new BaseCrudEndpoint(UrlApi + "/api/Module");
             QuizVariant = new BaseCrudEndpoint(UrlApi + "/api/QuizVariant");
-            Student = new BaseCrudEndpoint(UrlApi + "/api/Student");
-            Teacher = new BaseCrudEndpoint(UrlApi + "/api/Teacher");
+            User = new UserEndpoint(UrlApi + "/api/User");
             Account = new AccountEndpoint(UrlApi + "/api/Account");
         }
 
@@ -42,10 +41,25 @@ namespace Licenta.UI
         public readonly BaseCrudEndpoint Lesson;
         public readonly BaseCrudEndpoint Module;
         public readonly BaseCrudEndpoint QuizVariant;
-        public readonly BaseCrudEndpoint Student;
-        public readonly BaseCrudEndpoint Teacher;
+        public readonly UserEndpoint User;
         public readonly AccountEndpoint Account;
     }
+
+    public class UserEndpoint : BaseCrudEndpoint
+    {
+        public UserEndpoint(string prefix) : base(prefix)
+        {
+            GetAllTeachers = prefix + EndpointGetAllTeachers;
+            GetAllStudents = prefix + EndpointGetAllStudents;
+        }
+
+        private static readonly string EndpointGetAllTeachers = "/GetAllTeachers";
+        private static readonly string EndpointGetAllStudents = "/GetAllStudents";
+        public readonly string GetAllTeachers;
+        public readonly string GetAllStudents;
+
+    }
+
 
     public class AccountEndpoint
     {

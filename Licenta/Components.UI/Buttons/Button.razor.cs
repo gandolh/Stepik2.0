@@ -17,6 +17,7 @@ namespace Components.UI.Buttons
         [Parameter] public string OnJsClick { get; set;  } = string.Empty;
         [Parameter] public string Class { get; set;  } = string.Empty;
         [Parameter] public string AriaLabel { get; set;  } = string.Empty;
+        [Parameter] public bool Animation { get; set;  } = true;
         [Parameter(CaptureUnmatchedValues = true)] public IReadOnlyDictionary<string, object>? Attributes { get; set; }
 
         private string GetSizeClass()
@@ -75,8 +76,9 @@ namespace Components.UI.Buttons
         {
             return Style switch
             {
-                ButtonStyle.Normal => "btn waves-effect waves-light",
+                ButtonStyle.Normal => "btn" + (Animation ? " waves-effect waves-light": ""),
                 ButtonStyle.None => "",
+                _ => "",
             };
         }
     }

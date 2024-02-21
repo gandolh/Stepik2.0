@@ -31,9 +31,9 @@ namespace Licenta.API.Controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult<UserDto>> GetUser(LoginReqDto req)
+        public async Task<ActionResult<PortalUserDto>> GetUser(LoginReqDto req)
         {
-            UserDto? loggedUser = await _accountService.GetUser(req);
+            PortalUserDto? loggedUser = await _accountService.GetUser(req);
             return Ok(loggedUser);
         }
 
@@ -52,12 +52,12 @@ namespace Licenta.API.Controllers
         [HttpPost]
         public async Task<ActionResult> JwtLogin(LoginReqDto req)
         {
-            UserDto? loggedUser = await _accountService.GetUser(req);
+            PortalUserDto? loggedUser = await _accountService.GetUser(req);
             if (loggedUser == null) return NotFound();
             else return Ok(GenerateToken(loggedUser));
         }
 
-        private string GenerateToken(UserDto user)
+        private string GenerateToken(PortalUserDto user)
         {
             //TODO: implement in user a field for user role
 

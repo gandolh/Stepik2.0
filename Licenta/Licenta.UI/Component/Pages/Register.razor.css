@@ -16,17 +16,10 @@
     margin-top: -32px;
 }
 
-
 .select-role-row {
     display: flex;
+    flex-direction: column;
     gap: 0.5rem;
+    margin: 1.52rem 0 .912rem 0;
 }
 
-.select-role-row .btn-inactive{
-    color: black;
-    background-color: #fafafa !important;
-}
-
-.select-role-row .btn-active {
-    background-color: #1976D2 !important;
-}

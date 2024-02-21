@@ -1,4 +1,5 @@
 ﻿using Licenta.Db.DataModel;
+using Licenta.SDK.Models;
 
 namespace Licenta.Db.Seeder
 {
@@ -22,22 +23,23 @@ namespace Licenta.Db.Seeder
         ];
             return objects;
         }
-        public static Teacher[] GetTeacher()
+        public static Role[] GetRole()
         {
-            Teacher[] objects =
-             [
-                new Teacher(1, "John", "Smith", "password1"),
-                 new Teacher(2, "Alice", "Johnson", "password2"),
-                 new Teacher(3, "Michael", "Brown", "password3"),
-                 new Teacher(4, "Emily", "Davis", "password4"),
-                 new Teacher(5, "David", "Martinez", "password5"),
-                 new Teacher(6, "Sarah", "Garcia", "password6"),
-                 new Teacher(7, "Chris", "Wilson", "password7"),
-                 new Teacher(8, "Jennifer", "Lopez", "password8"),
-                 new Teacher(9, "Daniel", "Lee", "password9"),
-                 new Teacher(10, "Laura", "Taylor", "password10")
-             ];
-            return objects;
+            Role[] roles =
+               {
+                    new Role(1, RoleType.Admin, 1),
+                    new Role(2, RoleType.Student, 2),
+                    new Role(3, RoleType.Student, 3),
+                    new Role(6, RoleType.Student, 6),
+                    new Role(8, RoleType.Student, 8),
+                    new Role(10, RoleType.Student, 10),
+                    new Role(4, RoleType.Teacher, 4),
+                    new Role(5, RoleType.Teacher, 5),
+                    new Role(7, RoleType.Teacher, 7),
+                    new Role(9, RoleType.Teacher, 9)
+                };
+
+            return roles;
         }
         public static Lesson[] GetLessons()
         {
@@ -120,25 +122,25 @@ namespace Licenta.Db.Seeder
                new CodeEvaluationEntry(3, 1, "3", "6"),
                new CodeEvaluationEntry(4, 1, "4", "24"),
                new CodeEvaluationEntry(5, 1, "5", "120"),
-               
+
            ];
             return objects;
         }
 
-        public static Student[] GetStudents()
+        public static PortalUser[] GetUsers()
         {
-            Student[] objects =
+            PortalUser[] objects =
             [
-                new Student(1, "Emma", "Johnson", "password1"),
-                new Student(2, "Noah", "Williams", "password2"),
-                new Student(3, "Olivia", "Brown", "password3"),
-                new Student(4, "Liam", "Jones", "password4"),
-                new Student(5, "Ava", "Miller", "password5"),
-                new Student(6, "Sophia", "Davis", "password6"),
-                new Student(7, "Mason", "Garcia", "password7"),
-                new Student(8, "Isabella", "Martinez", "password8"),
-                new Student(9, "Logan", "Lopez", "password9"),
-                new Student(10, "Ethan", "Lee", "password10")
+                new PortalUser(1, "Emma", "Johnson", "password1"),
+                new PortalUser(2, "Noah", "Williams", "password2"),
+                new PortalUser(3, "Olivia", "Brown", "password3"),
+                new PortalUser(4, "Liam", "Jones", "password4"),
+                new PortalUser(5, "Ava", "Miller", "password5"),
+                new PortalUser(6, "Sophia", "Davis", "password6"),
+                new PortalUser(7, "Mason", "Garcia", "password7"),
+                new PortalUser(8, "Isabella", "Martinez", "password8"),
+                new PortalUser(9, "Logan", "Lopez", "password9"),
+                new PortalUser(10, "Ethan", "Lee", "password10")
             ];
             return objects;
         }
@@ -149,62 +151,37 @@ namespace Licenta.Db.Seeder
                 new Submission(1, 90, 1, 1),
                  new Submission(2, 75, 2, 2),
                  new Submission(3, 80, 3, 3),
-                 new Submission(4, 95, 4, 4),
-                 new Submission(5, 85, 5, 5),
+                 new Submission(4, 95, 3, 4),
+                 new Submission(5, 85, 6, 5),
                  new Submission(6, 70, 6, 6),
-                 new Submission(7, 88, 7, 7),
+                 new Submission(7, 88, 8, 7),
                  new Submission(8, 92, 8, 8),
-                 new Submission(9, 78, 9, 9),
+                 new Submission(9, 78, 10, 9),
                  new Submission(10, 84, 10, 10)
              ];
             return objects;
         }
-        public static Course_Teacher[] GetCourseTeacher()
+
+        public static Course_User[] GetCourseUser()
         {
-            Course_Teacher[] objects =
-            [
-                new Course_Teacher(1, 1),
-                new Course_Teacher(1, 2),
-                new Course_Teacher(1, 3),
-                new Course_Teacher(2, 2),
-                new Course_Teacher(2, 3),
-                new Course_Teacher(3, 3),
-                new Course_Teacher(4, 4),
-                new Course_Teacher(5, 5),
-                new Course_Teacher(6, 6),
-                new Course_Teacher(7, 7),
-                new Course_Teacher(8, 8),
-                new Course_Teacher(9, 9),
-                new Course_Teacher(10, 10)
+
+            // 4, 5, 7, 9 are teachers
+            // 0 - as student , 1 - as teacher
+            Course_User[] modules =
+ [
+                new Course_User { Id = 1, CourseId = 1, UserId= 1, ParticipationType = 0  },
+                new Course_User { Id = 2, CourseId = 1, UserId= 4, ParticipationType = 1 },
+                new Course_User { Id = 3, CourseId = 2, UserId= 2, ParticipationType = 0 },
+                new Course_User { Id = 4, CourseId = 2, UserId= 5, ParticipationType = 1  },
+                new Course_User { Id = 5, CourseId = 3, UserId= 7, ParticipationType = 1  },
+                new Course_User { Id = 6, CourseId = 3, UserId= 3, ParticipationType = 0 },
+                new Course_User { Id = 7, CourseId = 4, UserId= 7, ParticipationType = 1  },
+                new Course_User { Id = 8, CourseId = 4, UserId= 6, ParticipationType = 0  },
+                new Course_User { Id = 9, CourseId = 5, UserId= 9, ParticipationType = 1  },
+                new Course_User { Id = 10, CourseId = 5, UserId= 8, ParticipationType = 0 },
             ];
-            return objects;
-        }
-        public static Student_Course[] GetStudentCourse()
-        {
-            Student_Course[] objects =
-             [
-                new Student_Course(1, 1),
-                 new Student_Course(1, 3),
-                 new Student_Course(1, 5),
 
-                 new Student_Course(2, 2),
-                 new Student_Course(2, 4),
-                 new Student_Course(2, 6),
-
-                 new Student_Course(3, 1),
-                 new Student_Course(3, 4),
-                 new Student_Course(3, 7),
-
-                 new Student_Course(4, 2),
-                 new Student_Course(4, 5),
-                 new Student_Course(4, 8),
-
-                 new Student_Course(5, 3),
-                 new Student_Course(5, 6),
-                 new Student_Course(5, 9)
-             ];
-
-            return objects;
+            return modules;
         }
 
         public static Module[] GetModules()

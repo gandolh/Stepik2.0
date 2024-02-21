@@ -10,18 +10,12 @@ namespace Licenta.UI.Component.Courses
 {
     public partial class LessonPanel : BaseLicentaComp
     {
-        private FullLessonDto? _fullLessonDto;
-
-        [Parameter] public LessonDto? ActiveLessonSummarry { get; set; }
+        [Parameter] public FullLessonDto? ActiveLessonSummarry { get; set; }
         [Inject] public HttpLicentaClient HttpLicentaClient { get; set; } = default!;
         [Inject] public IJSRuntime JSRuntime { get; set; } = default!;
     
         protected override async Task OnParametersSetAsync()
         {
-            if(ActiveLessonSummarry != null)
-            {
-                _fullLessonDto = await HttpLicentaClient.GetOneLesson(ActiveLessonSummarry.Id);
-            }
             await base.OnParametersSetAsync();
         }
 

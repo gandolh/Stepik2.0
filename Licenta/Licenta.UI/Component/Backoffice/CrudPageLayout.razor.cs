@@ -8,7 +8,7 @@ namespace Licenta.UI.Component.Backoffice
 
         private List<string> CrudPages = new List<string>()
         {
-            "Quiz variant", "Code evaluation entry", "Exercise", "Lesson", "Module", "Student", "Teacher", "Course"
+            "Quiz variant", "Code evaluation entry", "Exercise", "Lesson", "Module", "Student", "User", "Course"
         };
 
         private List<string> CrudHrefPages = new List<string>()

@@ -1,36 +1,52 @@
-﻿using Licenta.Db.Data;
+﻿using Licenta.Db.DataModel;
 using Licenta.Db.Seeder.Interfaces;
 
 namespace Licenta.Db.Repositories
 {
-    public class UserRepository 
+    public class UserRepository : BaseRepository<PortalUser>
     {
-        protected readonly IDapperDbClient _dbClient;
-
-        public UserRepository(IDapperDbClient dbClient)
+        public UserRepository(IDapperDbClient dbClient) : base(dbClient)
         {
-            _dbClient = dbClient;
         }
 
-        public async Task GetAll()
+        public override async Task CreateTableAsync()
         {
-            throw new NotImplementedException();
-            //string sqlGetAllStudents = "SELECT * FROM Student";
-            //string sqlGetAllTeachers = "SELECT * FROM Teacher";
-            //string sqlGetAll= sqlGetAllTeachers + "\n" + sqlGetAllStudents;
-            //Dapper.SqlMapper.GridReader reader = await _dbClient.QueryMultipleAsync(sqlGetAll);
-            //User[] users = reader.Read<User>().ToArray();
+            string sql = $"""
+                CREATE TABLE {_tableName} (
+                    Id SERIAL PRIMARY KEY,
+                    Firstname VARCHAR(100),
+                    Lastname VARCHAR(100),
+                    Email VARCHAR(255),
+                    Password VARCHAR(255)
+                );
+                """;
+            await _dbClient.ExecuteAsync(sql);
         }
 
-        public async Task<User?> GetOne(string email)
+        public override async Task InsertAsync(PortalUser data)
         {
-            string sqlGetAllStudents = $"SELECT * FROM Student where Email='{email}'";
-            string sqlGetAllTeachers = $"SELECT * FROM Teacher where Email='{email}'";
-            User? user = null;
+            string sql = $"""
+                INSERT INTO {_tableName}
+                (Firstname, Lastname, Email, Password) 
+                VALUES (@Firstname,@Lastname,@Email,@Password);
+            """;
+            var rowsAffected = await _dbClient.ExecuteAsync(sql, data);
+        }
 
-            user = await _dbClient.QueryFirstOrDefaultAsync<User>(sqlGetAllStudents);
-            if (user == null) user = await _dbClient.QueryFirstOrDefaultAsync<User>(sqlGetAllTeachers);
+        public override async Task UpdateAsync(PortalUser data)
+        {
+            string sql = $"""
+                UPDATE {_tableName} SET 
+                Firstname=@Firstname, Lastname=@Lastname, Email=@Email
+                WHERE Id=@Id
+                """;
+            await _dbClient.ExecuteAsync(sql, data);
+        }
 
+        public async Task<PortalUser> GetOne(string email)
+        {
+            string sqlGetAllUsers = $"SELECT * FROM PortalUser where Email='{email}'";
+            PortalUser? user = await _dbClient.QueryFirstOrDefaultAsync<PortalUser>(sqlGetAllUsers);
             return user;
         }
     }

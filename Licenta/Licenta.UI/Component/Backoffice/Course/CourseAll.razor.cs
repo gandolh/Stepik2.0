@@ -25,7 +25,7 @@ namespace Licenta.UI.Component.Backoffice.Course
 
         private async Task LoadDatatable()
         {
-            List<CourseDto> elts = await httpLicentaClient.GetCourses("", false, false);
+            List<CourseDto> elts = await httpLicentaClient.GetCourses();
             DataTableJson json = new DataTableJson();
             json.ImportOverride(elts);
 

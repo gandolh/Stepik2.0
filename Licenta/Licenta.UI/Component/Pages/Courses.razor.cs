@@ -9,13 +9,13 @@ namespace Licenta.UI.Component.Pages
     public partial class Courses : BaseLicentaComp
     {
         [Inject] public HttpLicentaClient httpLicentaClient { get; set; } = default!;
-        private List<CourseDto> _courses = new();
+        private List<FullCourseDto> _courses = new();
 
 
         protected override async Task OnAfterRenderAsync(bool firstRender)
         {
             if(firstRender) {
-                _courses = await httpLicentaClient.GetCourses(User.Email, true, true);
+                _courses = await httpLicentaClient.GetFullCourses();
                 StateHasChanged();
             }
             await base.OnAfterRenderAsync(firstRender);    

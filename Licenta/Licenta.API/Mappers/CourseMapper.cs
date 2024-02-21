@@ -5,13 +5,11 @@ namespace Licenta.API.Mappers
 {
     public class CourseMapper : BaseMapper<Course, CourseDto>
     {
-        private readonly TeacherMapper _teacherMapper;
-        private readonly StudentMapper _studentMapper;
+        private readonly UserMapper _userMapper;
 
         public CourseMapper()
         {
-            _teacherMapper = new TeacherMapper();
-            _studentMapper = new StudentMapper();
+            _userMapper = new UserMapper();
         }
 
         public override Course Map(CourseDto element)
@@ -20,8 +18,8 @@ namespace Licenta.API.Mappers
             {
                 Id = element.Id,
                 Name = element.Name,
-                Teachers= _teacherMapper.Map(element.Teachers),
-                Students= _studentMapper.Map(element.Students)
+                //Teachers= _userMapper.Map(element.Teachers),
+                //Students= _userMapper.Map(element.Students)
             };
         }
 
@@ -31,8 +29,8 @@ namespace Licenta.API.Mappers
             {
                 Id = element.Id,
                 Name = element.Name,
-                Teachers = _teacherMapper.Map(element.Teachers),
-                Students = _studentMapper.Map(element.Students)
+                //Teachers = _userMapper.Map(element.Teachers),
+                //Students = _userMapper.Map(element.Students)
             };
         }
     }

@@ -15,7 +15,7 @@ namespace Licenta.Db.Repositories
                 CREATE TABLE {_tableName} (
                     Id SERIAL PRIMARY KEY,
                     Points INT,
-                    StudentId INT REFERENCES Student(Id),
+                    StudentId INT REFERENCES PortalUser(Id),
                     ExerciseId INT REFERENCES Exercise(Id)
                 );
                 """;

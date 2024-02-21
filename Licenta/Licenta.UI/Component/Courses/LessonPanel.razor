@@ -1,15 +1,15 @@
 ﻿@inherits BaseLicentaComp;
 
-@if (_fullLessonDto == null)
+@if (ActiveLessonSummarry == null)
 {
     <h1> Please select a lesson</h1>
 }
 else
 {
-    <h1> @_fullLessonDto.Name</h1>
-    <p> @_fullLessonDto.Body</p>
+    <h1> @ActiveLessonSummarry.Name</h1>
+    <p> @ActiveLessonSummarry.Body</p>
 
-    @foreach (var exercise in _fullLessonDto.Exercises)
+    @foreach (var exercise in ActiveLessonSummarry.Exercises)
     {
         if (exercise.IsCodeRunner)
         {
