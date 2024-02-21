@@ -9,6 +9,16 @@ namespace Licenta.SDK.Models.Dtos
     public class LoginReqDto
     {
         public string Email { get; set; } = string.Empty;
-        public string Password { get; set; } = string.Empty;   
+        public string Password { get; set; } = string.Empty;
+        public LoginReqDto()
+        {
+            
+        }
+
+        public LoginReqDto(string email, string password)
+        {
+            Email = email;
+            Password = password;
+        }
     }
 }

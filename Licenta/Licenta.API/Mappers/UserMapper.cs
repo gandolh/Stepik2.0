@@ -9,7 +9,7 @@ namespace Licenta.API.Mappers
         public override PortalUser Map(PortalUserDto element)
         {
             return new PortalUser()
-            { Id = element.Id,
+            {   Id = element.Id,
                 Firstname = element.Firstname,
                 Lastname = element.Lastname,
                 Email = element.Email,
@@ -21,6 +21,7 @@ namespace Licenta.API.Mappers
         {
             return new PortalUserDto()
             {
+                Id = element.Id,
                 Firstname = element.Firstname,
                 Lastname = element.Lastname,
                 Email = element.Email,

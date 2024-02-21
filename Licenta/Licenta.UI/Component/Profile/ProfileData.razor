@@ -2,13 +2,13 @@
 <div class='row'>
     <div class='input-field col s6'>
         <input @bind-value=User.Firstname placeholder="Firstname"
-               id="Name" type="text" class="validate"
+               id="Firstname" type="text" class="validate"
                required disabled=@Disabled>
         <label class="active" for="Input">Firstname</label>
     </div>
     <div class='input-field col s6'>
         <input @bind-value=User.Lastname placeholder="Lastname"
-               id="Name" type="text" class="validate"
+               id="Lastname" type="text" class="validate"
                required disabled=@Disabled>
         <label class="active" for="Input">Lastname</label>
     </div>
@@ -16,8 +16,14 @@
 <div class='row'>
     <div class='input-field col s6'>
         <input @bind-value=User.Email placeholder="Email"
-               id="Name" type="text" class="validate"
+               id="Email" type="text" class="validate"
                required disabled=@Disabled>
         <label class="active" for="Input">Email</label>
+    </div>
+    <div class='input-field col s6'>
+        <input value=@DisplayableRoles placeholder="Roles"
+               id="Roles" type="text" class="validate"
+               required disabled="disabled">
+        <label class="active" for="Input">Roles</label>
     </div>
 </div>

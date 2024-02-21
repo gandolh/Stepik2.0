@@ -16,7 +16,7 @@ namespace Licenta.Db.DataModel
 
         public Role(int id, RoleType type, int userId)
         {
-            Id = id;
+            Id = id;    
             this.type = type;
             UserId = userId;
         }

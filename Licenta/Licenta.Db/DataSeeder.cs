@@ -62,9 +62,9 @@ namespace Licenta.Db
             await DropTable(LessonRepository);
             await DropTable(ModuleRepository);
             await DropTable(RoleRepository);
+            await DropTable(CourseUserRepository);
             await DropTable(UserRepository);
             await DropTable(CourseRepository);
-            await DropTable(CourseUserRepository);
         }
 
         private async Task CreateTables()

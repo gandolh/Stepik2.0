@@ -27,6 +27,7 @@ namespace Licenta.UI.Component.Pages
                 Firstname = ClaimHelper.GetFirstName(claimPrincipal),
                 Lastname = ClaimHelper.GetLastName(claimPrincipal),
                 Email = ClaimHelper.GetEmail(claimPrincipal),
+                Roles = ClaimHelper.GetRoles(claimPrincipal),
             };
         }
     }

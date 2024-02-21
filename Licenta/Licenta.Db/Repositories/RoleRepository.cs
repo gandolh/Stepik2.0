@@ -1,5 +1,6 @@
 ﻿using Licenta.Db.DataModel;
 using Licenta.Db.Seeder.Interfaces;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace Licenta.Db.Repositories
 {
@@ -21,6 +22,13 @@ namespace Licenta.Db.Repositories
             await _dbClient.ExecuteAsync(sql);
         }
 
+        public async Task<List<Role>> GetAllByUserIdAsync(int id)
+        {
+            string sql = $"SELECT * FROM {_tableName} WHERE UserId={id}";
+            return await _dbClient.QueryAsync<Role>(sql);
+        }
+
+    
         public override async Task InsertAsync(Role data)
         {
             string sql = $@"

@@ -41,12 +41,11 @@ namespace Licenta.SDK.Services
 
         }
         
-        public static RoleType[] GetRoles(ClaimsPrincipal user)
+        public static List<RoleType> GetRoles(ClaimsPrincipal user)
         {
             string value = user.FindFirst(ClaimHelper.RolesClaimType)?.Value ?? "";
-            if(value == "") return new RoleType[0];
-            return JsonSerializer.Deserialize<RoleType[]>(value)!;
-
+            if(value == "") return new List<RoleType>();
+            return JsonSerializer.Deserialize<List<RoleType>>(value)!;
         }
 
     }

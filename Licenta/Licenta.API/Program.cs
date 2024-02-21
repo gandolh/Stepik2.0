@@ -30,6 +30,7 @@ static void ConfigureDI(IServiceCollection services)
     services.AddScoped<CourseRepository>();
     services.AddScoped<ExerciseRepository>();
     services.AddScoped<LessonRepository>();
+    services.AddScoped<RoleRepository>();
     services.AddScoped<UserRepository>();
     services.AddScoped<SubmissionRepository>();
     services.AddScoped<UserRepository>();
