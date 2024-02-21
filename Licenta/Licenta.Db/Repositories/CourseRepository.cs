@@ -47,7 +47,12 @@ namespace Licenta.Db.Repositories
             string sqlGetExercises = $"SELECT * FROM Exercise WHERE lessonId in ({lessonsIds})";
             List<Exercise> exercises = await _dbClient.QueryAsync<Exercise>(sqlGetExercises);
 
-            
+            var exerciseIds = string.Join(",", exercises.Select(el => el.Id));
+            string sqlGetQuizVariants = $"SELECT * FROM QuizVariant WHERE exerciseId in ({exerciseIds})";
+            List<QuizVariant> quizVariants = await _dbClient.QueryAsync<QuizVariant>(sqlGetQuizVariants);
+
+
+            exercises.ForEach(e => e.QuizVariants = quizVariants.Where(q => q.ExerciseId == e.Id).ToList());
             lessons.ForEach(l => l.Exercises = exercises.Where(e => e.LessonId == l.Id).ToList());
             modules.ForEach(m => m.Lessons = lessons.Where(l => l.ModuleId == m.Id).ToList());
 
