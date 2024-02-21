@@ -3,6 +3,11 @@
     background-color: #16161a;
     border-radius: 50px;
     padding: 5px 10px;
+    position: relative;
+}
+
+.dropdown-container{
+    position: absolute;
 }
 
 .dropdown-container #user-menu {
@@ -65,4 +70,3 @@
 .menu-bar i:hover {
     cursor: pointer;
 }
-
