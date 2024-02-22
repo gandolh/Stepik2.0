@@ -131,11 +131,7 @@ pre {
     gap: 1rem;
 }
 
-.overview-img {
-    width: 25rem;
-    aspect-ratio: 1/1;
-    border-radius: 100%;
-}
+
 
 #overview{
     display:flex;

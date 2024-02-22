@@ -1,8 +1,14 @@
-﻿@inherits BaseLicentaComp
+﻿@using Licenta.SDK.Services
+@using Licenta.UI.Component.Profile
+@inherits BaseLicentaComp
 <div class="username-container">
     <a class='dropdown-trigger' data-target='user-menu'>
         <div class="profile-container">
-            <img src="imgs/avatar-child-face.png" class="profile-img"/>
+            <Microsoft.AspNetCore.Components.Authorization.AuthorizeView>
+                <Authorized>
+            <ProfileImg Class="profile-img" Email="@ClaimHelper.GetEmail(context.User)"/>
+                </Authorized>
+            </Microsoft.AspNetCore.Components.Authorization.AuthorizeView>
             <div class="profile-description">
                 <p class="user-title">@Fullname</p>
                 <p class="username">@Email</p>

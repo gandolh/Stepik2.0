@@ -177,6 +177,32 @@ namespace Licenta.UI.Services
 
             return resp;
         }
+        
+        internal async Task<string> GetProfilePicture(string email)
+        {
+            string resp = await _myHttpClient.GetAsync(
+               _licentaConfig.Endpoints.Account.GetProfilePicture,
+                  new Dictionary<string, string>() { { "email", email } }
+               );
+
+            return resp;
+        }
+
+        internal async Task<HttpStatusCode> PostProfilePicture(IFormFile formFile, string email)
+        {
+            Stream stream = formFile.OpenReadStream();
+            MultipartFormDataContent content = new MultipartFormDataContent
+            {
+                { new StreamContent(stream), "formFile", formFile.FileName },
+                { new StringContent(email), "email"}
+            };
+            HttpStatusCode resp = await _myHttpClient.PostAsync<HttpStatusCode>(
+               _licentaConfig.Endpoints.Account.PostProfilePicture,
+               content
+               );
+
+            return resp;
+        }
 
         internal async Task<HttpStatusCode> Register(RegisterReqDto reqDto)
         {
@@ -281,6 +307,16 @@ namespace Licenta.UI.Services
 
             return resp;
         }
+
+
+        internal async Task UpdatePortalUser(PortalUserDto? dto)
+        {
+            await _myHttpClient.PutAsync(
+               _licentaConfig.Endpoints.Account.Update,
+               dto);
+
+        }
+        
 
         internal async Task UpdateCodeEvaluation(CodeEvaluationEntryDto? dto)
         {

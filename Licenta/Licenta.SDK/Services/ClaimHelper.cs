@@ -7,6 +7,7 @@ namespace Licenta.SDK.Services
     public class ClaimHelper
     {
         public static readonly string RolesClaimType= "Roles";
+        public static readonly string UserIdClaimType = "UserId";
 
         public static string GetUserInitials(ClaimsPrincipal? user)
         {
@@ -48,5 +49,12 @@ namespace Licenta.SDK.Services
             return JsonSerializer.Deserialize<List<RoleType>>(value)!;
         }
 
+        public static int GetUserId(ClaimsPrincipal user)
+        {
+            string value = user.FindFirst(ClaimHelper.UserIdClaimType)?.Value ?? "";
+            bool succed = int.TryParse(value, out int id);
+            if (!succed) id = 0;
+            return id;
+        }
     }
 }

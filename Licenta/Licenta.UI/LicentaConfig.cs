@@ -68,6 +68,9 @@ namespace Licenta.UI
         public readonly string Register;
         public readonly string JwtLogin;
         public readonly string GenerateToken;
+        public readonly string GetProfilePicture;
+        public readonly string PostProfilePicture;
+        public readonly string Update;
 
 
         public AccountEndpoint(string prefix)
@@ -77,6 +80,9 @@ namespace Licenta.UI
             Register = prefix + "/Register";
             JwtLogin = prefix + "/JwtLogin";
             GenerateToken = prefix + "/GenerateToken";
+            GetProfilePicture = prefix + "/GetProfilePicture";
+            PostProfilePicture = prefix + "/PostProfilePicture";
+            Update = prefix + "/Update";
         }
     }
 

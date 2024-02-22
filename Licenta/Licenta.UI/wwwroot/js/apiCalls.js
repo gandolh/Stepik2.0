@@ -12,10 +12,10 @@ const handleLogin = async (email, password) => {
     const currentHost = window.location.host;
     const url = `https://${currentHost}/api/login`;
 
-    await postData(url, {
+    await postData(url, JSON.stringify({
         email: email,
         password: password
-    }, callbackError, callbackSucces);
+    }), callbackError, callbackSucces);
 
 }
 
@@ -31,23 +31,44 @@ const handleLogout = async () => {
         window.location = window.location.origin;
     }
 
-    await postData(url, {}, callbackError, callbackSucces);
+    await postData(url, JSON.stringify({}), callbackError, callbackSucces);
 }
 
-async function postData(url, postData, callbackError, callbackSucces) {
+const uploadProfilePicture = async () => {
+    const currentHost = window.location.host;
+    const url = `https://${currentHost}/api/uploadPicture`;
+
+    const fileInput = document.getElementById('uploadProfilePic');
+    const formData = new FormData();
+    formData.append('file', fileInput.files[0]);
+
+    const callbackError = (error) => {
+        console.error(error);
+    }
+
+    const callbackSucces = () => {
+        console.log('success');
+    }
+
+    await postData(url, formData, callbackError, callbackSucces, {});
+    window.location.reload();
+}
+
+async function postData(url, postData, callbackError, callbackSucces, customHeaders) {
     // Get the current site host
 
     // Define the URL
-
+    const defaultHeader = {
+        'Content-Type': 'application/json'
+    }
+    const headers = customHeaders ? customHeaders : defaultHeader;
 
     try {
         // Make the POST request with await
         const response = await fetch(url, {
             method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(postData)
+            headers: headers,
+            body: postData
         });
 
         // Check for errors
@@ -66,6 +87,10 @@ async function postData(url, postData, callbackError, callbackSucces) {
     }
 }
 
+
+var ApiCaller = {
+    uploadProfilePicture: uploadProfilePicture
+}
 
 var Auth = {
     handleLogin: handleLogin,

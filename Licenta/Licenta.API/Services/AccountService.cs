@@ -50,5 +50,10 @@ namespace Licenta.API.Services
             }
             return true;
         }
+
+        internal async Task UpdateUser(PortalUserDto userDto)
+        {
+            await _userRepository.UpdateAsync(_userMapper.Map(userDto));
+        }
     }
 }

@@ -43,7 +43,9 @@ namespace Licenta.UI.Controllers
                 new Claim(ClaimTypes.Email, user.Email),
                 new Claim(ClaimTypes.GivenName, user.Firstname),
                 new Claim(ClaimTypes.Surname, user.Lastname),
-                new Claim(ClaimHelper.RolesClaimType, JsonSerializer.Serialize(user.Roles))};
+                new Claim(ClaimHelper.UserIdClaimType, user.Id.ToString()),
+                new Claim(ClaimHelper.RolesClaimType, JsonSerializer.Serialize(user.Roles))
+            };
                 ClaimsIdentity claimsIdentity = new ClaimsIdentity(claimList, "auth");
             ClaimsPrincipal claims = new ClaimsPrincipal(claimsIdentity);
             await HttpContext.SignInAsync("Cookies", claims);

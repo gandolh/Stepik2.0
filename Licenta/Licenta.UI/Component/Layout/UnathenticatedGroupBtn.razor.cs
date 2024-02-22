@@ -13,7 +13,7 @@ namespace Licenta.UI.Component.Layout
             if (firstRender)
             {
                 // todo: remove in prod
-                //await JSRuntime.InvokeVoidAsync("Auth.handleLogin", "admin", "admin");
+                await JSRuntime.InvokeVoidAsync("Auth.handleLogin", "admin", "admin");
             }
 
             await base.OnAfterRenderAsync(firstRender);

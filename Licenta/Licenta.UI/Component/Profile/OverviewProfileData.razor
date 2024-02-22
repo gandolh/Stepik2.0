@@ -1,6 +1,15 @@
-﻿<div class="overview-img-wrapper">
+﻿@using Licenta.SDK.Services
+<div class="overview-img-wrapper">
     <h1> Overview </h1>
-    <img src="imgs/avatar-child-face.png" class="overview-img" />
-    <a class="waves-effect waves-light btn">Upload profile pic</a>
+    <Microsoft.AspNetCore.Components.Authorization.AuthorizeView>
+                <Authorized>
+            <ProfileImg Class="overview-img" Email="@ClaimHelper.GetEmail(context.User)"/>
+                    </Authorized>
+                    </Microsoft.AspNetCore.Components.Authorization.AuthorizeView>
+
+    
+    <label for="uploadProfilePic" id="uploadProfilePic_label" class="waves-effect waves-light btn">
+        <input id="uploadProfilePic" type="file" style="display:none" onchange="ApiCaller.uploadProfilePicture()" accept="image/png, image/jpeg" />
+        Upload profile pic</label>
 </div>
 <ProfileData User="User" Disabled=true />

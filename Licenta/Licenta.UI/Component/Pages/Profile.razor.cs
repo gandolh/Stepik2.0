@@ -24,6 +24,7 @@ namespace Licenta.UI.Component.Pages
         {
             return new PortalUserDto()
             {
+                Id = ClaimHelper.GetUserId(claimPrincipal),
                 Firstname = ClaimHelper.GetFirstName(claimPrincipal),
                 Lastname = ClaimHelper.GetLastName(claimPrincipal),
                 Email = ClaimHelper.GetEmail(claimPrincipal),
