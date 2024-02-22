@@ -1,19 +1,13 @@
 ﻿<div class="d-flex flex-col gap-2">
     <h1> Notifications </h1>
-    <label>
-        <input type="checkbox" checked="" />
-        <span>Changes made to your account</span>
-    </label>
-    <label>
-        <input type="checkbox" />
-        <span>Information on new products and services</span>
-    </label>
-    <label>
-        <input type="checkbox" />
-        <span> Marketing and promo offers</span>
-    </label>
-    <label>
-        <input type="checkbox" checked="" disabled="" />
-        <span>  Security alerts</span>
-    </label>
+    @if (_optInNotificationDto != null)
+    {
+        <CheckBox @bind-Checked=_optInNotificationDto.WhenAccountChanges Text="Changes made to your account" />
+        <CheckBox @bind-Checked=_optInNotificationDto.WhenNewProducts Text="Information on new products and services" />
+        <CheckBox @bind-Checked=_optInNotificationDto.WhenMarketingAndPromo Text="Marketing and promo offers" />
+        <CheckBox @bind-Checked=_optInNotificationDto.WhenSecurityAlerts Text="Security alerts" Disabled=true />
+        <div class='row d-flex justify-end gap-2'>
+            <a class="waves-effect waves-light btn green" @onclick="HandleSave">Save</a>
+        </div>
+    }
 </div>

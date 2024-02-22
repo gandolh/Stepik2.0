@@ -168,6 +168,19 @@ namespace Licenta.UI.Services
             return resp;
         }
 
+        internal async Task<OptInNotificationDto> GetOptInNotifications(int userId)
+        {
+            var resp = await _myHttpClient.GetAsync<OptInNotificationDto>(
+               _licentaConfig.Endpoints.Account.GetOptInNotifications,
+               new Dictionary<string, string>() { { "userId", userId.ToString() } }
+               );
+
+            return resp;
+        }
+
+
+
+
         internal async Task<PortalUserDto?> GetUser(LoginReqDto reqDto)
         {
             PortalUserDto? resp = await _myHttpClient.PostAsync<PortalUserDto?, LoginReqDto>(
@@ -316,7 +329,13 @@ namespace Licenta.UI.Services
                dto);
 
         }
-        
+
+        internal async Task UpdateOptInNotifications(OptInNotificationDto? dto)
+        {
+            await _myHttpClient.PutAsync(
+               _licentaConfig.Endpoints.Account.UpdateOptInNotifications,
+               dto);
+        }
 
         internal async Task UpdateCodeEvaluation(CodeEvaluationEntryDto? dto)
         {

@@ -202,5 +202,23 @@ namespace Licenta.Db.Seeder
 
             return modules;
         }
+
+        internal static OptInNotification[] GetOptInNotifications()
+        {
+            OptInNotification[] modules =
+           [
+                new OptInNotification(1),
+                new OptInNotification(2),
+                new OptInNotification(3),
+                new OptInNotification(4),
+                new OptInNotification(5),
+                new OptInNotification(7),
+                new OptInNotification(8),
+                new OptInNotification(9),
+                new OptInNotification(10),
+            ];
+
+            return modules;
+        }
     }
 }

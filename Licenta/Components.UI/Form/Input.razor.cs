@@ -12,6 +12,7 @@ namespace Components.UI.Form
         [Parameter] public InputType InputType { get; set; } = InputType.Text;
         [Parameter] public EventCallback<string> ValueChanged { get; set; } = default!;
         [Parameter] public string Name { get; set; } = String.Empty;
+        [Parameter] public bool? Disabled { get; set; } = null;
         [Parameter(CaptureUnmatchedValues = true)] public IReadOnlyDictionary<string, object>? Attributes { get; set; }
 
 

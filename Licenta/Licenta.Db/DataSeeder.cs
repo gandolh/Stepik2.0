@@ -19,6 +19,7 @@ namespace Licenta.Db
         private readonly QuizVariantsRepository QuizVariantsRepository;
         private readonly SubmissionRepository SubmissionRepository;
         private readonly CourseUserRepository CourseUserRepository;
+        private readonly OptInNotificationRepository OptInNotificationRepository;
 
 
 
@@ -41,6 +42,7 @@ namespace Licenta.Db
             CodeEvaluationEntryRepository = new CodeEvalEntryRepository(_dbClient);
             SubmissionRepository = new SubmissionRepository(_dbClient);
             CourseUserRepository = new CourseUserRepository(_dbClient);
+            OptInNotificationRepository = new OptInNotificationRepository(_dbClient);
         }
 
 
@@ -63,6 +65,7 @@ namespace Licenta.Db
             await DropTable(ModuleRepository);
             await DropTable(RoleRepository);
             await DropTable(CourseUserRepository);
+            await DropTable(OptInNotificationRepository);
             await DropTable(UserRepository);
             await DropTable(CourseRepository);
         }
@@ -79,6 +82,7 @@ namespace Licenta.Db
             await CreateTable(CodeEvaluationEntryRepository);
             await CreateTable(SubmissionRepository);
             await CreateTable(CourseUserRepository);
+            await CreateTable(OptInNotificationRepository);
         }
 
         private async Task InsertData()
@@ -93,6 +97,7 @@ namespace Licenta.Db
             await GenericInsertData(CodeEvaluationEntryRepository, DataSampling.GetCodeEvaluationEntry);
             await GenericInsertData(SubmissionRepository, DataSampling.GetSubmissions);
             await GenericInsertData(CourseUserRepository, DataSampling.GetCourseUser);
+            await GenericInsertData(OptInNotificationRepository, DataSampling.GetOptInNotifications);
         }
 
         private async Task LogResults()
@@ -107,6 +112,7 @@ namespace Licenta.Db
             await LogResult(CodeEvaluationEntryRepository);
             await LogResult(SubmissionRepository);
             await LogResult(CourseUserRepository);
+            await LogResult(OptInNotificationRepository);
         }
 
         private async Task DropTable<T>(BaseRepository<T> repository)

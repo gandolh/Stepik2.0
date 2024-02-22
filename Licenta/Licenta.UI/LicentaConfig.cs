@@ -71,6 +71,8 @@ namespace Licenta.UI
         public readonly string GetProfilePicture;
         public readonly string PostProfilePicture;
         public readonly string Update;
+        public readonly string GetOptInNotifications;
+        public readonly string UpdateOptInNotifications;
 
 
         public AccountEndpoint(string prefix)
@@ -83,6 +85,8 @@ namespace Licenta.UI
             GetProfilePicture = prefix + "/GetProfilePicture";
             PostProfilePicture = prefix + "/PostProfilePicture";
             Update = prefix + "/Update";
+            GetOptInNotifications = prefix + "/GetOptInNotifications";
+            UpdateOptInNotifications = prefix + "/UpdateOptInNotifications";
         }
     }
 

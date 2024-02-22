@@ -1,5 +1,6 @@
 ﻿using Licenta.API.Services;
 using Licenta.API.Services.Crud;
+using Licenta.Db.DataModel;
 using Licenta.SDK.Models.Dtos;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.IdentityModel.Tokens;
@@ -22,7 +23,7 @@ namespace Licenta.API.Controllers
         private static readonly TimeSpan TokenLifetime = TimeSpan.FromHours(2);
 
         private readonly AccountService _accountService;
-        private readonly string _appDataDir = 
+        private readonly string _appDataDir =
             Path.Combine(
                 Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData),
                 "licenta");
@@ -72,8 +73,8 @@ namespace Licenta.API.Controllers
             Directory.CreateDirectory(profilePicDir);
             DirectoryInfo profileDirectory = new DirectoryInfo(profilePicDir);
             FileInfo? profilePic = profileDirectory.GetFiles(email + ".*").FirstOrDefault();
-            
-            
+
+
             if (profilePic == null) return NotFound();
             byte[] AsBytes = System.IO.File.ReadAllBytes(profilePic.FullName);
             String AsBase64String = Convert.ToBase64String(AsBytes);
@@ -103,9 +104,20 @@ namespace Licenta.API.Controllers
             return Ok(HttpStatusCode.OK);
         }
 
-        private string GetExtension(string name)
+
+
+        [HttpGet]
+        public async Task<ActionResult<OptInNotificationDto>> GetOptInNotifications([FromQuery] int userId)
         {
-            return name.Substring(name.IndexOf('.') + 1);
+            return await _accountService.GetOptInNotifications(userId);
+        }
+
+
+        [HttpPut]
+        public async Task<ActionResult> UpdateOptInNotifications(OptInNotificationDto dto)
+        {
+            await _accountService.UpdateOptInNotifications(dto);
+            return Ok(HttpStatusCode.OK);
         }
 
         private string GenerateToken(PortalUserDto user)
@@ -130,6 +142,11 @@ namespace Licenta.API.Controllers
             var token = tokenHandler.CreateToken(tokenDescriptor);
             // client needs to save JWT as well include it in the Authorization Bearer Token header of subsequent requests
             return jwtSecurityTokenHandler.WriteToken(token);
+        }
+
+        private string GetExtension(string name)
+        {
+            return name.Substring(name.IndexOf('.') + 1);
         }
     }
 
