@@ -39,7 +39,13 @@ namespace Licenta.API.Services.Crud
         internal async Task<UpdateResult> Update(TDto c)
         {
             await _repository.UpdateAsync(_mapper.Map(c));
-            return new(typeof(CodeEvaluationEntryDto), c.Id);
+            return new(typeof(TDto), c.Id);
+        }
+
+        internal async Task<UpdateResult> Create(TDto c)
+        {
+            await _repository.InsertAsync(_mapper.Map(c));
+            return new(typeof(TDto), c.Id);
         }
 
         internal async Task<DeleteResult> Delete(int id)

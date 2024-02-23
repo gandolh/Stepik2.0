@@ -50,6 +50,12 @@ namespace Licenta.API.Controllers.Crud
             return Ok(res);
         }
 
+        [HttpPost]
+        public virtual async Task<UpdateResult> Create(TDto c)
+        {
+            return await _service.Create(c);
+        }
+
 
         [HttpPut]
         public virtual async Task<UpdateResult> Update(TDto c)

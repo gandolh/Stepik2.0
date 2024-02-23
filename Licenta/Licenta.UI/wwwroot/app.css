@@ -138,3 +138,7 @@ pre {
     flex-direction:column;
     gap: 1rem;
 }
+
+.mt-2{
+    margin-top: 0.5rem;
+}

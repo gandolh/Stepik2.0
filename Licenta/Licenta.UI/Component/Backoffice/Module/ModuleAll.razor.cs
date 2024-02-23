@@ -6,6 +6,7 @@ namespace Licenta.UI.Component.Backoffice.Module
 {
     public partial class ModuleAll : BaseShowAll
     {
+        public ModuleDto NewDto { get; set; } = new ModuleDto();
         protected override async Task OnAfterRenderAsync(bool firstRender)
         {
             if (firstRender)
@@ -17,9 +18,15 @@ namespace Licenta.UI.Component.Backoffice.Module
             await base.OnAfterRenderAsync(firstRender);
         }
 
-        private async Task HandleRemove(int selectedId)
+        protected override async Task HandleRemove(int selectedId)
         {
             await httpLicentaClient.DeleteModule(selectedId);
+            await LoadDatatable();
+        }
+
+        private async Task HandleCreate()
+        {
+            await httpLicentaClient.CreateModule(NewDto);
             await LoadDatatable();
         }
 

@@ -6,6 +6,9 @@ namespace Licenta.UI.Component.Backoffice.QuizVariant
 {
     public partial class QuizVariantAll : BaseShowAll
     {
+        public QuizVariantDto NewDto { get; set; } = new QuizVariantDto();
+
+
         protected override async Task OnAfterRenderAsync(bool firstRender)
         {
             if (firstRender)
@@ -17,15 +20,21 @@ namespace Licenta.UI.Component.Backoffice.QuizVariant
             await base.OnAfterRenderAsync(firstRender);
         }
 
-        private async Task HandleRemove(int selectedId)
+        protected override async Task HandleRemove(int selectedId)
         {
             await httpLicentaClient.DeleteQuizVariant(selectedId);
             await LoadDatatable();
         }
 
+        private async Task HandleCreate()
+        {
+            await httpLicentaClient.CreateQuizVariant(NewDto);
+            await LoadDatatable();
+        }
+
         private async Task LoadDatatable()
         {
-            var elts = await httpLicentaClient.GetQuizVariants();
+            var elts = await httpLicentaClient.GetFullQuizVariants();
             DataTableJson json = new DataTableJson();
             json.ImportOverride(elts);
 

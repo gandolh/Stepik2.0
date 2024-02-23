@@ -51,8 +51,9 @@ const GetSelectedId = (modalId) => {
     return document.getElementById(modalId).getAttribute("data-eltId")
 }
 
-const ModalClose = (modalId) => {
-    MicroModal.close(modalId);
+const ModalClose = (modalId) => {   
+    var instance = M.Modal.getInstance(document.getElementById(modalId));
+    instance.close();
 }
 
 

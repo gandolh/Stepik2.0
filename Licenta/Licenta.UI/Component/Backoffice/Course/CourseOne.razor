@@ -1,15 +1,18 @@
-﻿@inherits BaseShowOne
+﻿@using Licenta.UI.Component.Backoffice.Shared
+@inherits BaseShowOne
 
-@if (dto != null)
+@if (Dto != null)
 {
-    <ShowAllLayout OnSaving=HandleSaving>
-        <div class='row'>
-            <div class='input-field col s6'>
-                <input @bind-value=dto.Name placeholder="Name"
-                       id="Name" type="text" class="validate"
-                       required disabled=@Disabled>
-                <label class="active" for="Input">Name</label>
-            </div>
+    <div class='row'>
+        <div class='input-field col s6'>
+            <input @bind-value=Dto.Name placeholder="Name"
+                   id="Name" type="text" class="validate"
+                   required disabled=@Disabled>
+            <label class="active" for="Input">Name</label>
         </div>
-    </ShowAllLayout>
+        @if (IsNew == false)
+        {
+            <BtnUpdate OnUpdate=@HandleSaving />
+        }
+    </div>
 }

@@ -1,16 +1,19 @@
 ﻿using Licenta.SDK.Models.Dtos;
+using Microsoft.AspNetCore.Components;
 
 namespace Licenta.UI.Component.Backoffice.Lesson
 {
     public partial class LessonOne : BaseShowOne
     {
-        public LessonDto? dto { get; set; }
+        [Parameter] public LessonDto? dto { get; set; }
+        [Parameter] public EventCallback<LessonDto?> DtoChanged { get; set; }
 
         protected override async Task OnAfterRenderAsync(bool firstRender)
         {
             if (firstRender)
             {
-                dto = await HttpLicentaClient.GetOneLesson(Id);
+                if (IsNew == false)
+                    dto = await HttpLicentaClient.GetOneLesson(Id);
                 StateHasChanged();
             }
             await base.OnAfterRenderAsync(firstRender);

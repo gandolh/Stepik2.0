@@ -40,6 +40,13 @@ namespace Licenta.API.Controllers.Crud
         {
             return await base.Update(c);
         }
+
+        [SwaggerOperation(Summary = "Create course", Description = "")]
+        public override async Task<UpdateResult> Create(CourseDto c)
+        {
+            return await base.Create(c);
+        }
+
         [SwaggerOperation(Summary = "Delete course", Description = "")]
         public override async Task<DeleteResult> Delete(int id)
         {

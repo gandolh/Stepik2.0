@@ -2,10 +2,9 @@
 
 <Components.UI.Modal.Modal Title="@ModalTitle" ModalId="@ModalId">
     <Body>
-        @ChildContent
+        @Body
     </Body>
     <Footer>
-        <Button Class="modal-close" Color=ButtonColor.Secondary AriaLabel="Close this dialog window">Cancel</Button>
-        <Button Color=ButtonColor.Red Clicked=@HandleRemove>Delete</Button>
+        @Footer
     </Footer>
 </Components.UI.Modal.Modal>

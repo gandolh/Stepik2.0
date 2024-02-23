@@ -6,6 +6,7 @@ namespace Licenta.UI.Component.Backoffice.Exercise
 {
     public partial class ExerciseAll : BaseShowAll
     {
+        public ExerciseDto NewDto { get; set; } = new ExerciseDto();
         protected override async Task OnAfterRenderAsync(bool firstRender)
         {
             if (firstRender)
@@ -17,9 +18,15 @@ namespace Licenta.UI.Component.Backoffice.Exercise
             await base.OnAfterRenderAsync(firstRender);
         }
 
-        private async Task HandleRemove(int selectedId)
+        protected override async Task HandleRemove(int selectedId)
         {
             await httpLicentaClient.DeleteExercise(selectedId);
+            await LoadDatatable();
+        }
+
+        private async Task HandleCreate()
+        {
+            await httpLicentaClient.CreateExercise(NewDto);
             await LoadDatatable();
         }
 

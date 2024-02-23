@@ -1,0 +1,11 @@
+﻿
+<ModalOneLayout ModalTitle=@Modaltitle
+                ModalId=@ModalRemoveId>
+    <Body>
+        <p> Are you sure? </p>
+    </Body>
+    <Footer>
+        <Button Class="modal-close" Color=ButtonColor.Secondary AriaLabel="Close this dialog window">Cancel</Button>
+        <Button Color=ButtonColor.Red Clicked=@HandleRemove>Delete</Button>
+    </Footer>
+</ModalOneLayout>

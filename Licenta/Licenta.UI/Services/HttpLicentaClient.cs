@@ -97,11 +97,22 @@ namespace Licenta.UI.Services
 
             return resp;
         }
-        internal async Task<List<FullCodeEvaluationEntryDto>> GetCodeEvaluations()
+        internal async Task<List<CodeEvaluationEntryDto>> GetCodeEvaluations()
+        {
+
+            var resp = await _myHttpClient.GetAsync<List<CodeEvaluationEntryDto>>(
+                _licentaConfig.Endpoints.CodeEvaluationEntry.GetAll,
+                new Dictionary<string, string>()
+                );
+
+            return resp;
+        }
+
+        internal async Task<List<FullCodeEvaluationEntryDto>> GetFullCodeEvaluations()
         {
 
             var resp = await _myHttpClient.GetAsync<List<FullCodeEvaluationEntryDto>>(
-                _licentaConfig.Endpoints.CodeEvaluationEntry.GetAll,
+                _licentaConfig.Endpoints.CodeEvaluationEntry.GetFullAll,
                 new Dictionary<string, string>()
                 );
 
@@ -128,6 +139,16 @@ namespace Licenta.UI.Services
             return resp;
         }
 
+        internal async Task<List<FullLessonDto>> GetFullLessons()
+        {
+            var resp = await _myHttpClient.GetAsync<List<FullLessonDto>>(
+               _licentaConfig.Endpoints.Lesson.GetFullAll,
+               new Dictionary<string, string>()
+               );
+
+            return resp;
+        }
+
         internal async Task<List<ModuleDto>> GetModules()
         {
             var resp = await _myHttpClient.GetAsync<List<ModuleDto>>(
@@ -138,10 +159,19 @@ namespace Licenta.UI.Services
             return resp;
         }
 
-        internal async Task<List<FullQuizVariantDto>> GetQuizVariants()
+        internal async Task<List<QuizVariantDto>> GetQuizVariants()
+        {
+            var resp = await _myHttpClient.GetAsync<List<QuizVariantDto>>(
+               _licentaConfig.Endpoints.QuizVariant.GetAll,
+               new Dictionary<string, string>()
+               );
+
+            return resp;
+        }
+        internal async Task<List<FullQuizVariantDto>> GetFullQuizVariants()
         {
             var resp = await _myHttpClient.GetAsync<List<FullQuizVariantDto>>(
-               _licentaConfig.Endpoints.QuizVariant.GetAll,
+               _licentaConfig.Endpoints.QuizVariant.GetFullAll,
                new Dictionary<string, string>()
                );
 
@@ -283,7 +313,7 @@ namespace Licenta.UI.Services
         {
             var querryParameters = new Dictionary<string, string>()
             {
-                {"id",id.ToString() },
+                {"id",id.ToString()},
             };
             var resp = await _myHttpClient.GetAsync<QuizVariantDto>(
                _licentaConfig.Endpoints.QuizVariant.GetById,
@@ -389,6 +419,48 @@ namespace Licenta.UI.Services
 
         }
 
+        internal async Task CreateCourse(CourseDto dto)
+        {
+            await _myHttpClient.PostAsync(
+              _licentaConfig.Endpoints.Course.Create,
+              dto);
+        }
+
+        internal async Task CreateExercise(ExerciseDto dto)
+        {
+            await _myHttpClient.PostAsync(
+              _licentaConfig.Endpoints.Exercise.Create,
+              dto);
+        }
+
+        internal async Task CreateLesson(LessonDto dto)
+        {
+            await _myHttpClient.PostAsync(
+              _licentaConfig.Endpoints.Lesson.Create,
+              dto);
+        }
+
+        internal async Task CreateModule(ModuleDto dto)
+        {
+            await _myHttpClient.PostAsync(
+              _licentaConfig.Endpoints.Module.Create,
+              dto);
+        }
+
+        internal async Task CreateQuizVariant(QuizVariantDto dto)
+        {
+            await _myHttpClient.PostAsync(
+              _licentaConfig.Endpoints.QuizVariant.Create,
+              dto);
+        }
+
+        internal async Task CreateCodeEvaluationEntry(CodeEvaluationEntryDto dto)
+        {
+            await _myHttpClient.PostAsync(
+              _licentaConfig.Endpoints.CodeEvaluationEntry.Create,
+              dto);
+        }
+
         internal async Task DeleteCodeEvaluation(int id)
         {
             var querryParameters = new Dictionary<string, string>()
@@ -471,5 +543,6 @@ namespace Licenta.UI.Services
               querryParameters);
         }
 
+       
     }
 }

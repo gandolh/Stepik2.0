@@ -1,16 +1,19 @@
 ﻿using Licenta.SDK.Models.Dtos;
+using Microsoft.AspNetCore.Components;
 
 namespace Licenta.UI.Component.Backoffice.Module
 {
     public partial class ModuleOne : BaseShowOne
     {
-        public ModuleDto? dto { get; set; }
+        [Parameter] public ModuleDto? dto { get; set; }
+        [Parameter] public EventCallback<ModuleDto?> DtoChanged { get; set; }
 
         protected override async Task OnAfterRenderAsync(bool firstRender)
         {
             if (firstRender)
             {
-                dto = await HttpLicentaClient.GetOneModule(Id);
+                if (IsNew == false)
+                    dto = await HttpLicentaClient.GetOneModule(Id);
                 StateHasChanged();
             }
             await base.OnAfterRenderAsync(firstRender);

@@ -31,7 +31,7 @@ namespace Licenta.UI.Data
             }
         }
 
-        internal void ImportOverride(List<CourseDto> elts)
+        internal void ImportOverride(List<FullCourseDto> elts)
         {
             elts.Sort((e1, e2) => e1.Id - e2.Id);
             Headings = ["Id", "Name", "Teachers", "Students", ""];
@@ -116,7 +116,7 @@ namespace Licenta.UI.Data
         internal void ImportOverride(List<FullQuizVariantDto> elts)
         {
             elts.Sort((e1, e2) => e1.Id - e2.Id);
-            Headings = ["Id", "Enunciation", "Text", "IsCorrect", ""];
+            Headings = ["Id", "Text", "IsCorrect", "Enunciation", ""];
             int collectionCount = elts.Count();
             int headingsCount = Headings.Count();
             Data = new string[collectionCount][];
@@ -125,9 +125,9 @@ namespace Licenta.UI.Data
                 int index = -1;
                 Data[i] = new string[headingsCount];
                 Data[i][++index] = elts[i].Id.ToString();
-                Data[i][++index] = elts[i].Exercise.Enunciation;
                 Data[i][++index] = elts[i].Text;
                 Data[i][++index] = elts[i].IsCorrect.ToString();
+                Data[i][++index] = elts[i].Exercise.Enunciation;
                 Data[i][++index] = "crud/quizvar/one/" + elts[i].Id;
             }
         }

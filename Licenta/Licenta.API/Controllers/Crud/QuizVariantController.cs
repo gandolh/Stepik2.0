@@ -41,6 +41,11 @@ namespace Licenta.API.Controllers.Crud
         {
             return await base.Update(c);
         }
+        [SwaggerOperation(Summary = "Create quiz variant", Description = "")]
+        public override async Task<UpdateResult> Create(QuizVariantDto c)
+        {
+            return await base.Create(c);
+        }
         [SwaggerOperation(Summary = "Delete quiz variant", Description = "")]
         public override async Task<DeleteResult> Delete(int id)
         {

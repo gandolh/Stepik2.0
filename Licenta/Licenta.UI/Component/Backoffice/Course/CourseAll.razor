@@ -1,10 +1,18 @@
-﻿@inherits BaseShowAll
+﻿@using Licenta.UI.Component.Backoffice.Shared
+@inherits BaseShowAll
 
+<div class="mt-2">
+    <Button Class="modal-trigger" data-target=@_modalCreateId Color="ButtonColor.Green"> New course </Button>
+</div>
 <table class="table table-sm table-striped" id="@EltId">
 </table>
 
-<ModalOneLayout ModalTitle="Delete course"
-                ModalId=@($"{_modalRemoveId}")
-                OnRemove=HandleRemove>
-    <p> Are you sure? </p>
-</ModalOneLayout>
+<ModalRemoveItem Modaltitle="Delete course"
+                 ModalRemoveId="@_modalRemoveId"
+                 HandleRemove=@HandleRemove />
+
+<ModalAddItem ModalTitle="Create course"
+              ModalCreateId="@_modalCreateId"
+              HandleCreate="HandleCreate">
+    <CourseOne IsNew=@true @bind-Dto=NewDto />
+</ModalAddItem>

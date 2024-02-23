@@ -41,6 +41,12 @@ namespace Licenta.API.Controllers.Crud
         {
             return await base.Update(c);    
         }
+        [SwaggerOperation(Summary = "Create code eval", Description = "")]
+        public override async Task<UpdateResult> Create(CodeEvaluationEntryDto c)
+        {
+            return await base.Create(c);
+        }
+
         [SwaggerOperation(Summary = "Delete code eval", Description = "")]
         public override async Task<DeleteResult> Delete(int id)
         {

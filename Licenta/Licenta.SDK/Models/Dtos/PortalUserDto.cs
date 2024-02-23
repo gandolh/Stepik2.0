@@ -8,6 +8,6 @@
         public string Email { get; set; } = string.Empty;
         public List<RoleType> Roles { get; set; } = new List<RoleType>();
 
-        public string FullName => Firstname + Lastname;
+        public string FullName => Firstname + " " + Lastname;
     }
 }

@@ -1,16 +1,19 @@
 ﻿using Licenta.SDK.Models.Dtos;
+using Microsoft.AspNetCore.Components;
 
 namespace Licenta.UI.Component.Backoffice.CodeEval
 {
     public partial class CodeEvalOne : BaseShowOne
     {
-        public CodeEvaluationEntryDto? dto { get; set; }
+        [Parameter] public CodeEvaluationEntryDto? dto { get; set; }
+        [Parameter] public EventCallback<CodeEvaluationEntryDto?> DtoChanged { get; set; }
 
         protected override async Task OnAfterRenderAsync(bool firstRender)
         {
             if (firstRender)
             {
-                dto = await HttpLicentaClient.GetOneCodeEvaluation(Id);
+                if (IsNew == false)
+                    dto = await HttpLicentaClient.GetOneCodeEvaluation(Id);
                 StateHasChanged();
             }
             await base.OnAfterRenderAsync(firstRender);

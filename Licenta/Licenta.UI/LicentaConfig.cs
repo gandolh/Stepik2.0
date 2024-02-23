@@ -96,7 +96,7 @@ namespace Licenta.UI
         private static readonly string EndpointGetById = "/GetOne";
         private static readonly string EndpointGetFullAll = "/GetFullAll";
         private static readonly string EndpointGetFullById = "/GetFullOne";
-        private static readonly string EndpointCreate = "";
+        private static readonly string EndpointCreate = "/Create";
         private static readonly string EndpointUpdate = "/Update";
         private static readonly string EndpointDelete = "/Delete";
 

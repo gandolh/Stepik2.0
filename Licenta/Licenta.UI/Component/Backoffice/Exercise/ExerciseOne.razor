@@ -1,8 +1,8 @@
-﻿@inherits BaseShowOne
+﻿@using Licenta.UI.Component.Backoffice.Shared
+@inherits BaseShowOne
 
 @if (dto != null)
 {
-    <ShowAllLayout OnSaving=HandleSaving>
         <div class='row'>
             <div class='input-field col s6'>
                 <input @bind-value=dto.Enunciation placeholder="Enunciation"
@@ -16,9 +16,9 @@
                        required disabled=@Disabled>
                 <label class="active" for="Input">SampleInput</label>
             </div>
+             @if (IsNew == false)
+        {
+            <BtnUpdate OnUpdate=@HandleSaving />
+        }
         </div>
-    </ShowAllLayout>
-
-    
-    
 }

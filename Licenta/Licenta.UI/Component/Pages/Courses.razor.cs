@@ -21,7 +21,7 @@ namespace Licenta.UI.Component.Pages
             await base.OnAfterRenderAsync(firstRender);    
         }
 
-        private string[] GetDescription(CourseDto courseDto)
+        private string[] GetDescription(FullCourseDto courseDto)
         {
             string teachers = "Profesori: " + string.Join(",",
                 courseDto.Teachers.Select(el => $"{el.Firstname} {el.Lastname}"));

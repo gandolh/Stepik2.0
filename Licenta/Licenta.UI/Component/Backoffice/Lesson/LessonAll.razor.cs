@@ -6,6 +6,8 @@ namespace Licenta.UI.Component.Backoffice.Lesson
 {
     public partial class LessonAll : BaseShowAll
     {
+        public LessonDto NewDto { get; set; } = new LessonDto();
+
         protected override async Task OnAfterRenderAsync(bool firstRender)
         {
             if (firstRender)
@@ -17,9 +19,15 @@ namespace Licenta.UI.Component.Backoffice.Lesson
             await base.OnAfterRenderAsync(firstRender);
         }
 
-        private async Task HandleRemove(int selectedId)
+        protected override async Task HandleRemove(int selectedId)
         {
             await httpLicentaClient.DeleteLesson(selectedId);
+            await LoadDatatable();
+        }
+
+        private async Task HandleCreate()
+        {
+            await httpLicentaClient.CreateLesson(NewDto);
             await LoadDatatable();
         }
 
