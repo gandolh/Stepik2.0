@@ -23,7 +23,8 @@ namespace Licenta.API.Services.Crud
 
         internal virtual async Task<IEnumerable<TDto>> GetAll()
         {
-            return _mapper.Map(await _repository.GetAllAsync());
+            var all = await _repository.GetAllAsync();
+            return _mapper.Map(all);
         }
 
         internal virtual async Task<TDto?> GetOne(int id)

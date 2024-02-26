@@ -16,10 +16,10 @@
                    required disabled=@Disabled>
             <label class="active" for="ExpectedResult">ExpectedResult</label>
         </div>
-        @if (IsNew == false)
-        {
-            <BtnUpdate OnUpdate=@HandleSaving />
-        }
     </div>
+    @if (IsNew == false)
+    {
+        <BtnUpdate OnUpdate=@HandleSaving />
+    }
 }
 

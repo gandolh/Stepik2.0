@@ -85,7 +85,8 @@ const initializeFormSelect = () => {
 }
 
 
-const InitDataTable = (eltId, json, modalRemoveId) => {
+const InitDataTable = (eltId, json, modalRemoveId, columns) => {
+    //console.log(columns);
     if (mySimpleDatatables[eltId] !== undefined) {
         mySimpleDatatables[eltId].destroy();
     }
@@ -101,7 +102,18 @@ const InitDataTable = (eltId, json, modalRemoveId) => {
         </button>
     </div>`;
 
-    //console.log(json)
+
+    if (columns) {
+        columns.forEach((col) => {
+            if (col.maxCharacters != -1) {
+                json.data = json.data.map(jd => {
+                    jd[col.select] = jd[col.select].substring(0, col.maxCharacters) + "...";
+                    return jd;
+                })
+            }
+        });
+    }
+
     json.data.map(el => {
         const linkUpdate = el[el.length - 1];
         let id = linkUpdate.split("/");
@@ -112,7 +124,8 @@ const InitDataTable = (eltId, json, modalRemoveId) => {
     )
     mySimpleDatatables[eltId] = new simpleDatatables.DataTable(`#${eltId}`, {
         //data:  sampleDataTableData 
-        data: json
+        data: json,
+        columns: columns
     })
 
 }
@@ -143,6 +156,14 @@ const InitTooltip = () => {
     var instances = M.Tooltip.init(elems, {});
 }
 
+const initializeAutocomplete = (eltId, data) => {
+    var elem = document.getElementById(eltId);
+    var instance = M.Autocomplete.init(elem, {
+        data: data ?? {},
+        limit: 5
+    });
+}
+
 
 
 var MaterializeInitializer = {
@@ -154,5 +175,6 @@ var MaterializeInitializer = {
     InitDropdown: InitDropdown,
     InitTabs: InitTabs,
     InitModal: InitModal,
-    InitTooltip: InitTooltip
+    InitTooltip: InitTooltip,
+    initializeAutocomplete: initializeAutocomplete
 }

@@ -16,9 +16,14 @@
                    required disabled=@Disabled>
             <label class="active" for="Input">Body</label>
         </div>
-        @if (IsNew == false)
-        {
-            <BtnUpdate OnUpdate=@HandleSaving />
-        }
     </div>
+    <div class="row">
+        <div class='input-field col s6'>
+            <AutoComplete AutocompleteId="autocomplete-module-one" Label="Course" Data="_autoCompleteData" />
+        </div>
+    </div>
+    @if (IsNew == false)
+    {
+        <BtnUpdate OnUpdate=@HandleSaving />
+    }
 }

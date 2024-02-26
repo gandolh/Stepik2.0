@@ -1,6 +1,7 @@
 ﻿@using Licenta.UI.Component.Backoffice.Shared
 @inherits BaseShowOne
 
+
 @if (dto != null)
 {
     <div class='row'>
@@ -10,9 +11,12 @@
                    required disabled=@Disabled>
             <label class="active" for="Input">Name</label>
         </div>
-        @if (IsNew == false)
-        {
-            <BtnUpdate OnUpdate=@HandleSaving />
-        }
+        <div class='input-field col s6'>
+            <AutoComplete AutocompleteId="autocomplete-module-one" Label="Course" Data="_autoCompleteData" />
+        </div>
     </div>
+    @if (IsNew == false)
+    {
+        <BtnUpdate OnUpdate=@HandleSaving />
+    }
 }

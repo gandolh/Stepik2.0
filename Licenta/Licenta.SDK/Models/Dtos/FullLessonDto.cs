@@ -8,6 +8,8 @@ namespace Licenta.SDK.Models.Dtos
 {
     public class FullLessonDto : LessonDto, IDtoWithId
     {
-        public List<FullExerciseDto> Exercises { get; set; } = new(); 
+        public List<FullExerciseDto> Exercises { get; set; } = new();
+        public string Body { get; set; } = string.Empty;
+
     }
 }

@@ -1,19 +1,29 @@
-﻿using Licenta.SDK.Models.Dtos;
+﻿using Components.UI;
+using Licenta.SDK.Models.Dtos;
 using Microsoft.AspNetCore.Components;
 
 namespace Licenta.UI.Component.Backoffice.Lesson
 {
     public partial class LessonOne : BaseShowOne
     {
-        [Parameter] public LessonDto? dto { get; set; }
-        [Parameter] public EventCallback<LessonDto?> DtoChanged { get; set; }
+        [Parameter] public FullLessonDto? dto { get; set; }
+        [Parameter] public EventCallback<FullLessonDto?> DtoChanged { get; set; }
+        private AutoCompleteData _autoCompleteData = new();
+
+        protected override async Task OnInitializedAsync()
+        {
+            var lessons = await HttpLicentaClient.GetLessons();
+            foreach (var lesson in lessons)
+                _autoCompleteData.Add(lesson.Name, "");
+            await base.OnInitializedAsync();
+        }
 
         protected override async Task OnAfterRenderAsync(bool firstRender)
         {
             if (firstRender)
             {
                 if (IsNew == false)
-                    dto = await HttpLicentaClient.GetOneLesson(Id);
+                    dto = await HttpLicentaClient.GetFullOneLesson(Id);
                 StateHasChanged();
             }
             await base.OnAfterRenderAsync(firstRender);

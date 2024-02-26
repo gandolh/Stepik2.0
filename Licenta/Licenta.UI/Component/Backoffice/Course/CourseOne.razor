@@ -10,9 +10,9 @@
                    required disabled=@Disabled>
             <label class="active" for="Input">Name</label>
         </div>
-        @if (IsNew == false)
-        {
-            <BtnUpdate OnUpdate=@HandleSaving />
-        }
     </div>
+    @if (IsNew == false)
+    {
+        <BtnUpdate OnUpdate=@HandleSaving />
+    }
 }

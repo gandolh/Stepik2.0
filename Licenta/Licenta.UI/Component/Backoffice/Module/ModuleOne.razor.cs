@@ -1,4 +1,5 @@
-﻿using Licenta.SDK.Models.Dtos;
+﻿using Components.UI;
+using Licenta.SDK.Models.Dtos;
 using Microsoft.AspNetCore.Components;
 
 namespace Licenta.UI.Component.Backoffice.Module
@@ -7,6 +8,16 @@ namespace Licenta.UI.Component.Backoffice.Module
     {
         [Parameter] public ModuleDto? dto { get; set; }
         [Parameter] public EventCallback<ModuleDto?> DtoChanged { get; set; }
+
+        private AutoCompleteData _autoCompleteData = new();
+
+        protected override async Task OnInitializedAsync()
+        {
+            var courses = await HttpLicentaClient.GetCourses();
+            foreach (var course in courses)
+                _autoCompleteData.Add(course.Name, "");
+            await base.OnInitializedAsync();
+        }
 
         protected override async Task OnAfterRenderAsync(bool firstRender)
         {

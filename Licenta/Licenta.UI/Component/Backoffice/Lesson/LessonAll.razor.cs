@@ -1,4 +1,5 @@
-﻿using Licenta.SDK.Models.Dtos;
+﻿using Components.UI.Form;
+using Licenta.SDK.Models.Dtos;
 using Licenta.UI.Data;
 using Microsoft.JSInterop;
 
@@ -6,14 +7,14 @@ namespace Licenta.UI.Component.Backoffice.Lesson
 {
     public partial class LessonAll : BaseShowAll
     {
-        public LessonDto NewDto { get; set; } = new LessonDto();
+        public FullLessonDto NewDto { get; set; } = new FullLessonDto();
 
         protected override async Task OnAfterRenderAsync(bool firstRender)
         {
             if (firstRender)
             {
                 await LoadDatatable();
-                
+
             }
 
             await base.OnAfterRenderAsync(firstRender);
@@ -33,11 +34,23 @@ namespace Licenta.UI.Component.Backoffice.Lesson
 
         private async Task LoadDatatable()
         {
-            var elts = await httpLicentaClient.GetLessons();
+            var elts = await httpLicentaClient.GetFullLessons();
             DataTableJson json = new DataTableJson();
             json.ImportOverride(elts);
+            DataTableColumns columns =
+            [
+                new DatatableColumn()
+                {
+                    Select = 2,
+                    MaxCharacters = 60
+                },
+                new DatatableColumn()
+                {Select = 3,
+                    CellClass = "lessonBtnsTable"
+                }
+            ];
 
-            await JSRuntime.InvokeVoidAsync("MaterializeInitializer.InitDataTable", EltId, json, _modalRemoveId);
+            await JSRuntime.InvokeVoidAsync("MaterializeInitializer.InitDataTable", EltId, json, _modalRemoveId, columns);
         }
     }
 }

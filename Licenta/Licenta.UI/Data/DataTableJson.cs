@@ -78,7 +78,7 @@ namespace Licenta.UI.Data
             }
         }
 
-        internal void ImportOverride(List<LessonDto> elts)
+        internal void ImportOverride(List<FullLessonDto> elts)
         {
             elts.Sort((e1, e2) => e1.Id - e2.Id);
             Headings = ["Id", "Name", "Body", ""];

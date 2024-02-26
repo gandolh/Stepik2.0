@@ -142,3 +142,7 @@ pre {
 .mt-2{
     margin-top: 0.5rem;
 }
+
+.lessonBtnsTable {
+    width: 330px;
+}

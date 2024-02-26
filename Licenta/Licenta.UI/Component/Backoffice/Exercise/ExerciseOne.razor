@@ -3,22 +3,27 @@
 
 @if (dto != null)
 {
-        <div class='row'>
-            <div class='input-field col s6'>
-                <input @bind-value=dto.Enunciation placeholder="Enunciation"
-                       id="Enunciation" type="text" class="validate"
-                       required disabled=@Disabled>
-                <label class="active" for="Input">Enunciation</label>
-            </div>
-            <div class='input-field col s6'>
-                <input @bind-value=dto.SampleInput placeholder="SampleInput"
-                       id="SampleInput" type="text" class="validate"
-                       required disabled=@Disabled>
-                <label class="active" for="Input">SampleInput</label>
-            </div>
-             @if (IsNew == false)
-        {
-            <BtnUpdate OnUpdate=@HandleSaving />
-        }
+    <div class='row'>
+        <div class='input-field col s6'>
+            <input @bind-value=dto.Enunciation placeholder="Enunciation"
+                   id="Enunciation" type="text" class="validate"
+                   required disabled=@Disabled>
+            <label class="active" for="Input">Enunciation</label>
         </div>
+        <div class='input-field col s6'>
+            <input @bind-value=dto.SampleInput placeholder="SampleInput"
+                   id="SampleInput" type="text" class="validate"
+                   required disabled=@Disabled>
+            <label class="active" for="Input">SampleInput</label>
+        </div>
+    </div>
+     <div class='row'>
+        <div class='input-field col s6'>
+            <AutoComplete AutocompleteId="autocomplete-exercise-one" Label="Course" Data="_autoCompleteData" />
+        </div>
+    </div>
+    @if (IsNew == false)
+    {
+        <BtnUpdate OnUpdate=@HandleSaving />
+    }
 }
