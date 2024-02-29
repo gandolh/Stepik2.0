@@ -10,11 +10,16 @@
                    required disabled=@Disabled>
             <label class="active" for="Input">Name</label>
         </div>
-        <div class='input-field col s6'>
-            <input @bind-value=dto.Body placeholder="Body"
-                   id="Body" type="text" class="validate"
-                   required disabled=@Disabled>
-            <label class="active" for="Input">Body</label>
+        </div>
+    <div class='row'>
+        <div class='input-field col s12'>
+            <label class="active" >Body</label>
+            <div id="@BodyRichEditorId">
+                <p>Hello World!</p>
+                <p>Some initial <strong>bold</strong> text</p>
+                <p><br /></p>
+            </div>
+            
         </div>
     </div>
     <div class="row">
