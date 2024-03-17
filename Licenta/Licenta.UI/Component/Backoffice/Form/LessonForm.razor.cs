@@ -2,6 +2,7 @@
 using Licenta.SDK.Models.Dtos;
 using Licenta.UI.Component.Backoffice.Layout;
 using Microsoft.AspNetCore.Components;
+using Microsoft.JSInterop;
 
 namespace Licenta.UI.Component.Backoffice.Form
 {
@@ -9,6 +10,9 @@ namespace Licenta.UI.Component.Backoffice.Form
     {
         [Parameter] public FullLessonDto? dto { get; set; }
         [Parameter] public EventCallback<FullLessonDto?> DtoChanged { get; set; }
+        [Inject] public IJSRuntime JsRuntime { get; set; } = default!;
+
+        private const string BodyRichEditorId = "lessonBodyEditor";
         private AutoCompleteData _autoCompleteData = new();
 
         protected override async Task OnInitializedAsync()
@@ -27,6 +31,9 @@ namespace Licenta.UI.Component.Backoffice.Form
                     dto = await HttpLicentaClient.GetFullOneLesson(Id);
                 StateHasChanged();
             }
+
+            await JsRuntime.InvokeVoidAsync("MaterializeInitializer.initRichTextEditor", BodyRichEditorId);
+
             await base.OnAfterRenderAsync(firstRender);
         }
 

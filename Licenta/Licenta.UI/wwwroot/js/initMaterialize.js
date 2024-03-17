@@ -178,6 +178,13 @@ const initializeAutocomplete = (eltId, data) => {
 }
 
 
+const initRichTextEditor = (eltId) => {
+    const quill = new Quill('#' + eltId, {
+        theme: 'snow'
+    });
+}
+
+
 
 var MaterializeInitializer = {
     initializeNav: initializeNav,
@@ -189,5 +196,6 @@ var MaterializeInitializer = {
     InitTabs: InitTabs,
     InitModal: InitModal,
     InitTooltip: InitTooltip,
-    initializeAutocomplete: initializeAutocomplete
+    initializeAutocomplete: initializeAutocomplete,
+    initRichTextEditor: initRichTextEditor
 }
