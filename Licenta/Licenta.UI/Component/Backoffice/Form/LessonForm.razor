@@ -1,5 +1,4 @@
-﻿@using Licenta.UI.Component.Backoffice.Shared
-@inherits BaseShowOne
+﻿@inherits BaseShowOne
 
 @if (dto != null)
 {
@@ -22,8 +21,4 @@
             <AutoComplete AutocompleteId="autocomplete-module-one" Label="Course" Data="_autoCompleteData" />
         </div>
     </div>
-    @if (IsNew == false)
-    {
-        <BtnUpdate OnUpdate=@HandleSaving />
-    }
 }

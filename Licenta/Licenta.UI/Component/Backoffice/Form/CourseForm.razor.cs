@@ -1,19 +1,20 @@
 ﻿using Licenta.SDK.Models.Dtos;
+using Licenta.UI.Component.Backoffice.Layout;
 using Microsoft.AspNetCore.Components;
 
-namespace Licenta.UI.Component.Backoffice.QuizVariant
+namespace Licenta.UI.Component.Backoffice.Form
 {
-    public partial class QuizVariantOne : BaseShowOne
+    public partial class CourseForm : BaseShowOne
     {
-        [Parameter] public QuizVariantDto? dto { get; set; }
-        [Parameter] public EventCallback<QuizVariantDto?> DtoChanged { get; set; }
+        [Parameter] public CourseDto? Dto { get; set; }
+        [Parameter] public EventCallback<CourseDto?> DtoChanged { get; set; }
 
         protected override async Task OnAfterRenderAsync(bool firstRender)
         {
             if (firstRender)
             {
                 if (IsNew == false)
-                    dto = await HttpLicentaClient.GetOneQuizVariant(Id);
+                    Dto = await HttpLicentaClient.GetOneCourse(Id);
                 StateHasChanged();
             }
             await base.OnAfterRenderAsync(firstRender);
@@ -21,7 +22,7 @@ namespace Licenta.UI.Component.Backoffice.QuizVariant
 
         public async Task HandleSaving()
         {
-            await HttpLicentaClient.UpdateQuizVariant(dto);
+            await HttpLicentaClient.UpdateCourse(Dto);
         }
     }
 }

@@ -1,9 +1,10 @@
 ﻿using Licenta.SDK.Models.Dtos;
+using Licenta.UI.Component.Backoffice.Layout;
 using Microsoft.AspNetCore.Components;
 
-namespace Licenta.UI.Component.Backoffice.CodeEval
+namespace Licenta.UI.Component.Backoffice.Form
 {
-    public partial class CodeEvalOne : BaseShowOne
+    public partial class CodeEvalForm : BaseShowOne
     {
         [Parameter] public CodeEvaluationEntryDto? dto { get; set; }
         [Parameter] public EventCallback<CodeEvaluationEntryDto?> DtoChanged { get; set; }

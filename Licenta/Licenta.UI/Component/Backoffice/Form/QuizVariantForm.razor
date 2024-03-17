@@ -1,5 +1,4 @@
-﻿@using Licenta.UI.Component.Backoffice.Shared
-@inherits BaseShowOne
+﻿@inherits BaseShowOne
 
 @if (dto != null)
 {
@@ -18,9 +17,5 @@
             </label>
         </div>
     </div>
-    @if (IsNew == false)
-    {
-        <BtnUpdate OnUpdate=@HandleSaving />
-    }
 }
 

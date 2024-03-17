@@ -1,10 +1,11 @@
 ﻿using Components.UI;
 using Licenta.SDK.Models.Dtos;
+using Licenta.UI.Component.Backoffice.Layout;
 using Microsoft.AspNetCore.Components;
 
-namespace Licenta.UI.Component.Backoffice.Module
+namespace Licenta.UI.Component.Backoffice.Form
 {
-    public partial class ModuleOne : BaseShowOne
+    public partial class ModuleForm : BaseShowOne
     {
         [Parameter] public ModuleDto? dto { get; set; }
         [Parameter] public EventCallback<ModuleDto?> DtoChanged { get; set; }

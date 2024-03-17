@@ -27,7 +27,8 @@ namespace Licenta.UI.Data
                 Data[i][++index] = elts[i].Exercise.Enunciation;
                 Data[i][++index] = elts[i].Input;
                 Data[i][++index] = elts[i].ExpectedResult;
-                Data[i][++index] = "crud/codeeval/one/"+ elts[i].Id;
+                // last item should be id of element
+                Data[i][++index] = elts[i].Id.ToString();
             }
         }
 
@@ -54,7 +55,9 @@ namespace Licenta.UI.Data
                 Data[i][++index] = elts[i].Name;
                 Data[i][++index] = teacherList;
                 Data[i][++index] = studentList;
-                Data[i][++index] = "crud/course/one/" + elts[i].Id;
+
+                // last item should be id of element
+                Data[i][++index] = elts[i].Id.ToString();
 
             }
         }
@@ -74,7 +77,8 @@ namespace Licenta.UI.Data
                 Data[i][++index] = elts[i].Enunciation;
                 Data[i][++index] = elts[i].SampleInput;
                 Data[i][++index] = elts[i].IsCodeRunner.ToString();
-                Data[i][++index] = "crud/exercise/one/" + elts[i].Id;
+                // last item should be id of element
+                Data[i][++index] = elts[i].Id.ToString();
             }
         }
 
@@ -92,7 +96,8 @@ namespace Licenta.UI.Data
                 Data[i][++index] = elts[i].Id.ToString();
                 Data[i][++index] = elts[i].Name;
                 Data[i][++index] = elts[i].Body;
-                Data[i][++index] = "crud/lesson/one/" + elts[i].Id;
+                // last item should be id of element
+                Data[i][++index] = elts[i].Id.ToString();
             }
         }
 
@@ -109,7 +114,8 @@ namespace Licenta.UI.Data
                 Data[i] = new string[headingsCount];
                 Data[i][++index] = elts[i].Id.ToString();
                 Data[i][++index] = elts[i].Name;
-                Data[i][++index] = "crud/module/one/" + elts[i].Id;
+                // last item should be id of element
+                Data[i][++index] = elts[i].Id.ToString();
             }
         }
 
@@ -128,7 +134,8 @@ namespace Licenta.UI.Data
                 Data[i][++index] = elts[i].Text;
                 Data[i][++index] = elts[i].IsCorrect.ToString();
                 Data[i][++index] = elts[i].Exercise.Enunciation;
-                Data[i][++index] = "crud/quizvar/one/" + elts[i].Id;
+                // last item should be id of element
+                Data[i][++index] = elts[i].Id.ToString();
             }
         }
 
@@ -146,7 +153,8 @@ namespace Licenta.UI.Data
                 Data[i][++index] = elts[i].Id.ToString();
                 Data[i][++index] = elts[i].Firstname;
                 Data[i][++index] = elts[i].Lastname;
-                Data[i][++index] = "crud/user/one/" + elts[i].Id;
+                // last item should be id of element
+                Data[i][++index] = elts[i].Id.ToString();
             }
         }
 

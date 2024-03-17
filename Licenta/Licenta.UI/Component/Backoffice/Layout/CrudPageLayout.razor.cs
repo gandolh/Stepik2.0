@@ -1,7 +1,6 @@
 ﻿using Microsoft.AspNetCore.Components;
-using Microsoft.Extensions.ObjectPool;
 
-namespace Licenta.UI.Component.Backoffice
+namespace Licenta.UI.Component.Backoffice.Layout
 {
     public partial class CrudPageLayout
     {

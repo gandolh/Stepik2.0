@@ -35,16 +35,9 @@ const showToast = (msg, type) => {
     $.notify(msg, type);
 }
 
-const triggerAreYouSure = () => {
-    swal("Are you sure?", {
-        dangerMode: true,
-        buttons: true,
-    });
-}
 
 const SelectId = (modalId, id) => {
-    console.log(modalId);
-    document.getElementById(modalId).setAttribute("data-eltId", id)
+    document.getElementById(modalId).setAttribute("data-eltId", id);
 }
 
 const GetSelectedId = (modalId) => {
@@ -63,7 +56,6 @@ var Main = {
     initializeEditor: initializeEditor,
     GetCode: GetCode,
     showToast: showToast,
-    triggerAreYouSure: triggerAreYouSure,
     SelectId: SelectId,
     GetSelectedId: GetSelectedId,
     ModalClose: ModalClose

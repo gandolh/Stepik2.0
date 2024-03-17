@@ -1,13 +1,34 @@
-﻿@page "/crud/codeeval/{ViewMode?}/{Id:int?}";
-@inherits BaseCrudPage
-@using Licenta.UI.Component.Backoffice.CodeEval
+﻿@inherits BaseCrudPage
+@page "/crud/codeeval";
+
 
 <CrudPageLayout>
-        @if (string.IsNullOrEmpty(ViewMode))
-    {
-        <CodeEvalAll/>
-    }else if (ViewMode.Contains("one") && Id!= null)
-    {
-        <CodeEvalOne Id="@((int)Id)" />
-    }
+    <!-- table -->
+    <div class="mt-2">
+        <Button Class="modal-trigger" data-target=@_modalCreateId Color="ButtonColor.Green"> New code eval </Button>
+    </div>
+    <table class="table table-sm table-striped" id="@EltId">
+    </table>
+    <!-- end table-->
+    <!-- modal remove -->
+    <ModalRemoveItem Modaltitle="Delete course"
+                     ModalRemoveId="@_modalRemoveId"
+                     HandleRemove=@HandleRemove />
+    <!-- end modal remove -->
+    <!-- modal add -->
+
+    <ModalAddItem ModalTitle="Create course"
+                  ModalCreateId="@_modalCreateId"
+                  HandleCreate="HandleCreate">
+        <CodeEvalForm IsNew=@true @bind-Dto=NewDto />
+    </ModalAddItem>
+    <!-- end modal add -->
+    <!-- modal update -->
+    <ModalUpdate ModalId="@ModalUpdateId"
+                 ModalTitle="Update code evaluation"
+                 HandleUpdate=HandleUpdate>
+        <CodeEvalForm Id="@(1)" />
+    </ModalUpdate>
+
+    <!-- end modal update -->
 </CrudPageLayout>

@@ -1,0 +1,10 @@
+﻿<ModalOneLayout ModalTitle="@ModalTitle"
+                ModalId=@ModalId>
+    <Body>
+        @ChildContent
+    </Body>
+    <Footer>
+        <Button Class="modal-close" Color=ButtonColor.Secondary AriaLabel="Close this dialog window">Cancel</Button>
+        <Button Color=ButtonColor.Green Clicked=@HandleUpdate>Update</Button>
+    </Footer>
+</ModalOneLayout>

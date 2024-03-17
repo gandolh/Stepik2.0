@@ -1,10 +1,11 @@
 ﻿using Components.UI;
 using Licenta.SDK.Models.Dtos;
+using Licenta.UI.Component.Backoffice.Layout;
 using Microsoft.AspNetCore.Components;
 
-namespace Licenta.UI.Component.Backoffice.Exercise
+namespace Licenta.UI.Component.Backoffice.Form
 {
-    public partial class ExerciseOne : BaseShowOne
+    public partial class ExerciseForm : BaseShowOne
     {
         [Parameter] public ExerciseDto? dto { get; set; }
         [Parameter] public EventCallback<ExerciseDto?> DtoChanged { get; set; }

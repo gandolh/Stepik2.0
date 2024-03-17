@@ -2,7 +2,7 @@
 using Microsoft.JSInterop;
 using System.Data;
 
-namespace Licenta.UI.Component.Backoffice
+namespace Licenta.UI.Component.Backoffice.Layout
 {
     public partial class ModalOneLayout
     {
@@ -13,7 +13,7 @@ namespace Licenta.UI.Component.Backoffice
         [Parameter] public EventCallback<int> OnRemove { get; set; }
         [Inject] public IJSRuntime JsRuntime { get; set; } = default!;
 
-   
+
 
     }
 }

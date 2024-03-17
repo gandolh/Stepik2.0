@@ -3,15 +3,20 @@ using Licenta.UI.Services;
 using Microsoft.AspNetCore.Components;
 using Microsoft.JSInterop;
 
-namespace Licenta.UI.Component.Backoffice
+namespace Licenta.UI.Component.Backoffice.Layout
 {
-    public abstract class BaseShowAll : BaseLicentaComp, IAsyncDisposable
+    public abstract class BaseCrudPage : BaseLicentaComp
     {
+        [Parameter] public string ViewMode { get; set; } = string.Empty;
+        [Parameter] public int? Id { get; set; }
+
+
         protected const string EltId = "example";
         [Inject] protected IJSRuntime JSRuntime { get; set; } = default!;
         [Inject] protected HttpLicentaClient httpLicentaClient { get; set; } = default!;
         protected string _modalRemoveId = "modal-show-all-remove";
         protected string _modalCreateId = "modal-show-all-create";
+        protected string ModalUpdateId = "modal-update-entity";
 
         protected abstract Task HandleRemove(int selectedId);
 
@@ -19,7 +24,7 @@ namespace Licenta.UI.Component.Backoffice
         {
             await JSRuntime.InvokeVoidAsync($"Main.ModalClose", _modalRemoveId);
             string id = await JSRuntime.InvokeAsync<string>("Main.GetSelectedId", _modalRemoveId);
-            await HandleRemove(Int32.Parse(id));
+            await HandleRemove(int.Parse(id));
             await JSRuntime.InvokeVoidAsync("Main.showToast", "entitate ștearsă", "success");
         }
 
@@ -27,5 +32,6 @@ namespace Licenta.UI.Component.Backoffice
         {
             await JSRuntime.InvokeVoidAsync("MaterializeInitializer.DestroyDataTable", EltId);
         }
+
     }
 }

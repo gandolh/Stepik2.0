@@ -85,16 +85,19 @@ const initializeFormSelect = () => {
 }
 
 
-const InitDataTable = (eltId, json, modalRemoveId, columns) => {
+const InitDataTable = (eltId, json, modalRemoveId, modalUpdateId, columns) => {
     //console.log(columns);
     if (mySimpleDatatables[eltId] !== undefined) {
         mySimpleDatatables[eltId].destroy();
     }
 
     let btnGroup = `<div style="text-align:center;" >
-        <a href="%linkUpdate%" class="btn waves-effect waves-light" >
-            <i class="material-icons left">edit</i> Update
-        </a>
+      <button class="btn waves-effect waves-light modal-trigger"
+                data-target="${modalUpdateId}"
+                onclick="Main.SelectId('${modalUpdateId}', %EltId%)">
+          <i class="material-icons left">edit</i> Update
+        </button>
+
         <button class="btn waves-effect waves-light red modal-trigger"
                 data-target="${modalRemoveId}"
                 onclick="Main.SelectId('${modalRemoveId}', %EltId%)">
@@ -114,14 +117,14 @@ const InitDataTable = (eltId, json, modalRemoveId, columns) => {
         });
     }
 
+
     json.data.map(el => {
-        const linkUpdate = el[el.length - 1];
-        let id = linkUpdate.split("/");
-        id = id[id.length - 1];
-        btnGroup = btnGroup.replace("%linkUpdate%", linkUpdate)
-        el[el.length - 1] = btnGroup.replace("%EltId%", id)
+        const eltId = el[el.length - 1];
+        el[el.length - 1] = btnGroup.replaceAll("%EltId%", eltId);
     }
     )
+
+    console.log(json.data)
     mySimpleDatatables[eltId] = new simpleDatatables.DataTable(`#${eltId}`, {
         //data:  sampleDataTableData 
         data: json,

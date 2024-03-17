@@ -1,13 +1,33 @@
-﻿@page "/crud/module/{ViewMode?}/{Id:int?}";
-@using Licenta.UI.Component.Backoffice.Module
+﻿@page "/crud/module";
 @inherits BaseCrudPage
 
 <CrudPageLayout>
-    @if (string.IsNullOrEmpty(ViewMode))
-    {
-        <ModuleAll />
-    }else if (ViewMode.Contains("one") && Id!= null)
-    {
-        <ModuleOne Id="@((int)Id)" />
-    }
+    <!-- table -->
+    <div class="mt-2">
+        <Button Class="modal-trigger" data-target=@_modalCreateId Color="ButtonColor.Green"> New  module </Button>
+    </div>
+    <table class="table table-sm table-striped" id="@EltId">
+    </table>
+    <!-- end table-->
+    <!-- modal remove -->
+    <ModalRemoveItem Modaltitle="Delete course"
+                     ModalRemoveId="@_modalRemoveId"
+                     HandleRemove=@HandleRemove />
+    <!-- end modal remove -->
+    <!-- modal add -->
+
+    <ModalAddItem ModalTitle="Create course"
+                  ModalCreateId="@_modalCreateId"
+                  HandleCreate="HandleCreate">
+        <ModuleForm IsNew=@true @bind-Dto=NewDto />
+    </ModalAddItem>
+    <!-- end modal add -->
+    <!-- modal update -->
+    <ModalUpdate ModalId="@ModalUpdateId"
+                 ModalTitle="Update code evaluation"
+                 HandleUpdate=HandleUpdate>
+        <ModuleForm Id="@(1)" />
+    </ModalUpdate>
+
+    <!-- end modal update -->
 </CrudPageLayout>
