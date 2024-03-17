@@ -18,6 +18,7 @@ namespace Licenta.API.Mappers
             return new()
             {
                 Id = element.Id,
+                ExerciseId = element.ExerciseId,
                 Input = element.Input,
                 ExpectedResult = element.ExpectedResult,
                 Exercise = _exerciseMapper.Map(element.Exercise)
@@ -29,6 +30,7 @@ namespace Licenta.API.Mappers
             return new()
             {
                 Id = element.Id,
+                ExerciseId = element.ExerciseId,
                 Input = element.Input,
                 ExpectedResult = element.ExpectedResult,
                 Exercise = _exerciseMapper.Map(element.Exercise!)

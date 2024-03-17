@@ -85,26 +85,25 @@ const initializeFormSelect = () => {
 }
 
 
-const InitDataTable = (eltId, json, modalRemoveId, modalUpdateId, columns) => {
+const InitDataTable = (eltId, json, modalRemoveId, modalUpdateId, dotnetRef, columns) => {
     //console.log(columns);
     if (mySimpleDatatables[eltId] !== undefined) {
         mySimpleDatatables[eltId].destroy();
     }
 
     let btnGroup = `<div style="text-align:center;" >
-      <button class="btn waves-effect waves-light modal-trigger"
+      <button class="btn-select-id btn waves-effect waves-light modal-trigger"
                 data-target="${modalUpdateId}"
-                onclick="Main.SelectId('${modalUpdateId}', %EltId%)">
+                data-eltId="%EltId%">
           <i class="material-icons left">edit</i> Update
         </button>
 
-        <button class="btn waves-effect waves-light red modal-trigger"
+        <button class="btn-select-id btn waves-effect waves-light red modal-trigger"
                 data-target="${modalRemoveId}"
-                onclick="Main.SelectId('${modalRemoveId}', %EltId%)">
+                data-eltId="%EltId%">
             <i class="material-icons left">cancel</i> Remove
         </button>
     </div>`;
-
 
     if (columns) {
         columns.forEach((col) => {
@@ -124,12 +123,23 @@ const InitDataTable = (eltId, json, modalRemoveId, modalUpdateId, columns) => {
     }
     )
 
-    console.log(json.data)
     mySimpleDatatables[eltId] = new simpleDatatables.DataTable(`#${eltId}`, {
-        //data:  sampleDataTableData 
         data: json,
         columns: columns
     })
+
+    // adding event handlers
+    function handleSelectItem(btn) {
+        const eltId = btn.dataset.eltid;
+        dotnetRef.invokeMethodAsync("SetSelectedId", eltId);
+    }
+
+    const table = document.getElementById(eltId);
+    var btns = Array.from(table.getElementsByClassName("btn-select-id"));
+
+    for (let i = 0; i < btns.length; i++) {
+    btns[i].onclick = () => handleSelectItem(btns[i]);
+    }
 
 }
 

@@ -11,23 +11,23 @@
     </table>
     <!-- end table-->
     <!-- modal remove -->
-    <ModalRemoveItem Modaltitle="Delete course"
+    <ModalRemoveItem Modaltitle=@deleteModalTitle
                      ModalRemoveId="@_modalRemoveId"
                      HandleRemove=@HandleRemove />
     <!-- end modal remove -->
     <!-- modal add -->
 
-    <ModalAddItem ModalTitle="Create course"
+    <ModalAddItem ModalTitle=@createModalTitle
                   ModalCreateId="@_modalCreateId"
                   HandleCreate="HandleCreate">
-        <CodeEvalForm IsNew=@true @bind-Dto=NewDto />
+        <CodeEvalForm Exercises="exerciseDtos" IsNew=@true @bind-Dto=NewDto />
     </ModalAddItem>
     <!-- end modal add -->
     <!-- modal update -->
     <ModalUpdate ModalId="@ModalUpdateId"
-                 ModalTitle="Update code evaluation"
+                 ModalTitle="@updateModalTitle"
                  HandleUpdate=HandleUpdate>
-        <CodeEvalForm Id="@(1)" />
+            <CodeEvalForm Exercises="exerciseDtos" Id="@SelectedId" @bind-Dto=UpdateDto />
     </ModalUpdate>
 
     <!-- end modal update -->

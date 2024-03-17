@@ -49,13 +49,19 @@ namespace Licenta.UI.Component.Backoffice
                     CellClass = "lessonBtnsTable"
                 }
             ];
+            var dotnetRef = DotNetObjectReference.Create(this);
 
-            await JSRuntime.InvokeVoidAsync("MaterializeInitializer.InitDataTable", EltId, json, _modalRemoveId, ModalUpdateId, columns);
+            await JSRuntime.InvokeVoidAsync("MaterializeInitializer.InitDataTable", EltId, json, _modalRemoveId, ModalUpdateId, dotnetRef, columns);
         }
 
         private void HandleUpdate()
         {
 
+        }
+
+        protected override Task HandleSelectedIdChanged(int selectedId)
+        {
+            throw new NotImplementedException();
         }
     }
 }

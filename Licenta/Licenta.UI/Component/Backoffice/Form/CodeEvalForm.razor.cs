@@ -6,23 +6,22 @@ namespace Licenta.UI.Component.Backoffice.Form
 {
     public partial class CodeEvalForm : BaseShowOne
     {
-        [Parameter] public CodeEvaluationEntryDto? dto { get; set; }
+        [Parameter] public CodeEvaluationEntryDto dto { get; set; } = default!;
         [Parameter] public EventCallback<CodeEvaluationEntryDto?> DtoChanged { get; set; }
+        [Parameter][EditorRequired] public List<ExerciseDto> Exercises { get; set; } = new List<ExerciseDto>();
 
-        protected override async Task OnAfterRenderAsync(bool firstRender)
+        protected override async Task OnParametersSetAsync()
         {
-            if (firstRender)
-            {
-                if (IsNew == false)
-                    dto = await HttpLicentaClient.GetOneCodeEvaluation(Id);
-                StateHasChanged();
-            }
-            await base.OnAfterRenderAsync(firstRender);
+            await base.OnParametersSetAsync();
         }
 
-        public async Task HandleSaving()
+        private void HandleChangeExerciseId(ChangeEventArgs e)
         {
-            await HttpLicentaClient.UpdateCodeEvaluation(dto);
+            dto!.ExerciseId =  int.Parse(e.Value!.ToString()!);
         }
+
+
+
+
     }
 }

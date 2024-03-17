@@ -3,18 +3,30 @@
 @if (dto != null)
 {
     <div class='row'>
-        <div class='input-field col s6'>
+        <InputField ColSize="ColSize.S6">
+            <Select Changed="HandleChangeExerciseId" Value="@dto.ExerciseId.ToString()">
+                <Options>
+                    @foreach (var exercise in Exercises)
+                    {
+                        <Option Text="@exercise.Enunciation" Value="@exercise.Id.ToString()"/>
+                    }
+                </Options>
+            </Select>
+        </InputField>
+        <InputField ColSize="ColSize.S6">
             <input @bind-value=dto.Input placeholder="Input"
                    id="Input" type="text" class="validate"
                    required disabled=@Disabled>
             <label class="active" for="Input">Input</label>
-        </div>
-        <div class='input-field col s6'>
+        </InputField>
+    </div>
+    <Row>
+        <InputField ColSize="ColSize.S6">
             <input @bind-value=dto.ExpectedResult placeholder="ExpectedResult"
                    id="ExpectedResult" type="text" class="validate"
                    required disabled=@Disabled>
             <label class="active" for="ExpectedResult">ExpectedResult</label>
-        </div>
-    </div>
+        </InputField>
+    </Row>
 }
 

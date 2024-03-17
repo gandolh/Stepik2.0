@@ -14,7 +14,10 @@ namespace Components.UI.Modal
 
         protected override async Task OnAfterRenderAsync(bool firstRender)
         {
-            await JSRuntime.InvokeVoidAsync("MaterializeInitializer.InitModal");
+            if (firstRender)
+            {
+                await JSRuntime.InvokeVoidAsync("MaterializeInitializer.InitModal");
+            }
             await base.OnAfterRenderAsync(firstRender);
         }
     }

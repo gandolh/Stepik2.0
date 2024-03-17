@@ -36,13 +36,19 @@ namespace Licenta.UI.Component.Backoffice
             var elts = await httpLicentaClient.GetExercises();
             DataTableJson json = new DataTableJson();
             json.ImportOverride(elts);
+            var dotnetRef = DotNetObjectReference.Create(this);
 
-            await JSRuntime.InvokeVoidAsync("MaterializeInitializer.InitDataTable", EltId, json, _modalRemoveId, ModalUpdateId);
+            await JSRuntime.InvokeVoidAsync("MaterializeInitializer.InitDataTable", EltId, json, _modalRemoveId, ModalUpdateId, dotnetRef);
         }
 
         private void HandleUpdate()
         {
 
+        }
+
+        protected override Task HandleSelectedIdChanged(int selectedId)
+        {
+            throw new NotImplementedException();
         }
     }
 }
